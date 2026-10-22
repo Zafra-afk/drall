@@ -1,0 +1,12 @@
+{
+  "$schema": "https://railway.app/railway.json",
+  "build": {
+    "buildCommand": "composer install --no-dev --optimize-autoloader --prefer-dist --no-interaction && npm install --no-audit --no-fund --omit=dev && npm run build"
+  },
+  "deploy": {
+    "startCommand": "php artisan migrate --force --no-interaction && php artisan serve --host=0.0.0.0 --port=$PORT",
+    "healthcheckPath": "/",
+    "healthcheckTimeout": 30,
+    "restartPolicy": "on_failure"
+  }
+}
