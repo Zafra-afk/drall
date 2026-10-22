@@ -65,6 +65,9 @@ RUN composer install \
     && rm -rf /root/.composer/cache \
     && rm -rf /tmp/*
 
+# Create .env so isInstalled() check passes; runtime secrets override at runtime
+RUN cp .env.example .env && php artisan key:generate --force
+
 # Storage permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
