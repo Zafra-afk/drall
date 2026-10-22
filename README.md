@@ -1,214 +1,361 @@
+# Drall — Marketplace e-commerce de Madagascar 🇲🇬
+
 <p align="center">
-  <a href="http://www.bagisto.com">
-    <picture>
-      <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/bagisto/temp-media/0b0984778fae92633f57e625c5494ead1fe320c3/dark-logo-P5H7MBtx.svg">
-      <source media="(prefers-color-scheme: light)" srcset="https://bagisto.com/wp-content/themes/bagisto/images/logo.png">
-      <img src="https://bagisto.com/wp-content/themes/bagisto/images/logo.png" alt="Drall logo">
-    </picture>
-  </a>
+  **La technologie au service du commerce malgache**
 </p>
 
 <p align="center">
-    <a href="https://packagist.org/packages/bagisto/bagisto"><img src="https://poser.pugx.org/bagisto/bagisto/d/total.svg" alt="Total Downloads"></a>
-    <a href="https://packagist.org/packages/bagisto/bagisto"><img src="https://poser.pugx.org/bagisto/bagisto/v/stable.svg" alt="Latest Stable Version"></a>
-    <a href="https://packagist.org/packages/bagisto/bagisto"><img src="https://poser.pugx.org/bagisto/bagisto/license.svg" alt="License"></a>
-    <a href="#backers"><img src="https://opencollective.com/bagisto/backers/badge.svg" alt="Backers on Open Collective"></a>
-    <a href="#sponsors"><img src="https://opencollective.com/bagisto/sponsors/badge.svg" alt="Sponsors on Open Collective"></a>
-    <a href="https://www.codetriage.com/bagisto/bagisto"><img src="https://www.codetriage.com/bagisto/bagisto/badges/users.svg" alt="Open Source Helpers"></a>
+  <strong>🇲🇬 Madagascar · Français · Malagasy · Ariary (MGA)</strong>
 </p>
 
-<p align="center">
-    <a href="https://twitter.com/intent/follow?screen_name=bagistoshop"><img src="https://img.shields.io/twitter/follow/bagistoshop?style=social"></a>
-    <a href="https://www.youtube.com/channel/UCbrfqnhyiDv-bb9QuZtonYQ"><img src="https://img.shields.io/youtube/channel/subscribers/UCbrfqnhyiDv-bb9QuZtonYQ?style=social"></a>
-</p>
+**Drall** est une plateforme de commerce électronique destinée au marché malgache. Elle vise à faciliter la vente et l'achat de produits informatiques, d'appareils électroniques, de smartphones, d'accessoires et d'autres produits disponibles à Madagascar.
 
-<p align="center">
-    ➡️ <a href="https://bagisto.com/en/">Website</a> | <a href="https://devdocs.bagisto.com/">Documentation</a> | <a href="https://devdocs.bagisto.com/getting-started/installation.html">Installation Guide</a> | <a href="https://devdocs.bagisto.com/getting-started/installation.html#%F0%9F%90%B3-docker-installation">Docker Installation</a>  | <a href="https://forums.bagisto.com/">Forums</a> | <a href="https://www.facebook.com/groups/bagisto/">Community</a> ⬅️
-</p>
+Construite sur Laravel et personnalisée pour les besoins du marché local, Drall a pour objectif de proposer une expérience de vente en ligne simple, accessible et adaptée aux commerçants comme aux clients malgaches.
 
-<p align="center">
-    <img src="https://flagicons.lipis.dev/flags/4x3/sa.svg" alt="Arabic" width="24" style="display:block; margin:6px auto;">
-    <img src="https://flagicons.lipis.dev/flags/4x3/de.svg" alt="German" width="24" style="display:block; margin:6px auto;">
-    <img src="https://flagicons.lipis.dev/flags/4x3/us.svg" alt="English" width="24" style="display:block; margin:6px auto;">
-    <img src="https://flagicons.lipis.dev/flags/4x3/es.svg" alt="Spanish" width="24" style="display:block; margin:6px auto;">
-    <img src="https://flagicons.lipis.dev/flags/4x3/fr.svg" alt="French" width="24" style="display:block; margin:6px auto;">
-    <img src="https://flagicons.lipis.dev/flags/4x3/il.svg" alt="Hebrew" width="24" style="display:block; margin:6px auto;">
-    <img src="https://flagicons.lipis.dev/flags/4x3/in.svg" alt="Hindi" width="24" style="display:block; margin:6px auto;">
-    <img src="https://flagicons.lipis.dev/flags/4x3/it.svg" alt="Italian" width="24" style="display:block; margin:6px auto;">
-    <img src="https://flagicons.lipis.dev/flags/4x3/jp.svg" alt="Japanese" width="24" style="display:block; margin:6px auto;">
-    <img src="https://flagicons.lipis.dev/flags/4x3/nl.svg" alt="Dutch" width="24" style="display:block; margin:6px auto;">
-    <img src="https://flagicons.lipis.dev/flags/4x3/be.svg" alt="Belgian" width="24" style="display:block; margin:6px auto;">
-    <img src="https://flagicons.lipis.dev/flags/4x3/ch.svg" alt="Swiss" width="24" style="display:block; margin:6px auto;">
-    <img src="https://flagicons.lipis.dev/flags/4x3/at.svg" alt="Austrian" width="24" style="display:block; margin:6px auto;">
-    <img src="https://flagicons.lipis.dev/flags/4x3/se.svg" alt="Swedish" width="24" style="display:block; margin:6px auto;">
-    <img src="https://flagicons.lipis.dev/flags/4x3/no.svg" alt="Norwegian" width="24" style="display:block; margin:6px auto;">
-    <img src="https://flagicons.lipis.dev/flags/4x3/dk.svg" alt="Danish" width="24" style="display:block; margin:6px auto;">
-    <img src="https://flagicons.lipis.dev/flags/4x3/fi.svg" alt="Finnish" width="24" style="display:block; margin:6px auto;">
-    <img src="https://flagicons.lipis.dev/flags/4x3/ie.svg" alt="Irish" width="24" style="display:block; margin:6px auto;">
-    <img src="https://flagicons.lipis.dev/flags/4x3/br.svg" alt="Portuguese (Brazil)" width="24" style="display:block; margin:6px auto;">
-    <img src="https://flagicons.lipis.dev/flags/4x3/tr.svg" alt="Turkish" width="24" style="display:block; margin:6px auto;">
-    <img src="https://flagicons.lipis.dev/flags/4x3/cn.svg" alt="Chinese (Simplified)" width="24" style="display:block; margin:6px auto;">
-</p>
+- **Marché cible :** Madagascar
+- **Langues :** Français et Malagasy
+- **Devise :** Ariary malgache (MGA / Ar)
+- **Fuseau horaire :** Indian/Antananarivo (UTC+3)
+- **Démonstration :** https://drall.up.railway.app
+- **Dépôt du projet :** https://github.com/Zafra-afk/drall
 
-<a href="https://www.youtube.com/watch?v=OHbte7hdxYU">
-    <img class="flag-img" src="https://raw.githubusercontent.com/bagisto/temp-media/master/bagisto-featured.png" alt="Drall Featured Video" width="100%">
-</a>
+---
 
-# Introduction
+## Sommaire
 
-**Drall is an open-source [Laravel eCommerce](https://www.bagisto.com/) and [multi-vendor marketplace](https://bagisto.com/en/laravel-multi-vendor-marketplace/) platform for building scalable online commerce solutions.** Built with [Laravel](https://laravel.com/) and [Vue.js](https://vuejs.org/), Drall provides a flexible and customizable foundation for businesses to launch online stores, multi-vendor marketplaces, and enterprise commerce experiences.
+- [Présentation](#présentation)
+- [Objectifs](#objectifs)
+- [Fonctionnalités](#fonctionnalités)
+- [Marché malgache](#marché-malgache)
+- [Technologies](#technologies)
+- [Installation](#installation)
+- [Configuration](#configuration)
+- [Développement](#développement)
+- [Déploiement](#déploiement)
+- [Sécurité](#sécurité)
+- [Licence](#licence)
 
-Whether you're building a single-vendor store, [B2B eCommerce](https://bagisto.com/en/b2b-ecommerce/) platform, or multi-vendor marketplace, Drall helps reduce development time and cost while giving you the freedom to customize and scale your commerce solution.
+## Présentation
 
-![Repo Stats](https://raw.githubusercontent.com/bagisto/temp-media/master/stats.webp)
+Drall est un projet de plateforme e-commerce conçu pour répondre aux besoins du commerce en ligne à Madagascar.
 
-# Getting Started
+Le projet met l'accent sur :
 
-![Getting Started](https://raw.githubusercontent.com/bagisto/temp-media/master/geting-starded.png)
+- Une interface accessible sur ordinateur, tablette et smartphone.
+- Un catalogue de produits organisé par catégories.
+- Une gestion centralisée des produits, des commandes et des clients.
+- Une expérience d'achat adaptée aux habitudes locales.
+- Une architecture personnalisable et évolutive.
 
-[Install Drall](https://devdocs.bagisto.com/getting-started/installation.html) with or without Composer (Check [Requirement Details](https://bagisto.com/en/download/))
+L'objectif est de contribuer au développement du commerce numérique malgache en offrant aux entreprises et aux commerçants une solution adaptable.
 
-Follow the [Getting Started with Drall](https://www.youtube.com/watch?v=s_DhQrjK8Tw&list=PLe30vg_FG4OS3BU8rHUKQZ2mnX45xwSMc) Tutorial
+## Objectifs
 
-You can browse through the Free [Live Demo](https://demo.bagisto.com/)
+Drall ambitionne de :
 
-## 🐳 Run with Docker
+1. Faciliter la commercialisation des produits informatiques à Madagascar.
+2. Permettre aux clients de consulter les produits et leurs caractéristiques.
+3. Simplifier la gestion des catalogues et des commandes.
+4. Préparer l'intégration de moyens de paiement adaptés au marché local.
+5. Offrir une base technique évolutive pour de futures fonctionnalités.
 
-A single command gives you a fully installed store — migrations, seed data and search indexes are all baked into the image, so there is no first-run setup.
+## Fonctionnalités
+
+Les fonctionnalités suivantes constituent le périmètre fonctionnel du projet. Leur disponibilité dépend de la configuration et de la validation de chaque module.
+
+### Boutique en ligne
+
+- Présentation des produits.
+- Organisation par catégories.
+- Affichage des prix en Ariary.
+- Pages détaillées des produits.
+- Recherche et navigation dans le catalogue.
+- Interface adaptée aux appareils mobiles.
+
+### Administration
+
+- Gestion des produits.
+- Gestion des catégories.
+- Gestion des commandes.
+- Gestion des comptes clients.
+- Configuration du catalogue et de la boutique.
+
+### Comptes clients
+
+- Création de compte et connexion.
+- Consultation des informations du compte.
+- Gestion des informations personnelles, lorsque le module est activé.
+- Accès aux commandes selon les fonctionnalités disponibles.
+
+### Évolutions envisagées
+
+- Intégration de MVola.
+- Intégration d'Orange Money.
+- Intégration d'Airtel Money.
+- Intégration de paiements bancaires par un prestataire compatible avec Madagascar.
+- Notifications par e-mail.
+- Amélioration du suivi des commandes.
+- Développement d'une expérience mobile enrichie.
+
+**Important :** les moyens de paiement et les fonctionnalités en cours de développement ne doivent pas être considérés comme opérationnels tant que leur intégration n'a pas été testée en conditions réelles.
+
+## Marché malgache
+
+Drall est destiné au marché de Madagascar.
+
+### Paramètres régionaux
+
+| Paramètre | Configuration souhaitée |
+|---|---|
+| Pays de commercialisation | Madagascar |
+| Code pays | MG |
+| Langue française | fr |
+| Langue malagasy | mg |
+| Devise | Ariary malgache |
+| Code devise | MGA |
+| Fuseau horaire | Indian/Antananarivo |
+| Décalage horaire | UTC+3 |
+
+La configuration régionale doit être appliquée à la boutique, au processus de commande, aux adresses clients, aux paramètres d'administration et aux éventuelles intégrations externes.
+
+Les sélecteurs de pays destinés aux clients doivent proposer uniquement Madagascar lorsque le champ concerne le pays de livraison ou de facturation de la boutique.
+
+Les langues disponibles doivent être limitées au français et au malagasy. La devise commerciale doit être l'Ariary.
+
+Ces restrictions doivent être mises en œuvre dans la configuration et les composants de l'application, et pas seulement dans cette documentation.
+
+## Technologies
+
+Drall s'appuie sur les technologies suivantes :
+
+- **PHP** — langage serveur.
+- **Laravel** — framework applicatif.
+- **MySQL** — système de gestion de base de données, selon la configuration.
+- **Vue.js** — technologies d'interface utilisées par les composants concernés.
+- **JavaScript** — fonctionnalités interactives de l'interface.
+- **Composer** — gestion des dépendances PHP.
+- **Git et GitHub** — gestion du code source.
+- **Railway** — hébergement de la démonstration actuelle.
+
+Les versions requises dépendent des fichiers de dépendances et de la configuration réellement présents dans le dépôt.
+
+## Installation
+
+### Prérequis
+
+Avant l'installation, vérifiez que votre environnement dispose des éléments nécessaires :
+
+- PHP dans une version compatible avec le projet.
+- Composer.
+- Node.js et le gestionnaire de paquets requis par le projet.
+- Une base de données compatible.
+- Les extensions PHP exigées par les dépendances.
+- Git.
+
+### 1. Récupérer le projet
 
 ```bash
-docker run -d --name bagisto -p 80:80 webkul/bagisto:latest
+git clone https://github.com/Zafra-afk/drall.git
+cd drall
 ```
 
-Images are published for each web server and each database, so you can match whatever you already run:
+### 2. Installer les dépendances PHP
 
-| | MySQL 8.0 | MariaDB 10.11 | PostgreSQL 16 |
-|---|---|---|---|
-| **Nginx** | `:latest` · `:latest-nginx` · `:latest-nginx-mysql` | `:latest-nginx-mariadb` | `:latest-nginx-postgres` |
-| **Apache** | `:latest-apache` · `:latest-apache-mysql` | `:latest-apache-mariadb` | `:latest-apache-postgres` |
-| **OpenLiteSpeed** | `:latest-litespeed` · `:latest-litespeed-mysql` | `:latest-litespeed-mariadb` | `:latest-litespeed-postgres` |
+```bash
+composer install
+```
 
-Pin a release by swapping `latest` for the version, e.g. `webkul/bagisto:2.5.0-nginx-postgres`. Setting `DB_HOST` to an external server skips the bundled database entirely. Full details in [`docker/production/README.md`](docker/production/README.md).
+### 3. Configurer l'environnement
 
-## ☁️ Drall Cloud Hosting
+```bash
+cp .env.example .env
+php artisan key:generate
+```
 
-Deploy and scale your Drall store effortlessly with [Drall Cloud Hosting](https://bagisto.com/en/cloud-hosting/)  a fully managed, optimized hosting solution built specifically for Drall. Enjoy automatic scaling, built-in security, one-click updates, and expert support so you can focus on growing your business.
+Vérifiez que le fichier `.env.example` existe avant de copier ce fichier.
 
-[**Deploy Drall on Cloud Hosting**](https://bagisto.com/en/cloud-hosting/)
+### 4. Configurer la base de données
 
-<a href="https://bagisto.com/en/cloud-hosting/">
-    <img src="https://github.com/bagisto/temp-media/blob/master/bagisto_cloud.webp" alt="Deploy Drall on Cloud Hosting">
-</a>
+Modifiez les paramètres de connexion dans `.env` en fonction de votre environnement :
 
-## ☁️ Cloud Installation via Amazon AMI
+```dotenv
+APP_NAME=Drall
+APP_ENV=local
+APP_DEBUG=true
+APP_URL=http://127.0.0.1:8000
 
-You can also deploy Drall quickly using our pre-configured Amazon Machine Image (AMI) available on the AWS Marketplace:
+APP_LOCALE=fr
+APP_FALLBACK_LOCALE=fr
+APP_TIMEZONE=Indian/Antananarivo
 
-👉 [**Launch Drall on AWS**](https://aws.amazon.com/marketplace/pp/prodview-r3xv62axcqkpa)
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=drall
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-This AMI allows you to get started with Drall on a cloud environment without manual setup. Ideal for scalable production or testing environments.
+Adaptez les identifiants de base de données à votre installation. N'utilisez pas ces paramètres de développement tels quels en production.
 
-# Accelerate Your Online Store Launch with the Drall Starter Pack!
+### 5. Installer les dépendances de l'interface
 
-Empower your e-commerce journey with the [Drall Starter Pack](https://store.webkul.com/bagisto-starter-pack.html), streamlining setup and integration for a seamless online store launch. Get ready to unlock success in the digital marketplace!
+Consultez `package.json` pour connaître le gestionnaire de paquets et les scripts réellement utilisés.
 
-# Open Source B2B eCommerce Platform
+Avec npm, si le projet est configuré pour cela :
 
-The [B2B eCommerce Platform](https://bagisto.com/en/b2b-commerce-platform/) enhances your Drall store with advanced Business-to-Business (B2B) features. It enables company-based purchasing, multi-user access, quote negotiation, and procurement management — empowering businesses to handle B2B workflows efficiently within a single platform.
+```bash
+npm install
+npm run build
+```
 
-![Drall B2B Ecommerce Image](https://github.com/bagisto/temp-media/blob/master/intro-banner.webp)
+### 6. Préparer l'application
 
-# Multi Vendor Marketplace
+Vérifiez les commandes de migration et d'installation prévues par le projet avant de les exécuter.
 
-[Multi Vendor Marketplace](https://bagisto.com/en/laravel-multi-vendor-marketplace/) transforms a standard store into a complete marketplace, allowing the admin to manage sellers, commissions, product approvals, and order handling, while giving vendors a dedicated dashboard to manage their catalog, orders, and transactions.
+Pour une application Laravel déjà configurée avec ses migrations :
 
-![Multi Vendor Marketplace Image](https://github.com/bagisto/temp-media/blob/master/multi-vendor-marketplace.webp)
+```bash
+php artisan migrate
+php artisan storage:link
+php artisan optimize:clear
+```
 
-# Multi Tenant eCommerce
+N'exécutez pas une commande d'installation initiale sur une base de données contenant déjà des données sans avoir vérifié ses effets.
 
-[Multi Tenant eCommerce](https://bagisto.com/en/laravel-multi-tenant-saas/) in Drall allows businesses to build a SaaS-based marketplace platform where multiple vendors or merchants can create and manage their own individual stores under a single system.
+### 7. Lancer le serveur de développement
 
-![Multi Tenant eCommerce Image](https://github.com/bagisto/temp-media/blob/master/multi-tenant.webp)
+```bash
+php artisan serve
+```
 
-# POS
+L'application sera généralement accessible à l'adresse :
 
-[Point of Sale](https://bagisto.com/en/laravel-pos/) system manages retail operations efficiently, handling inventory management and fast customer checkout for your store.
+http://127.0.0.1:8000
 
-![POS Image](https://github.com/bagisto/temp-media/blob/master/pos.webp)
+## Configuration
 
-# Headless Commerce
+### Nom de l'application
 
-The power of headless laravel commerce now comes to Drall enabling you to experience seamless and easily scalable storefront performance. Backed by some of the hottest tech stacks, Drall commerce can now be used to build powerful headless commerce solutions offering blazing-fast speed and easy customization powered by Next.js
+Dans `.env` :
 
-## Next.js Commerce
+```dotenv
+APP_NAME=Drall
+```
 
-![Next.js Logo](https://raw.githubusercontent.com/bagisto/temp-media/master/next.png)
+Vérifiez également les fichiers de configuration, les titres des pages, les e-mails, les modèles de notification et les paramètres d'installation afin d'utiliser le nom Drall dans l'interface.
 
-Develop and deploy your next headless commerce storefronts with Next JS and Drall: [https://github.com/bagisto/nextjs-commerce](https://github.com/bagisto/nextjs-commerce)
+### Langues
 
-# Open Source Mobile eCommerce
+La boutique doit proposer uniquement :
 
-Revolutionize Your Online Store with Drall's Open Source eCommerce Mobile
+- Français.
+- Malagasy.
 
-![Mobile View Example Screens](https://raw.githubusercontent.com/bagisto/temp-media/master/open-source-ecommerce-mobile.png)
+Il faut vérifier les fichiers de traduction, les paramètres de canal, les menus de langue et les éventuelles traductions fournies par les extensions.
 
-Mobile eCommerce powered by Flutter & Laravel: https://github.com/bagisto/opensource-ecommerce-mobile-app
+### Devise
 
-# AI Powered eCommerce
+La devise commerciale à utiliser est l'Ariary malgache (MGA).
 
-You can integrate popular large language models like GPT, Claude, Gemini, Grok, Mistral, DeepSeek, Qwen and LLaMA to build [AI-powered eCommerce](https://bagisto.com/en/extensions/laravel-chatbot-using-openai-chatgpt-llm/) applications with Drall. Some of the popular use cases where you can make use of LLMs to build AI apps are chatbot, automated product descriptions, customer support, search, and recommendations.
+Vérifiez les prix, les taxes, les totaux de commande, les remboursements, les règles d'arrondi et les affichages dans l'administration. Ne convertissez pas arbitrairement les prix existants : une modification de devise doit préserver la cohérence des données.
 
-![AI Powered eCommerce Examples](https://raw.githubusercontent.com/bagisto/temp-media/master/ai_powered_ecommerce.png)
+### Pays
 
-You can incorporate LLM API with your drall applications to send and receive queries and ensure proper error handling and rate limiting to prevent overuse of the API
+Pour les adresses de livraison et de facturation, le pays commercialisé doit être Madagascar.
 
-# Decentralised eCommerce
+Cette restriction ne doit pas supprimer les informations techniques ou les mentions légales nécessaires dans les dépendances du projet.
 
-Build [decentralised applications](https://bagisto.com/en/services/blockchain-commerce/) with Drall on popular blockchains like Ethereum and Solana by integrating smart contracts with the eCommerce platform. You can have decentralised marketplaces, [NFT marketplaces](https://bagisto.com/en/nft-marketplace/), and decentralised e-signing with the laravel eCommerce system.
+### Paiements
 
-![Decentralized Ecommerce Example Screens](https://raw.githubusercontent.com/bagisto/temp-media/master/decentralised-ecommerce.png)
+Les intégrations de paiement doivent être ajoutées et testées séparément. Avant d'activer un fournisseur, vérifiez ses conditions d'accès, ses identifiants, ses URL de retour, la validation des transactions et la gestion des paiements échoués.
 
-# Commerce For Every Need
+Ne stockez jamais de clés secrètes ou de données sensibles dans le dépôt Git.
 
-![Commerce Store Examples](https://raw.githubusercontent.com/bagisto/temp-media/master/every-need.png)
+## Développement
 
-With Drall, you can easily create use cases for various commerce needs like Marketplaces, PWA, Native Mobile Apps, Multi-Tenants systems, Blockchain and many more.
+Pour contribuer au développement de Drall :
 
-# Built In Extensions
+1. Créez une branche pour votre modification.
+2. Effectuez les changements nécessaires.
+3. Lancez les tests disponibles.
+4. Vérifiez le fonctionnement de la boutique et de l'administration.
+5. Soumettez les changements après vérification.
 
-![200+ Prebuilt Extensions](https://raw.githubusercontent.com/bagisto/temp-media/master/built_in_extension.png)
+Exemple :
 
-Make use of 200+ Drall pre-built extensions from [Drall Extension Marketplace](https://bagisto.com/en/extensions/)
+```bash
+git checkout -b feature/amelioration-catalogue
+git add .
+git commit -m "Improve product catalog"
+```
 
-# Community
+Avant de pousser les modifications, vérifiez la branche et le dépôt distant :
 
-![Forum and Facebook Communities](https://raw.githubusercontent.com/bagisto/temp-media/master/community.png)
+```bash
+git branch --show-current
+git remote -v
+git status
+```
 
-Get Drall support on [Facebook Group](https://www.facebook.com/groups/bagisto) and [Forum](https://forums.bagisto.com/) Would like to help us build the most developer-friendly E-Commerce platform? Start by reading our [Contributing Guide](CONTRIBUTING.md)!
+## Déploiement
 
-# License
+Drall dispose d'une démonstration hébergée à l'adresse suivante :
 
-Drall is a fully open-source Laravel eCommerce framework that will always remain free under the [MIT License](LICENSE).
+https://drall.up.railway.app
 
-# Security Vulnerabilities
+Pour un déploiement en production, configurez les variables d'environnement, la base de données, le stockage des fichiers, les tâches planifiées, les files d'attente éventuelles et les sauvegardes.
 
-If you think that you have found a security issue in Drall, please do not use the issue tracker and do not post it publicly. Report it privately through one of the channels in our [Security Policy](SECURITY.md).
+Paramètres de production recommandés :
 
-# Contributors
+```dotenv
+APP_NAME=Drall
+APP_ENV=production
+APP_DEBUG=false
+APP_TIMEZONE=Indian/Antananarivo
+APP_LOCALE=fr
+APP_FALLBACK_LOCALE=fr
+```
 
-This project is on [Open Collective](https://opencollective.com/bagisto), and it exists thanks to the people who contribute.
+Générez et conservez la clé d'application de manière sécurisée. Ne publiez pas le fichier `.env`.
 
-<a href="https://github.com/bagisto/bagisto/graphs/contributors"><img src="https://opencollective.com/bagisto/contributors.svg?width=890&button=false"/></a>
+Après chaque déploiement, vérifiez :
 
-# Backers
+- L'accès à la boutique.
+- L'affichage des produits et des images.
+- L'inscription et la connexion des clients.
+- Le panier et le passage de commande.
+- L'enregistrement des informations.
+- L'accès au tableau de bord d'administration.
+- Les journaux d'erreurs et la configuration de production.
 
-Thank you to all our backers! 🙏
+## Sécurité
 
-<a href="https://opencollective.com/bagisto" target="_blank"><img src="https://opencollective.com/bagisto/backers.svg?width=890"></a>
+La sécurité est essentielle pour une plateforme de commerce électronique.
 
-# Sponsors
+- Ne publiez jamais les mots de passe ni les clés API.
+- Désactivez le mode debug en production.
+- Maintenez les dépendances à jour après vérification de leur compatibilité.
+- Vérifiez les permissions d'accès à l'administration.
+- Protégez les données personnelles des clients.
+- Effectuez des sauvegardes régulières.
+- Testez les paiements et les commandes avant toute mise en service.
 
-Support this project by becoming a sponsor. Your logo will show up here with a link to your website.
+Pour signaler un problème de sécurité, contactez les responsables du projet par un canal privé approprié plutôt que de publier des informations permettant d'exploiter une vulnérabilité.
 
-<a href="https://opencollective.com/bagisto" target="_blank"><img src="https://opencollective.com/bagisto/sponsors.svg?width=890&isActive=true"></a>
-# drall
+## Licence
+
+Consultez le fichier `LICENSE` présent dans le dépôt pour connaître les conditions de redistribution, de modification et d'utilisation du code.
+
+Drall utilise des composants et des dépendances tierces. Leurs licences et mentions de copyright doivent être conservées conformément à leurs conditions respectives.
+
+## Contact et projet
+
+- **Nom du projet :** Drall
+- **Marché cible :** Madagascar
+- **Dépôt du code source :** https://github.com/Zafra-afk/drall
+- **Démonstration :** https://drallmg.up.railway.app
+
+---
+
+**Drall — Construisons ensemble le commerce numérique de Madagascar. 🇲🇬**
