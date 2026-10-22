@@ -3,7 +3,7 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build && (cd packages/Webkul/Admin && npm install --no-audit --no-fund && npm run build) && (cd packages/Webkul/Shop && npm install --no-audit --no-fund && npm run build) && (cd packages/Webkul/Installer && npm install --no-audit --no-fund && npm run build)"
     },
     "devDependencies": {
         "@playwright/test": "^1.58.1",
