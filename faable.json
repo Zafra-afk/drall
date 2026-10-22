@@ -1,5 +1,4 @@
 {
     "buildpack": "php",
-    "buildCommand": "composer install --no-dev --optimize-autoloader --no-interaction --no-progress --ignore-platform-req=ext-calendar",
-    "releaseCommand": "php artisan migrate --force --no-interaction && (php artisan db:seed --force --no-interaction || echo \"Seeders may have already run\") && php artisan config:cache --no-interaction"
+    "buildCommand": "composer install --no-dev --optimize-autoloader --no-interaction --no-progress --ignore-platform-req=ext-calendar"
 }
