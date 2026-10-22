@@ -73,8 +73,9 @@ COPY docker/php/php-fpm.conf /usr/local/etc/php-fpm.d/www.conf
 
 # Configure Nginx
 COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
-COPY docker/nginx/site.conf /etc/nginx/sites-available/default
-RUN mkdir -p /etc/nginx/sites-enabled && rm -f /etc/nginx/sites-enabled/default && ln -sf /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+COPY docker/nginx/site.conf.template /etc/nginx/sites-available/default.template
+COPY docker/nginx/generate-site-conf.sh /usr/local/bin/generate-site-conf.sh
+RUN chmod +x /usr/local/bin/generate-site-conf.sh && mkdir -p /etc/nginx/sites-enabled && rm -f /etc/nginx/sites-enabled/default
 
 # Configure Supervisor
 COPY docker/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
