@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Hash;
+use Webkul\Core\Models\Locale;
 use Webkul\Customer\Models\Customer;
 
 use function Pest\Laravel\get;
@@ -32,12 +33,79 @@ it('should send a signed-in customer from the login page to the home page', func
         ->assertRedirect(route('shop.home.index'));
 });
 
+it('should expose French as the only supported storefront language', function () {
+    $channel = core()->getCurrentChannel();
+
+    foreach (['mg', 'fr', 'en'] as $code) {
+        $locale = Locale::firstOrCreate(
+            ['code' => $code],
+            ['name' => $code, 'direction' => 'ltr'],
+        );
+
+        $channel->locales()->syncWithoutDetaching([$locale->id]);
+    }
+
+    $channel->unsetRelation('locales');
+
+    $response = get(route('shop.home.index'))->assertOk();
+
+    expect(config('app.allowed_locales'))->toBe(['fr']);
+});
+
+it('should persist a permitted storefront locale and ignore a forbidden locale', function () {
+    $channel = core()->getCurrentChannel();
+    $frenchLocale = Locale::firstOrCreate(
+        ['code' => 'fr'],
+        ['name' => 'Français', 'direction' => 'ltr'],
+    );
+    $channel->locales()->syncWithoutDetaching([$frenchLocale->id]);
+    $channel->unsetRelation('locales');
+
+    get(route('shop.home.index', ['locale' => 'fr']))
+        ->assertOk()
+        ->assertSessionHas('locale', 'fr');
+
+    get(route('shop.customer.session.index', ['locale' => 'mg']))
+        ->assertOk()
+        ->assertSessionHas('locale', 'fr');
+
+    expect(app()->getLocale())->toBe('fr');
+});
+
+it('should not use a channel default locale that is not permitted', function () {
+    $channel = core()->getCurrentChannel();
+
+    foreach (['mg', 'fr', 'en'] as $code) {
+        $locale = Locale::firstOrCreate(
+            ['code' => $code],
+            ['name' => $code, 'direction' => 'ltr'],
+        );
+
+        $channel->locales()->syncWithoutDetaching([$locale->id]);
+
+        if ($code === 'en') {
+            $channel->default_locale_id = $locale->id;
+        }
+    }
+
+    $channel->save();
+    $channel->unsetRelation('locales');
+    $channel->unsetRelation('default_locale');
+
+    get(route('shop.home.index'))
+        ->assertOk()
+        ->assertSessionHas('locale');
+
+    expect(app()->getLocale())->toBe('fr');
+});
+
 // ============================================================================
 // Login
 // ============================================================================
 
 it('should login a customer with valid credentials', function () {
     $customer = customerWithPassword('admin123');
+    $sessionId = session()->getId();
 
     post(route('shop.customer.session.create'), [
         'email' => $customer->email,
@@ -47,6 +115,8 @@ it('should login a customer with valid credentials', function () {
         ->assertSessionMissing('error');
 
     $this->assertAuthenticatedAs($customer, 'customer');
+
+    expect(session()->getId())->not->toBe($sessionId);
 });
 
 it('should land on the account page after login when the store is set up that way', function () {

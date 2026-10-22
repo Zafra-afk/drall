@@ -5,10 +5,10 @@ return [
         'forgot-password' => [
             'already-sent' => 'पासवर्ड रीसेट मेल पहले ही भेजा जा चुका है।',
             'back' => 'साइन इन पर वापस जाएं?',
-            'bagisto' => 'बागिस्तो',
+            'bagisto' => 'Drall',
             'email' => 'ईमेल',
             'email-not-exist' => 'हम उस ईमेल पते के साथ कोई उपयोगकर्ता नहीं ढूंढ सकते।',
-            'footer' => '© कॉपीराइट 2010 - :current_year, वेबकुल सॉफ़्टवेयर (भारत में पंजीकृत)। सभी अधिकार सुरक्षित हैं।',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-password-text' => 'अगर आप अपना पासवर्ड भूल गए हैं, तो अपना ईमेल पता दर्ज करके इसे पुनः प्राप्त करें।',
             'page-title' => 'क्या आप अपना पासवर्ड भूल गए हैं?',
             'reset-link-sent' => 'यदि यह ईमेल पता पंजीकृत है, तो पासवर्ड रीसेट लिंक उस पर भेज दिया गया है।',
@@ -20,21 +20,21 @@ return [
 
         'reset-password' => [
             'back-link-title' => 'साइन इन पर वापस जाएं',
-            'bagisto' => 'बागिस्तो',
+            'bagisto' => 'Drall',
             'confirm-password' => 'पासवर्ड की पुष्टि करें',
             'email' => 'पंजीकृत ईमेल',
-            'footer' => '© कॉपीराइट 2010 - :current_year, वेबकुल सॉफ़्टवेयर (भारत में पंजीकृत)। सभी अधिकार सुरक्षित हैं।',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'password' => 'पासवर्ड',
             'submit-btn-title' => 'पासवर्ड रीसेट करें',
             'title' => 'पासवर्ड रीसेट करें',
         ],
 
         'login-form' => [
-            'bagisto' => 'बागिस्तो',
+            'bagisto' => 'Drall',
             'button-title' => 'साइन इन करें',
             'create-your-account' => 'अपना खाता बनाएं',
             'email' => 'ईमेल',
-            'footer' => '© कॉपीराइट 2010 - :current_year, वेबकुल सॉफ़्टवेयर (भारत में पंजीकृत)। सभी अधिकार सुरक्षित हैं।',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-pass' => 'पासवर्ड भूल गए?',
             'form-login-text' => 'यदि आपका खाता है, तो अपने ईमेल पते के साथ साइन इन करें।',
             'invalid-credentials' => 'कृपया अपने क्रेडेंशियल्स की जाँच करें और पुनः प्रयास करें।',
@@ -50,13 +50,13 @@ return [
 
         'signup-form' => [
             'account-exists' => 'पहले से ही खाता है?',
-            'bagisto' => 'बागिस्तो',
+            'bagisto' => 'Drall',
             'button-title' => 'रजिस्टर करें',
             'click-here' => 'यहां क्लिक करें',
             'confirm-pass' => 'पासवर्ड की पुष्टि करें',
             'email' => 'ईमेल',
             'first-name' => 'पहला नाम',
-            'footer' => '© कॉपीराइट 2010 - :current_year, वेबकुल सॉफ़्टवेयर (भारत में पंजीकृत)। सभी अधिकार सुरक्षित हैं।',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'form-signup-text' => 'यदि आप हमारे स्टोर पर नए हैं, तो हम आपको सदस्य के रूप में देखकर खुश होते हैं।',
             'last-name' => 'अंतिम नाम',
             'page-title' => 'उपयोगकर्ता बनें',
@@ -73,6 +73,12 @@ return [
         ],
 
         'account' => [
+            'notifications' => [
+                'empty' => 'आपको अभी तक कोई सूचना नहीं मिली है।',
+                'from-admin' => 'Drall टीम का संदेश',
+                'title' => 'सूचनाएं',
+            ],
+
             'home' => 'होम',
 
             'profile' => [
@@ -583,7 +589,7 @@ return [
                     'bottom' => [
                         'all' => 'सभी',
                         'back-button' => 'मुख्य मेनू पर वापस जाएं',
-                        'bagisto' => 'बैगिस्टो',
+                        'bagisto' => 'Drall',
                         'categories' => 'श्रेणियाँ',
                         'compare' => 'तुलना करें',
                         'dropdown-text' => 'कार्ट, ऑर्डर और विशलिस्ट प्रबंधित करें',
@@ -604,7 +610,7 @@ return [
                 'mobile' => [
                     'account' => 'खाता',
                     'back-button' => 'मुख्य मेनू पर वापस जाएं',
-                    'bagisto' => 'बैगिस्टो',
+                    'bagisto' => 'Drall',
                     'compare' => 'तुलना करें',
                     'currencies' => 'मुद्राएँ',
                     'dropdown-text' => 'कार्ट, ऑर्डर और विशलिस्ट प्रबंधित करें',
@@ -644,7 +650,7 @@ return [
                 'customer-service' => 'ग्राहक सेवा',
                 'email' => 'ईमेल',
                 'footer-content' => 'फ़ुटर सामग्री',
-                'footer-text' => '© कॉपीराइट 2010 - :current_year, वेबकल सॉफ़्टवेयर (भारत में पंजीकृत)। सभी अधिकार सुरक्षित हैं।',
+                'footer-text' => '© :current_year Drall. All rights reserved.',
                 'locale' => 'स्थान',
                 'newsletter-text' => 'हमारे मनोरंजन समाचार पत्रिका के लिए तैयार हो जाओ!',
                 'order-return' => 'आर्डर और रिटर्न',
@@ -1113,7 +1119,7 @@ return [
             'suspended-account-message' => 'आपका खाता निलंबित कर दिया गया है।',
 
             'index' => [
-                'bagisto' => 'बागिस्तो',
+                'bagisto' => 'Drall',
                 'cart' => 'कार्ट',
                 'continue-shopping' => 'खरीदारी जारी रखें',
                 'empty-product' => 'आपके पास आपके कार्ट में कोई उत्पाद नहीं है।',
@@ -1224,6 +1230,7 @@ return [
 
             'payment' => [
                 'payment-method' => 'भुगतान विधि',
+                'no-methods' => 'फ़िलहाल कोई भुगतान विधि कॉन्फ़िगर नहीं है। ऑर्डर पूरा नहीं किया जा सकता।',
             ],
 
             'shipping' => [

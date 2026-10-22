@@ -333,6 +333,26 @@ return [
         'route' => 'admin.catalog.products.index',
         'sort' => 3,
     ], [
+        'key' => 'catalog.stock_management',
+        'name' => 'Stocks et approvisionnements',
+        'route' => 'admin.inventory.procurement.index',
+        'sort' => 2,
+    ], [
+        'key' => 'catalog.stock_management.manage',
+        'name' => 'Gérer les stocks et approvisionnements',
+        'route' => [
+            'admin.inventory.procurement.index',
+            'admin.inventory.procurement.products.search',
+            'admin.inventory.procurement.suppliers.store',
+            'admin.inventory.procurement.products.update',
+            'admin.inventory.procurement.orders.store',
+            'admin.inventory.procurement.orders.place',
+            'admin.inventory.procurement.orders.receive',
+            'admin.inventory.procurement.orders.cancel',
+            'admin.inventory.procurement.adjustments.store',
+        ],
+        'sort' => 1,
+    ], [
         'key' => 'catalog.products',
         'name' => 'admin::app.acl.products',
         'route' => [

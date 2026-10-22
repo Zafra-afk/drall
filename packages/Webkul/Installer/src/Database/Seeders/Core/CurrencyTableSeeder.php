@@ -37,6 +37,9 @@ class CurrencyTableSeeder extends Seeder
                     'name' => trans('installer::app.seeders.core.currencies.'.$currency, [], $defaultLocale),
                     'symbol' => SupportedCurrencies::symbol($currency),
                     'decimal' => SupportedCurrencies::decimal($currency),
+                    'group_separator' => $currency === 'MGA' ? ' ' : ',',
+                    'decimal_separator' => $currency === 'MGA' ? '' : '.',
+                    'currency_position' => $currency === 'MGA' ? 'right_with_space' : null,
                 ],
             ]);
         }

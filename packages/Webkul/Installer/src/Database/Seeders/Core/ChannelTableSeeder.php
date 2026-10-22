@@ -28,6 +28,23 @@ class ChannelTableSeeder extends Seeder
 
         DB::table('channel_inventory_sources')->delete();
 
+        $defaultLocale = $parameters['default_locale'] ?? config('app.locale');
+        $defaultCurrency = $parameters['default_currency'] ?? config('app.currency');
+        $allowedLocales = array_values(array_unique([
+            $defaultLocale,
+            ...($parameters['allowed_locales'] ?? []),
+        ]));
+        $allowedCurrencies = array_values(array_unique([
+            $defaultCurrency,
+            ...($parameters['allowed_currencies'] ?? []),
+        ]));
+        $defaultLocaleId = DB::table('locales')->where('code', $defaultLocale)->value('id');
+        $defaultCurrencyId = DB::table('currencies')->where('code', $defaultCurrency)->value('id');
+
+        if (! $defaultLocaleId || ! $defaultCurrencyId) {
+            throw new \RuntimeException('The default channel locale or currency has not been seeded.');
+        }
+
         DB::table('channels')->insert([
             [
                 'id' => 1,
@@ -35,18 +52,14 @@ class ChannelTableSeeder extends Seeder
                 'theme' => 'default',
                 'hostname' => config('app.url'),
                 'root_category_id' => 1,
-                'default_locale_id' => 1,
-                'base_currency_id' => 1,
+                'default_locale_id' => $defaultLocaleId,
+                'base_currency_id' => $defaultCurrencyId,
                 'created_at' => now(),
                 'updated_at' => now(),
             ],
         ]);
 
-        $defaultLocale = $parameters['default_locale'] ?? config('app.locale');
-
-        $locales = $parameters['allowed_locales'] ?? [$defaultLocale];
-
-        foreach ($locales as $locale) {
+        foreach ($allowedLocales as $locale) {
             DB::table('channel_translations')->insert([
                 [
                     'channel_id' => 1,
@@ -61,24 +74,24 @@ class ChannelTableSeeder extends Seeder
             ]);
         }
 
-        $currencies = DB::table('currencies')->get();
+        $currencyIds = DB::table('currencies')->whereIn('code', $allowedCurrencies)->pluck('id');
 
-        foreach ($currencies as $currency) {
+        foreach ($currencyIds as $currencyId) {
             DB::table('channel_currencies')->insert([
                 [
                     'channel_id' => 1,
-                    'currency_id' => $currency->id,
+                    'currency_id' => $currencyId,
                 ],
             ]);
         }
 
-        $locales = DB::table('locales')->get();
+        $localeIds = DB::table('locales')->whereIn('code', $allowedLocales)->pluck('id');
 
-        foreach ($locales as $locale) {
+        foreach ($localeIds as $localeId) {
             DB::table('channel_locales')->insert([
                 [
                     'channel_id' => 1,
-                    'locale_id' => $locale->id,
+                    'locale_id' => $localeId,
                 ],
             ]);
         }

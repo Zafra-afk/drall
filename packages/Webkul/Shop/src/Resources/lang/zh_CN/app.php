@@ -5,10 +5,10 @@ return [
         'forgot-password' => [
             'already-sent' => '密码重置邮件已发送。',
             'back' => '返回登录？',
-            'bagisto' => '巴基斯托',
+            'bagisto' => 'Drall',
             'email' => '电子邮件',
             'email-not-exist' => '我们找不到使用该电子邮件地址的用户。',
-            'footer' => '© 版权所有 2010 - :current_year，Webkul Software（注册于印度）。保留所有权利。',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-password-text' => '如果您忘记了密码，请通过输入您的电子邮件地址来找回密码。',
             'page-title' => '忘记密码？',
             'reset-link-sent' => '如果该邮箱已注册，密码重置链接已发送至该邮箱。',
@@ -20,21 +20,21 @@ return [
 
         'reset-password' => [
             'back-link-title' => '返回登录',
-            'bagisto' => '巴基斯托',
+            'bagisto' => 'Drall',
             'confirm-password' => '确认密码',
             'email' => '注册电子邮件',
-            'footer' => '© 版权 2010 - :current_year，Webkul Software（注册于印度）。保留所有权利。',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'password' => '密码',
             'submit-btn-title' => '重设密码',
             'title' => '重设密码',
         ],
 
         'login-form' => [
-            'bagisto' => '巴基斯托',
+            'bagisto' => 'Drall',
             'button-title' => '登录',
             'create-your-account' => '创建您的帐户',
             'email' => '电子邮件',
-            'footer' => '© 版权 2010 - :current_year，Webkul Software（注册于印度）。保留所有权利。',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-pass' => '忘记密码？',
             'form-login-text' => '如果您已经有帐户，请使用您的电子邮件登录。',
             'invalid-credentials' => '请检查您的凭据并重试。',
@@ -50,13 +50,13 @@ return [
 
         'signup-form' => [
             'account-exists' => '已经有账户？',
-            'bagisto' => '巴基斯托',
+            'bagisto' => 'Drall',
             'button-title' => '注册',
             'click-here' => '点击这里',
             'confirm-pass' => '确认密码',
             'email' => '电子邮件',
             'first-name' => '名字',
-            'footer' => '© 版权所有 2010 - :current_year，Webkul Software（注册于印度）。保留所有权利。',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'form-signup-text' => '如果您是我们商店的新用户，我们很高兴有您作为会员。',
             'last-name' => '姓氏',
             'page-title' => '成为用户',
@@ -73,6 +73,12 @@ return [
         ],
 
         'account' => [
+            'notifications' => [
+                'empty' => '您尚未收到任何通知。',
+                'from-admin' => '来自 Drall 团队的消息',
+                'title' => '通知',
+            ],
+
             'home' => '主页',
 
             'profile' => [
@@ -583,7 +589,7 @@ return [
                     'bottom' => [
                         'all' => '全部',
                         'back-button' => '返回主菜单',
-                        'bagisto' => 'Bagisto',
+                        'bagisto' => 'Drall',
                         'categories' => '分类',
                         'compare' => '比较',
                         'dropdown-text' => '管理购物车、订单和愿望清单',
@@ -604,7 +610,7 @@ return [
                 'mobile' => [
                     'account' => '账户',
                     'back-button' => '返回主菜单',
-                    'bagisto' => 'Bagisto',
+                    'bagisto' => 'Drall',
                     'compare' => '比较',
                     'currencies' => '货币',
                     'dropdown-text' => '管理购物车、订单和愿望清单',
@@ -644,7 +650,7 @@ return [
                 'customer-service' => '客户服务',
                 'email' => '电子邮件',
                 'footer-content' => '页脚内容',
-                'footer-text' => '© 版权所有 2010 - :current_year，Webkul Software（印度注册）。保留所有权利。',
+                'footer-text' => '© :current_year Drall. All rights reserved.',
                 'locale' => '语言',
                 'newsletter-text' => '准备好我们有趣的新闻通讯！',
                 'order-return' => '订单和退货',
@@ -1113,7 +1119,7 @@ return [
             'suspended-account-message' => '您的帐户已被暂停。',
 
             'index' => [
-                'bagisto' => '巴基斯托',
+                'bagisto' => 'Drall',
                 'cart' => '购物车',
                 'continue-shopping' => '继续购物',
                 'empty-product' => '您的购物车中没有产品。',
@@ -1224,6 +1230,7 @@ return [
 
             'payment' => [
                 'payment-method' => '付款方法',
+                'no-methods' => '目前尚未配置付款方式，无法完成订单。',
             ],
 
             'shipping' => [

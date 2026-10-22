@@ -1,0 +1,7 @@
+<svg width="130" height="36" viewBox="0 0 130 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <title>Drall</title>
+    <path d="M5 12h25v19H5z" fill="#0041FF"/>
+    <path d="M10 12V9a7.5 7.5 0 0 1 15 0v3h-4V9a3.5 3.5 0 0 0-7 0v3z" fill="#000311"/>
+    <path d="M5 31h25v4H5z" fill="#000311"/>
+    <text x="39" y="28" fill="#000311" font-family="Arial, sans-serif" font-size="24" font-weight="700">Drall</text>
+</svg>

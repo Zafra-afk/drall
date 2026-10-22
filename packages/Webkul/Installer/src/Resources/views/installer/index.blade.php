@@ -701,7 +701,7 @@
                                     <x-installer::form.control-group.control
                                         type="text"
                                         name="app_name"
-                                        ::value="envData.app_name ?? 'Bagisto'"
+                                        ::value="envData.app_name ?? 'Drall'"
                                         rules="required"
                                         :label="trans('installer::app.installer.index.environment-configuration.application-name')"
                                         :placeholder="trans('installer::app.installer.index.environment-configuration.bagisto')"

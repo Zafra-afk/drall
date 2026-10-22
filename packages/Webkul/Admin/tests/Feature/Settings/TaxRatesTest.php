@@ -47,7 +47,7 @@ it('should store a newly created tax rate', function () {
     postJson(route('admin.settings.taxes.rates.store'), $data = [
         'identifier' => strtolower(fake()->unique()->word()),
         'country' => fake()->countryCode(),
-        'state' => fake()->state(),
+        'state' => fake()->region(),
         'tax_rate' => rand(1, 50),
     ])
         ->assertRedirect(route('admin.settings.taxes.rates.index'));

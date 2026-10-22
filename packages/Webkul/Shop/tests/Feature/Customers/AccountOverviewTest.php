@@ -42,12 +42,12 @@ beforeEach(function () {
 // Page Identity
 // ============================================================================
 
-it('should title the account overview as the account, not the orders page', function () {
+it('should title the account overview with Drall branding', function () {
     $response = get(route('shop.customers.account.index'))->assertOk();
 
     expect(pageTitle($response->getContent()))
-        ->toBe(trans('shop::app.layouts.my-account'))
-        ->not->toBe(trans('shop::app.customers.account.orders.title'));
+        ->toBe(trans('shop::app.layouts.my-account').' - '.config('app.name'))
+        ->not->toBe(trans('shop::app.customers.account.orders.title').' - '.config('app.name'));
 });
 
 // ============================================================================
@@ -55,21 +55,21 @@ it('should title the account overview as the account, not the orders page', func
 // ============================================================================
 
 it('should greet the customer in the storefront locale', function () {
-    offerStorefrontLocale('de');
+    offerStorefrontLocale('fr');
 
-    get(route('shop.customers.account.index', ['locale' => 'de']))
+    get(route('shop.customers.account.index', ['locale' => 'fr']))
         ->assertOk()
         ->assertSee(trans('shop::app.components.layouts.account.greeting', [
             'name' => $this->customer->first_name,
-        ], 'de'), false)
+        ], 'fr'), false)
         ->assertDontSee('Hello! '.$this->customer->first_name, false);
 });
 
 it('should describe the profile image in the storefront locale', function () {
-    offerStorefrontLocale('de');
+    offerStorefrontLocale('fr');
 
-    get(route('shop.customers.account.index', ['locale' => 'de']))
+    get(route('shop.customers.account.index', ['locale' => 'fr']))
         ->assertOk()
-        ->assertSee(trans('shop::app.components.layouts.account.profile-image', [], 'de'), false)
+        ->assertSee(trans('shop::app.components.layouts.account.profile-image', [], 'fr'), false)
         ->assertDontSee('alt="Profile Image"', false);
 });

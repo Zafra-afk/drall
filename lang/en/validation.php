@@ -127,6 +127,7 @@ return [
     'not_in' => 'The selected :attribute is invalid.',
     'not_regex' => 'The :attribute field format is invalid.',
     'numeric' => 'The :attribute field must be a number.',
+    'phone' => 'The :attribute field must be a valid phone number (for example, +261 XX XX XXX XX).',
 
     'password' => [
         'letters' => 'The :attribute field must contain at least one letter.',
@@ -169,6 +170,8 @@ return [
     'timezone' => 'The :attribute field must be a valid timezone.',
     'unique' => 'The :attribute has already been taken.',
     'uploaded' => 'The :attribute failed to upload.',
+    'file_too_large' => 'This file is too large. The maximum allowed size is :max MB.',
+    'post_too_large' => 'The submitted data exceeds the server limit of :limit. Reduce the image or file sizes and try again.',
     'uppercase' => 'The :attribute field must be uppercase.',
     'url' => 'The :attribute field must be a valid URL.',
     'ulid' => 'The :attribute field must be a valid ULID.',

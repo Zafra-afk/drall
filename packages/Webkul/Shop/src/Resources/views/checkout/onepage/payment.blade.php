@@ -21,8 +21,21 @@
                 <!-- Payment Method shimmer Effect -->
                 <x-shop::shimmer.checkout.onepage.payment-method />
             </template>
+
+            <template v-else-if="methods.length === 0">
+                <p class="rounded-lg border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-100">
+                    @lang('shop::app.checkout.onepage.payment.no-methods')
+                </p>
+            </template>
     
             <template v-else>
+                <p
+                    v-if="! methods.some(method => method.available)"
+                    class="mb-4 rounded-lg border border-amber-300 bg-amber-50 p-4 text-sm text-amber-900 dark:border-amber-700 dark:bg-amber-950 dark:text-amber-100"
+                >
+                    @lang('shop::app.checkout.onepage.payment.no-methods')
+                </p>
+
                 {!! view_render_event('bagisto.shop.checkout.onepage.payment_method.accordion.before') !!}
 
                 <!-- Accordion Blade Component -->
@@ -52,22 +65,24 @@
                                     :value="payment.payment"
                                     :id="payment.method"
                                     class="peer sr-only"
-                                    @change="store(payment)"
+                                    :disabled="! payment.available"
+                                    @change="payment.available && store(payment)"
                                 >
     
                                 <label 
                                     :for="payment.method" 
-                                    class="icon-radio-unselect peer-checked:icon-radio-select absolute top-5 cursor-pointer text-2xl text-navyBlue ltr:right-5 rtl:left-5 peer-focus-visible:ring-2 peer-focus-visible:ring-navyBlue peer-focus-visible:ring-offset-2 rounded"
+                                    class="icon-radio-unselect peer-checked:icon-radio-select absolute top-5 cursor-pointer text-2xl text-navyBlue ltr:right-5 rtl:left-5 peer-focus-visible:ring-2 peer-focus-visible:ring-navyBlue peer-focus-visible:ring-offset-2 rounded peer-disabled:cursor-not-allowed peer-disabled:opacity-50"
                                 >
                                 </label>
 
                                 <label
                                     :for="payment.method"
-                                    class="block w-47.5 cursor-pointer rounded-xl border border-zinc-200 p-5 max-md:flex max-md:w-full max-md:gap-5 max-md:rounded-lg max-md:ltr:pr-12 max-md:rtl:pl-12 max-sm:gap-4 max-sm:px-4 max-sm:py-2.5 max-sm:ltr:pr-12 max-sm:rtl:pl-12 peer-focus-visible:border-navyBlue peer-focus-visible:ring-2 peer-focus-visible:ring-navyBlue"
+                                    class="block w-47.5 cursor-pointer rounded-xl border border-zinc-200 p-5 max-md:flex max-md:w-full max-md:gap-5 max-md:rounded-lg max-md:ltr:pr-12 max-md:rtl:pl-12 max-sm:gap-4 max-sm:px-4 max-sm:py-2.5 max-sm:ltr:pr-12 max-sm:rtl:pl-12 peer-focus-visible:border-navyBlue peer-focus-visible:ring-2 peer-focus-visible:ring-navyBlue peer-disabled:cursor-not-allowed peer-disabled:opacity-60"
                                 >
                                     {!! view_render_event('bagisto.shop.checkout.onepage.payment-method.image.before') !!}
 
                                     <img
+                                        v-if="payment.image"
                                         class="max-h-11 max-w-14"
                                         :src="payment.image"
                                         width="55"

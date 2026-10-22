@@ -5,10 +5,10 @@ return [
         'forgot-password' => [
             'already-sent' => 'ইতিমধ্যেই পাসওয়ার্ড রিসেট মেল পাঠানো হয়েছে।',
             'back' => 'সাইন ইনে ফিরে যেতে?',
-            'bagisto' => 'বাগিস্তো',
+            'bagisto' => 'Drall',
             'email' => 'ইমেইল',
             'email-not-exist' => 'আমরা ঐ ইমেইল ঠিকানার সাথে কোনও ব্যবহারকারী খুঁজে পেতে পারি নি।',
-            'footer' => '© কপিরাইট 2010 - :current_year, ওয়েবকুল সফটওয়্যার (ভারতে নিবন্ধিত)। সব অধিকার সংরক্ষিত।',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-password-text' => 'আপনি যদি আপনার পাসওয়ার্ড ভুলে গিয়েছেন, তাহলে আপনি আপনার ইমেইল ঠিকানা দিয়ে এটি পুনরুদ্ধার করতে পারেন।',
             'page-title' => 'আপনি কি আপনার পাসওয়ার্ড ভুলে গিয়েছেন?',
             'reset-link-sent' => 'এই ইমেইল ঠিকানাটি নিবন্ধিত থাকলে, পাসওয়ার্ড রিসেট লিঙ্ক সেটিতে পাঠানো হয়েছে।',
@@ -20,21 +20,21 @@ return [
 
         'reset-password' => [
             'back-link-title' => 'সাইন ইনে ফিরে যেতে',
-            'bagisto' => 'বাগিস্তো',
+            'bagisto' => 'Drall',
             'confirm-password' => 'পাসওয়ার্ড নিশ্চিত করুন',
             'email' => 'রেজিস্টারড ইমেইল',
-            'footer' => '© কপিরাইট 2010 - :current_year, ওয়েবকুল সফটওয়্যার (ভারতে নিবন্ধিত)। সব অধিকার সংরক্ষিত।',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'password' => 'পাসওয়ার্ড',
             'submit-btn-title' => 'পাসওয়ার্ড রিসেট করুন',
             'title' => 'পাসওয়ার্ড রিসেট করুন',
         ],
 
         'login-form' => [
-            'bagisto' => 'বাগিস্তো',
+            'bagisto' => 'Drall',
             'button-title' => 'সাইন ইন করুন',
             'create-your-account' => 'আপনার একাউন্ট তৈরি করুন',
             'email' => 'ইমেইল',
-            'footer' => '© কপিরাইট 2010 - :current_year, ওয়েবকুল সফটওয়্যার (ভারতে নিবন্ধিত)। সব অধিকার সংরক্ষিত।',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-pass' => 'পাসওয়ার্ড ভুলে গিয়েছেন?',
             'form-login-text' => 'আপনি যদি আপনার একাউন্ট আছে তবে আপনি আপনার ইমেইল ঠিকানা দিয়ে সাইন ইন করতে পারেন।',
             'invalid-credentials' => 'দুঃখিত, আপনার শূন্যমূল্য সত্যাপন দেওয়া গেছে না।',
@@ -50,13 +50,13 @@ return [
 
         'signup-form' => [
             'account-exists' => 'ইতিমধ্যে একটি অ্যাকাউন্ট আছে?',
-            'bagisto' => 'বাগিস্তো',
+            'bagisto' => 'Drall',
             'button-title' => 'রেজিস্টার করুন',
             'click-here' => 'এখানে ক্লিক করুন',
             'confirm-pass' => 'পাসওয়ার্ড নিশ্চিত করুন',
             'email' => 'ইমেইল',
             'first-name' => 'প্রথম নাম',
-            'footer' => '© কপিরাইট 2010 - :current_year, ওয়েবকুল সফটওয়্যার (ভারতে নিবন্ধিত)। সব অধিকার সংরক্ষিত।',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'form-signup-text' => 'আমাদের স্টোরে আপনি যদি নতুন হোন তাহলে আমরা আপনাকে সদস্য হিসেবে স্বাগত জানাই।',
             'last-name' => 'শেষ নাম',
             'page-title' => 'ব্যবহারকারী হোন',
@@ -73,6 +73,12 @@ return [
         ],
 
         'account' => [
+            'notifications' => [
+                'empty' => 'আপনি এখনো কোনো বিজ্ঞপ্তি পাননি।',
+                'from-admin' => 'Drall দলের বার্তা',
+                'title' => 'বিজ্ঞপ্তি',
+            ],
+
             'home' => 'হোম',
 
             'profile' => [
@@ -583,7 +589,7 @@ return [
                     'bottom' => [
                         'all' => 'সব',
                         'back-button' => 'প্রধান মেনুতে ফিরে যান',
-                        'bagisto' => 'বাগিস্টো',
+                        'bagisto' => 'Drall',
                         'categories' => 'বিভাগ',
                         'compare' => 'তুলনা করুন',
                         'dropdown-text' => 'কার্ট, অর্ডার ও উইশলিস্ট পরিচালনা করুন',
@@ -604,7 +610,7 @@ return [
                 'mobile' => [
                     'account' => 'অ্যাকাউন্ট',
                     'back-button' => 'প্রধান মেনুতে ফিরে যান',
-                    'bagisto' => 'বাগিস্টো',
+                    'bagisto' => 'Drall',
                     'compare' => 'তুলনা করুন',
                     'currencies' => 'মুদ্রা',
                     'dropdown-text' => 'কার্ট, অর্ডার ও উইশলিস্ট পরিচালনা করুন',
@@ -644,7 +650,7 @@ return [
                 'customer-service' => 'গ্রাহক সেবা',
                 'email' => 'ইমেইল',
                 'footer-content' => 'ফুটারের সামগ্রী',
-                'footer-text' => '© কপিরাইট 2010 - :current_year, Webkul Software (ভারতে নিবন্ধিত)। সমস্ত অধিকার সংরক্ষিত।',
+                'footer-text' => '© :current_year Drall. All rights reserved.',
                 'locale' => 'লোকেল',
                 'newsletter-text' => 'আমাদের মজাদার নিউজলেটারের জন্য প্রস্তুত থাকুন!',
                 'order-return' => 'অর্ডার এবং রিটার্ন',
@@ -1113,7 +1119,7 @@ return [
             'suspended-account-message' => 'আপনার অ্যাকাউন্ট স্থগিত করা হয়েছে',
 
             'index' => [
-                'bagisto' => 'বাগিস্তো',
+                'bagisto' => 'Drall',
                 'cart' => 'কার্ট',
                 'continue-shopping' => 'কেনাকাটা চালিয়ে যান',
                 'empty-product' => 'আপনার কার্টে কোনও পণ্য নেই।',
@@ -1224,6 +1230,7 @@ return [
 
             'payment' => [
                 'payment-method' => 'পেমেন্ট মেথড',
+                'no-methods' => 'এখনো কোনো পেমেন্ট পদ্ধতি কনফিগার করা নেই। অর্ডারটি সম্পন্ন করা যাচ্ছে না।',
             ],
 
             'shipping' => [

@@ -7,6 +7,7 @@ use Webkul\Product\Models\ProductImage;
 use Webkul\Product\Repositories\ProductImageRepository;
 
 use function Pest\Laravel\get;
+use function Pest\Laravel\put;
 use function Pest\Laravel\putJson;
 
 /**
@@ -202,6 +203,60 @@ it('should fall back to a random name for an upload without a requested file nam
 
     expect($image->file_name)->toHaveLength(40)
         ->and($image->path)->toEndWith('.webp');
+});
+
+it('should accept multiple new images within the configured size limit', function () {
+    Storage::fake();
+
+    $product = $this->createSimpleProduct();
+
+    $this->loginAsAdmin();
+
+    put(route('admin.catalog.products.update', $product->id), productUpdatePayload($product, [
+        'files' => [
+            'image_0' => UploadedFile::fake()->image('first.jpg', 20, 20),
+            'image_1' => UploadedFile::fake()->image('second.jpg', 20, 20),
+        ],
+    ]), ['Accept' => 'application/json'])
+        ->assertRedirect(route('admin.catalog.products.index'));
+
+    expect($product->fresh()->images)->toHaveCount(2);
+});
+
+it('should reject a newly uploaded image larger than the configured size limit', function () {
+    Storage::fake();
+
+    $product = $this->createSimpleProduct();
+
+    $this->loginAsAdmin();
+
+    put(route('admin.catalog.products.update', $product->id), productUpdatePayload($product, [
+        'files' => [
+            'image_0' => UploadedFile::fake()->image('large.jpg', 20, 20)->size(16385),
+        ],
+    ]), ['Accept' => 'application/json'])
+        ->assertUnprocessable()
+        ->assertJsonValidationErrorFor('images.files.image_0');
+});
+
+it('should reject new product images that exceed the combined upload size limit', function () {
+    Storage::fake();
+
+    $product = $this->createSimpleProduct();
+
+    $this->loginAsAdmin();
+
+    put(route('admin.catalog.products.update', $product->id), productUpdatePayload($product, [
+        'files' => [
+            'image_0' => UploadedFile::fake()->image('first.jpg', 20, 20)->size(11 * 1024),
+            'image_1' => UploadedFile::fake()->image('second.jpg', 20, 20)->size(11 * 1024),
+            'image_2' => UploadedFile::fake()->image('third.jpg', 20, 20)->size(11 * 1024),
+        ],
+    ]), ['Accept' => 'application/json'])
+        ->assertUnprocessable()
+        ->assertJsonValidationErrorFor('images.files');
+
+    expect($product->fresh()->images)->toBeEmpty();
 });
 
 // ============================================================================

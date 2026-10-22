@@ -27,7 +27,7 @@ class InventorySourceFactory extends Factory
             'contact_email' => $this->faker->safeEmail,
             'contact_number' => $this->faker->phoneNumber,
             'country' => $this->faker->countryCode,
-            'state' => $this->faker->state,
+            'state' => $this->faker->region,
             'city' => $this->faker->city,
             'street' => $this->faker->streetAddress,
             'postcode' => $this->faker->postcode,

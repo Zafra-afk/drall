@@ -18,6 +18,7 @@ return [
      */
     'modules' => [
         ModuleServiceProvider::class,
+        Webkul\AirtelMoney\Providers\ModuleServiceProvider::class,
         Webkul\Attribute\Providers\ModuleServiceProvider::class,
         Webkul\BookingProduct\Providers\ModuleServiceProvider::class,
         Webkul\CMS\Providers\ModuleServiceProvider::class,
@@ -32,9 +33,12 @@ return [
         Webkul\EUWithdrawal\Providers\ModuleServiceProvider::class,
         Webkul\GDPR\Providers\ModuleServiceProvider::class,
         Webkul\Inventory\Providers\ModuleServiceProvider::class,
+        Webkul\MalagasyCard\Providers\ModuleServiceProvider::class,
         Webkul\Marketing\Providers\ModuleServiceProvider::class,
+        Webkul\MVola\Providers\ModuleServiceProvider::class,
         Webkul\Notification\Providers\ModuleServiceProvider::class,
         Webkul\Omnibus\Providers\ModuleServiceProvider::class,
+        Webkul\OrangeMoney\Providers\ModuleServiceProvider::class,
         Webkul\PayGlocal\Providers\ModuleServiceProvider::class,
         Webkul\PayU\Providers\ModuleServiceProvider::class,
         Webkul\Payment\Providers\ModuleServiceProvider::class,

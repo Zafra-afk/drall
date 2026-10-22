@@ -171,7 +171,7 @@ class Installer extends Command
         $this->updateTextTypeEnv(
             'APP_NAME',
             'Please enter the application name',
-            $this->getEnvVariable('APP_NAME', 'Bagisto')
+            $this->getEnvVariable('APP_NAME', 'Drall')
         );
 
         $this->updateTextTypeEnv(
@@ -378,11 +378,11 @@ class Installer extends Command
      */
     protected function finalizeInstallation(string $adminEmail, string $adminPassword): void
     {
-        File::put(storage_path('installed'), 'Bagisto is successfully installed.');
+        File::put(storage_path('installed'), 'Drall is successfully installed.');
 
         $this->info('-----------------------------');
         $this->info('Congratulations!');
-        $this->info('The installation has been finished and you can now use Bagisto.');
+        $this->info('The installation has been finished and you can now use Drall.');
         $this->info('Go to '.$this->getEnvVariable('APP_URL').'/'.$this->getEnvVariable('APP_ADMIN_URL', 'admin').' and authenticate with:');
         $this->info('Email: '.$adminEmail);
         $this->info('Password: '.$adminPassword);
@@ -483,6 +483,10 @@ class Installer extends Command
                 continue;
             }
 
+            if (is_array($value)) {
+                $value = implode(',', $value);
+            }
+
             $value = trim($value, '"');
 
             $this->environmentManager->updateEnvVariable($key, $value, Str::startsWith($key, 'DB_'));
@@ -543,11 +547,22 @@ class Installer extends Command
      */
     protected function getSeederConfiguration(): array
     {
+        $allowedLocales = $this->envDetails['APP_ALLOWED_LOCALES'] ?? [$this->getEnvVariable('APP_LOCALE', 'mg')];
+        $allowedCurrencies = $this->envDetails['APP_ALLOWED_CURRENCIES'] ?? [$this->getEnvVariable('APP_CURRENCY', 'MGA')];
+
+        if (is_string($allowedLocales)) {
+            $allowedLocales = array_filter(array_map('trim', explode(',', $allowedLocales)));
+        }
+
+        if (is_string($allowedCurrencies)) {
+            $allowedCurrencies = array_filter(array_map('trim', explode(',', $allowedCurrencies)));
+        }
+
         return [
-            'default_locale' => $this->envDetails['APP_LOCALE'] ?? $this->getEnvVariable('APP_LOCALE', 'en'),
-            'allowed_locales' => $this->envDetails['APP_ALLOWED_LOCALES'] ?? [$this->getEnvVariable('APP_LOCALE', 'en')],
-            'default_currency' => $this->envDetails['APP_CURRENCY'] ?? $this->getEnvVariable('APP_CURRENCY', 'USD'),
-            'allowed_currencies' => $this->envDetails['APP_ALLOWED_CURRENCIES'] ?? [$this->getEnvVariable('APP_CURRENCY', 'USD')],
+            'default_locale' => $this->envDetails['APP_LOCALE'] ?? $this->getEnvVariable('APP_LOCALE', 'mg'),
+            'allowed_locales' => $allowedLocales,
+            'default_currency' => $this->envDetails['APP_CURRENCY'] ?? $this->getEnvVariable('APP_CURRENCY', 'MGA'),
+            'allowed_currencies' => $allowedCurrencies,
             'skip_admin_creation' => true,
         ];
     }

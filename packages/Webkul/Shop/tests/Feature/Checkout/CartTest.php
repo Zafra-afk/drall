@@ -15,6 +15,10 @@ use function Pest\Laravel\getJson;
 use function Pest\Laravel\post;
 use function Pest\Laravel\postJson;
 
+beforeEach(function () {
+    config()->set('app.storefront_countries', ['GB', 'IN', 'MG', 'US']);
+});
+
 /**
  * Create a simple product at the given price, taxed at the given rate for shoppers in the given country.
  */
@@ -580,6 +584,22 @@ it('should estimate the shipping methods for a destination and apply the chosen 
     $methods = collect($response->json('data.shipping_methods'))->pluck('rates.*.method')->flatten();
 
     expect($methods)->toContain('free_free');
+});
+
+it('should reject a shipping estimate outside the configured storefront countries', function () {
+    config()->set('app.storefront_countries', ['MG']);
+
+    $product = $this->createSimpleProduct();
+
+    $this->addProductToCart($product->id);
+
+    postJson(route('shop.api.checkout.cart.estimate_shipping'), [
+        'country' => 'US',
+        'state' => 'CA',
+        'postcode' => '90001',
+    ])
+        ->assertUnprocessable()
+        ->assertJsonValidationErrorFor('country');
 });
 
 it('should fail validation when the shipping estimate has no destination', function () {

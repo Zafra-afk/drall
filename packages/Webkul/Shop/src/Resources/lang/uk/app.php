@@ -5,10 +5,10 @@ return [
         'forgot-password' => [
             'already-sent' => 'Лист для скидання пароля вже надіслано.',
             'back' => 'Повернутися до входу?',
-            'bagisto' => 'Багісто',
+            'bagisto' => 'Drall',
             'email' => 'Електронна пошта',
             'email-not-exist' => 'Ми не можемо знайти користувача за цією адресою електронної пошти.',
-            'footer' => '© Копірайт 2010 - :current_year, Webkul Software (зареєстрована в Індії). Всі права захищені.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-password-text' => 'Якщо ви забули свій пароль, відновіть його, введіть свою електронну адресу.',
             'page-title' => 'Забули пароль?',
             'reset-link-sent' => 'Якщо ця електронна адреса зареєстрована, посилання для скидання пароля надіслано на неї.',
@@ -20,21 +20,21 @@ return [
 
         'reset-password' => [
             'back-link-title' => 'Повернутися до входу',
-            'bagisto' => 'Багісто',
+            'bagisto' => 'Drall',
             'confirm-password' => 'Підтвердити пароль',
             'email' => 'Зареєстрована електронна пошта',
-            'footer' => '© Копірайт 2010 - :current_year, Webkul Software (зареєстрована в Індії). Всі права захищені.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'password' => 'Пароль',
             'submit-btn-title' => 'Скинути пароль',
             'title' => 'Скидання паролю',
         ],
 
         'login-form' => [
-            'bagisto' => 'Багісто',
+            'bagisto' => 'Drall',
             'button-title' => 'Увійти',
             'create-your-account' => 'Створити свій обліковий запис',
             'email' => 'Електронна пошта',
-            'footer' => '© Копірайт 2010 - :current_year, Webkul Software (зареєстрована в Індії). Всі права захищені.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-pass' => 'Забули пароль?',
             'form-login-text' => 'Якщо у вас є обліковий запис, увійдіть за допомогою своєї електронної адреси.',
             'invalid-credentials' => 'Перевірте свої облікові дані та спробуйте ще раз.',
@@ -50,13 +50,13 @@ return [
 
         'signup-form' => [
             'account-exists' => 'Вже є обліковий запис?',
-            'bagisto' => 'Багісто',
+            'bagisto' => 'Drall',
             'button-title' => 'Зареєструватися',
             'click-here' => 'Натисніть тут',
             'confirm-pass' => 'Підтвердіть пароль',
             'email' => 'Електронна пошта',
             'first-name' => 'Ім’я',
-            'footer' => '© Копірайт 2010 - :current_year, Webkul Software (зареєстрована в Індії). Всі права захищені.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'form-signup-text' => 'Якщо ви новачок у нашому магазині, ми раді вас бачити як учасника.',
             'last-name' => 'Прізвище',
             'page-title' => 'Стати користувачем',
@@ -73,6 +73,12 @@ return [
         ],
 
         'account' => [
+            'notifications' => [
+                'empty' => 'Ви ще не отримували сповіщень.',
+                'from-admin' => 'Повідомлення від команди Drall',
+                'title' => 'Сповіщення',
+            ],
+
             'home' => 'Главная',
 
             'profile' => [
@@ -583,7 +589,7 @@ return [
                     'bottom' => [
                         'all' => 'Все',
                         'back-button' => 'Повернутися до головного меню',
-                        'bagisto' => 'Bagisto',
+                        'bagisto' => 'Drall',
                         'categories' => 'Категорії',
                         'compare' => 'Порівняти',
                         'dropdown-text' => 'Керуйте кошиком, замовленнями та списком бажань',
@@ -604,7 +610,7 @@ return [
                 'mobile' => [
                     'account' => 'Обліковий запис',
                     'back-button' => 'Повернутися до головного меню',
-                    'bagisto' => 'Bagisto',
+                    'bagisto' => 'Drall',
                     'compare' => 'Порівняти',
                     'currencies' => 'Валюти',
                     'dropdown-text' => 'Керуйте кошиком, замовленнями та списком бажань',
@@ -644,7 +650,7 @@ return [
                 'customer-service' => 'Служба підтримки',
                 'email' => 'Електронна пошта',
                 'footer-content' => 'Вміст нижнього колонтитула',
-                'footer-text' => '© Авторське право 2010 - :current_year, Webkul Software (зареєстровано в Індії). Усі права захищені.',
+                'footer-text' => '© :current_year Drall. All rights reserved.',
                 'locale' => 'Мова',
                 'newsletter-text' => 'Готуйтеся до наших цікавих новин!',
                 'order-return' => 'Замовлення та повернення',
@@ -1113,7 +1119,7 @@ return [
             'suspended-account-message' => 'Ваш обліковий запис призупинено.',
 
             'index' => [
-                'bagisto' => 'Багісто',
+                'bagisto' => 'Drall',
                 'cart' => 'Кошик',
                 'continue-shopping' => 'Продовжити покупки',
                 'empty-product' => 'У вас немає товарів у кошику.',
@@ -1224,6 +1230,7 @@ return [
 
             'payment' => [
                 'payment-method' => 'Спосіб оплати',
+                'no-methods' => 'Спосіб оплати наразі не налаштовано. Замовлення неможливо завершити.',
             ],
 
             'shipping' => [

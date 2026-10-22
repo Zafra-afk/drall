@@ -3,7 +3,7 @@
     <picture>
       <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/bagisto/temp-media/0b0984778fae92633f57e625c5494ead1fe320c3/dark-logo-P5H7MBtx.svg">
       <source media="(prefers-color-scheme: light)" srcset="https://bagisto.com/wp-content/themes/bagisto/images/logo.png">
-      <img src="https://bagisto.com/wp-content/themes/bagisto/images/logo.png" alt="Bagisto logo">
+      <img src="https://bagisto.com/wp-content/themes/bagisto/images/logo.png" alt="Drall logo">
     </picture>
   </a>
 </p>
@@ -51,14 +51,14 @@
 </p>
 
 <a href="https://www.youtube.com/watch?v=OHbte7hdxYU">
-    <img class="flag-img" src="https://raw.githubusercontent.com/bagisto/temp-media/master/bagisto-featured.png" alt="Bagisto Featured Video" width="100%">
+    <img class="flag-img" src="https://raw.githubusercontent.com/bagisto/temp-media/master/bagisto-featured.png" alt="Drall Featured Video" width="100%">
 </a>
 
 # Introduction
 
-**Bagisto is an open-source [Laravel eCommerce](https://www.bagisto.com/) and [multi-vendor marketplace](https://bagisto.com/en/laravel-multi-vendor-marketplace/) platform for building scalable online commerce solutions.** Built with [Laravel](https://laravel.com/) and [Vue.js](https://vuejs.org/), Bagisto provides a flexible and customizable foundation for businesses to launch online stores, multi-vendor marketplaces, and enterprise commerce experiences.
+**Drall is an open-source [Laravel eCommerce](https://www.bagisto.com/) and [multi-vendor marketplace](https://bagisto.com/en/laravel-multi-vendor-marketplace/) platform for building scalable online commerce solutions.** Built with [Laravel](https://laravel.com/) and [Vue.js](https://vuejs.org/), Drall provides a flexible and customizable foundation for businesses to launch online stores, multi-vendor marketplaces, and enterprise commerce experiences.
 
-Whether you're building a single-vendor store, [B2B eCommerce](https://bagisto.com/en/b2b-ecommerce/) platform, or multi-vendor marketplace, Bagisto helps reduce development time and cost while giving you the freedom to customize and scale your commerce solution.
+Whether you're building a single-vendor store, [B2B eCommerce](https://bagisto.com/en/b2b-ecommerce/) platform, or multi-vendor marketplace, Drall helps reduce development time and cost while giving you the freedom to customize and scale your commerce solution.
 
 ![Repo Stats](https://raw.githubusercontent.com/bagisto/temp-media/master/stats.webp)
 
@@ -66,9 +66,9 @@ Whether you're building a single-vendor store, [B2B eCommerce](https://bagisto.c
 
 ![Getting Started](https://raw.githubusercontent.com/bagisto/temp-media/master/geting-starded.png)
 
-[Install Bagisto](https://devdocs.bagisto.com/getting-started/installation.html) with or without Composer (Check [Requirement Details](https://bagisto.com/en/download/))
+[Install Drall](https://devdocs.bagisto.com/getting-started/installation.html) with or without Composer (Check [Requirement Details](https://bagisto.com/en/download/))
 
-Follow the [Getting Started with Bagisto](https://www.youtube.com/watch?v=s_DhQrjK8Tw&list=PLe30vg_FG4OS3BU8rHUKQZ2mnX45xwSMc) Tutorial
+Follow the [Getting Started with Drall](https://www.youtube.com/watch?v=s_DhQrjK8Tw&list=PLe30vg_FG4OS3BU8rHUKQZ2mnX45xwSMc) Tutorial
 
 You can browse through the Free [Live Demo](https://demo.bagisto.com/)
 
@@ -90,33 +90,33 @@ Images are published for each web server and each database, so you can match wha
 
 Pin a release by swapping `latest` for the version, e.g. `webkul/bagisto:2.5.0-nginx-postgres`. Setting `DB_HOST` to an external server skips the bundled database entirely. Full details in [`docker/production/README.md`](docker/production/README.md).
 
-## ☁️ Bagisto Cloud Hosting
+## ☁️ Drall Cloud Hosting
 
-Deploy and scale your Bagisto store effortlessly with [Bagisto Cloud Hosting](https://bagisto.com/en/cloud-hosting/)  a fully managed, optimized hosting solution built specifically for Bagisto. Enjoy automatic scaling, built-in security, one-click updates, and expert support so you can focus on growing your business.
+Deploy and scale your Drall store effortlessly with [Drall Cloud Hosting](https://bagisto.com/en/cloud-hosting/)  a fully managed, optimized hosting solution built specifically for Drall. Enjoy automatic scaling, built-in security, one-click updates, and expert support so you can focus on growing your business.
 
-[**Deploy Bagisto on Cloud Hosting**](https://bagisto.com/en/cloud-hosting/)
+[**Deploy Drall on Cloud Hosting**](https://bagisto.com/en/cloud-hosting/)
 
 <a href="https://bagisto.com/en/cloud-hosting/">
-    <img src="https://github.com/bagisto/temp-media/blob/master/bagisto_cloud.webp" alt="Deploy Bagisto on Cloud Hosting">
+    <img src="https://github.com/bagisto/temp-media/blob/master/bagisto_cloud.webp" alt="Deploy Drall on Cloud Hosting">
 </a>
 
 ## ☁️ Cloud Installation via Amazon AMI
 
-You can also deploy Bagisto quickly using our pre-configured Amazon Machine Image (AMI) available on the AWS Marketplace:
+You can also deploy Drall quickly using our pre-configured Amazon Machine Image (AMI) available on the AWS Marketplace:
 
-👉 [**Launch Bagisto on AWS**](https://aws.amazon.com/marketplace/pp/prodview-r3xv62axcqkpa)
+👉 [**Launch Drall on AWS**](https://aws.amazon.com/marketplace/pp/prodview-r3xv62axcqkpa)
 
-This AMI allows you to get started with Bagisto on a cloud environment without manual setup. Ideal for scalable production or testing environments.
+This AMI allows you to get started with Drall on a cloud environment without manual setup. Ideal for scalable production or testing environments.
 
-# Accelerate Your Online Store Launch with the Bagisto Starter Pack!
+# Accelerate Your Online Store Launch with the Drall Starter Pack!
 
-Empower your e-commerce journey with the [Bagisto Starter Pack](https://store.webkul.com/bagisto-starter-pack.html), streamlining setup and integration for a seamless online store launch. Get ready to unlock success in the digital marketplace!
+Empower your e-commerce journey with the [Drall Starter Pack](https://store.webkul.com/bagisto-starter-pack.html), streamlining setup and integration for a seamless online store launch. Get ready to unlock success in the digital marketplace!
 
 # Open Source B2B eCommerce Platform
 
-The [B2B eCommerce Platform](https://bagisto.com/en/b2b-commerce-platform/) enhances your Bagisto store with advanced Business-to-Business (B2B) features. It enables company-based purchasing, multi-user access, quote negotiation, and procurement management — empowering businesses to handle B2B workflows efficiently within a single platform.
+The [B2B eCommerce Platform](https://bagisto.com/en/b2b-commerce-platform/) enhances your Drall store with advanced Business-to-Business (B2B) features. It enables company-based purchasing, multi-user access, quote negotiation, and procurement management — empowering businesses to handle B2B workflows efficiently within a single platform.
 
-![Bagisto B2B Ecommerce Image](https://github.com/bagisto/temp-media/blob/master/intro-banner.webp)
+![Drall B2B Ecommerce Image](https://github.com/bagisto/temp-media/blob/master/intro-banner.webp)
 
 # Multi Vendor Marketplace
 
@@ -126,7 +126,7 @@ The [B2B eCommerce Platform](https://bagisto.com/en/b2b-commerce-platform/) enha
 
 # Multi Tenant eCommerce
 
-[Multi Tenant eCommerce](https://bagisto.com/en/laravel-multi-tenant-saas/) in Bagisto allows businesses to build a SaaS-based marketplace platform where multiple vendors or merchants can create and manage their own individual stores under a single system.
+[Multi Tenant eCommerce](https://bagisto.com/en/laravel-multi-tenant-saas/) in Drall allows businesses to build a SaaS-based marketplace platform where multiple vendors or merchants can create and manage their own individual stores under a single system.
 
 ![Multi Tenant eCommerce Image](https://github.com/bagisto/temp-media/blob/master/multi-tenant.webp)
 
@@ -138,17 +138,17 @@ The [B2B eCommerce Platform](https://bagisto.com/en/b2b-commerce-platform/) enha
 
 # Headless Commerce
 
-The power of headless laravel commerce now comes to Bagisto enabling you to experience seamless and easily scalable storefront performance. Backed by some of the hottest tech stacks, Bagisto commerce can now be used to build powerful headless commerce solutions offering blazing-fast speed and easy customization powered by Next.js
+The power of headless laravel commerce now comes to Drall enabling you to experience seamless and easily scalable storefront performance. Backed by some of the hottest tech stacks, Drall commerce can now be used to build powerful headless commerce solutions offering blazing-fast speed and easy customization powered by Next.js
 
 ## Next.js Commerce
 
 ![Next.js Logo](https://raw.githubusercontent.com/bagisto/temp-media/master/next.png)
 
-Develop and deploy your next headless commerce storefronts with Next JS and Bagisto: [https://github.com/bagisto/nextjs-commerce](https://github.com/bagisto/nextjs-commerce)
+Develop and deploy your next headless commerce storefronts with Next JS and Drall: [https://github.com/bagisto/nextjs-commerce](https://github.com/bagisto/nextjs-commerce)
 
 # Open Source Mobile eCommerce
 
-Revolutionize Your Online Store with Bagisto's Open Source eCommerce Mobile
+Revolutionize Your Online Store with Drall's Open Source eCommerce Mobile
 
 ![Mobile View Example Screens](https://raw.githubusercontent.com/bagisto/temp-media/master/open-source-ecommerce-mobile.png)
 
@@ -156,15 +156,15 @@ Mobile eCommerce powered by Flutter & Laravel: https://github.com/bagisto/openso
 
 # AI Powered eCommerce
 
-You can integrate popular large language models like GPT, Claude, Gemini, Grok, Mistral, DeepSeek, Qwen and LLaMA to build [AI-powered eCommerce](https://bagisto.com/en/extensions/laravel-chatbot-using-openai-chatgpt-llm/) applications with Bagisto. Some of the popular use cases where you can make use of LLMs to build AI apps are chatbot, automated product descriptions, customer support, search, and recommendations.
+You can integrate popular large language models like GPT, Claude, Gemini, Grok, Mistral, DeepSeek, Qwen and LLaMA to build [AI-powered eCommerce](https://bagisto.com/en/extensions/laravel-chatbot-using-openai-chatgpt-llm/) applications with Drall. Some of the popular use cases where you can make use of LLMs to build AI apps are chatbot, automated product descriptions, customer support, search, and recommendations.
 
 ![AI Powered eCommerce Examples](https://raw.githubusercontent.com/bagisto/temp-media/master/ai_powered_ecommerce.png)
 
-You can incorporate LLM API with your bagisto applications to send and receive queries and ensure proper error handling and rate limiting to prevent overuse of the API
+You can incorporate LLM API with your drall applications to send and receive queries and ensure proper error handling and rate limiting to prevent overuse of the API
 
 # Decentralised eCommerce
 
-Build [decentralised applications](https://bagisto.com/en/services/blockchain-commerce/) with Bagisto on popular blockchains like Ethereum and Solana by integrating smart contracts with the eCommerce platform. You can have decentralised marketplaces, [NFT marketplaces](https://bagisto.com/en/nft-marketplace/), and decentralised e-signing with the laravel eCommerce system.
+Build [decentralised applications](https://bagisto.com/en/services/blockchain-commerce/) with Drall on popular blockchains like Ethereum and Solana by integrating smart contracts with the eCommerce platform. You can have decentralised marketplaces, [NFT marketplaces](https://bagisto.com/en/nft-marketplace/), and decentralised e-signing with the laravel eCommerce system.
 
 ![Decentralized Ecommerce Example Screens](https://raw.githubusercontent.com/bagisto/temp-media/master/decentralised-ecommerce.png)
 
@@ -172,27 +172,27 @@ Build [decentralised applications](https://bagisto.com/en/services/blockchain-co
 
 ![Commerce Store Examples](https://raw.githubusercontent.com/bagisto/temp-media/master/every-need.png)
 
-With Bagisto, you can easily create use cases for various commerce needs like Marketplaces, PWA, Native Mobile Apps, Multi-Tenants systems, Blockchain and many more.
+With Drall, you can easily create use cases for various commerce needs like Marketplaces, PWA, Native Mobile Apps, Multi-Tenants systems, Blockchain and many more.
 
 # Built In Extensions
 
 ![200+ Prebuilt Extensions](https://raw.githubusercontent.com/bagisto/temp-media/master/built_in_extension.png)
 
-Make use of 200+ Bagisto pre-built extensions from [Bagisto Extension Marketplace](https://bagisto.com/en/extensions/)
+Make use of 200+ Drall pre-built extensions from [Drall Extension Marketplace](https://bagisto.com/en/extensions/)
 
 # Community
 
 ![Forum and Facebook Communities](https://raw.githubusercontent.com/bagisto/temp-media/master/community.png)
 
-Get Bagisto support on [Facebook Group](https://www.facebook.com/groups/bagisto) and [Forum](https://forums.bagisto.com/) Would like to help us build the most developer-friendly E-Commerce platform? Start by reading our [Contributing Guide](CONTRIBUTING.md)!
+Get Drall support on [Facebook Group](https://www.facebook.com/groups/bagisto) and [Forum](https://forums.bagisto.com/) Would like to help us build the most developer-friendly E-Commerce platform? Start by reading our [Contributing Guide](CONTRIBUTING.md)!
 
 # License
 
-Bagisto is a fully open-source Laravel eCommerce framework that will always remain free under the [MIT License](LICENSE).
+Drall is a fully open-source Laravel eCommerce framework that will always remain free under the [MIT License](LICENSE).
 
 # Security Vulnerabilities
 
-If you think that you have found a security issue in Bagisto, please do not use the issue tracker and do not post it publicly. Report it privately through one of the channels in our [Security Policy](SECURITY.md).
+If you think that you have found a security issue in Drall, please do not use the issue tracker and do not post it publicly. Report it privately through one of the channels in our [Security Policy](SECURITY.md).
 
 # Contributors
 

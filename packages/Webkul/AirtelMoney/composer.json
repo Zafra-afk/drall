@@ -1,0 +1,25 @@
+{
+    "name": "bagisto/laravel-airtel-money",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bagisto",
+            "email": "support@bagisto.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Webkul\\AirtelMoney\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Webkul\\AirtelMoney\\Providers\\AirtelMoneyServiceProvider"
+            ],
+            "aliases": {}
+        }
+    },
+    "minimum-stability": "dev"
+}

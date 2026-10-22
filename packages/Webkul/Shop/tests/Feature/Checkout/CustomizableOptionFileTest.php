@@ -51,7 +51,10 @@ function orderWithUploadedOptionFile(string $path): array
                 [
                     'id' => 1,
                     'type' => 'file',
-                    'label' => ['en' => 'Upload File'],
+                    'label' => [
+                        'en' => 'Upload File',
+                        'fr' => 'Fichier envoyé',
+                    ],
                     'prices' => [
                         ['label' => $path],
                     ],

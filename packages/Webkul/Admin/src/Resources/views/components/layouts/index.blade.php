@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html
-    class="{{ request()->cookie('dark_mode') ?? 0 ? 'dark' : '' }}"
+    class="{{ (int) request()->cookie('dark_mode') === 1 ? 'dark' : '' }}"
     lang="{{ app()->getLocale() }}"
     dir="{{ core()->getCurrentLocale()->direction }}"
 >
@@ -9,7 +9,35 @@
 <head>
     {!! view_render_event('bagisto.admin.layout.head.before') !!}
 
-    <title>{{ $title ?? '' }}</title>
+    <script>
+        (function () {
+            var getCookie = function (name) {
+                var cookies = document.cookie.split(';');
+
+                for (var i = 0; i < cookies.length; i++) {
+                    var parts = cookies[i].trim().split('=');
+
+                    if (parts[0] === name) {
+                        return parts[1];
+                    }
+                }
+
+                return null;
+            };
+
+            var darkMode = getCookie('dark_mode');
+
+            if (darkMode === '1') {
+                document.documentElement.classList.add('dark');
+            } else if (darkMode === '0') {
+                document.documentElement.classList.remove('dark');
+            } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.classList.add('dark');
+            }
+        })();
+    </script>
+
+    <title>{{ ! empty($title) ? $title . ' - ' . config('app.name') : config('app.name') }}</title>
 
     <meta charset="UTF-8">
 
@@ -35,7 +63,7 @@
     >
     <meta
         name="generator"
-        content="Bagisto"
+        content="Drall"
     >
 
     @if ($broadcasting = app(\Webkul\Admin\Helpers\Broadcasting::class)->clientConfig())
@@ -63,12 +91,6 @@
         href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap"
         rel="stylesheet"
     />
-
-    <link
-        rel="preload"
-        as="image"
-        href="{{ url('cache/logo/bagisto.png') }}"
-    >
 
     @if ($favicon = core()->getConfigData('general.design.admin_logo.favicon'))
         <link
@@ -98,7 +120,7 @@
 <body class="h-full dark:bg-gray-950">
     {!! view_render_event('bagisto.admin.layout.body.before') !!}
 
-    <!-- Built With Bagisto -->
+    <!-- Built With Drall -->
     <div
         id="app"
         class="h-full"
@@ -118,7 +140,7 @@
         <x-admin::layouts.header />
 
         <div
-            class="group/container {{ request()->cookie('sidebar_collapsed') ?? 0 ? 'sidebar-collapsed' : 'sidebar-not-collapsed' }} flex flex-col lg:flex-row gap-0 lg:gap-4"
+            class="group/container {{ (int) request()->cookie('sidebar_collapsed') === 1 ? 'sidebar-collapsed' : 'sidebar-not-collapsed' }} flex flex-col lg:flex-row gap-0 lg:gap-4"
             ref="appLayout"
         >
             <!-- Page Sidebar Blade Component -->
@@ -135,13 +157,10 @@
                     </div>
                 </div>
 
-                <!-- Powered By -->
+                <!-- Footer -->
                 <div class="mt-auto">
                     <div class="border-t bg-white py-2 text-center text-xs sm:text-sm dark:border-gray-800 dark:bg-gray-900 dark:text-white">
-                        @lang('admin::app.components.layouts.powered-by.description', [
-                            'bagisto' => '<a class="text-blue-600 hover:underline dark:text-darkBlue" href="https://bagisto.com/en/">Bagisto</a>',
-                            'webkul' => '<a class="text-blue-600 hover:underline dark:text-darkBlue" href="https://webkul.com/">Webkul</a>',
-                        ])
+                        @lang('admin::app.components.layouts.powered-by.description', ['current_year' => date('Y')])
                     </div>
                 </div>
             </div>

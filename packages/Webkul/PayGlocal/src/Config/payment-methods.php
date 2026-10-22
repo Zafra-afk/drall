@@ -6,9 +6,9 @@ return [
     'payglocal' => [
         'code' => 'payglocal',
         'title' => 'PayGlocal',
-        'description' => 'PayGlocal',
+        'description' => 'Pay via PayGlocal',
         'class' => PayGlocal::class,
-        'active' => true,
+        'active' => false,
         'sandbox' => true,
         'merchant_id' => 'MERCHANT_ID',
         'public_key_id' => 'PUBLIC_KEY_ID',

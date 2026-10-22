@@ -1,4 +1,4 @@
-# Bagisto Contribution Guide
+# Drall Contribution Guide
 
 ## Before you start working
 
@@ -12,7 +12,7 @@ For a feature, open a [feature request](https://github.com/bagisto/bagisto/issue
 
 ## Bugs
 
-Bagisto encourages pull requests, not just bug reports — a bug report may itself take the form of a pull request containing a failing test.
+Drall encourages pull requests, not just bug reports — a bug report may itself take the form of a pull request containing a failing test.
 
 1. Search the [issues](https://github.com/bagisto/bagisto/issues) first. If no open issue covers the bug, [open a new one](https://github.com/bagisto/bagisto/issues/new/choose).
 2. Check that the bug is a general issue and not specific to your own setup. For help with an individual setup, use the [Community Forum](https://forums.bagisto.com/).
@@ -38,7 +38,7 @@ If you propose a new feature, implement at least enough of it to show the shape 
 
 Do not commit compiled files. Frontend sources live in `packages/Webkul/<Package>/src/Resources/assets/`, and the build output goes to `public/themes/*/*/build/`.
 
-Compiled bundles are large, cannot realistically be reviewed, and would be an easy way to slip malicious code into Bagisto. Maintainers generate and commit them.
+Compiled bundles are large, cannot realistically be reviewed, and would be an easy way to slip malicious code into Drall. Maintainers generate and commit them.
 
 Build from within the package you changed, never from the repository root:
 
@@ -48,7 +48,7 @@ cd packages/Webkul/Admin && npm install && npm run build   # or Shop, or Install
 
 ## Code style and conventions
 
-Bagisto's conventions live in [`AGENTS.md`](AGENTS.md) — the single source of truth for contributors and coding agents alike, covering code style, the repository rule, database portability across MySQL, MariaDB and PostgreSQL, and the naming conventions. Read its **Code Style** section before writing PHP or Blade.
+Drall's conventions live in [`AGENTS.md`](AGENTS.md) — the single source of truth for contributors and coding agents alike, covering code style, the repository rule, database portability across MySQL, MariaDB and PostgreSQL, and the naming conventions. Read its **Code Style** section before writing PHP or Blade.
 
 [Laravel Pint](https://laravel.com/docs/pint) with the `laravel` preset settles the mechanical questions, configured in `pint.json`. Run `vendor/bin/pint --test` before opening a pull request; CI runs the same form. Three things no tool checks for you:
 

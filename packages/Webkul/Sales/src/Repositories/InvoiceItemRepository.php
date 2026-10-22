@@ -4,6 +4,7 @@ namespace Webkul\Sales\Repositories;
 
 use Illuminate\Support\Facades\Event;
 use Webkul\Core\Eloquent\Repository;
+use Webkul\Inventory\Services\StockProcurementService;
 use Webkul\Sales\Contracts\InvoiceItem;
 
 class InvoiceItemRepository extends Repository
@@ -52,13 +53,41 @@ class InvoiceItemRepository extends Repository
 
         foreach ($inventories as $inventory) {
             if ($inventory->qty >= $data['qty']) {
+                $before = (int) $inventory->qty;
+                $after = $before - (int) $data['qty'];
+
                 $inventory->update(['qty' => $inventory->qty - $data['qty']]);
+
+                app(StockProcurementService::class)->recordOutgoing(
+                    $data['product']->id,
+                    $inventory->inventory_source_id,
+                    (int) $data['qty'],
+                    $before,
+                    $after,
+                    'invoice',
+                    $data['invoice']->id,
+                );
 
                 break;
             } else {
+                $before = (int) $inventory->qty;
+                $quantityToRemove = $before;
+
                 $data['qty'] -= $inventory->qty;
 
                 $inventory->update(['qty' => 0]);
+
+                if ($quantityToRemove > 0) {
+                    app(StockProcurementService::class)->recordOutgoing(
+                        $data['product']->id,
+                        $inventory->inventory_source_id,
+                        $quantityToRemove,
+                        $before,
+                        0,
+                        'invoice',
+                        $data['invoice']->id,
+                    );
+                }
             }
         }
 

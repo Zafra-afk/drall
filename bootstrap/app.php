@@ -6,11 +6,20 @@ use Illuminate\Cookie\Middleware\EncryptCookies as BaseEncryptCookies;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
+use Illuminate\Foundation\Console\ServeCommand;
 use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
 use Illuminate\Foundation\Http\Middleware\PreventRequestsDuringMaintenance;
+use Illuminate\Http\Exceptions\PostTooLargeException;
+use Illuminate\Http\Request;
 use Webkul\Core\Http\Middleware\PreventSessionRevival;
 use Webkul\Core\Http\Middleware\SecureHeaders;
 use Webkul\Installer\Http\Middleware\CanInstall;
+
+if (class_exists(ServeCommand::class)) {
+    if (! in_array('PHP_INI_SCAN_DIR', ServeCommand::$passthroughVariables)) {
+        ServeCommand::$passthroughVariables[] = 'PHP_INI_SCAN_DIR';
+    }
+}
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -60,5 +69,19 @@ return Application::configure(basePath: dirname(__DIR__))
         //
     })
     ->withExceptions(function (Exceptions $exceptions) {
-        //
+        $exceptions->render(function (PostTooLargeException $e, Request $request) {
+            $message = trans('validation.post_too_large', [
+                'limit' => ini_get('post_max_size') ?: '32M',
+            ]);
+
+            if ($request->expectsJson() || $request->ajax()) {
+                return response()->json([
+                    'message' => $message,
+                ], 413);
+            }
+
+            return response()->view('errors.post-too-large', [
+                'message' => $message,
+            ], 413);
+        });
     })->create();

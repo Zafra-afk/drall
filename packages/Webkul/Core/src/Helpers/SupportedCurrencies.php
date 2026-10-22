@@ -45,6 +45,7 @@ class SupportedCurrencies
         'LKR' => ['name' => 'sri-lankan-rupee', 'symbol' => '₨', 'decimal' => 2],
         'LYD' => ['name' => 'libyan-dinar', 'symbol' => 'ل.د', 'decimal' => 3],
         'MAD' => ['name' => 'moroccan-dirham', 'symbol' => 'د.م.', 'decimal' => 2],
+        'MGA' => ['name' => 'malagasy-ariary', 'symbol' => 'Ar', 'decimal' => 0],
         'MUR' => ['name' => 'mauritian-rupee', 'symbol' => '₨', 'decimal' => 2],
         'MXN' => ['name' => 'mexican-peso', 'symbol' => '$', 'decimal' => 2],
         'MYR' => ['name' => 'malaysian-ringgit', 'symbol' => 'RM', 'decimal' => 2],
@@ -97,9 +98,11 @@ class SupportedCurrencies
      */
     public static function options(): array
     {
+        $allowedCurrencies = config('app.allowed_currencies', self::codes());
+
         return array_map(
             fn ($currency) => trans('installer::app.installer.index.environment-configuration.'.$currency['name']),
-            self::ALL
+            array_intersect_key(self::ALL, array_flip($allowedCurrencies))
         );
     }
 

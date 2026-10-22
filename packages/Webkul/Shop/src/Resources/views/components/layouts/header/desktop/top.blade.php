@@ -1,5 +1,13 @@
 {!! view_render_event('bagisto.shop.components.layouts.header.desktop.top.before') !!}
 
+@php
+    $allowedChannelLocales = core()->getCurrentChannel()
+        ->locales()
+        ->whereIn('code', config('app.allowed_locales', ['fr']))
+        ->orderBy('name')
+        ->get();
+@endphp
+
 <v-topbar>
     <!-- Shimmer Effect -->
     <div class="flex items-center justify-between border border-b border-l-0 border-r-0 border-t-0 px-16">
@@ -45,6 +53,12 @@
             >
             </div>
         </div>
+
+        <div
+            class="shimmer h-6 w-6 rounded-sm"
+            role="presentation"
+        >
+        </div>
     </div>
 </v-topbar>
 
@@ -56,7 +70,8 @@
         id="v-topbar-template"
     >
         <div class="flex w-full items-center justify-between border border-b border-l-0 border-r-0 border-t-0 px-16">
-            {!! view_render_event('bagisto.shop.components.layouts.header.desktop.top.currency_switcher.before') !!}
+            @if (core()->getCurrentChannel()->currencies()->count() > 1)
+                {!! view_render_event('bagisto.shop.components.layouts.header.desktop.top.currency_switcher.before') !!}
 
             <!-- Currency Switcher -->
             <x-shop::dropdown position="bottom-{{ core()->getCurrentLocale()->direction === 'ltr' ? 'left' : 'right' }}">
@@ -86,7 +101,8 @@
                 </x-slot>
             </x-shop::dropdown>
 
-            {!! view_render_event('bagisto.shop.components.layouts.header.desktop.top.currency_switcher.after') !!}
+                {!! view_render_event('bagisto.shop.components.layouts.header.desktop.top.currency_switcher.after') !!}
+            @endif
 
             <p
                 class="py-3 text-xs font-medium"
@@ -105,6 +121,7 @@
             {!! view_render_event('bagisto.shop.components.layouts.header.desktop.top.locale_switcher.before') !!}
 
             <!-- Locales Switcher -->
+            @if ($allowedChannelLocales->count() > 1)
             <x-shop::dropdown position="bottom-{{ core()->getCurrentLocale()->direction === 'ltr' ? 'right' : 'left' }}">
                 <x-slot:toggle>
                     <!-- Dropdown Toggler -->
@@ -125,7 +142,7 @@
                         />
                         
                         <span v-pre>
-                            {{ core()->getCurrentChannel()->locales()->orderBy('name')->where('code', app()->getLocale())->value('name') }}
+                            {{ $allowedChannelLocales->firstWhere('code', app()->getLocale())?->name }}
                         </span>
 
                         <span
@@ -141,8 +158,10 @@
                     <v-locale-switcher></v-locale-switcher>
                 </x-slot>
             </x-shop::dropdown>
+            @endif
 
             {!! view_render_event('bagisto.shop.components.layouts.header.desktop.top.locale_switcher.after') !!}
+
         </div>
     </script>
 
@@ -224,7 +243,7 @@
 
             data() {
                 return {
-                    locales: @json(core()->getCurrentChannel()->locales()->orderBy('name')->get()),
+                    locales: @json($allowedChannelLocales),
                 };
             },
 
@@ -237,6 +256,105 @@
                     window.location.href = url.href;
                 }
             }
+        });
+    </script>
+
+    <script
+        type="text/x-template"
+        id="v-dark-top-template"
+    >
+        <div class="flex items-center">
+            <button
+                type="button"
+                class="cursor-pointer rounded-md p-1.5 transition-all hover:bg-gray-100 dark:hover:bg-gray-800"
+                @click="toggle"
+                :title="isDarkMode ? 'Mode clair' : 'Mode sombre'"
+                :aria-label="isDarkMode ? 'Mode clair' : 'Mode sombre'"
+            >
+                <!-- Sun icon when dark mode active -->
+                <svg
+                    v-if="isDarkMode"
+                    class="h-5 w-5 text-yellow-500"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+                </svg>
+
+                <!-- Moon icon when light mode active -->
+                <svg
+                    v-else
+                    class="h-5 w-5 text-gray-700 dark:text-gray-200"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+                </svg>
+            </button>
+        </div>
+    </script>
+
+    <script type="module">
+        app.component('v-dark-topbar', {
+            template: '#v-dark-top-template',
+
+            data() {
+                return {
+                    isDarkMode: this.getInitialDarkMode(),
+                }
+            },
+
+            methods: {
+                getDarkModeCookie() {
+                    const cookies = document.cookie.split(';');
+
+                    for (const cookie of cookies) {
+                        const [name, value] = cookie.trim().split('=');
+
+                        if (name === 'dark_mode') {
+                            return value;
+                        }
+                    }
+
+                    return null;
+                },
+
+                getInitialDarkMode() {
+                    const cookie = this.getDarkModeCookie();
+
+                    if (cookie === '1') {
+                        return 1;
+                    }
+
+                    if (cookie === '0') {
+                        return 0;
+                    }
+
+                    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 1 : 0;
+                },
+
+                toggle() {
+                    this.isDarkMode = this.isDarkMode ? 0 : 1;
+
+                    var expiryDate = new Date();
+
+                    expiryDate.setMonth(expiryDate.getMonth() + 1);
+
+                    document.cookie = 'dark_mode=' + this.isDarkMode + '; path=/; expires=' + expiryDate.toGMTString() + '; SameSite=Lax';
+
+                    document.documentElement.classList.toggle('dark', this.isDarkMode === 1);
+
+                    if (this.isDarkMode) {
+                        this.$emitter.emit('change-theme', 'dark');
+                    } else {
+                        this.$emitter.emit('change-theme', 'light');
+                    }
+                },
+            },
         });
     </script>
 @endPushOnce

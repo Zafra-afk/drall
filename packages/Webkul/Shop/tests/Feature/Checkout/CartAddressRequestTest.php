@@ -4,6 +4,21 @@ use function Pest\Laravel\postJson;
 
 beforeEach(function () {
     $this->addProductToCart($this->createSimpleProduct()->id);
+
+    config()->set('app.storefront_countries', ['IN', 'US', 'GB']);
+});
+
+it('rejects countries outside the configured storefront markets', function () {
+    config()->set('app.storefront_countries', ['MG']);
+
+    postJson(route('shop.checkout.onepage.addresses.store'), [
+        'billing' => $this->storefrontAddress([
+            'country' => 'US',
+            'use_for_shipping' => true,
+        ]),
+    ])
+        ->assertUnprocessable()
+        ->assertJsonValidationErrorFor('billing.country');
 });
 
 it('should fail the validation when the billing state belongs to another country', function () {

@@ -127,6 +127,7 @@ return [
     'not_in' => 'La valeur sélectionnée pour :attribute est invalide.',
     'not_regex' => 'Le format du champ :attribute est invalide.',
     'numeric' => 'Le champ :attribute doit être un nombre.',
+    'phone' => 'Le :attribute doit être un numéro de téléphone valide (ex. +261 XX XX XXX XX).',
 
     'password' => [
         'letters' => 'Le champ :attribute doit contenir au moins une lettre.',
@@ -169,6 +170,8 @@ return [
     'timezone' => 'Le champ :attribute doit être un fuseau horaire valide.',
     'unique' => 'Le champ :attribute a déjà été pris.',
     'uploaded' => 'Le chargement du fichier :attribute a échoué.',
+    'file_too_large' => 'Ce fichier est trop volumineux. La taille maximale autorisée est de :max Mo.',
+    'post_too_large' => 'Les données envoyées dépassent la limite autorisée de :limit. Réduisez la taille des images ou des fichiers et réessayez.',
     'uppercase' => 'Le champ :attribute doit être en majuscules.',
     'url' => 'Le format de l\'URL du champ :attribute est invalide.',
     'ulid' => 'Le champ :attribute doit être un ULID valide.',

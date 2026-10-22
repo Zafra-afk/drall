@@ -17,6 +17,41 @@ it('should return the admin login page', function () {
         ->assertSeeText(trans('admin::app.users.sessions.title'));
 });
 
+it('should switch the anonymous admin interface to a permitted locale and persist the choice', function () {
+    $response = get(route('admin.session.create', ['admin_locale' => 'fr']));
+
+    $response->assertOk()
+        ->assertSee('admin-anonymous-locale-switcher');
+
+    expect(session('admin.locale'))->toBe('fr')
+        ->and(app()->getLocale())->toBe('fr');
+
+    expect(preg_match('/<html\s+lang="fr"/', $response->getContent()))->toBe(1);
+});
+
+it('should reject Malagasy in the French-only admin interface', function () {
+    $response = get(route('admin.session.create', ['admin_locale' => 'mg']));
+
+    $response->assertOk()
+        ->assertSee('admin-anonymous-locale-switcher');
+
+    expect(session('admin.locale'))->toBeNull()
+        ->and(app()->getLocale())->toBe('fr');
+
+    expect(preg_match('/<html\s+lang="fr"/', $response->getContent()))->toBe(1);
+});
+
+it('should show the language switcher in the authenticated admin interface', function () {
+    $this->loginAsAdmin();
+
+    get(route('admin.dashboard.index'))
+        ->assertOk()
+        ->assertSee('admin-locale-switcher')
+        ->assertSee('Français')
+        ->assertDontSee('option value="mg"', false)
+        ->assertDontSee('option value="en"', false);
+});
+
 it('should redirect to dashboard if already authenticated', function () {
     $this->loginAsAdmin();
 
@@ -33,6 +68,7 @@ it('should login with valid credentials', function () {
         'password' => Hash::make('admin123'),
         'status' => true,
     ]);
+    $sessionId = session()->getId();
 
     postJson(route('admin.session.store'), [
         'email' => $admin->email,
@@ -41,6 +77,28 @@ it('should login with valid credentials', function () {
         ->assertRedirect(route('admin.dashboard.index'));
 
     $this->assertAuthenticatedAs($admin, 'admin');
+
+    expect(session()->getId())->not->toBe($sessionId);
+});
+
+it('should throttle repeated admin login failures', function () {
+    $admin = Admin::factory()->create([
+        'password' => Hash::make('admin123'),
+        'status' => true,
+    ]);
+
+    foreach (range(1, 6) as $attempt) {
+        $response = postJson(route('admin.session.store'), [
+            'email' => $admin->email,
+            'password' => 'wrong-password',
+        ]);
+    }
+
+    $response->assertTooManyRequests()
+        ->assertJsonValidationErrorFor('email');
+
+    expect($response->json('errors.email.0'))->toContain('Trop de tentatives')
+        ->and(auth()->guard('admin')->check())->toBeFalse();
 });
 
 it('should not login with a wrong password', function () {

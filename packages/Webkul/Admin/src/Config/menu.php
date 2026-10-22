@@ -111,6 +111,12 @@ return [
         'sort' => 3,
         'icon' => 'icon-product',
     ], [
+        'key' => 'catalog.stock_management',
+        'name' => 'Stocks et approvisionnements',
+        'route' => 'admin.inventory.procurement.index',
+        'sort' => 2,
+        'icon' => '',
+    ], [
         'key' => 'catalog.products',
         'name' => 'admin::app.components.layouts.sidebar.products',
         'route' => 'admin.catalog.products.index',

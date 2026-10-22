@@ -52,6 +52,6 @@ class CustomerAddressFactory extends Factory
 
         return $states->isNotEmpty()
             ? $states->random()->code
-            : $this->faker->state;
+            : $this->faker->region;
     }
 }

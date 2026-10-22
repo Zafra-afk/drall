@@ -1,0 +1,25 @@
+{
+    "name": "bagisto/laravel-mvola",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bagisto",
+            "email": "support@bagisto.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Webkul\\MVola\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Webkul\\MVola\\Providers\\MVolaServiceProvider"
+            ],
+            "aliases": {}
+        }
+    },
+    "minimum-stability": "dev"
+}

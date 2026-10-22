@@ -6,9 +6,9 @@ return [
     'phonepe' => [
         'code' => 'phonepe',
         'title' => 'PhonePe',
-        'description' => 'PhonePe',
+        'description' => 'Pay via PhonePe',
         'class' => PhonePe::class,
-        'active' => true,
+        'active' => false,
         'sandbox' => true,
         'client_id' => 'CLIENT_ID',
         'client_secret' => 'CLIENT_SECRET',

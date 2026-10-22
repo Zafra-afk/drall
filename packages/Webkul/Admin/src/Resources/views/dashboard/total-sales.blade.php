@@ -58,7 +58,7 @@
 
             data() {
                 return {
-                    report: [],
+                    report: null,
 
                     isLoading: true,
                 }
@@ -66,12 +66,12 @@
 
             computed: {
                 chartLabels() {
-                    return this.report.statistics.over_time.map(({ label }) => label);
+                    return this.report?.statistics?.over_time?.map(({ label }) => label) ?? [];
                 },
 
                 chartDatasets() {
                     return [{
-                        data: this.report.statistics.over_time.map(({ total }) => total),
+                        data: this.report?.statistics?.over_time?.map(({ total }) => total) ?? [],
                         barThickness: 6,
                         backgroundColor: '#598de6',
                     }];
@@ -100,7 +100,7 @@
 
                             this.isLoading = false;
                         })
-                        .catch(error => {});
+                        .catch(error => { this.isLoading = false; });
                 }
             }
         });

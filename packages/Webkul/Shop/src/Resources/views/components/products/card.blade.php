@@ -419,6 +419,12 @@
                 },
 
                 addToCart() {
+                    if (! this.product.can_be_added_to_cart_without_options) {
+                        window.location.href = '{{ route('shop.product_or_category.index', ':slug') }}'.replace(':slug', this.product.url_key);
+
+                        return;
+                    }
+
                     this.isAddingToCart = true;
 
                     this.$axios.post('{{ route("shop.api.checkout.cart.store") }}', {

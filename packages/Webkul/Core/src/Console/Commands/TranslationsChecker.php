@@ -179,7 +179,9 @@ class TranslationsChecker extends Command
             ->sort()
             ->values();
 
-        $supportedLocales = collect(SupportedLocales::codes());
+        $supportedLocales = $name === 'Root'
+            ? collect(config('app.allowed_locales', SupportedLocales::codes()))
+            : collect(SupportedLocales::codes());
 
         $missingLocales = $supportedLocales
             ->reject(fn ($locale) => $existingLocales->contains($locale))

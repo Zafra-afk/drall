@@ -2,6 +2,7 @@
 
 use App\Providers\AppServiceProvider;
 use Webkul\Admin\Providers\AdminServiceProvider;
+use Webkul\AirtelMoney\Providers\AirtelMoneyServiceProvider;
 use Webkul\Attribute\Providers\AttributeServiceProvider;
 use Webkul\BookingProduct\Providers\BookingProductServiceProvider;
 use Webkul\CartRule\Providers\CartRuleServiceProvider;
@@ -22,9 +23,12 @@ use Webkul\ImageCache\Providers\ImageCacheServiceProvider;
 use Webkul\Installer\Providers\InstallerServiceProvider;
 use Webkul\Inventory\Providers\InventoryServiceProvider;
 use Webkul\MagicAI\Providers\MagicAIServiceProvider;
+use Webkul\MalagasyCard\Providers\MalagasyCardServiceProvider;
 use Webkul\Marketing\Providers\MarketingServiceProvider;
+use Webkul\MVola\Providers\MVolaServiceProvider;
 use Webkul\Notification\Providers\NotificationServiceProvider;
 use Webkul\Omnibus\Providers\OmnibusServiceProvider;
+use Webkul\OrangeMoney\Providers\OrangeMoneyServiceProvider;
 use Webkul\PayGlocal\Providers\PayGlocalServiceProvider;
 use Webkul\Payment\Providers\PaymentServiceProvider;
 use Webkul\Paypal\Providers\PaypalServiceProvider;
@@ -55,7 +59,9 @@ return [
      * Webkul's service providers.
      */
     OmnibusServiceProvider::class,
+    OrangeMoneyServiceProvider::class,
     AdminServiceProvider::class,
+    AirtelMoneyServiceProvider::class,
     AttributeServiceProvider::class,
     BookingProductServiceProvider::class,
     CMSServiceProvider::class,
@@ -76,7 +82,9 @@ return [
     InstallerServiceProvider::class,
     InventoryServiceProvider::class,
     MagicAIServiceProvider::class,
+    MalagasyCardServiceProvider::class,
     MarketingServiceProvider::class,
+    MVolaServiceProvider::class,
     NotificationServiceProvider::class,
     PayGlocalServiceProvider::class,
     PayUServiceProvider::class,

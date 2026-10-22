@@ -7,6 +7,7 @@
 <!DOCTYPE html>
 
 <html
+    class="{{ (int) request()->cookie('dark_mode') === 1 ? 'dark' : '' }}"
     lang="{{ app()->getLocale() }}"
     dir="{{ core()->getCurrentLocale()->direction }}"
 >
@@ -14,7 +15,35 @@
 
         {!! view_render_event('bagisto.shop.layout.head.before') !!}
 
-        <title>{{ $title ?? '' }}</title>
+        <script>
+            (function () {
+                var getCookie = function (name) {
+                    var cookies = document.cookie.split(';');
+
+                    for (var i = 0; i < cookies.length; i++) {
+                        var parts = cookies[i].trim().split('=');
+
+                        if (parts[0] === name) {
+                            return parts[1];
+                        }
+                    }
+
+                    return null;
+                };
+
+                var darkMode = getCookie('dark_mode');
+
+                if (darkMode === '1') {
+                    document.documentElement.classList.add('dark');
+                } else if (darkMode === '0') {
+                    document.documentElement.classList.remove('dark');
+                } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.add('dark');
+                }
+            })();
+</script>
+
+        <title>{{ ! empty($title) ? $title . ' - ' . config('app.name') : config('app.name') }}</title>
 
         <meta charset="UTF-8">
 
@@ -41,7 +70,7 @@
         >
         <meta 
             name="generator" 
-            content="Bagisto"
+            content="Drall"
         >
 
         @stack('meta')
@@ -102,7 +131,7 @@
             Skip to main content
         </a>
 
-        <!-- Built With Bagisto -->
+        <!-- Built With Drall -->
         <div id="app">
             <!-- Flash Message Blade Component -->
             <x-shop::flash-group />

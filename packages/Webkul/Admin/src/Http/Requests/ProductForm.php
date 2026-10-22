@@ -4,8 +4,10 @@ namespace Webkul\Admin\Http\Requests;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
+use Illuminate\Validation\Validator;
 use Webkul\Admin\Validations\ProductCategoryUniqueSlug;
 use Webkul\Attribute\Enums\AttributeTypeEnum;
 use Webkul\Core\Helpers\MediaFileName;
@@ -47,6 +49,13 @@ class ProductForm extends FormRequest
     protected $maxVideoFileSize;
 
     /**
+     * Max image upload size in kilobytes.
+     *
+     * @var int
+     */
+    protected $maxImageFileSize;
+
+    /**
      * Create a new form request instance.
      *
      * @return void
@@ -56,6 +65,8 @@ class ProductForm extends FormRequest
         protected ProductAttributeValueRepository $productAttributeValueRepository
     ) {
         $this->maxVideoFileSize = core()->getConfigData('catalog.products.attribute.file_attribute_upload_size') ?: '2048';
+
+        $this->maxImageFileSize = (int) (core()->getConfigData('catalog.products.attribute.image_attribute_upload_size') ?: '16384');
     }
 
     /**
@@ -82,7 +93,7 @@ class ProductForm extends FormRequest
         $this->rules = array_merge($this->product->getTypeInstance()->getTypeValidationRules(), [
             'sku' => ['required', Rule::unique('products', 'sku')->ignore($this->id), new Slug],
             'url_key' => ['required', new ProductCategoryUniqueSlug('products', $this->id)],
-            'images.files.*' => ['nullable', 'mimes:bmp,jpeg,jpg,png,webp'],
+            'images.files.*' => ['nullable', 'mimes:bmp,jpeg,jpg,png,webp', 'max:'.$this->maxImageFileSize],
             'images.positions.*' => ['nullable', 'integer'],
             'images.meta.*.alt_text' => ['nullable', 'string', 'max:255'],
             'images.meta.*.file_name' => ['nullable', 'string', 'max:'.MediaFileName::MAX_LENGTH],
@@ -115,7 +126,7 @@ class ProductForm extends FormRequest
             foreach (request()->images['files'] as $key => $file) {
                 if (Str::contains($key, 'image_')) {
                     $this->rules = array_merge($this->rules, [
-                        'images.files.'.$key => ['required', 'mimes:bmp,jpeg,jpg,png,webp'],
+                        'images.files.'.$key => ['required', 'mimes:bmp,jpeg,jpg,png,webp', 'max:'.$this->maxImageFileSize],
                     ]);
                 }
             }
@@ -199,6 +210,35 @@ class ProductForm extends FormRequest
     }
 
     /**
+     * Validate the combined size of newly uploaded product images.
+     */
+    public function withValidator(Validator $validator): void
+    {
+        $validator->after(function (Validator $validator) {
+            $files = $this->file('images.files', []);
+
+            if ($files instanceof UploadedFile) {
+                $files = [$files];
+            }
+
+            if (! is_array($files)) {
+                return;
+            }
+
+            $files = array_filter($files, fn ($file) => $file instanceof UploadedFile);
+
+            $totalSize = array_sum(array_map(fn (UploadedFile $file) => $file->getSize(), $files));
+
+            if ($totalSize > 32 * 1024 * 1024) {
+                $validator->errors()->add(
+                    'images.files',
+                    trans('validation.post_too_large', ['limit' => '32 MB'])
+                );
+            }
+        });
+    }
+
+    /**
      * Custom message for validation.
      *
      * @return array
@@ -208,6 +248,9 @@ class ProductForm extends FormRequest
         return [
             'variants.*.sku.unique' => trans('admin::app.catalog.products.index.already-taken', ['name' => ':attribute']),
             'videos.files.*' => trans('admin::app.catalog.products.edit.videos.error', ['max' => $this->maxVideoFileSize]),
+            'images.files.*.max' => trans('validation.file_too_large', [
+                'max' => (int) ceil($this->maxImageFileSize / 1024),
+            ]),
         ];
     }
 

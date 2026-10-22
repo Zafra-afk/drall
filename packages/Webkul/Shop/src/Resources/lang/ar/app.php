@@ -5,10 +5,10 @@ return [
         'forgot-password' => [
             'already-sent' => 'تم بالفعل إعادة تعيين كلمة المرور للبريد المرسل.',
             'back' => 'العودة إلى تسجيل الدخول؟',
-            'bagisto' => 'باغيستو',
+            'bagisto' => 'Drall',
             'email' => 'البريد الإلكتروني',
             'email-not-exist' => 'لا يمكننا العثور على مستخدم بهذا البريد الإلكتروني',
-            'footer' => '© حقوق الطبع والنشر 2010 - :current_year، Webkul Software (مسجلة في الهند). جميع الحقوق محفوظة.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-password-text' => 'إذا نسيت كلمة المرور الخاصة بك، يمكنك استعادتها عن طريق إدخال عنوان البريد الإلكتروني الخاص بك.',
             'page-title' => 'هل نسيت كلمة المرور؟',
             'reset-link-sent' => 'إذا كان هذا البريد الإلكتروني مسجلاً لدينا، فقد تم إرسال رابط إعادة تعيين كلمة المرور إليه.',
@@ -20,21 +20,21 @@ return [
 
         'reset-password' => [
             'back-link-title' => 'العودة إلى تسجيل الدخول',
-            'bagisto' => 'باغيستو',
+            'bagisto' => 'Drall',
             'confirm-password' => 'تأكيد كلمة المرور',
             'email' => 'البريد الإلكتروني المسجل',
-            'footer' => '© حقوق الطبع والنشر 2010 - :current_year، Webkul Software (مسجلة في الهند). جميع الحقوق محفوظة.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'password' => 'كلمة المرور',
             'submit-btn-title' => 'إعادة تعيين كلمة المرور',
             'title' => 'إعادة تعيين كلمة المرور',
         ],
 
         'login-form' => [
-            'bagisto' => 'باغيستو',
+            'bagisto' => 'Drall',
             'button-title' => 'تسجيل الدخول',
             'create-your-account' => 'إنشاء حسابك',
             'email' => 'البريد الإلكتروني',
-            'footer' => '© حقوق الطبع والنشر 2010 - :current_year، Webkul Software (مسجلة في الهند). جميع الحقوق محفوظة.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-pass' => 'هل نسيت كلمة المرور؟',
             'form-login-text' => 'إذا كان لديك حساب، قم بتسجيل الدخول باستخدام عنوان البريد الإلكتروني الخاص بك.',
             'invalid-credentials' => 'يرجى التحقق من بيانات الاعتماد الخاصة بك والمحاولة مرة أخرى.',
@@ -50,13 +50,13 @@ return [
 
         'signup-form' => [
             'account-exists' => 'هل لديك حساب بالفعل؟',
-            'bagisto' => 'باغيستو',
+            'bagisto' => 'Drall',
             'button-title' => 'التسجيل',
             'click-here' => 'انقر هنا',
             'confirm-pass' => 'تأكيد كلمة المرور',
             'email' => 'البريد الإلكتروني',
             'first-name' => 'الاسم الأول',
-            'footer' => '© حقوق الطبع والنشر 2010 - :current_year، Webkul Software (مسجلة في الهند). جميع الحقوق محفوظة.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'form-signup-text' => 'إذا كنت جديدًا في متجرنا، فنحن سعداء بانضمامك كعضو.',
             'last-name' => 'اسم العائلة',
             'page-title' => 'كن مستخدمًا',
@@ -73,6 +73,12 @@ return [
         ],
 
         'account' => [
+            'notifications' => [
+                'empty' => 'لم تتلق أي إشعارات.',
+                'from-admin' => 'رسالة من فريق Drall',
+                'title' => 'الإشعارات',
+            ],
+
             'home' => 'الصفحة الرئيسية',
 
             'profile' => [
@@ -583,7 +589,7 @@ return [
                     'bottom' => [
                         'all' => 'الكل',
                         'back-button' => 'العودة إلى القائمة الرئيسية',
-                        'bagisto' => 'باجيستو',
+                        'bagisto' => 'Drall',
                         'categories' => 'الفئات',
                         'compare' => 'مقارنة',
                         'dropdown-text' => 'إدارة السلة، الطلبات وقائمة الرغبات',
@@ -604,7 +610,7 @@ return [
                 'mobile' => [
                     'account' => 'الحساب',
                     'back-button' => 'العودة إلى القائمة الرئيسية',
-                    'bagisto' => 'باجيستو',
+                    'bagisto' => 'Drall',
                     'compare' => 'مقارنة',
                     'currencies' => 'العملات',
                     'dropdown-text' => 'إدارة السلة، الطلبات وقائمة الرغبات',
@@ -644,7 +650,7 @@ return [
                 'customer-service' => 'خدمة العملاء',
                 'email' => 'البريد الإلكتروني',
                 'footer-content' => 'محتوى التذييل',
-                'footer-text' => '© حقوق النشر 2010 - :current_year ، Webkul Software (مسجلة في الهند). كل الحقوق محفوظة.',
+                'footer-text' => '© :current_year Drall. All rights reserved.',
                 'locale' => 'اللغة',
                 'newsletter-text' => 'احصل على نشرتنا الممتعة!',
                 'order-return' => 'الطلب والمرتجعات',
@@ -1113,7 +1119,7 @@ return [
             'suspended-account-message' => 'تم تعليق حسابك.',
 
             'index' => [
-                'bagisto' => 'باغيستو',
+                'bagisto' => 'Drall',
                 'cart' => 'عربة التسوق',
                 'continue-shopping' => 'متابعة التسوق',
                 'empty-product' => 'ليس لديك منتج في سلة التسوق الخاصة بك.',
@@ -1224,6 +1230,7 @@ return [
 
             'payment' => [
                 'payment-method' => 'طريقة الدفع',
+                'no-methods' => 'لا توجد طريقة دفع مهيأة حالياً. لا يمكن إكمال الطلب الآن.',
             ],
 
             'shipping' => [

@@ -673,6 +673,32 @@
                         return;
                     }
 
+                    const maxFileSize = 16 * 1024 * 1024;
+                    const maxTotalSize = 32 * 1024 * 1024;
+                    let currentTotal = this.images.reduce((sum, img) => sum + (img.file?.size || 0), 0);
+
+                    for (const file of Array.from(imageInput.files)) {
+                        if (file.size > maxFileSize) {
+                            this.$emitter.emit('add-flash', {
+                                type: 'warning',
+                                message: "@lang('validation.file_too_large', ['max' => 16])"
+                            });
+
+                            return;
+                        }
+
+                        currentTotal += file.size;
+
+                        if (currentTotal > maxTotalSize) {
+                            this.$emitter.emit('add-flash', {
+                                type: 'warning',
+                                message: "@lang('validation.post_too_large', ['limit' => '32 MB'])"
+                            });
+
+                            return;
+                        }
+                    }
+
                     imageInput.files.forEach((file, index) => {
                         this.images.push(this.newImage(file, file.name.replace(/\.[^/.]+$/, '')));
                     });
@@ -791,6 +817,16 @@
                         this.$emitter.emit('add-flash', {
                             type: 'warning',
                             message: "@lang('admin::app.components.media.images.not-allowed-error')"
+                        });
+
+                        return;
+                    }
+
+                    const maxFileSize = 16 * 1024 * 1024;
+                    if (imageInput.files[0].size > maxFileSize) {
+                        this.$emitter.emit('add-flash', {
+                            type: 'warning',
+                            message: "@lang('validation.file_too_large', ['max' => 16])"
                         });
 
                         return;

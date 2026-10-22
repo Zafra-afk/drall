@@ -110,7 +110,7 @@
 
             data() {
                 return {
-                    isCollapsed: {{ request()->cookie('sidebar_collapsed') ?? 0 }},
+                    isCollapsed: {{ (int) request()->cookie('sidebar_collapsed') === 1 ? 1 : 0 }},
                 }
             },
 

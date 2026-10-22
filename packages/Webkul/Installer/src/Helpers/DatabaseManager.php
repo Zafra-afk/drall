@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Webkul\Core\Concerns\SyncsPostgresSequences;
+use Webkul\Installer\Database\Seeders\Category\SupermarketCategorySeeder;
 use Webkul\Installer\Database\Seeders\DatabaseSeeder as BagistoDatabaseSeeder;
+use Webkul\Installer\Database\Seeders\FrenchProductContentSeeder;
 use Webkul\Installer\Database\Seeders\ProductTableSeeder;
 use Webkul\Product\Console\Commands\Indexer;
 
@@ -128,6 +130,10 @@ class DatabaseManager
     {
         try {
             app(ProductTableSeeder::class)->run($parameters);
+
+            app(SupermarketCategorySeeder::class)->run();
+
+            app(FrenchProductContentSeeder::class)->run();
 
             Artisan::registerCommand(app(Indexer::class));
 

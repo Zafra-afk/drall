@@ -7,10 +7,16 @@ use Webkul\Customer\Contracts\CustomerNote as CustomerNoteContract;
 
 class CustomerNote extends Model implements CustomerNoteContract
 {
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
         'note',
         'customer_id',
         'customer_notified',
+        'customer_read_at',
     ];
 
     /**
@@ -20,6 +26,7 @@ class CustomerNote extends Model implements CustomerNoteContract
      */
     protected $casts = [
         'customer_notified' => 'boolean',
+        'customer_read_at' => 'datetime',
     ];
 
     /**

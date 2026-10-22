@@ -23,15 +23,22 @@ class Locale
      */
     public function handle($request, Closure $next)
     {
-        $locales = core()->getCurrentChannel()->locales->pluck('code')->toArray();
+        $channel = core()->getCurrentChannel();
+        $allowedLocales = config('app.allowed_locales', ['fr']);
+        $locales = array_values(array_intersect($channel->locales->pluck('code')->all(), $allowedLocales));
+
         $localeCode = core()->getRequestedLocaleCode('locale', false);
 
-        if (! $localeCode || ! in_array($localeCode, $locales)) {
+        if (! $localeCode || ! in_array($localeCode, $locales, true)) {
             $localeCode = session()->get('locale');
         }
 
-        if (! $localeCode || ! in_array($localeCode, $locales)) {
-            $localeCode = core()->getCurrentChannel()->default_locale->code;
+        if (! $localeCode || ! in_array($localeCode, $locales, true)) {
+            $localeCode = $channel->default_locale->code;
+        }
+
+        if (! in_array($localeCode, $locales, true)) {
+            $localeCode = $locales[0] ?? config('app.locale', 'fr');
         }
 
         app()->setLocale($localeCode);

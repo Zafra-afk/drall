@@ -4,6 +4,7 @@ namespace Webkul\Sales\Repositories;
 
 use Illuminate\Support\Facades\Event;
 use Webkul\Core\Eloquent\Repository;
+use Webkul\Inventory\Services\StockProcurementService;
 use Webkul\Sales\Contracts\ShipmentItem;
 
 class ShipmentItemRepository extends Repository
@@ -53,11 +54,23 @@ class ShipmentItemRepository extends Repository
             return;
         }
 
-        if (($qty = $inventory->qty - $data['qty']) < 0) {
+        $before = (int) $inventory->qty;
+
+        if (($qty = $before - $data['qty']) < 0) {
             $qty = 0;
         }
 
         $inventory->update(['qty' => $qty]);
+
+        app(StockProcurementService::class)->recordOutgoing(
+            $data['product']->id,
+            $inventory->inventory_source_id,
+            $before - $qty,
+            $before,
+            $qty,
+            'shipment',
+            $data['shipment']->id,
+        );
 
         Event::dispatch('catalog.product.update.after', $data['product']);
     }

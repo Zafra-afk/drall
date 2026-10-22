@@ -5,10 +5,10 @@ return [
         'forgot-password' => [
             'already-sent' => 'Barua ya kubadilisha nenosiri imetumwa tayari.',
             'back' => 'Rudi kuingia?',
-            'bagisto' => 'Bagisto',
+            'bagisto' => 'Drall',
             'email' => 'Barua pepe',
             'email-not-exist' => 'Hatupati mtumiaji mwenye barua pepe hiyo.',
-            'footer' => '© Hati miliki 2010 - :current_year, Webkul Software (Imesajiliwa India). Haki zote zimehifadhiwa.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-password-text' => 'Ukisahau nenosiri lako, unaweza kulirejesha kwa kuingiza barua pepe yako.',
             'page-title' => 'Ulilisa nenosiri?',
             'reset-link-sent' => 'Ikiwa anwani hii ya barua pepe imesajiliwa, kiungo cha kubadilisha nenosiri kimetumwa kwake.',
@@ -20,21 +20,21 @@ return [
 
         'reset-password' => [
             'back-link-title' => 'Rudi Kuingia',
-            'bagisto' => 'Bagisto',
+            'bagisto' => 'Drall',
             'confirm-password' => 'Thibitisha Nenosiri',
             'email' => 'Barua Pepe Iliyosajiliwa',
-            'footer' => '© Hati miliki 2010 - :current_year, Webkul Software (Imesajiliwa India). Haki zote zimehifadhiwa.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'password' => 'Nenosiri',
             'submit-btn-title' => 'Weka Upya Nenosiri',
             'title' => 'Weka Upya Nenosiri',
         ],
 
         'login-form' => [
-            'bagisto' => 'Bagisto',
+            'bagisto' => 'Drall',
             'button-title' => 'Ingia',
             'create-your-account' => 'Fungua akaunti yako',
             'email' => 'Barua pepe',
-            'footer' => '© Hati miliki 2010 - :current_year, Webkul Software (Imesajiliwa India). Haki zote zimehifadhiwa.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-pass' => 'Ulilisa nenosiri?',
             'form-login-text' => 'Ukiwa na akaunti, ingia kwa kutumia barua pepe yako.',
             'invalid-credentials' => 'Tafadhali angalia taarifa zako za kuingia kisha ujaribu tena.',
@@ -50,13 +50,13 @@ return [
 
         'signup-form' => [
             'account-exists' => 'Una akaunti tayari?',
-            'bagisto' => 'Bagisto',
+            'bagisto' => 'Drall',
             'button-title' => 'Jiandikishe',
             'click-here' => 'Bofya Hapa',
             'confirm-pass' => 'Thibitisha Nenosiri',
             'email' => 'Barua pepe',
             'first-name' => 'Jina la Kwanza',
-            'footer' => '© Hati miliki 2010 - :current_year, Webkul Software (Imesajiliwa India). Haki zote zimehifadhiwa.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'form-signup-text' => 'Ukiwa mgeni dukani mwetu, tunafuraha kukaribisha uwe mwanachama wetu.',
             'last-name' => 'Jina la Mwisho',
             'page-title' => 'Kuwa Mtumiaji',
@@ -73,6 +73,12 @@ return [
         ],
 
         'account' => [
+            'notifications' => [
+                'empty' => 'Bado hujapokea arifa.',
+                'from-admin' => 'Ujumbe kutoka kwa timu ya Drall',
+                'title' => 'Arifa',
+            ],
+
             'home' => 'Mwanzo',
 
             'profile' => [
@@ -583,7 +589,7 @@ return [
                     'bottom' => [
                         'all' => 'Zote',
                         'back-button' => 'Rudi kwenye Menyu Kuu',
-                        'bagisto' => 'Bagisto',
+                        'bagisto' => 'Drall',
                         'categories' => 'Makundi',
                         'compare' => 'Linganisha',
                         'dropdown-text' => 'Dhibiti Kikapu, Oda na Orodha ya Matamanio',
@@ -604,7 +610,7 @@ return [
                 'mobile' => [
                     'account' => 'Akaunti',
                     'back-button' => 'Rudi kwenye Menyu Kuu',
-                    'bagisto' => 'Bagisto',
+                    'bagisto' => 'Drall',
                     'compare' => 'Linganisha',
                     'currencies' => 'Sarafu',
                     'dropdown-text' => 'Dhibiti Kikapu, Oda na Orodha ya Matamanio',
@@ -644,7 +650,7 @@ return [
                 'customer-service' => 'Huduma kwa Wateja',
                 'email' => 'Barua pepe',
                 'footer-content' => 'Maudhui ya Chini ya Ukurasa',
-                'footer-text' => '© Hati miliki 2010 - :current_year, Webkul Software (Imesajiliwa India). Haki zote zimehifadhiwa.',
+                'footer-text' => '© :current_year Drall. All rights reserved.',
                 'locale' => 'Lugha',
                 'newsletter-text' => 'Jiandie kupokea Jarida letu la kupendeza!',
                 'order-return' => 'Oda na Rudisho',
@@ -1113,7 +1119,7 @@ return [
             'suspended-account-message' => 'Akaunti yako imesimamishwa.',
 
             'index' => [
-                'bagisto' => 'Bagisto',
+                'bagisto' => 'Drall',
                 'cart' => 'Kikapu',
                 'continue-shopping' => 'Endelea Kununua',
                 'empty-product' => 'Huna bidhaa kikapuni.',
@@ -1224,6 +1230,7 @@ return [
 
             'payment' => [
                 'payment-method' => 'Njia ya Malipo',
+                'no-methods' => 'Hakuna njia ya malipo iliyosanidiwa kwa sasa. Agizo haliwezi kukamilishwa.',
             ],
 
             'shipping' => [

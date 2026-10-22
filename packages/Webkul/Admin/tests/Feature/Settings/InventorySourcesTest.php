@@ -55,7 +55,7 @@ it('should store a newly created inventory source', function () {
         'contact_name' => fake()->name(),
         'street' => fake()->streetName(),
         'country' => preg_replace('/[^a-zA-Z0-9]+/', '', fake()->country()),
-        'state' => fake()->state(),
+        'state' => fake()->region(),
         'city' => fake()->city(),
         'postcode' => fake()->postcode(),
     ])
@@ -118,7 +118,7 @@ it('should update an existing inventory source', function () {
         'contact_name' => fake()->name(),
         'street' => fake()->streetName(),
         'country' => preg_replace('/[^a-zA-Z0-9\s]/', '', fake()->country()),
-        'state' => fake()->state(),
+        'state' => fake()->region(),
         'city' => fake()->city(),
         'postcode' => fake()->postcode(),
     ])
@@ -161,7 +161,7 @@ it('should delete an inventory source', function () {
 
     deleteJson(route('admin.settings.inventory_sources.delete', $inventorySource->id))
         ->assertOk()
-        ->assertSeeText(trans('admin::app.settings.inventory-sources.delete-success'));
+        ->assertJsonPath('message', trans('admin::app.settings.inventory-sources.delete-success'));
 
     $this->assertDatabaseMissing('inventory_sources', ['id' => $inventorySource->id]);
 });

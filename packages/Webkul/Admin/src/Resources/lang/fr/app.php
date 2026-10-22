@@ -6,7 +6,7 @@ return [
             'email' => 'Adresse e-mail',
             'forget-password-link' => 'Mot de passe oublié ?',
             'password' => 'Mot de passe',
-            'powered-by-description' => 'Propulsé par :bagisto, un projet open-source par :webkul.',
+            'powered-by-description' => 'Propulsé par Drall.',
             'submit-btn' => 'Se connecter',
             'title' => 'Se connecter',
         ],
@@ -16,7 +16,7 @@ return [
                 'email' => 'Adresse e-mail enregistrée',
                 'email-not-exist' => 'L\'adresse e-mail n\'existe pas',
                 'page-title' => 'Mot de passe oublié',
-                'powered-by-description' => 'Propulsé par :bagisto, un projet open-source par :webkul.',
+                'powered-by-description' => 'Propulsé par Drall.',
                 'reset-link-sent' => 'Lien de réinitialisation du mot de passe envoyé',
                 'reset-link-failed' => 'Impossible d\'envoyer le lien de réinitialisation du mot de passe. Veuillez réessayer plus tard.',
                 'sign-in-link' => 'Retour à la connexion ?',
@@ -30,7 +30,7 @@ return [
             'confirm-password' => 'Confirmer le mot de passe',
             'email' => 'Adresse e-mail enregistrée',
             'password' => 'Mot de passe',
-            'powered-by-description' => 'Propulsé par :bagisto, un projet open-source par :webkul.',
+            'powered-by-description' => 'Propulsé par Drall.',
             'submit-btn' => 'Réinitialiser le mot de passe',
             'title' => 'Réinitialiser le mot de passe',
         ],
@@ -125,13 +125,13 @@ return [
     'help' => [
         'index' => [
             'title' => 'Aide et ressources',
-            'description' => 'Tout ce dont vous avez besoin pour tirer le meilleur parti de Bagisto — hébergement, support et services professionnels, ainsi que des extensions et la documentation pour développeurs.',
+            'description' => 'Retrouvez les ressources utiles pour administrer votre boutique Drall.',
 
             'services-title' => 'Services',
             'resources-title' => 'Ressources et documentation',
 
             'cloud-hosting' => 'Hébergement cloud',
-            'cloud-hosting-info' => 'Hébergement cloud géré et économique — lancez votre boutique Bagisto sur le cloud en quelques minutes, entièrement optimisée et évolutive.',
+            'cloud-hosting-info' => 'Hébergement cloud géré et évolutif pour votre boutique Drall.',
 
             'support' => 'Support et maintenance',
             'support-info' => 'Support technique dédié et forfaits de maintenance continue pour garder votre boutique sécurisée, à jour et fonctionnant sans accroc.',
@@ -140,22 +140,22 @@ return [
             'paid-services-info' => 'Aide d\'experts pour l\'intégration de modules, la personnalisation, la migration de données, les mises à niveau de version et le développement sur mesure.',
 
             'extensions' => 'Extensions',
-            'extensions-info' => 'Parcourez les modules complémentaires officiels et communautaires pour étendre Bagisto avec de nouveaux connecteurs, canaux et fonctionnalités.',
+            'extensions-info' => 'Parcourez les modules complémentaires disponibles pour étendre votre boutique Drall.',
 
             'docs' => 'Documentation dev et blogs',
             'docs-info' => 'Guides pour développeurs, tutoriels et derniers articles pour vous aider à créer, configurer et rester à jour.',
 
             'api-docs' => 'Documentation API',
-            'api-docs-info' => 'Référence complète des API REST et GraphQL avec points de terminaison, authentification et exemples pour intégrer Bagisto à votre stack.',
+            'api-docs-info' => 'Consultez la référence des API REST et GraphQL pour intégrer Drall à vos outils.',
 
             'community' => 'Forum communautaire',
-            'community-info' => 'Posez des questions, partagez des idées et connectez-vous avec des milliers de développeurs et de marchands Bagisto dans le monde entier.',
+            'community-info' => 'Échangez avec la communauté Drall et partagez vos idées.',
 
             'video-tutorials' => 'Tutoriels vidéo',
             'video-tutorials-info' => 'Tutoriels vidéo pas à pas couvrant l\'installation, la configuration et la gestion quotidienne de la boutique.',
 
             'cta-title' => 'Vous avez encore besoin d\'aide ?',
-            'cta-description' => 'Discutez avec l\'équipe Bagisto de l\'hébergement, du développement personnalisé ou de tout autre sujet.',
+            'cta-description' => 'Contactez l’équipe Drall pour obtenir de l’aide sur votre boutique.',
             'cta-btn' => 'Contactez-nous',
         ],
     ],
@@ -4399,7 +4399,7 @@ return [
                     'title' => 'Général',
 
                     'sections' => [
-                        'bagisto' => 'Bagisto',
+                        'bagisto' => 'Drall',
                         'cache' => 'En cache',
                         'database' => 'Base de données',
                         'drivers' => 'Pilotes',
@@ -4868,6 +4868,10 @@ return [
                 'payment-methods' => [
                     'accepted-currencies' => 'Devises acceptées',
                     'accepted-currencies-info' => 'Ajoutez les codes de devise séparés par des virgules, par exemple USD, INR, ...',
+                    'airtel-money-mg' => 'Airtel Money Madagascar',
+                    'airtel-money-mg-info' => 'Paiement via Airtel Money Madagascar.',
+                    'airtelmoney' => 'Airtel Money',
+                    'airtelmoney-info' => 'Acceptez les paiements via Airtel Money.',
                     'api-key' => 'Clé API',
                     'api-publishable-key' => 'Clé publique de l’API',
                     'api-test-key' => 'Clé secrète de test de l’API',
@@ -4882,6 +4886,8 @@ return [
                     'client-id-info' => 'L\'identifiant client de votre application PayPal. Utilisez celui de l\'application sandbox tant que le mode Sandbox est actif.',
                     'client-secret' => 'Secret client',
                     'client-secret-info' => 'Le secret client de votre application PayPal.',
+                    'consumer-key' => 'Clé consommateur',
+                    'consumer-secret' => 'Secret consommateur',
                     'create-success-refund' => 'Remboursement créé avec succès.',
                     'description' => 'Description',
                     'enable' => 'Activer',
@@ -4892,17 +4898,29 @@ return [
                     'logo' => 'Logo',
                     'logo-information' => 'Taille recommandée : 55 x 45 pixels.',
                     'mailing-address' => 'Envoyer le chèque à',
+                    'malagasy-card' => 'Paiement par carte bancaire (Papi)',
+                    'malagasy-card-info' => 'Paiement via carte bancaire malgache via Papi.',
+                    'malagasycard' => 'Carte malgache',
+                    'malagasycard-info' => 'Acceptez les paiements via la carte malgache.',
                     'merchant-description' => 'Description du marchand',
                     'merchant-id' => 'ID marchand',
                     'merchant-key' => 'Clé marchande',
                     'merchant-name' => 'Nom du marchand',
+                    'merchant-number' => 'Numéro du marchand',
                     'merchant-private-key' => 'Clé privée du marchand',
                     'merchant-private-key-info' => 'Collez le contenu du fichier PEM de la clé privée générée dans le tableau de bord PayGlocal. Elle sert à signer les requêtes.',
                     'merchant-salt' => 'Sel marchand',
                     'money-transfer' => 'Virement bancaire',
                     'money-transfer-info' => 'Permettre aux clients de payer par virement bancaire ou par chèque.',
+                    'mvola' => 'MVola',
+                    'mvola-info' => 'Paiement via MVola mobile money (Telma).',
+                    'orange-money-mg' => 'Orange Money Madagascar',
+                    'orange-money-mg-info' => 'Paiement via Orange Money Madagascar.',
+                    'orangemoney' => 'Orange Money',
+                    'orangemoney-info' => 'Acceptez les paiements via Orange Money.',
                     'page-title' => 'Méthodes de paiement',
                     'paid' => 'Payé',
+                    'partner-name' => 'Nom du partiaire',
                     'payglocal' => 'PayGlocal',
                     'payglocal-info' => 'Acceptez les paiements transfrontaliers via PayGlocal. <a href="https://dashboard.payglocal.in/app/mca/h8271x" target="_blank" rel="noopener noreferrer" class="text-blue-600 underline hover:text-blue-700">Inscrivez-vous ici pour obtenir vos identifiants.</a>',
                     'payglocal-merchant-id-info' => 'Disponible dans le tableau de bord PayGlocal sous My Account.',
@@ -4933,6 +4951,7 @@ return [
                     'razorpay' => 'Razorpay',
                     'razorpay-info' => 'Accepter les paiements via Razorpay.',
                     'sandbox' => 'Environnement de test',
+                    'secure-key' => 'Clé sécurisée',
                     'set-invoice-status' => 'Définir le statut de la facture après sa création sur',
                     'set-order-status' => 'Définir le statut de la commande après la création de la facture sur',
                     'sort-order' => 'Ordre de tri',
@@ -5917,7 +5936,7 @@ return [
             ],
 
             'powered-by' => [
-                'description' => 'Propulsé par :bagisto, un projet open-source par :webkul.',
+                'description' => 'Propulsé par Drall.',
             ],
         ],
 
@@ -6308,7 +6327,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => 'Propulsé par <a href="https://bagisto.com/" target="_blank">Bagisto</a>, un projet communautaire par <a href="https://webkul.com/" target="_blank">Webkul</a>',
+        'copy-right' => 'Drall — votre boutique en ligne.',
     ],
 
     'emails' => [
@@ -6511,7 +6530,7 @@ return [
             'refunded-at' => 'Remboursée le',
 
             'actions' => 'Actions',
-            'actions-note' => 'Les remboursements sont traités manuellement via les outils existants de Bagisto (commande / remboursement / RMA). Utilisez ces actions pour enregistrer le résultat sur la preuve de rétractation.',
+            'actions-note' => 'Les remboursements sont traités manuellement depuis la commande. Utilisez ces actions pour enregistrer le résultat sur la preuve de rétractation.',
             'resend-confirmation' => 'Renvoyer l’e-mail de confirmation',
             'mark-refunded' => 'Marquer comme remboursée',
             'refund-note-label' => 'Référence du remboursement (facultatif)',

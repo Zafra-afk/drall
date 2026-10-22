@@ -5,6 +5,7 @@ use Webkul\Core\Http\Middleware\NoCacheMiddleware;
 use Webkul\Shop\Http\Controllers\Customer\Account\AddressController;
 use Webkul\Shop\Http\Controllers\Customer\Account\DownloadableProductController;
 use Webkul\Shop\Http\Controllers\Customer\Account\EUWithdrawalController as CustomerEUWithdrawalController;
+use Webkul\Shop\Http\Controllers\Customer\Account\NotificationController;
 use Webkul\Shop\Http\Controllers\Customer\Account\OrderController;
 use Webkul\Shop\Http\Controllers\Customer\Account\RMAController;
 use Webkul\Shop\Http\Controllers\Customer\Account\WishlistController;
@@ -88,6 +89,9 @@ Route::prefix('customer')->group(function () {
          */
         Route::prefix('account')->group(function () {
             Route::get('', [CustomerController::class, 'account'])->name('shop.customers.account.index');
+
+            Route::get('notifications', [NotificationController::class, 'index'])
+                ->name('shop.customers.account.notifications.index');
 
             /**
              * Wishlist.

@@ -5,10 +5,10 @@ return [
         'forgot-password' => [
             'already-sent' => 'Email untuk mengatur ulang kata sandi sudah dikirim.',
             'back' => 'Kembali ke halaman masuk?',
-            'bagisto' => 'Bagisto',
+            'bagisto' => 'Drall',
             'email' => 'Email',
             'email-not-exist' => 'Kami tidak dapat menemukan pengguna dengan alamat email tersebut.',
-            'footer' => '© Hak Cipta 2010 - :current_year, Webkul Software (Terdaftar di India). Seluruh hak cipta dilindungi undang-undang.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-password-text' => 'Jika Anda lupa kata sandi, silakan pulihkan dengan memasukkan alamat email Anda.',
             'page-title' => 'Lupa kata sandi?',
             'reset-link-sent' => 'Jika alamat email ini terdaftar, tautan atur ulang kata sandi telah dikirim ke sana.',
@@ -20,21 +20,21 @@ return [
 
         'reset-password' => [
             'back-link-title' => 'Kembali ke Halaman Masuk',
-            'bagisto' => 'Bagisto',
+            'bagisto' => 'Drall',
             'confirm-password' => 'Konfirmasi Kata Sandi',
             'email' => 'Email Terdaftar',
-            'footer' => '© Hak Cipta 2010 - :current_year, Webkul Software (Terdaftar di India). Seluruh hak cipta dilindungi undang-undang.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'password' => 'Kata Sandi',
             'submit-btn-title' => 'Atur Ulang Kata Sandi',
             'title' => 'Atur Ulang Kata Sandi',
         ],
 
         'login-form' => [
-            'bagisto' => 'Bagisto',
+            'bagisto' => 'Drall',
             'button-title' => 'Masuk',
             'create-your-account' => 'Buat akun Anda',
             'email' => 'Email',
-            'footer' => '© Hak Cipta 2010 - :current_year, Webkul Software (Terdaftar di India). Seluruh hak cipta dilindungi undang-undang.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-pass' => 'Lupa Kata Sandi?',
             'form-login-text' => 'Jika Anda sudah memiliki akun, masuk dengan alamat email Anda.',
             'invalid-credentials' => 'Periksa kembali kredensial Anda dan coba lagi.',
@@ -50,13 +50,13 @@ return [
 
         'signup-form' => [
             'account-exists' => 'Sudah memiliki akun?',
-            'bagisto' => 'Bagisto',
+            'bagisto' => 'Drall',
             'button-title' => 'Daftar',
             'click-here' => 'Klik di sini',
             'confirm-pass' => 'Konfirmasi Kata Sandi',
             'email' => 'Email',
             'first-name' => 'Nama Depan',
-            'footer' => '© Hak Cipta 2010 - :current_year, Webkul Software (Terdaftar di India). Seluruh hak cipta dilindungi undang-undang.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'form-signup-text' => 'Jika Anda baru di toko kami, kami senang menyambut Anda sebagai anggota.',
             'last-name' => 'Nama Belakang',
             'page-title' => 'Daftar Pengguna',
@@ -73,6 +73,12 @@ return [
         ],
 
         'account' => [
+            'notifications' => [
+                'empty' => 'Anda belum menerima notifikasi.',
+                'from-admin' => 'Pesan dari tim Drall',
+                'title' => 'Notifikasi',
+            ],
+
             'home' => 'Beranda',
 
             'profile' => [
@@ -583,7 +589,7 @@ return [
                     'bottom' => [
                         'all' => 'Semua',
                         'back-button' => 'Kembali ke Menu Utama',
-                        'bagisto' => 'Bagisto',
+                        'bagisto' => 'Drall',
                         'categories' => 'Kategori',
                         'compare' => 'Bandingkan',
                         'dropdown-text' => 'Kelola Keranjang, Pesanan & Daftar Keinginan',
@@ -604,7 +610,7 @@ return [
                 'mobile' => [
                     'account' => 'Akun',
                     'back-button' => 'Kembali ke Menu Utama',
-                    'bagisto' => 'Bagisto',
+                    'bagisto' => 'Drall',
                     'compare' => 'Bandingkan',
                     'currencies' => 'Mata Uang',
                     'dropdown-text' => 'Kelola Keranjang, Pesanan & Daftar Keinginan',
@@ -644,7 +650,7 @@ return [
                 'customer-service' => 'Layanan Pelanggan',
                 'email' => 'Email',
                 'footer-content' => 'Konten Footer',
-                'footer-text' => '© Hak Cipta 2010 - :current_year, Webkul Software (Terdaftar di India). Seluruh hak cipta dilindungi undang-undang.',
+                'footer-text' => '© :current_year Drall. All rights reserved.',
                 'locale' => 'Bahasa',
                 'newsletter-text' => 'Bersiaplah untuk Newsletter Seru Kami!',
                 'order-return' => 'Pesanan dan Pengembalian',
@@ -1113,7 +1119,7 @@ return [
             'suspended-account-message' => 'Akun Anda telah ditangguhkan.',
 
             'index' => [
-                'bagisto' => 'Bagisto',
+                'bagisto' => 'Drall',
                 'cart' => 'Keranjang',
                 'continue-shopping' => 'Lanjut Belanja',
                 'empty-product' => 'Keranjang Anda masih kosong.',
@@ -1224,6 +1230,7 @@ return [
 
             'payment' => [
                 'payment-method' => 'Metode Pembayaran',
+                'no-methods' => 'Belum ada metode pembayaran yang dikonfigurasi. Pesanan tidak dapat diselesaikan.',
             ],
 
             'shipping' => [

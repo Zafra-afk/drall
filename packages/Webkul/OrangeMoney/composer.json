@@ -1,0 +1,25 @@
+{
+    "name": "bagisto/laravel-orange-money",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Bagisto",
+            "email": "support@bagisto.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Webkul\\OrangeMoney\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Webkul\\OrangeMoney\\Providers\\OrangeMoneyServiceProvider"
+            ],
+            "aliases": {}
+        }
+    },
+    "minimum-stability": "dev"
+}

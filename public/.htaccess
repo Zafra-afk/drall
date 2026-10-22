@@ -59,3 +59,22 @@
   AddOutputFilterByType DEFLATE text/javascript
   AddOutputFilterByType DEFLATE text/plain
 </IfModule>
+
+# PHP Upload and Memory Limits
+<IfModule mod_php.c>
+    php_value upload_max_filesize 16M
+    php_value post_max_size 64M
+    php_value memory_limit 512M
+    php_value max_file_uploads 20
+    php_value max_input_time 300
+    php_value max_execution_time 300
+</IfModule>
+
+<IfModule mod_php8.c>
+    php_value upload_max_filesize 16M
+    php_value post_max_size 64M
+    php_value memory_limit 512M
+    php_value max_file_uploads 20
+    php_value max_input_time 300
+    php_value max_execution_time 300
+</IfModule>

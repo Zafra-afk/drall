@@ -5,10 +5,10 @@ return [
         'forgot-password' => [
             'already-sent' => 'El correu de restabliment de contrasenya ja s’ha enviat.',
             'back' => 'Tornar a iniciar sessió',
-            'bagisto' => 'Bagisto',
+            'bagisto' => 'Drall',
             'email' => 'Correu electrònic',
             'email-not-exist' => 'No podem trobar un usuari amb aquesta adreça de correu electrònic.',
-            'footer' => '© Drets d’autor 2010 - :current_year, Webkul Software (Registrat a l’Índia). Tots els drets reservats.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-password-text' => 'Si heu oblidat la vostra contrasenya, recupereu-la introduint la vostra adreça de correu electrònic.',
             'page-title' => 'Heu oblidat la contrasenya?',
             'reset-link-sent' => 'Si aquesta adreça electrònica està registrada, s\'hi ha enviat un enllaç per restablir la contrasenya.',
@@ -20,21 +20,21 @@ return [
 
         'reset-password' => [
             'back-link-title' => 'Tornar a iniciar sessió',
-            'bagisto' => 'Bagisto',
+            'bagisto' => 'Drall',
             'confirm-password' => 'Confirmar contrasenya',
             'email' => 'Correu electrònic registrat',
-            'footer' => '© Drets d’autor 2010 - :current_year, Webkul Software (Registrada a l’Índia). Tots els drets reservats.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'password' => 'Contrasenya',
             'submit-btn-title' => 'Restablir contrasenya',
             'title' => 'Restablir contrasenya',
         ],
 
         'login-form' => [
-            'bagisto' => 'Bagisto',
+            'bagisto' => 'Drall',
             'button-title' => 'Iniciar sessió',
             'create-your-account' => 'Crea el teu compte',
             'email' => 'Correu electrònic',
-            'footer' => '© Drets d’autor 2010 - :current_year, Webkul Software (Registrada a l’Índia). Tots els drets reservats.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-pass' => 'Has oblidat la contrasenya?',
             'form-login-text' => 'Si tens un compte, inicia sessió amb la teva adreça de correu electrònic.',
             'invalid-credentials' => 'Si us plau, verifica les teves credencials i torna-ho a intentar.',
@@ -50,13 +50,13 @@ return [
 
         'signup-form' => [
             'account-exists' => 'Ja tens un compte?',
-            'bagisto' => 'Bagisto',
+            'bagisto' => 'Drall',
             'button-title' => 'Registrar-se',
             'click-here' => 'Clica aquí',
             'confirm-pass' => 'Confirmar contrasenya',
             'email' => 'Correu electrònic',
             'first-name' => 'Nom',
-            'footer' => '© Drets d’autor 2010 - :current_year, Webkul Software (Registrada a l’Índia). Tots els drets reservats.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'form-signup-text' => 'Si ets nou a la nostra botiga, estem encantats de tenir-te com a membre.',
             'last-name' => 'Cognom',
             'page-title' => 'Convertir-se en usuari',
@@ -73,6 +73,12 @@ return [
         ],
 
         'account' => [
+            'notifications' => [
+                'empty' => 'Encara no heu rebut cap notificació.',
+                'from-admin' => 'Missatge de l’equip Drall',
+                'title' => 'Notificacions',
+            ],
+
             'home' => 'Inici',
 
             'profile' => [
@@ -583,7 +589,7 @@ return [
                     'bottom' => [
                         'all' => 'Tot',
                         'back-button' => 'Torna al menú principal',
-                        'bagisto' => 'Bagisto',
+                        'bagisto' => 'Drall',
                         'categories' => 'Categories',
                         'compare' => 'Comparar',
                         'dropdown-text' => 'Gestiona la cistella, comandes i desitjats',
@@ -604,7 +610,7 @@ return [
                 'mobile' => [
                     'account' => 'Compte',
                     'back-button' => 'Torna al menú principal',
-                    'bagisto' => 'Bagisto',
+                    'bagisto' => 'Drall',
                     'compare' => 'Comparar',
                     'currencies' => 'Monedes',
                     'dropdown-text' => 'Gestiona la cistella, comandes i desitjats',
@@ -644,7 +650,7 @@ return [
                 'customer-service' => 'Atenció al client',
                 'email' => 'Correu electrònic',
                 'footer-content' => 'Contingut del peu de pàgina',
-                'footer-text' => '© Copyright 2010 - :current_year, Webkul Software (registrada a l’Índia). Tots els drets reservats.',
+                'footer-text' => '© :current_year Drall. All rights reserved.',
                 'locale' => 'Idioma',
                 'newsletter-text' => 'Prepara’t per al nostre divertit butlletí!',
                 'order-return' => 'Comandes i devolucions',
@@ -1113,7 +1119,7 @@ return [
             'suspended-account-message' => 'El teu compte ha estat suspès.',
 
             'index' => [
-                'bagisto' => 'Bagisto',
+                'bagisto' => 'Drall',
                 'cart' => 'Cistella',
                 'continue-shopping' => 'Continuar comprant',
                 'empty-product' => 'No tens productes a la teva cistella.',
@@ -1224,6 +1230,7 @@ return [
 
             'payment' => [
                 'payment-method' => 'Mètode de Pagament',
+                'no-methods' => 'No hi ha cap mètode de pagament configurat. No es pot completar la comanda.',
             ],
 
             'shipping' => [

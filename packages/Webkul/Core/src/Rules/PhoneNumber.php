@@ -8,20 +8,11 @@ use Illuminate\Contracts\Validation\ValidationRule;
 class PhoneNumber implements ValidationRule
 {
     /**
-     * Run the validation rule.
+     * Validate a phone number containing at least seven digits.
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        /**
-         * This regular expression allows phone numbers with the following conditions:
-         * - The phone number can start with an optional "+" sign.
-         * - It must contain at least one digit, and nothing but digits grouped by
-         *   spaces, dots, dashes and brackets.
-         *
-         * This validation is sufficient for global-level phone number validation. If
-         * someone wants to customize it, they can override this rule.
-         */
-        if (! preg_match('/^\+?[\s(]*\d[\d\s.\-()]*$/', $value)) {
+        if (! preg_match('/^\+?[\s(]*\d[\d\s.\-()]*$/', $value) || preg_match_all('/\d/', $value) < 7) {
             $fail('core::validation.phone-number')->translate();
         }
     }

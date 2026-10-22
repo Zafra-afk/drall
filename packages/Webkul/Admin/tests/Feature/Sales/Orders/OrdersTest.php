@@ -56,6 +56,17 @@ it('should return the order view page', function () {
         ->assertSeeText($order->customer_email);
 });
 
+it('should offer invoice and cancellation actions for a pending mobile-money order', function () {
+    $order = $this->createOrder(['payment_method' => 'mvola']);
+
+    $this->loginAsAdmin();
+
+    get(route('admin.sales.orders.view', $order->id))
+        ->assertOk()
+        ->assertSeeText(trans('admin::app.sales.invoices.create.invoice'))
+        ->assertSeeText(trans('admin::app.sales.orders.view.cancel'));
+});
+
 it('should return not found for an order that does not exist', function () {
     $this->loginAsAdmin();
 

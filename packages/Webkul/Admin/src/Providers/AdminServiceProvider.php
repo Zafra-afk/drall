@@ -10,6 +10,7 @@ use Webkul\Admin\CommandPalette\CommandPalette;
 use Webkul\Admin\CommandPalette\Providers\ActionProvider;
 use Webkul\Admin\CommandPalette\Providers\ConfigurationProvider;
 use Webkul\Admin\CommandPalette\Providers\NavigationProvider;
+use Webkul\Admin\Http\Middleware\Locale;
 use Webkul\Core\Http\Middleware\PreventRequestsDuringMaintenance;
 
 class AdminServiceProvider extends ServiceProvider
@@ -29,7 +30,7 @@ class AdminServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Route::middleware(['web', PreventRequestsDuringMaintenance::class])->group(__DIR__.'/../Routes/web.php');
+        Route::middleware(['web', Locale::class, PreventRequestsDuringMaintenance::class])->group(__DIR__.'/../Routes/web.php');
 
         $this->registerBroadcasting();
 
@@ -76,6 +77,25 @@ class AdminServiceProvider extends ServiceProvider
             dirname(__DIR__).'/Config/command-palette.php',
             'command_palette'
         );
+
+        $allowedPaymentMethods = config('app.allowed_payment_methods', []);
+
+        $coreConfig = collect(config('core', []))
+            ->reject(function (array $item) use ($allowedPaymentMethods) {
+                $key = $item['key'] ?? '';
+
+                return str_starts_with($key, 'sales.payment_methods.')
+                    && ! in_array(substr($key, strlen('sales.payment_methods.')), $allowedPaymentMethods, true);
+            })
+            ->values()
+            ->all();
+
+        config([
+            'core' => array_merge(
+                $coreConfig,
+                require dirname(__DIR__).'/Config/malagasy-payment-methods.php'
+            ),
+        ]);
     }
 
     /**

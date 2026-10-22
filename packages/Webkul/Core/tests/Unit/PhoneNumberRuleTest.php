@@ -24,6 +24,9 @@ it('should accept a phone number written with separators', function (string $val
     '06.12.34.56.78',
     '+1-800-555-0199',
     '+49 (0) 30 901820',
+    '+261 34 123 4567',
+    '034 12 345 67',
+    '+261.34.12.34.567',
 ]);
 
 it('should accept a phone number written as bare digits', function (string $value) {
@@ -31,6 +34,8 @@ it('should accept a phone number written as bare digits', function (string $valu
 })->with([
     '9876543210',
     '+919876543210',
+    '0341234567',
+    '+261341234567',
 ]);
 
 // ============================================================================

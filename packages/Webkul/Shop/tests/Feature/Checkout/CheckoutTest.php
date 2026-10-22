@@ -1,9 +1,12 @@
 <?php
 
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Webkul\Checkout\Models\Cart;
 use Webkul\Checkout\Models\CartAddress;
 use Webkul\Customer\Models\Customer;
+use Webkul\MVola\Payment\MVolaPayment;
 use Webkul\Product\Models\ProductOrderedInventory;
 use Webkul\Sales\Models\Order;
 use Webkul\Sales\Models\OrderItem;
@@ -38,6 +41,36 @@ function reservedQuantitiesFor(Order $order): Collection
                 ->sum('qty'),
         ]);
 }
+
+beforeEach(function () {
+    config([
+        'app.allowed_payment_methods' => [
+            'mvola',
+            'orange_money',
+            'airtel_money',
+            'cashondelivery',
+            'moneytransfer',
+        ],
+    ]);
+
+    $this->setConfig([
+        'sales.payment_methods.mvola.consumer_key' => '',
+        'sales.payment_methods.mvola.consumer_secret' => '',
+        'sales.payment_methods.mvola.merchant_number' => '',
+        'sales.payment_methods.mvola.partner_name' => '',
+        'sales.payment_methods.mvola.webhook_secret' => '',
+        'sales.payment_methods.orange_money.client_id' => '',
+        'sales.payment_methods.orange_money.client_secret' => '',
+        'sales.payment_methods.orange_money.merchant_key' => '',
+        'sales.payment_methods.orange_money.webhook_secret' => '',
+        'sales.payment_methods.airtel_money.client_id' => '',
+        'sales.payment_methods.airtel_money.client_secret' => '',
+        'sales.payment_methods.airtel_money.merchant_id' => '',
+        'sales.payment_methods.airtel_money.webhook_secret' => '',
+        'sales.payment_methods.cashondelivery.active' => '1',
+        'sales.payment_methods.moneytransfer.active' => '1',
+    ]);
+});
 
 // ============================================================================
 // Address Validation
@@ -257,6 +290,50 @@ it('should store the shipping method and offer the payment methods', function (b
     ]);
 })->with('shoppers');
 
+it('should explain when no payment method is configured and reject disabled methods', function () {
+    config([
+        'app.allowed_payment_methods' => [
+            'mvola',
+            'orange_money',
+            'airtel_money',
+        ],
+    ]);
+
+    $this->setConfig([
+        'sales.payment_methods.cashondelivery.active' => '0',
+        'sales.payment_methods.moneytransfer.active' => '0',
+    ]);
+
+    $product = $this->createSimpleProduct();
+
+    $cartId = $this->addProductToCart($product->id)->json('data.id');
+
+    postJson(route('shop.checkout.onepage.addresses.store'), [
+        'billing' => array_merge($this->storefrontAddress(), ['use_for_shipping' => true]),
+    ])->assertOk();
+
+    postJson(route('shop.checkout.onepage.shipping_methods.store'), [
+        'shipping_method' => 'free_free',
+    ])
+        ->assertOk()
+        ->assertJsonPath('payment_methods.0.method', 'mvola')
+        ->assertJsonPath('payment_methods.0.available', false)
+        ->assertJsonPath('payment_methods.1.method', 'orange_money')
+        ->assertJsonPath('payment_methods.1.available', false)
+        ->assertJsonPath('payment_methods.2.method', 'airtel_money')
+        ->assertJsonPath('payment_methods.2.available', false);
+
+    postJson(route('shop.checkout.onepage.payment_methods.store'), [
+        'payment' => ['method' => 'cashondelivery'],
+    ])->assertForbidden();
+
+    $this->assertDatabaseMissing('cart_payment', ['cart_id' => $cartId]);
+
+    get(route('shop.checkout.onepage.index'))
+        ->assertOk()
+        ->assertSee(trans('shop::app.checkout.onepage.payment.no-methods'));
+});
+
 it('should refuse a shipping method the store does not offer', function () {
     $product = $this->createSimpleProduct();
 
@@ -331,6 +408,49 @@ it('should refuse a payment method that is not available for the cart', function
     $this->assertDatabaseMissing('cart_payment', ['cart_id' => $cartId]);
 });
 
+it('should refuse a displayed Malagasy payment method until its merchant credentials are configured', function () {
+    config([
+        'app.allowed_payment_methods' => [
+            'mvola',
+            'orange_money',
+            'airtel_money',
+        ],
+    ]);
+
+    config([
+        'payment_methods.mvola.active' => true,
+        'payment_methods.mvola.consumer_key' => null,
+        'payment_methods.mvola.consumer_secret' => null,
+        'payment_methods.mvola.merchant_number' => null,
+        'payment_methods.mvola.partner_name' => null,
+        'payment_methods.mvola.webhook_secret' => null,
+    ]);
+
+    $product = $this->createSimpleProduct();
+
+    $cartId = $this->addProductToCart($product->id)->json('data.id');
+
+    postJson(route('shop.checkout.onepage.addresses.store'), [
+        'billing' => array_merge($this->storefrontAddress(), ['use_for_shipping' => true]),
+    ]);
+
+    postJson(route('shop.checkout.onepage.shipping_methods.store'), ['shipping_method' => 'free_free']);
+
+    postJson(route('shop.checkout.onepage.payment_methods.store'), [
+        'payment' => ['method' => 'mvola'],
+    ])
+        ->assertForbidden()
+        ->assertJsonPath('redirect_url', route('shop.checkout.cart.index'));
+
+    postJson(route('shop.checkout.onepage.payment_methods.store'), [
+        'payment' => ['method' => 'cashondelivery'],
+    ])
+        ->assertForbidden()
+        ->assertJsonPath('redirect_url', route('shop.checkout.cart.index'));
+
+    $this->assertDatabaseMissing('cart_payment', ['cart_id' => $cartId]);
+});
+
 // ============================================================================
 // Place Order
 // ============================================================================
@@ -375,6 +495,212 @@ it('should place an order for a signed-in customer and attach it to the account'
         ->customer_email->toBe($customer->email);
 
     expect($customer->orders()->pluck('id')->all())->toBe([$order->id]);
+});
+
+it('should save a Malagasy mobile-money order before redirecting the customer to payment', function () {
+    config(['payment_methods.mvola.active' => true]);
+
+    $payment = Mockery::mock(MVolaPayment::class)->makePartial();
+    $payment->shouldReceive('isAvailable')->andReturnTrue();
+    $payment->shouldReceive('getRedirectUrl')->andReturn(route('mvola.redirect'));
+
+    $this->app->instance(MVolaPayment::class, $payment);
+
+    $product = $this->createSimpleProduct();
+
+    $cartId = $this->prepareCartForCheckout(
+        $product->id,
+        paymentMethod: 'mvola',
+    );
+
+    postJson(route('shop.checkout.onepage.orders.store'))
+        ->assertOk()
+        ->assertJsonPath('data.redirect', true)
+        ->assertJsonPath('data.redirect_url', route('mvola.redirect'));
+
+    $order = Order::query()->where('cart_id', $cartId)->firstOrFail();
+
+    expect($order->status)->toBe(Order::STATUS_PENDING)
+        ->and($order->payment->method)->toBe('mvola');
+
+    $this->assertDatabaseHas('cart', [
+        'id' => $cartId,
+        'is_active' => true,
+    ]);
+});
+
+it('should rebase a pending order created with the previous store currency before retrying payment', function () {
+    config(['payment_methods.mvola.active' => true]);
+
+    $payment = Mockery::mock(MVolaPayment::class)->makePartial();
+    $payment->shouldReceive('isAvailable')->andReturnTrue();
+    $payment->shouldReceive('getRedirectUrl')->andReturn(route('mvola.redirect'));
+
+    $this->app->instance(MVolaPayment::class, $payment);
+
+    $product = $this->createSimpleProduct();
+
+    $cartId = $this->prepareCartForCheckout(
+        $product->id,
+        paymentMethod: 'mvola',
+    );
+
+    postJson(route('shop.checkout.onepage.orders.store'))->assertOk();
+
+    $previousOrder = Order::query()->where('cart_id', $cartId)->firstOrFail();
+
+    DB::table('cart')
+        ->where('id', $cartId)
+        ->update([
+            'global_currency_code' => 'USD',
+            'base_currency_code' => 'USD',
+            'channel_currency_code' => 'USD',
+            'exchange_rate' => null,
+        ]);
+
+    DB::table('orders')
+        ->where('id', $previousOrder->id)
+        ->update([
+            'base_currency_code' => 'USD',
+            'channel_currency_code' => 'USD',
+        ]);
+
+    postJson(route('shop.checkout.onepage.orders.store'))
+        ->assertOk()
+        ->assertJsonPath('data.redirect_url', route('mvola.redirect'));
+
+    $previousOrder->refresh();
+    $newOrder = Order::query()->where('cart_id', $cartId)->where('status', Order::STATUS_PENDING)->firstOrFail();
+    $cart = Cart::query()->findOrFail($cartId);
+
+    expect($previousOrder->status)->toBe(Order::STATUS_CANCELED)
+        ->and($newOrder->base_currency_code)->toBe('MGA')
+        ->and($newOrder->order_currency_code)->toBe('MGA')
+        ->and($cart->base_currency_code)->toBe('MGA')
+        ->and($cart->channel_currency_code)->toBe('MGA');
+
+    postJson(route('shop.checkout.onepage.orders.store'))
+        ->assertOk()
+        ->assertJsonPath('data.redirect_url', route('mvola.redirect'));
+
+    expect(Order::query()->where('cart_id', $cartId)->count())->toBe(2)
+        ->and(Order::query()->where('cart_id', $cartId)->where('status', Order::STATUS_PENDING)->count())->toBe(1);
+});
+
+it('should ignore zero-quantity cart items when recovering stale currency metadata', function () {
+    config(['payment_methods.mvola.active' => true]);
+
+    $payment = Mockery::mock(MVolaPayment::class)->makePartial();
+    $payment->shouldReceive('isAvailable')->andReturnTrue();
+    $payment->shouldReceive('getRedirectUrl')->andReturn(route('mvola.redirect'));
+
+    $this->app->instance(MVolaPayment::class, $payment);
+
+    $product = $this->createSimpleProduct();
+    $cartId = $this->prepareCartForCheckout($product->id, paymentMethod: 'mvola');
+
+    postJson(route('shop.checkout.onepage.orders.store'))->assertOk();
+
+    $cart = Cart::query()->findOrFail($cartId);
+    $inactiveItem = $cart->items->first()->replicate();
+    $inactiveItem->quantity = 0;
+    $inactiveItem->price = 1;
+    $inactiveItem->base_price = 0;
+    $inactiveItem->save();
+
+    DB::table('cart')
+        ->where('id', $cartId)
+        ->update([
+            'global_currency_code' => 'USD',
+            'base_currency_code' => 'USD',
+            'channel_currency_code' => 'USD',
+            'exchange_rate' => null,
+        ]);
+
+    postJson(route('shop.checkout.onepage.orders.store'))
+        ->assertOk()
+        ->assertJsonPath('data.redirect_url', route('mvola.redirect'));
+
+    $this->assertDatabaseHas('cart', [
+        'id' => $cartId,
+        'base_currency_code' => 'MGA',
+    ]);
+});
+
+it('should not rebase a stale-currency cart when its shipping amounts differ', function () {
+    config(['payment_methods.mvola.active' => true]);
+
+    $payment = Mockery::mock(MVolaPayment::class)->makePartial();
+    $payment->shouldReceive('isAvailable')->andReturnTrue();
+    $payment->shouldReceive('getRedirectUrl')->andReturn(route('mvola.redirect'));
+
+    $this->app->instance(MVolaPayment::class, $payment);
+
+    $product = $this->createSimpleProduct();
+    $cartId = $this->prepareCartForCheckout($product->id, paymentMethod: 'mvola');
+
+    postJson(route('shop.checkout.onepage.orders.store'))->assertOk();
+
+    $order = Order::query()->where('cart_id', $cartId)->firstOrFail();
+
+    DB::table('cart')
+        ->where('id', $cartId)
+        ->update([
+            'global_currency_code' => 'USD',
+            'base_currency_code' => 'USD',
+            'channel_currency_code' => 'USD',
+            'shipping_amount' => 2,
+            'base_shipping_amount' => 1,
+        ]);
+
+    postJson(route('shop.checkout.onepage.orders.store'))
+        ->assertUnprocessable();
+
+    expect($order->fresh()->status)->toBe(Order::STATUS_PENDING);
+
+    $this->assertDatabaseHas('cart', [
+        'id' => $cartId,
+        'base_currency_code' => 'USD',
+        'shipping_amount' => 2,
+        'base_shipping_amount' => 1,
+    ]);
+});
+
+it('should return to the success page when retrying an already completed order', function () {
+    config(['payment_methods.mvola.active' => true]);
+
+    $payment = Mockery::mock(MVolaPayment::class)->makePartial();
+    $payment->shouldReceive('isAvailable')->andReturnTrue();
+    $payment->shouldReceive('getRedirectUrl')->andReturn(route('mvola.redirect'));
+
+    $this->app->instance(MVolaPayment::class, $payment);
+
+    $product = $this->createSimpleProduct();
+    $cartId = $this->prepareCartForCheckout($product->id, paymentMethod: 'mvola');
+
+    postJson(route('shop.checkout.onepage.orders.store'))->assertOk();
+
+    $order = Order::query()->where('cart_id', $cartId)->firstOrFail();
+    $order->update(['status' => Order::STATUS_COMPLETED]);
+
+    DB::table('cart')
+        ->where('id', $cartId)
+        ->update([
+            'global_currency_code' => 'USD',
+            'base_currency_code' => 'USD',
+            'channel_currency_code' => 'USD',
+            'exchange_rate' => null,
+        ]);
+
+    postJson(route('shop.checkout.onepage.orders.store'))
+        ->assertOk()
+        ->assertJsonPath('data.redirect_url', route('shop.checkout.onepage.success'));
+
+    $this->assertDatabaseHas('cart', [
+        'id' => $cartId,
+        'base_currency_code' => 'MGA',
+        'is_active' => false,
+    ]);
 });
 
 it('should place an order for a product of every type', function (string $type) {
@@ -449,7 +775,7 @@ it('should refuse to place the order when the customer account is suspended', fu
     $this->prepareCartForCheckout($product->id);
 
     postJson(route('shop.checkout.onepage.orders.store'))
-        ->assertServerError()
+        ->assertUnprocessable()
         ->assertJsonPath('message', trans('shop::app.checkout.cart.suspended-account-message'));
 
     $this->assertDatabaseMissing('orders', ['customer_email' => auth()->guard('customer')->user()->email]);
@@ -487,7 +813,7 @@ it('should refuse to place the order before a payment method is chosen', functio
     postJson(route('shop.checkout.onepage.shipping_methods.store'), ['shipping_method' => 'free_free']);
 
     postJson(route('shop.checkout.onepage.orders.store'))
-        ->assertServerError()
+        ->assertUnprocessable()
         ->assertJsonPath('message', trans('shop::app.checkout.cart.specify-payment-method'));
 
     $this->assertDatabaseMissing('orders', ['customer_email' => $address['email']]);

@@ -233,18 +233,37 @@
 
                         this.$axios.post('{{ route('shop.checkout.onepage.orders.store') }}')
                             .then(response => {
-                                if (response.data.data.redirect) {
-                                    window.location.href = response.data.data.redirect_url;
-                                } else {
-                                    window.location.href = '{{ route('shop.checkout.onepage.success') }}';
-                                }
+                                const result = response.data.data;
 
                                 this.isPlacingOrder = false;
+
+                                if (result.message) {
+                                    this.$emitter.emit('add-flash', { type: 'error', message: result.message });
+
+                                    this.getCart();
+
+                                    return;
+                                }
+
+                                if (result.redirect && result.redirect_url) {
+                                    window.location.href = result.redirect_url;
+
+                                    return;
+                                }
+
+                                this.$emitter.emit('add-flash', {
+                                    type: 'error',
+                                    message: "{{ trans('shop::app.checkout.cart.remove-error') }}",
+                                });
                             })
                             .catch(error => {
-                                this.isPlacingOrder = false
+                                this.isPlacingOrder = false;
 
-                                this.$emitter.emit('add-flash', { type: 'error', message: error.response.data.message });
+                                this.$emitter.emit('add-flash', {
+                                    type: 'error',
+                                    message: error.response?.data?.message
+                                        || "{{ trans('shop::app.checkout.cart.remove-error') }}",
+                                });
                             });
                     }
                 },

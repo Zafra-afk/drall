@@ -176,7 +176,7 @@
 
             data() {
                 return {
-                    selectedCountry: '',
+                    selectedCountry: '{{ config('app.default_country') }}',
 
                     selectedState: '',
 
@@ -206,7 +206,11 @@
                 getCountries() {
                     this.$axios.get("{{ route('shop.api.core.countries') }}")
                         .then(response => {
-                            this.countries = response.data.data;
+                            this.countries = response.data.data.sort((a, b) => {
+                                if (a.code === '{{ config('app.default_country') }}') return -1;
+                                if (b.code === '{{ config('app.default_country') }}') return 1;
+                                return a.name.localeCompare(b.name);
+                            });
                         })
                         .catch(() => {});
                 },

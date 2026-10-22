@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Storage;
 use Webkul\Core\Models\CoreConfig;
+use Webkul\MVola\Payment\MVolaPayment;
 
 use function Pest\Laravel\get;
 use function Pest\Laravel\postJson;
@@ -37,6 +38,51 @@ it('should list every section when no section is asked for', function () {
     get(route('admin.configuration.index'))
         ->assertOk()
         ->assertSeeText(trans('admin::app.configuration.index.title'));
+});
+
+it('should expose only Malagasy payment methods in administrator configuration', function () {
+    $this->loginAsAdmin();
+
+    get(route('admin.configuration.index', ['sales', 'payment_methods']))
+        ->assertOk()
+        ->assertSeeText('MVola')
+        ->assertSeeText('Orange Money')
+        ->assertSeeText('Airtel Money')
+        ->assertDontSeeText('Stripe')
+        ->assertDontSeeText('Razorpay')
+        ->assertDontSeeText('PayPal')
+        ->assertDontSeeText('PayU')
+        ->assertDontSeeText('PhonePe')
+        ->assertDontSeeText('Paiement à la livraison')
+        ->assertDontSeeText('Virement bancaire');
+});
+
+it('should save Malagasy payment credentials from administrator configuration', function () {
+    $this->loginAsAdmin();
+
+    postJson(route('admin.configuration.store', ['sales', 'payment_methods']), [
+        'sales' => [
+            'payment_methods' => [
+                'mvola' => [
+                    'active' => 1,
+                    'consumer_key' => 'test-consumer-key',
+                    'consumer_secret' => 'test-consumer-secret',
+                    'merchant_number' => '0340000000',
+                    'partner_name' => 'Drall',
+                    'webhook_secret' => 'test-webhook-secret',
+                ],
+                'orange_money' => ['active' => 0],
+                'airtel_money' => ['active' => 0],
+            ],
+        ],
+    ])->assertRedirect();
+
+    $this->assertDatabaseHas('core_config', [
+        'code' => 'sales.payment_methods.mvola.consumer_key',
+        'value' => 'test-consumer-key',
+    ]);
+
+    expect(app(MVolaPayment::class)->getConsumerKey())->toBe('test-consumer-key');
 });
 
 it('should deny guest access to the configuration page', function () {

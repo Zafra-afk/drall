@@ -17,6 +17,7 @@ import hi_IN from "../../locales/hi_IN.json";
 import id from "@vee-validate/i18n/dist/locale/id.json";
 import it from "@vee-validate/i18n/dist/locale/it.json";
 import ja from "@vee-validate/i18n/dist/locale/ja.json";
+import mg from "../../locales/mg.json";
 import nl from "@vee-validate/i18n/dist/locale/nl.json";
 import pl from "@vee-validate/i18n/dist/locale/pl.json";
 import pt_BR from "@vee-validate/i18n/dist/locale/pt_BR.json";
@@ -349,6 +350,18 @@ export default {
                         decimal: "この{field}は有効な10進数である必要があります。",
                         phone: "この{field}は有効な電話番号である必要があります。",
                         regex_pattern: "この {field} は区切り文字を含む有効な正規表現である必要があります。",
+                    },
+                },
+
+                mg: {
+                    ...mg,
+                    messages: {
+                        ...mg.messages,
+                        comma_separated_integer: "Ny {field} dia tokony ho isa feno sarahan'ny faingo.",
+                        date_format: "Ny {field} dia tokony ho endri-potoana manan-kery (oh: 23:59).",
+                        decimal: "Ny {field} dia tokony ho isa misy faingo manan-kery.",
+                        phone: "Ny {field} dia tokony ho laharana finday manan-kery.",
+                        regex_pattern: "Ny {field} dia tokony ho fomba fanoratana (regex) manan-kery.",
                     },
                 },
 

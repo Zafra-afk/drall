@@ -21,7 +21,7 @@
                 />
             @else
                 <img
-                    src="{{ request()->cookie('dark_mode') ? bagisto_asset('images/dark-logo.svg') : bagisto_asset('images/logo.svg') }}"
+                    src="{{ (int) request()->cookie('dark_mode') === 1 ? bagisto_asset('images/dark-logo.svg') : bagisto_asset('images/logo.svg') }}"
                     class="h-8 w-auto sm:h-10"
                     id="logo-image"
                     alt="{{ config('app.name') }}"
@@ -48,11 +48,24 @@
     </div>
 
     <div class="flex items-center gap-1 sm:gap-2.5">
+        <label class="sr-only" for="admin-locale-switcher">Langue / Fiteny</label>
+        <select
+            id="admin-locale-switcher"
+            class="rounded-md border border-gray-300 bg-white px-2 py-1.5 text-sm text-gray-700 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-200"
+            onchange="const url = new URL(window.location.href); url.searchParams.set('admin_locale', this.value); window.location.assign(url.toString());"
+        >
+            @foreach (config('app.allowed_locales', ['fr']) as $locale)
+                <option value="{{ $locale }}" @selected(app()->getLocale() === $locale)>
+                    {{ $locale === 'fr' ? 'Français' : 'Malagasy' }}
+                </option>
+            @endforeach
+        </select>
+
         <!-- Dark Mode Switcher -->
         <v-dark>
             <div class="flex">
                 <span
-                    class="{{ request()->cookie('dark_mode') ? 'icon-light' : 'icon-dark' }} cursor-pointer rounded-md p-1.5 text-xl transition-all hover:bg-gray-100 dark:hover:bg-gray-950 sm:text-2xl"
+                    class="{{ (int) request()->cookie('dark_mode') === 1 ? 'icon-light' : 'icon-dark' }} cursor-pointer rounded-md p-1.5 text-xl transition-all hover:bg-gray-100 dark:hover:bg-gray-950 sm:text-2xl"
                 ></span>
             </div>
         </v-dark>
@@ -104,10 +117,11 @@
             <x-slot:content class="p-0!">
                 <div class="flex items-center gap-1.5 border border-b-gray-300 px-4 py-2 dark:border-gray-800 sm:px-5 sm:py-2.5">
                     <img
-                        src="{{ url('cache/logo/bagisto.png') }}"
+                        src="{{ bagisto_asset('images/favicon.ico') }}"
                         class="sm:h-6 sm:w-6"
                         width="20"
                         height="20"
+                        alt="{{ config('app.name') }}"
                     />
 
                     <!-- Version -->
@@ -162,7 +176,7 @@
                 />
             @else
                 <img
-                    src="{{ request()->cookie('dark_mode') ? bagisto_asset('images/dark-logo.svg') : bagisto_asset('images/logo.svg') }}"
+                    src="{{ (int) request()->cookie('dark_mode') === 1 ? bagisto_asset('images/dark-logo.svg') : bagisto_asset('images/logo.svg') }}"
                     class="h-8 w-auto sm:h-10"
                     id="logo-image"
                     alt="{{ config('app.name') }}"
@@ -894,7 +908,7 @@
 
             data() {
                 return {
-                    isDarkMode: {{ request()->cookie('dark_mode') ?? 0 }},
+                    isDarkMode: this.getInitialDarkMode(),
 
                     logo: "{{ bagisto_asset('images/logo.svg') }}",
 
@@ -903,8 +917,22 @@
             },
 
             methods: {
+                getInitialDarkMode() {
+                    const cookie = this.isDarkModeCookie();
+
+                    if (cookie === '1') {
+                        return 1;
+                    }
+
+                    if (cookie === '0') {
+                        return 0;
+                    }
+
+                    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 1 : 0;
+                },
+
                 toggle() {
-                    this.isDarkMode = parseInt(this.isDarkModeCookie()) ? 0 : 1;
+                    this.isDarkMode = this.isDarkMode ? 0 : 1;
 
                     var expiryDate = new Date();
 
@@ -917,11 +945,19 @@
                     if (this.isDarkMode) {
                         this.$emitter.emit('change-theme', 'dark');
 
-                        document.getElementById('logo-image').src = this.dark_logo;
+                        const logo = document.getElementById('logo-image');
+
+                        if (logo) {
+                            logo.src = this.dark_logo;
+                        }
                     } else {
                         this.$emitter.emit('change-theme', 'light');
 
-                        document.getElementById('logo-image').src = this.logo;
+                        const logo = document.getElementById('logo-image');
+
+                        if (logo) {
+                            logo.src = this.logo;
+                        }
                     }
                 },
 
@@ -936,7 +972,7 @@
                         }
                     }
 
-                    return 0;
+                    return null;
                 },
             },
         });

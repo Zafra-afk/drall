@@ -5,10 +5,10 @@ return [
         'forgot-password' => [
             'already-sent' => 'כבר איפוס סיסמה נשלח דואר.',
             'back' => 'חזרה להתחברות?',
-            'bagisto' => 'בַּגִּיסְטוֹ',
+            'bagisto' => 'Drall',
             'email' => 'אימייל',
             'email-not-exist' => 'אנחנו לא מוצאים משתמש עם כתובת הדוא"ל הזו.',
-            'footer' => '© זכויות יוצרים 2010 - :current_year, Webkul Software (רשומה בהודו). כל הזכויות שמורות.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-password-text' => 'אם שכחת את הסיסמה שלך, ניתן לשחזר אותה על ידי הזנת כתובת האימייל שלך.',
             'page-title' => 'שכחת את הסיסמה שלך?',
             'reset-link-sent' => 'אם כתובת האימייל הזו רשומה, נשלח אליה קישור לאיפוס הסיסמה.',
@@ -20,21 +20,21 @@ return [
 
         'reset-password' => [
             'back-link-title' => 'חזרה להתחברות',
-            'bagisto' => 'בַּגִּיסְטוֹ',
+            'bagisto' => 'Drall',
             'confirm-password' => 'אימות סיסמה',
             'email' => 'אימייל רשום',
-            'footer' => '© זכויות יוצרים 2010 - :current_year, Webkul Software (רשומה בהודו). כל הזכויות שמורות.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'password' => 'סיסמה',
             'submit-btn-title' => 'איפוס סיסמה',
             'title' => 'איפוס סיסמה',
         ],
 
         'login-form' => [
-            'bagisto' => 'בַּגִּיסְטוֹ',
+            'bagisto' => 'Drall',
             'button-title' => 'התחברות',
             'create-your-account' => 'צור את החשבון שלך',
             'email' => 'אימייל',
-            'footer' => '© זכויות יוצרים 2010 - :current_year, Webkul Software (רשומה בהודו). כל הזכויות שמורות.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-pass' => 'שכחת סיסמה?',
             'form-login-text' => 'אם יש לך חשבון, התחבר עם כתובת האימייל שלך.',
             'invalid-credentials' => 'אנא בדוק את הפרטים שלך ונסה שוב.',
@@ -50,13 +50,13 @@ return [
 
         'signup-form' => [
             'account-exists' => 'כבר יש לך חשבון?',
-            'bagisto' => 'בַּגִּיסְטוֹ',
+            'bagisto' => 'Drall',
             'button-title' => 'הירשם',
             'click-here' => 'לחץ כאן',
             'confirm-pass' => 'אימות סיסמה',
             'email' => 'אימייל',
             'first-name' => 'שם פרטי',
-            'footer' => '© זכויות יוצרים 2010 - :current_year, Webkul Software (רשומה בהודו). כל הזכויות שמורות.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'form-signup-text' => 'אם אתה חדש בחנות שלנו, אנחנו שמחים לראותך כחבר.',
             'last-name' => 'שם משפחה',
             'page-title' => 'הצטרף כלקוח',
@@ -73,6 +73,12 @@ return [
         ],
 
         'account' => [
+            'notifications' => [
+                'empty' => 'עדיין לא קיבלת התראות.',
+                'from-admin' => 'הודעה מצוות Drall',
+                'title' => 'התראות',
+            ],
+
             'home' => 'בית',
 
             'profile' => [
@@ -583,7 +589,7 @@ return [
                     'bottom' => [
                         'all' => 'הכל',
                         'back-button' => 'חזרה לתפריט הראשי',
-                        'bagisto' => 'באגיסטו',
+                        'bagisto' => 'Drall',
                         'categories' => 'קטגוריות',
                         'compare' => 'השווה',
                         'dropdown-text' => 'ניהול עגלה, הזמנות ורשימת משאלות',
@@ -604,7 +610,7 @@ return [
                 'mobile' => [
                     'account' => 'חשבון',
                     'back-button' => 'חזרה לתפריט הראשי',
-                    'bagisto' => 'באגיסטו',
+                    'bagisto' => 'Drall',
                     'compare' => 'השווה',
                     'currencies' => 'מטבעות',
                     'dropdown-text' => 'ניהול עגלה, הזמנות ורשימת משאלות',
@@ -644,7 +650,7 @@ return [
                 'customer-service' => 'שירות לקוחות',
                 'email' => 'אימייל',
                 'footer-content' => 'תוכן תחתית הדף',
-                'footer-text' => '© זכויות יוצרים 2010 - :current_year, Webkul Software (רשומה בהודו). כל הזכויות שמורות.',
+                'footer-text' => '© :current_year Drall. All rights reserved.',
                 'locale' => 'אזור',
                 'newsletter-text' => 'הכנסו לרשימת התפוצה שלנו וקבלו עדכונים והצעות מרשימות!',
                 'order-return' => 'הזמנה והחזרה',
@@ -1113,7 +1119,7 @@ return [
             'suspended-account-message' => 'החשבון שלך הושבת.',
 
             'index' => [
-                'bagisto' => 'בַּגִּיסְטוֹ',
+                'bagisto' => 'Drall',
                 'cart' => 'עגלת קניות',
                 'continue-shopping' => 'המשך לקנות',
                 'empty-product' => 'אין לך מוצר בעגלה שלך.',
@@ -1224,6 +1230,7 @@ return [
 
             'payment' => [
                 'payment-method' => 'אמצעי תשלום',
+                'no-methods' => 'לא הוגדר אמצעי תשלום. לא ניתן להשלים את ההזמנה כרגע.',
             ],
 
             'shipping' => [

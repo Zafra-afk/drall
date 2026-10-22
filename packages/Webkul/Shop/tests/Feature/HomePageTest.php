@@ -122,7 +122,7 @@ it('should add a product to the compare list', function () {
         'product_id' => $product->id,
     ])
         ->assertOk()
-        ->assertSeeText(trans('shop::app.compare.item-add-success'));
+        ->assertJsonPath('data.message', trans('shop::app.compare.item-add-success'));
 });
 
 it('should fail validation when product_id is missing on compare store', function () {

@@ -90,7 +90,7 @@
 
             data() {
                 return {
-                    report: [],
+                    report: null,
 
                     isLoading: true,
                 }
@@ -118,7 +118,7 @@
 
                             this.isLoading = false;
                         })
-                        .catch(error => {});
+                        .catch(error => { this.isLoading = false; });
                 }
             }
         });

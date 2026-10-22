@@ -294,13 +294,17 @@
                     @lang('shop::app.checkout.onepage.address.phone')
                 </x-shop::form.control-group.label>
 
+                <p class="text-xs text-zinc-500 mb-1" v-if="selectedCountry === 'MG'">
+                    +261 XX XX XXX XX
+                </p>
+
                 <x-shop::form.control-group.control
                     type="text"
                     ::name="controlName + '.phone'"
                     ::value="address.phone"
                     rules="required|phone"
                     :label="trans('shop::app.checkout.onepage.address.phone')"
-                    :placeholder="trans('shop::app.checkout.onepage.address.phone')"
+                    placeholder="+261 XX XX XXX XX"
                     ::id="controlName + '_phone'"
                 />
 
@@ -342,7 +346,7 @@
 
             data() {
                 return {
-                    selectedCountry: this.address.country,
+                    selectedCountry: this.address.country || '{{ config('app.default_country') }}',
 
                     selectedState: this.address.state,
 
@@ -368,7 +372,11 @@
                 getCountries() {
                     this.$axios.get("{{ route('shop.api.core.countries') }}")
                         .then(response => {
-                            this.countries = response.data.data;
+                            this.countries = response.data.data.sort((a, b) => {
+                                if (a.code === 'MG') return -1;
+                                if (b.code === 'MG') return 1;
+                                return a.name.localeCompare(b.name);
+                            });
                         })
                         .catch(() => {});
                 },

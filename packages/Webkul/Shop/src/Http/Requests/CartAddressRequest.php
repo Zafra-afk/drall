@@ -3,6 +3,7 @@
 namespace Webkul\Shop\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use Webkul\Checkout\Facades\Cart;
 use Webkul\Core\Rules\PhoneNumber;
 use Webkul\Core\Rules\PostCode;
@@ -50,6 +51,13 @@ class CartAddressRequest extends FormRequest
      */
     private function mergeAddressRules(string $addressType): void
     {
+        $countryRules = core()->isCountryRequired() ? ['required'] : ['nullable'];
+        $storefrontCountries = config('app.storefront_countries', []);
+
+        if ($storefrontCountries) {
+            $countryRules[] = Rule::in($storefrontCountries);
+        }
+
         $this->mergeWithRules([
             "{$addressType}.company_name" => ['nullable'],
             "{$addressType}.first_name" => ['required'],
@@ -57,7 +65,7 @@ class CartAddressRequest extends FormRequest
             "{$addressType}.email" => ['required'],
             "{$addressType}.address" => ['required', 'array', 'min:1'],
             "{$addressType}.city" => ['required'],
-            "{$addressType}.country" => core()->isCountryRequired() ? ['required'] : ['nullable'],
+            "{$addressType}.country" => $countryRules,
             "{$addressType}.state" => [
                 core()->isStateRequired() ? 'required' : 'nullable',
                 new StateBelongsToCountry($this->input("{$addressType}.country")),

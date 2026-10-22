@@ -1,5 +1,11 @@
 {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.before') !!}
 
+@php
+    $customerNotificationCount = auth()->guard('customer')->check()
+        ? auth()->guard('customer')->user()->notes()->where('customer_notified', true)->whereNull('customer_read_at')->count()
+        : 0;
+@endphp
+
 <div class="flex min-h-19.5 w-full justify-between border border-b border-l-0 border-r-0 border-t-0 px-15 max-1180:px-8">
     <!--
         This section will provide categories for the first, second, and third levels. If
@@ -138,6 +144,27 @@
             @endif
 
             {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.mini_cart.after') !!}
+
+            @auth('customer')
+                <a
+                    href="{{ route('shop.customers.account.notifications.index') }}"
+                    class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navyBlue dark:text-gray-200 dark:hover:bg-gray-800"
+                    aria-label="@lang('shop::app.customers.account.notifications.title')"
+                    title="@lang('shop::app.customers.account.notifications.title')"
+                >
+                    <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.4-1.4A2 2 0 0 1 18 14.2V11a6 6 0 0 0-4.5-5.8V4a1.5 1.5 0 0 0-3 0v1.2A6 6 0 0 0 6 11v3.2a2 2 0 0 1-.6 1.4L4 17h5m6 0a3 3 0 0 1-6 0m6 0H9" />
+                    </svg>
+
+                    @if ($customerNotificationCount)
+                        <span class="absolute -right-1 -top-1 min-w-5 rounded-full bg-red-600 px-1 text-center text-xs leading-5 text-white">
+                            {{ $customerNotificationCount > 99 ? '99+' : $customerNotificationCount }}
+                        </span>
+                    @endif
+                </a>
+            @endauth
+
+            <v-dark></v-dark>
 
             {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.profile.before') !!}
 

@@ -5,10 +5,10 @@ return [
         'forgot-password' => [
             'already-sent' => 'E-Mail zum Zurücksetzen des Passworts wurde bereits gesendet.',
             'back' => 'Zurück zur Anmeldung?',
-            'bagisto' => 'Bagisto',
+            'bagisto' => 'Drall',
             'email' => 'E-Mail',
             'email-not-exist' => 'Wir konnten keinen Benutzer mit dieser E-Mail-Adresse finden.',
-            'footer' => '© Copyright 2010 - :current_year, Webkul Software (in Indien registriert). Alle Rechte vorbehalten.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-password-text' => 'Wenn Sie Ihr Passwort vergessen haben, stellen Sie es wieder her, indem Sie Ihre E-Mail-Adresse eingeben.',
             'page-title' => 'Passwort vergessen?',
             'reset-link-sent' => 'Wenn diese E-Mail-Adresse registriert ist, wurde ein Link zum Zurücksetzen des Passworts an sie gesendet.',
@@ -20,21 +20,21 @@ return [
 
         'reset-password' => [
             'back-link-title' => 'Zurück zur Anmeldung',
-            'bagisto' => 'Bagisto',
+            'bagisto' => 'Drall',
             'confirm-password' => 'Passwort bestätigen',
             'email' => 'Registrierte E-Mail',
-            'footer' => '© Copyright 2010 - :current_year, Webkul Software (in Indien registriert). Alle Rechte vorbehalten.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'password' => 'Passwort',
             'submit-btn-title' => 'Passwort zurücksetzen',
             'title' => 'Passwort zurücksetzen',
         ],
 
         'login-form' => [
-            'bagisto' => 'Bagisto',
+            'bagisto' => 'Drall',
             'button-title' => 'Anmelden',
             'create-your-account' => 'Erstellen Sie Ihr Konto',
             'email' => 'E-Mail',
-            'footer' => '© Copyright 2010 - :current_year, Webkul Software (in Indien registriert). Alle Rechte vorbehalten.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-pass' => 'Passwort vergessen?',
             'form-login-text' => 'Wenn Sie bereits ein Konto haben, melden Sie sich mit Ihrer E-Mail-Adresse an.',
             'invalid-credentials' => 'Bitte überprüfen Sie Ihre Anmeldedaten und versuchen Sie es erneut.',
@@ -50,13 +50,13 @@ return [
 
         'signup-form' => [
             'account-exists' => 'Bereits ein Konto?',
-            'bagisto' => 'Bagisto',
+            'bagisto' => 'Drall',
             'button-title' => 'Registrieren',
             'click-here' => 'Hier klicken',
             'confirm-pass' => 'Passwort bestätigen',
             'email' => 'E-Mail',
             'first-name' => 'Vorname',
-            'footer' => '© Copyright 2010 - :current_year, Webkul Software (in Indien registriert). Alle Rechte vorbehalten.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'form-signup-text' => 'Wenn Sie neu in unserem Geschäft sind, freuen wir uns, Sie als Mitglied begrüßen zu dürfen.',
             'last-name' => 'Nachname',
             'page-title' => 'Benutzer werden',
@@ -73,6 +73,12 @@ return [
         ],
 
         'account' => [
+            'notifications' => [
+                'empty' => 'Sie haben noch keine Benachrichtigungen erhalten.',
+                'from-admin' => 'Nachricht vom Drall-Team',
+                'title' => 'Benachrichtigungen',
+            ],
+
             'home' => 'Startseite',
 
             'profile' => [
@@ -583,7 +589,7 @@ return [
                     'bottom' => [
                         'all' => 'Alle',
                         'back-button' => 'Zurück zum Hauptmenü',
-                        'bagisto' => 'Bagisto',
+                        'bagisto' => 'Drall',
                         'categories' => 'Kategorien',
                         'compare' => 'Vergleichen',
                         'dropdown-text' => 'Warenkorb, Bestellungen & Wunschliste verwalten',
@@ -604,7 +610,7 @@ return [
                 'mobile' => [
                     'account' => 'Konto',
                     'back-button' => 'Zurück zum Hauptmenü',
-                    'bagisto' => 'Bagisto',
+                    'bagisto' => 'Drall',
                     'compare' => 'Vergleichen',
                     'currencies' => 'Währungen',
                     'dropdown-text' => 'Warenkorb, Bestellungen & Wunschliste verwalten',
@@ -644,7 +650,7 @@ return [
                 'customer-service' => 'Kundenservice',
                 'email' => 'E-Mail',
                 'footer-content' => 'Fußzeileninhalt',
-                'footer-text' => '© Copyright 2010 - :current_year, Webkul Software (eingetragen in Indien). Alle Rechte vorbehalten.',
+                'footer-text' => '© :current_year Drall. All rights reserved.',
                 'locale' => 'Sprache',
                 'newsletter-text' => 'Bereiten Sie sich auf unseren unterhaltsamen Newsletter vor!',
                 'order-return' => 'Bestellung und Rückgabe',
@@ -1113,7 +1119,7 @@ return [
             'suspended-account-message' => 'Ihr Konto wurde gesperrt.',
 
             'index' => [
-                'bagisto' => 'Bagisto',
+                'bagisto' => 'Drall',
                 'cart' => 'Warenkorb',
                 'continue-shopping' => 'Einkauf fortsetzen',
                 'empty-product' => 'Sie haben kein Produkt in Ihrem Warenkorb.',
@@ -1224,6 +1230,7 @@ return [
 
             'payment' => [
                 'payment-method' => 'Zahlungsmethode',
+                'no-methods' => 'Derzeit ist keine Zahlungsmethode eingerichtet. Die Bestellung kann nicht abgeschlossen werden.',
             ],
 
             'shipping' => [

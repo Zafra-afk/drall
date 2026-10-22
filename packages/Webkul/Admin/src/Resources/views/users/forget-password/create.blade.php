@@ -70,12 +70,9 @@
                 </x-admin::form>
             </div>
 
-            <!-- Powered By -->
-            <div class="text-sm font-normal">
-                @lang('admin::app.users.forget-password.create.powered-by-description', [
-                    'bagisto' => '<a class="text-blue-600 hover:underline" href="https://bagisto.com/en/">Bagisto</a>',
-                    'webkul' => '<a class="text-blue-600 hover:underline" href="https://webkul.com/">Webkul</a>',
-                ])
+            <!-- Footer -->
+            <div class="text-sm font-normal text-gray-500 dark:text-gray-400">
+                @lang('admin::app.users.forget-password.create.powered-by-description', ['current_year' => date('Y')])
             </div>
         </div>
     </div>

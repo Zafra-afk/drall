@@ -6,6 +6,16 @@
     $showCompare = (bool) core()->getConfigData('catalog.products.settings.compare_option');
 
     $showWishlist = (bool) core()->getConfigData('customer.settings.wishlist.wishlist_option');
+
+    $allowedChannelLocales = core()->getCurrentChannel()
+        ->locales()
+        ->whereIn('code', config('app.allowed_locales', ['fr']))
+        ->orderBy('name')
+        ->get();
+
+    $customerNotificationCount = auth()->guard('customer')->check()
+        ? auth()->guard('customer')->user()->notes()->where('customer_notified', true)->whereNull('customer_read_at')->count()
+        : 0;
 @endphp
 
 <div class="flex flex-wrap gap-4 px-4 pt-6 pb-4 shadow-xs lg:hidden">
@@ -41,6 +51,28 @@
         <!-- Right Navigation -->
         <div>
             <div class="flex items-center gap-x-5 max-md:gap-x-4">
+                <!-- Dark Mode Switcher -->
+                <v-dark></v-dark>
+
+                @auth('customer')
+                    <a
+                        href="{{ route('shop.customers.account.notifications.index') }}"
+                        class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-700 dark:text-gray-200"
+                        aria-label="@lang('shop::app.customers.account.notifications.title')"
+                        title="@lang('shop::app.customers.account.notifications.title')"
+                    >
+                        <svg class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 17h5l-1.4-1.4A2 2 0 0 1 18 14.2V11a6 6 0 0 0-4.5-5.8V4a1.5 1.5 0 0 0-3 0v1.2A6 6 0 0 0 6 11v3.2a2 2 0 0 1-.6 1.4L4 17h5m6 0a3 3 0 0 1-6 0m6 0H9" />
+                        </svg>
+
+                        @if ($customerNotificationCount)
+                            <span class="absolute -right-1 -top-1 min-w-5 rounded-full bg-red-600 px-1 text-center text-xs leading-5 text-white">
+                                {{ $customerNotificationCount > 99 ? '99+' : $customerNotificationCount }}
+                            </span>
+                        @endif
+                    </a>
+                @endauth
+
                 {!! view_render_event('bagisto.shop.components.layouts.header.mobile.compare.before') !!}
 
                 @if($showCompare)
@@ -321,13 +353,10 @@
                 </x-slot>
 
                 <x-slot:footer>
-                    <!-- Localization & Currency Section -->
-                    @if (
-                        core()->getCurrentChannel()->locales()->count() > 1
-                        || core()->getCurrentChannel()->currencies()->count() > 1
-                    )
-                        <div class="fixed bottom-0 z-10 grid w-full max-w-full grid-cols-[1fr_auto_1fr] items-center justify-items-center border-t border-zinc-200 bg-white px-5 ltr:left-0 rtl:right-0">
-                            <!-- Filter Drawer -->
+                    <!-- Localization Section -->
+                    @if ($allowedChannelLocales->count() > 1)
+                        <div class="fixed bottom-0 z-10 flex w-full max-w-full items-center justify-between border-t border-zinc-200 bg-white px-5 dark:border-gray-800 dark:bg-gray-900 ltr:left-0 rtl:right-0">
+                            <!-- Locale Drawer -->
                             <x-shop::drawer
                                 position="bottom"
                                 width="100%"
@@ -336,46 +365,7 @@
                                 <x-slot:toggle>
                                     <button
                                         type="button"
-                                        class="flex cursor-pointer items-center gap-x-2.5 px-2.5 py-3.5 text-lg font-medium uppercase max-md:py-3 max-sm:text-base"
-                                        v-pre
-                                    >
-                                        {{ core()->getCurrentCurrency()->symbol . ' ' . core()->getCurrentCurrencyCode() }}
-                                    </button>
-                                </x-slot>
-
-                                <!-- Drawer Header -->
-                                <x-slot:header>
-                                    <div class="flex items-center justify-between">
-                                        <p class="text-lg font-semibold">
-                                            @lang('shop::app.components.layouts.header.mobile.currencies')
-                                        </p>
-                                    </div>
-                                </x-slot>
-
-                                <!-- Drawer Content -->
-                                <x-slot:content class="px-0!">
-                                    <div
-                                        class="overflow-auto"
-                                        :style="{ height: getCurrentScreenHeight }"
-                                    >
-                                        <v-currency-switcher></v-currency-switcher>
-                                    </div>
-                                </x-slot>
-                            </x-shop::drawer>
-
-                            <!-- Seperator -->
-                            <span class="h-5 w-0.5 bg-zinc-200"></span>
-
-                            <!-- Sort Drawer -->
-                            <x-shop::drawer
-                                position="bottom"
-                                width="100%"
-                            >
-                                <!-- Drawer Toggler -->
-                                <x-slot:toggle>
-                                    <button
-                                        type="button"
-                                        class="flex cursor-pointer items-center gap-x-2.5 px-2.5 py-3.5 text-lg font-medium uppercase max-md:py-3 max-sm:text-base"
+                                        class="flex cursor-pointer items-center gap-x-2.5 px-2.5 py-3.5 text-lg font-medium uppercase max-md:py-3 max-sm:text-base dark:text-white"
                                         v-pre
                                     >
                                         <img
@@ -389,7 +379,7 @@
                                             height="16"
                                         />
 
-                                        {{ core()->getCurrentChannel()->locales()->orderBy('name')->where('code', app()->getLocale())->value('name') }}
+                                        {{ $allowedChannelLocales->firstWhere('code', app()->getLocale())?->name }}
                                     </button>
                                 </x-slot>
 
@@ -412,6 +402,9 @@
                                     </div>
                                 </x-slot>
                             </x-shop::drawer>
+
+                            <!-- Dark Mode Switcher -->
+                            <v-dark></v-dark>
                         </div>
                     @endif
                 </x-slot>

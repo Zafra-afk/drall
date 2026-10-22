@@ -3,6 +3,7 @@
 namespace Webkul\Sales\Repositories;
 
 use Webkul\Core\Eloquent\Repository;
+use Webkul\Inventory\Services\StockProcurementService;
 use Webkul\Sales\Contracts\Order;
 use Webkul\Sales\Contracts\RefundItem;
 
@@ -68,7 +69,22 @@ class RefundItemRepository extends Repository
                         ->where('inventory_source_id', $shipmentItem->shipment->inventory_source_id)
                         ->first();
 
-                    $inventory->update(['qty' => $inventory->qty + $shippedQtyToRefund]);
+                    if ($inventory) {
+                        $before = (int) $inventory->qty;
+                        $after = $before + (int) $shippedQtyToRefund;
+
+                        $inventory->update(['qty' => $after]);
+
+                        app(StockProcurementService::class)->recordIncoming(
+                            $product->id,
+                            $inventory->inventory_source_id,
+                            (int) $shippedQtyToRefund,
+                            $before,
+                            $after,
+                            'refund',
+                            $orderItem->order->id,
+                        );
+                    }
                 }
 
                 $quantity -= $totalShippedQtyToRefund;
@@ -84,7 +100,20 @@ class RefundItemRepository extends Repository
                 ->first();
 
             if ($inventory) {
-                $inventory->update(['qty' => $inventory->qty + $quantity]);
+                $before = (int) $inventory->qty;
+                $after = $before + (int) $quantity;
+
+                $inventory->update(['qty' => $after]);
+
+                app(StockProcurementService::class)->recordIncoming(
+                    $product->id,
+                    $inventory->inventory_source_id,
+                    (int) $quantity,
+                    $before,
+                    $after,
+                    'refund',
+                    $orderItem->order->id,
+                );
             }
         }
 

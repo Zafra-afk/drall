@@ -5,6 +5,7 @@ namespace Webkul\Sales\Repositories;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use Webkul\Core\Eloquent\Repository;
+use Webkul\Inventory\Services\StockProcurementService;
 use Webkul\Sales\Contracts\OrderItem;
 use Webkul\Sales\Exceptions\InsufficientInventoryException;
 
@@ -177,7 +178,23 @@ class OrderItemRepository extends Repository
                     ->where('inventory_source_id', $shipmentItem->shipment->inventory_source_id)
                     ->first();
 
-                $inventory->update(['qty' => $inventory->qty + $shippedQty]);
+                if ($inventory) {
+                    $before = (int) $inventory->qty;
+                    $after = $before + (int) $shippedQty;
+
+                    $inventory->update(['qty' => $after]);
+
+                    app(StockProcurementService::class)->recordIncoming(
+                        $orderItem->product->id,
+                        $inventory->inventory_source_id,
+                        (int) $shippedQty,
+                        $before,
+                        $after,
+                        'order',
+                        $orderItem->order->id,
+                        'order_return',
+                    );
+                }
             }
         }
     }

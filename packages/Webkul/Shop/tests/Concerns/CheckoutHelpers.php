@@ -20,7 +20,7 @@ trait CheckoutHelpers
             'city' => fake()->city(),
             'postcode' => fake()->numerify('#####'),
             'phone' => fake()->numerify('##########'),
-            'country' => 'US',
+            'country' => config('app.storefront_countries')[0] ?? 'US',
             'state' => 'CA',
         ], $overrides);
     }

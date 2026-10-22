@@ -5,6 +5,7 @@ namespace Webkul\Shop\Http\Controllers\API;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 use Webkul\CartRule\Repositories\CartRuleCouponRepository;
 use Webkul\Checkout\Facades\Cart;
 use Webkul\Checkout\Models\CartAddress;
@@ -197,8 +198,15 @@ class CartController extends APIController
      */
     public function estimateShippingMethods(): JsonResource
     {
+        $countryRules = ['required'];
+        $storefrontCountries = config('app.storefront_countries', []);
+
+        if ($storefrontCountries) {
+            $countryRules[] = Rule::in($storefrontCountries);
+        }
+
         $this->validate(request(), [
-            'country' => 'required',
+            'country' => $countryRules,
             'state' => 'required',
             'postcode' => 'required',
             'shipping_method' => 'sometimes|required',

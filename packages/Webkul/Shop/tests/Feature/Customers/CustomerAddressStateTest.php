@@ -2,6 +2,22 @@
 
 use function Pest\Laravel\postJson;
 
+it('should reject an address outside the configured storefront countries', function () {
+    config()->set('app.storefront_countries', ['MG']);
+
+    $this->loginAsCustomer();
+
+    postJson(route('shop.customers.account.addresses.store'), $this->storefrontAddress([
+        'country' => 'US',
+    ]))
+        ->assertUnprocessable()
+        ->assertJsonValidationErrorFor('country');
+});
+
+beforeEach(function () {
+    config()->set('app.storefront_countries', ['GB', 'IN', 'MG', 'US']);
+});
+
 it('should fail the validation when the state does not belong to the selected country when storing the customer address', function (string $state) {
     $this->loginAsCustomer();
 

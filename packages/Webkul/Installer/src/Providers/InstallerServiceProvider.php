@@ -6,6 +6,7 @@ use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\ServiceProvider;
 use Webkul\Installer\Console\Commands\Installer as InstallerCommand;
+use Webkul\Installer\Console\Commands\LocalizeCatalog;
 use Webkul\Installer\Http\Middleware\CanInstall;
 use Webkul\Installer\Http\Middleware\Locale;
 use Webkul\Installer\Http\Middleware\UseFileSession;
@@ -53,6 +54,7 @@ class InstallerServiceProvider extends ServiceProvider
         if ($this->app->runningInConsole()) {
             $this->commands([
                 InstallerCommand::class,
+                LocalizeCatalog::class,
             ]);
         }
     }

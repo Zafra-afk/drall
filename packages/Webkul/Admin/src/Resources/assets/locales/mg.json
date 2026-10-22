@@ -1,0 +1,32 @@
+{
+  "code": "mg",
+  "messages": {
+    "_default": "Tsy mety ny sahan-tsoratra {field}.",
+    "alpha": "Litera ihany no azo ampidirina amin'ny {field}.",
+    "alpha_num": "Litera sy isa ihany no azo ampidirina amin'ny {field}.",
+    "alpha_dash": "Litera, isa ary tsipika ihany no azo ampidirina amin'ny {field}.",
+    "alpha_spaces": "Litera sy elanelana ihany no azo ampidirina amin'ny {field}.",
+    "between": "Ny {field} dia tokony ho eo anelanelan'ny 0:{min} sy 1:{max}.",
+    "confirmed": "Tsy mifanaraka ny fanamafisana ny {field}.",
+    "digits": "Isa misy tarehimarika 0:{length} mazava no tokony ho ao amin'ny {field}.",
+    "dimensions": "Ny refin'ny {field} dia tokony ho 0:{width} x 1:{height} piksela.",
+    "email": "Adiresy mailaka manan-kery no tokony ho ao amin'ny {field}.",
+    "not_one_of": "Tsy azo ekena ny sanda nampidirina ho an'ny {field}.",
+    "ext": "Rakitra manan-kery no tokony ho ao amin'ny {field}.",
+    "image": "Sary no tokony ho ao amin'ny {field}.",
+    "integer": "Isa feno no tokony ho ao amin'ny {field}.",
+    "length": "Tokony ho 0:{length} tarehimarika ny halavan'ny {field}.",
+    "max_value": "Ny {field} dia tsy tokony hihoatra ny 0:{max}.",
+    "max": "Ny {field} dia tsy tokony hihoatra ny tarehimarika 0:{length}.",
+    "mimes": "Karazan-drakitra nahazoana alalana no tokony ho ao amin'ny {field}.",
+    "min_value": "Ny {field} dia tokony ho 0:{min} farafahakeliny.",
+    "min": "Ny {field} dia tokony hisy tarehimarika 0:{length} farafahakeliny.",
+    "numeric": "Isa no tokony ho ao amin'ny {field}.",
+    "one_of": "Tsy azo ekena ny sanda nampidirina ho an'ny {field}.",
+    "regex": "Tsy mety ny endriky ny {field}.",
+    "required_if": "Tsy maintsy fenoina ny sahan-tsoratra {field}.",
+    "required": "Tsy maintsy fenoina ny sahan-tsoratra {field}.",
+    "size": "Ny haben'ny {field} dia tsy tokony hihoatra ny 0:{size}KB.",
+    "url": "Adiresy tranonkala (URL) manan-kery no tokony ho ao amin'ny {field}."
+  }
+}

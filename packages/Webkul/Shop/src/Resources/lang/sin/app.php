@@ -5,10 +5,10 @@ return [
         'forgot-password' => [
             'already-sent' => 'දැනටමත් මුරපදය යළි පිහිටුවීමේ තැපැල් යවා ඇත.',
             'back' => 'ආපසු සන්නියට ආරයැකිනන්න ?',
-            'bagisto' => 'බගිස්ටෝ',
+            'bagisto' => 'Drall',
             'email' => 'ඊමේල්',
             'email-not-exist' => 'අපි මෙම විද්‍යුත් ලිපිනය සහිතව පරීක්ෂා කරනවානම් අපි යවනවායි.',
-            'footer' => '© වෙබ්කල් මෘදුකාංග 2010 - :current_year, ඉන්දියාවේ ලියාපදිංචි. සියලු අයිතියන්ගේ අනුමානය වෙනස් වේ.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-password-text' => 'ඔබට ඔබගේ මුර අමතකය අපට ඇතුලු වීමෙන් එකක් සලස්වන්න.',
             'page-title' => 'ඔබගේ මුර අමතකය අපට පනස්වෙනි බවට ?',
             'reset-link-sent' => 'මෙම විද්‍යුත් තැපැල් ලිපිනය ලියාපදිංචි වී ඇත්නම්, මුරපදය යළි සකසන සබැඳිය එයට යවා ඇත.',
@@ -20,21 +20,21 @@ return [
 
         'reset-password' => [
             'back-link-title' => 'ආරයැකින්න',
-            'bagisto' => 'බගිස්ටෝ',
+            'bagisto' => 'Drall',
             'confirm-password' => 'මුරපදය තහවුර',
             'email' => 'ලියාපදිංචි ඊමේල්',
-            'footer' => '© වෙබ්කල් මෘදුකාංග 2010 - :current_year, ඉන්දියාවේ ලියාපදිංචි. සියලු අයිතියන්ගේ අනුමානය වෙනස් වේ.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'password' => 'මුරපදය',
             'submit-btn-title' => 'මුර අමතකය නැවතුම් කරන්න',
             'title' => 'මුර අමතකය නැවතුම් කරන්න',
         ],
 
         'login-form' => [
-            'bagisto' => 'බගිස්ටෝ',
+            'bagisto' => 'Drall',
             'button-title' => 'ඇතුල් වන්න',
             'create-your-account' => 'ඔබගේ ගිණුමක් තනා කරන්න',
             'email' => 'ඊමේල්',
-            'footer' => '© වෙබ්කල් මෘදුකාංග 2010 - :current_year, ඉන්දියාවේ ලියාපදිංචි. සියලු අයිතියන්ගේ අනුමානය වෙනස් වේ.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-pass' => 'මුර අමතකය අපට පනස්වෙනියට?',
             'form-login-text' => 'ඔබට ගවේෂකරුට ස්තුතියි, ඔබගේ ඊමේල් ලියාපදිංචි අංකය සහිත අත්සන්යයේ ඇතුලත් කරන්න.',
             'invalid-credentials' => 'ඔබගේ නොදත් පදනම පරිපාලකයාගේ පරිදි වැරදියි.',
@@ -50,13 +50,13 @@ return [
 
         'signup-form' => [
             'account-exists' => 'දැනටමත් ගිණුමක් තිබේද?',
-            'bagisto' => 'බගිස්ටෝ',
+            'bagisto' => 'Drall',
             'button-title' => 'ලියාපදිංචි කරන්න',
             'click-here' => 'මෙතන ක්ලික් කරන්න',
             'confirm-pass' => 'මුරපදය තහවුර',
             'email' => 'ඊමේල්',
             'first-name' => 'මුල් නම',
-            'footer' => '© වෙබ්කල් මෘදුකාංග 2010 - :current_year, ඉන්දියාවේ ලියාපදිංචි. සියලු අයිතියන්ගේ අනුමානය වෙනස් වේ.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'form-signup-text' => 'ඔබට අපගේ සාතුතියට අලුත්වෙයි, අපගේ ස්ටෝර් එකේ අයිතියක් වරාය.',
             'last-name' => 'අමුතු නම',
             'page-title' => 'පරිශීලක වන්න',
@@ -73,6 +73,12 @@ return [
         ],
 
         'account' => [
+            'notifications' => [
+                'empty' => 'ඔබට තවම දැනුම්දීම් ලැබී නැත.',
+                'from-admin' => 'Drall කණ්ඩායමෙන් පණිවිඩයක්',
+                'title' => 'දැනුම්දීම්',
+            ],
+
             'home' => 'මුල් පිටවර',
 
             'profile' => [
@@ -583,7 +589,7 @@ return [
                     'bottom' => [
                         'all' => 'සියල්ල',
                         'back-button' => 'ප්‍රධාන මෙනුවට ආපසු යන්න',
-                        'bagisto' => 'Bagisto',
+                        'bagisto' => 'Drall',
                         'categories' => 'ප්‍රවර්ග',
                         'compare' => 'සංසන්දනය කරන්න',
                         'dropdown-text' => 'කරත්තය, ඇණවුම් සහ ඉල්ලුම් ලැයිස්තුව කළමනාකරණය කරන්න',
@@ -604,7 +610,7 @@ return [
                 'mobile' => [
                     'account' => 'ගිණුම',
                     'back-button' => 'ප්‍රධාන මෙනුවට ආපසු යන්න',
-                    'bagisto' => 'Bagisto',
+                    'bagisto' => 'Drall',
                     'compare' => 'සංසන්දනය කරන්න',
                     'currencies' => 'මුදල් ඒකක',
                     'dropdown-text' => 'කරත්තය, ඇණවුම් සහ ඉල්ලුම් ලැයිස්තුව කළමනාකරණය කරන්න',
@@ -644,7 +650,7 @@ return [
                 'customer-service' => 'ප්‍රශ්නය හා සේවය',
                 'email' => 'ඊමේල්',
                 'footer-content' => 'පිටුවේ අන්තර්ගතය',
-                'footer-text' => '© වෙබ්කල් සොෆ්ට්වෙයර් (ශ්‍රී ලංකාවේ ලියාපදිංචි) සම්පූර්ණයේ සිට 2010 - :current_year දක්වා. සියලු අභිරුචිකරුවන් සමඟ සම්පූර්ණයෙන් පහසුවෙනි.',
+                'footer-text' => '© :current_year Drall. All rights reserved.',
                 'locale' => 'පිටු මාධ්‍ය',
                 'newsletter-text' => 'අපේ සෙවුම් පනසලේ සම්බන්ධවන්ද බලන්න!',
                 'order-return' => 'ඇණවුම් හා ආපසු සපිරව්ව',
@@ -1113,7 +1119,7 @@ return [
             'suspended-account-message' => 'ඔබගේ ගිණුම නැවත අක්‍රීය කර ඇත.',
 
             'index' => [
-                'bagisto' => 'බගිස්ටෝ',
+                'bagisto' => 'Drall',
                 'cart' => 'කර්තෘ',
                 'continue-shopping' => 'කාර්තෘ පෙරවරු',
                 'empty-product' => 'ඔබේ කර්තෘක්කයේ නිෂ්පාදනයක් නැත.',
@@ -1224,6 +1230,7 @@ return [
 
             'payment' => [
                 'payment-method' => 'ගෙවීම් ක්රමය',
+                'no-methods' => 'දැනට ගෙවීම් ක්‍රමයක් සකසා නැත. ඇණවුම සම්පූර්ණ කළ නොහැක.',
             ],
 
             'shipping' => [

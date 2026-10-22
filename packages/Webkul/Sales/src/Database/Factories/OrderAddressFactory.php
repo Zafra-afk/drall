@@ -33,7 +33,7 @@ class OrderAddressFactory extends Factory
             'email' => $this->faker->email(),
             'address' => $this->faker->streetAddress(),
             'city' => $this->faker->city(),
-            'state' => $this->faker->state(),
+            'state' => $this->faker->region(),
             'country' => $this->faker->countryCode(),
             'postcode' => $this->faker->postcode(),
             'phone' => $this->faker->phoneNumber(),

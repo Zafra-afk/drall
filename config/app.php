@@ -1,5 +1,13 @@
 <?php
 
+$allowedLocales = array_values(array_intersect(
+    ['fr'],
+    array_map('trim', explode(',', env('APP_ALLOWED_LOCALES', 'fr')))
+)) ?: ['fr'];
+
+$configuredLocale = env('APP_LOCALE', 'fr');
+$configuredFallbackLocale = env('APP_FALLBACK_LOCALE', 'fr');
+
 return [
 
     /*
@@ -13,7 +21,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Bagisto'),
+    'name' => env('APP_NAME', 'Drall'),
 
     /*
     |--------------------------------------------------------------------------
@@ -89,7 +97,7 @@ return [
     |
     */
 
-    'timezone' => env('APP_TIMEZONE', 'Asia/Kolkata'),
+    'timezone' => env('APP_TIMEZONE', 'Indian/Antananarivo'),
 
     /*
     |--------------------------------------------------------------------------
@@ -102,11 +110,13 @@ return [
     |
     */
 
-    'locale' => env('APP_LOCALE', 'en'),
+    'locale' => in_array($configuredLocale, $allowedLocales, true) ? $configuredLocale : $allowedLocales[0],
 
-    'fallback_locale' => env('APP_FALLBACK_LOCALE', 'en'),
+    'fallback_locale' => in_array($configuredFallbackLocale, $allowedLocales, true)
+        ? $configuredFallbackLocale
+        : ($allowedLocales[1] ?? $allowedLocales[0]),
 
-    'faker_locale' => env('APP_FAKER_LOCALE', 'en_US'),
+    'faker_locale' => env('APP_FAKER_LOCALE', 'fr_FR'),
 
     /*
     |--------------------------------------------------------------------------
@@ -121,7 +131,19 @@ return [
     | (use capital letters!)
     */
 
-    'default_country' => null,
+    'default_country' => env('APP_DEFAULT_COUNTRY', 'MG'),
+
+    'storefront_countries' => array_values(array_filter(array_map(
+        'strtoupper',
+        array_map('trim', explode(',', env('APP_STOREFRONT_COUNTRIES', 'MG')))
+    ))),
+
+    'allowed_locales' => $allowedLocales,
+
+    'allowed_currencies' => array_values(array_filter(array_map(
+        'strtoupper',
+        array_map('trim', explode(',', env('APP_ALLOWED_CURRENCIES', env('APP_CURRENCY', 'MGA'))))
+    ))),
 
     /*
     |--------------------------------------------------------------------------
@@ -132,7 +154,13 @@ return [
     |
     */
 
-    'currency' => env('APP_CURRENCY', 'USD'),
+    'currency' => env('APP_CURRENCY', 'MGA'),
+
+    'allowed_payment_methods' => [
+        'mvola',
+        'orange_money',
+        'airtel_money',
+    ],
 
     /*
     |--------------------------------------------------------------------------

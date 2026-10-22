@@ -129,7 +129,7 @@
 
                 <!-- Today Orders Details -->
                 <div 
-                    v-for="order in report.statistics.orders"
+                    v-for="order in (report?.statistics?.orders ?? [])"
                     class="border-b bg-white p-4 transition-all hover:bg-gray-50 dark:border-gray-800 dark:bg-gray-900 dark:hover:bg-gray-950"
                 >
                     <div class="flex flex-wrap gap-4">
@@ -215,7 +215,7 @@
 
             data() {
                 return {
-                    report: [],
+                    report: null,
 
                     isLoading: true,
                 }
@@ -243,7 +243,7 @@
 
                             this.isLoading = false;
                         })
-                        .catch(error => {});
+                        .catch(error => { this.isLoading = false; });
                 }
             }
         });

@@ -216,7 +216,14 @@
                         :label="trans('shop::app.customers.account.addresses.edit.country')"
                         @change="addressData.state = ''"
                     >
-                        @foreach (core()->countries() as $country)
+                        @php
+                            $countries = core()->countries()
+                                ->whereIn('code', config('app.storefront_countries', [config('app.default_country')]))
+                                ->sortBy(function ($c) {
+                                return [$c->code !== config('app.default_country'), $c->name];
+                            });
+                        @endphp
+                        @foreach ($countries as $country)
                             <option 
                                 {{ $country->code === config('app.default_country') ? 'selected' : '' }}  
                                 value="{{ $country->code }}"
@@ -315,13 +322,17 @@
                         @lang('shop::app.customers.account.addresses.edit.phone')
                     </x-shop::form.control-group.label>
 
+                    <p class="text-xs text-zinc-500 mb-1">
+                        +261 XX XXX XX XXX
+                    </p>
+
                     <x-shop::form.control-group.control
                         type="text"
                         name="phone"
                         rules="required|phone"
                         :value="old('phone') ?? $address->phone"
                         :label="trans('shop::app.customers.account.addresses.edit.phone')"
-                        :placeholder="trans('shop::app.customers.account.addresses.edit.phone')"
+                        placeholder="+261 XX XX XXX XX"
                     />
 
                     <x-shop::form.control-group.error control-name="phone" />

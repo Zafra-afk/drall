@@ -17,6 +17,7 @@ import hi_IN from "../locales/hi_IN.json";
 import id from "@vee-validate/i18n/dist/locale/id.json";
 import it from "@vee-validate/i18n/dist/locale/it.json";
 import ja from "@vee-validate/i18n/dist/locale/ja.json";
+import mg from "../locales/mg.json";
 import nl from "@vee-validate/i18n/dist/locale/nl.json";
 import pl from "@vee-validate/i18n/dist/locale/pl.json";
 import pt_BR from "@vee-validate/i18n/dist/locale/pt_BR.json";
@@ -162,6 +163,14 @@ export default {
                     messages: {
                         ...ja.messages,
                         phone: "この {field} は有効な電話番号である必要があります",
+                    },
+                },
+
+                mg: {
+                    ...mg,
+                    messages: {
+                        ...mg.messages,
+                        phone: "Ny {field} dia tokony ho laharana finday manan-kery.",
                     },
                 },
 

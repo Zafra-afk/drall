@@ -6,7 +6,7 @@
 >
 
 <head>
-    <title>{{ $title ?? '' }}</title>
+    <title>{{ ! empty($title) ? $title . ' - ' . config('app.name') : config('app.name') }}</title>
 
     <meta charset="UTF-8">
 
@@ -29,7 +29,7 @@
     >
     <meta 
         name="generator" 
-        content="Bagisto"
+        content="Drall"
     >
 
     @stack('meta')
@@ -74,8 +74,21 @@
 <body>
     {!! view_render_event('bagisto.admin.layout.body.before') !!}
 
-    <!-- Built With Bagisto -->
+    <!-- Built With Drall -->
     <div id="app">
+        <label class="sr-only" for="admin-anonymous-locale-switcher">Langue / Fiteny</label>
+        <select
+            id="admin-anonymous-locale-switcher"
+            class="fixed right-4 top-4 z-10 rounded-md border border-gray-300 bg-white px-2 py-1.5 text-sm text-gray-700"
+            onchange="const url = new URL(window.location.href); url.searchParams.set('admin_locale', this.value); window.location.assign(url.toString());"
+        >
+            @foreach (config('app.allowed_locales', ['fr']) as $locale)
+                <option value="{{ $locale }}" @selected(app()->getLocale() === $locale)>
+                    {{ $locale === 'fr' ? 'Français' : 'Malagasy' }}
+                </option>
+            @endforeach
+        </select>
+
         <!-- Flash Message Blade Component -->
         <x-admin::flash-group />
 

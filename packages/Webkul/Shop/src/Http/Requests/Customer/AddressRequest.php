@@ -3,6 +3,7 @@
 namespace Webkul\Shop\Http\Requests\Customer;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 use Webkul\Core\Rules\PhoneNumber;
 use Webkul\Core\Rules\PostCode;
 use Webkul\Core\Rules\StateBelongsToCountry;
@@ -27,12 +28,19 @@ class AddressRequest extends FormRequest
      */
     public function rules()
     {
+        $countryRules = core()->isCountryRequired() ? ['required'] : ['nullable'];
+        $storefrontCountries = config('app.storefront_countries', []);
+
+        if ($storefrontCountries) {
+            $countryRules[] = Rule::in($storefrontCountries);
+        }
+
         return [
             'company_name' => ['nullable'],
             'first_name' => ['required'],
             'last_name' => ['required'],
             'address' => ['required', 'array', 'min:1'],
-            'country' => core()->isCountryRequired() ? ['required'] : ['nullable'],
+            'country' => $countryRules,
             'state' => [
                 core()->isStateRequired() ? 'required' : 'nullable',
                 new StateBelongsToCountry($this->input('country')),

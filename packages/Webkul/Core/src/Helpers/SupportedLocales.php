@@ -25,6 +25,7 @@ class SupportedLocales
         'id' => ['name' => 'indonesian', 'direction' => 'ltr'],
         'it' => ['name' => 'italian', 'direction' => 'ltr'],
         'ja' => ['name' => 'japanese', 'direction' => 'ltr'],
+        'mg' => ['name' => 'malagasy', 'direction' => 'ltr'],
         'nl' => ['name' => 'dutch', 'direction' => 'ltr'],
         'pl' => ['name' => 'polish', 'direction' => 'ltr'],
         'pt_BR' => ['name' => 'portuguese', 'direction' => 'ltr'],
@@ -54,9 +55,11 @@ class SupportedLocales
      */
     public static function options(): array
     {
+        $allowedLocales = config('app.allowed_locales', self::codes());
+
         return array_map(
             fn ($locale) => trans('installer::app.installer.index.'.$locale['name']),
-            self::ALL
+            array_intersect_key(self::ALL, array_flip($allowedLocales))
         );
     }
 

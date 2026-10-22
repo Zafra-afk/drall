@@ -13,8 +13,15 @@ class CoreController extends APIController
      */
     public function getCountries()
     {
+        $countries = core()->countries();
+        $storefrontCountries = config('app.storefront_countries', []);
+
+        if ($storefrontCountries) {
+            $countries = $countries->whereIn('code', $storefrontCountries);
+        }
+
         return response()->json([
-            'data' => core()->countries()->map(fn ($country) => [
+            'data' => $countries->map(fn ($country) => [
                 'id' => $country->id,
                 'code' => $country->code,
                 'name' => $country->name,

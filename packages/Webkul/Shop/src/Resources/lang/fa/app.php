@@ -5,10 +5,10 @@ return [
         'forgot-password' => [
             'already-sent' => 'از قبل بازنشانی رمز عبور ایمیل ارسال شده است.',
             'back' => 'بازگشت به صفحه ورود؟',
-            'bagisto' => 'بگیستو',
+            'bagisto' => 'Drall',
             'email' => 'ایمیل',
             'email-not-exist' => 'ما نمی‌توانیم کاربری با این آدرس ایمیل پیدا کنیم.',
-            'footer' => '© حق تألیف 2010 - :current_year، نرم‌افزار وب‌کول (ثبت شده در هند). تمامی حقوق محفوظ است.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-password-text' => 'اگر رمز عبور خود را فراموش کرده‌اید، با وارد کردن آدرس ایمیل خود آن را بازیابی کنید.',
             'page-title' => 'رمز عبور خود را فراموش کرده‌اید؟',
             'reset-link-sent' => 'اگر این نشانی ایمیل ثبت شده باشد، پیوند بازنشانی رمز عبور به آن ارسال شده است.',
@@ -20,21 +20,21 @@ return [
 
         'reset-password' => [
             'back-link-title' => 'بازگشت به صفحه ورود',
-            'bagisto' => 'بگیستو',
+            'bagisto' => 'Drall',
             'confirm-password' => 'تأیید رمز عبور',
             'email' => 'ایمیل ثبت‌شده',
-            'footer' => '© حق تألیف 2010 - :current_year، نرم‌افزار وب‌کول (ثبت شده در هند). تمامی حقوق محفوظ است.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'password' => 'رمز عبور',
             'submit-btn-title' => 'بازنشانی رمز عبور',
             'title' => 'بازنشانی رمز عبور',
         ],
 
         'login-form' => [
-            'bagisto' => 'بگیستو',
+            'bagisto' => 'Drall',
             'button-title' => 'ورود',
             'create-your-account' => 'حساب کاربری خود را ایجاد کنید',
             'email' => 'ایمیل',
-            'footer' => '© حق تألیف 2010 - :current_year، نرم‌افزار وب‌کول (ثبت شده در هند). تمامی حقوق محفوظ است.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'forgot-pass' => 'رمز عبور را فراموش کرده‌اید؟',
             'form-login-text' => 'اگر حساب کاربری دارید، با آدرس ایمیل خود وارد شوید.',
             'invalid-credentials' => 'لطفاً اطلاعات ورود خود را بررسی کرده و دوباره تلاش کنید.',
@@ -50,13 +50,13 @@ return [
 
         'signup-form' => [
             'account-exists' => 'قبلاً حساب دارید؟',
-            'bagisto' => 'بگیستو',
+            'bagisto' => 'Drall',
             'button-title' => 'ثبت نام',
             'click-here' => 'اینجا کلیک کنید',
             'confirm-pass' => 'تأیید رمز عبور',
             'email' => 'ایمیل',
             'first-name' => 'نام',
-            'footer' => '© حق تألیف 2010 - :current_year، نرم‌افزار وب‌کول (ثبت شده در هند). تمامی حقوق محفوظ است.',
+            'footer' => '© :current_year Drall. All rights reserved.',
             'form-signup-text' => 'اگر تازه وارد فروشگاه ما شده‌اید، ما خوشحالیم که شما را به عنوان عضو می‌پذیریم.',
             'last-name' => 'نام خانوادگی',
             'page-title' => 'تبدیل به کاربر',
@@ -73,6 +73,12 @@ return [
         ],
 
         'account' => [
+            'notifications' => [
+                'empty' => 'هنوز هیچ اعلانی دریافت نکرده‌اید.',
+                'from-admin' => 'پیامی از تیم Drall',
+                'title' => 'اعلان‌ها',
+            ],
+
             'home' => 'خانه',
 
             'profile' => [
@@ -583,7 +589,7 @@ return [
                     'bottom' => [
                         'all' => 'همه',
                         'back-button' => 'بازگشت به منوی اصلی',
-                        'bagisto' => 'باگیستو',
+                        'bagisto' => 'Drall',
                         'categories' => 'دسته‌بندی‌ها',
                         'compare' => 'مقایسه',
                         'dropdown-text' => 'مدیریت سبد خرید، سفارش‌ها و لیست علاقه‌مندی‌ها',
@@ -604,7 +610,7 @@ return [
                 'mobile' => [
                     'account' => 'حساب کاربری',
                     'back-button' => 'بازگشت به منوی اصلی',
-                    'bagisto' => 'باگیستو',
+                    'bagisto' => 'Drall',
                     'compare' => 'مقایسه',
                     'currencies' => 'واحدهای پول',
                     'dropdown-text' => 'مدیریت سبد خرید، سفارش‌ها و لیست علاقه‌مندی‌ها',
@@ -644,7 +650,7 @@ return [
                 'customer-service' => 'خدمات مشتری',
                 'email' => 'ایمیل',
                 'footer-content' => 'محتوای فوتر',
-                'footer-text' => '© حق تکثیر 2010 - :current_year ، نرم‌افزار Webkul (ثبت‌شده در هند). تمام حقوق محفوظ است.',
+                'footer-text' => '© :current_year Drall. All rights reserved.',
                 'locale' => 'زبان و محل',
                 'newsletter-text' => 'برای دریافت خبرنامه‌ی جذاب ما آماده شوید!',
                 'order-return' => 'سفارش و بازگشت',
@@ -1113,7 +1119,7 @@ return [
             'suspended-account-message' => 'حساب کاربری شما مسدود شده است.',
 
             'index' => [
-                'bagisto' => 'بگیستو',
+                'bagisto' => 'Drall',
                 'cart' => 'سبد خرید',
                 'continue-shopping' => 'ادامه خرید',
                 'empty-product' => 'شما هیچ محصولی در سبد خرید خود ندارید.',
@@ -1224,6 +1230,7 @@ return [
 
             'payment' => [
                 'payment-method' => 'روش پرداخت',
+                'no-methods' => 'در حال حاضر هیچ روش پرداختی پیکربندی نشده است. سفارش قابل تکمیل نیست.',
             ],
 
             'shipping' => [
