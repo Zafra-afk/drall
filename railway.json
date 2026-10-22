@@ -1,12 +1,11 @@
 {
   "$schema": "https://railway.app/railway.json",
   "build": {
-    "command": "composer install --no-dev --optimize-autoloader && npm install --no-audit --no-fund && npm run build && (cd packages/Webkul/Admin && npm install --no-audit --no-fund && npm run build) && (cd packages/Webkul/Shop && npm install --no-audit --no-fund && npm run build) && (cd packages/Webkul/Installer && npm install --no-audit --no-fund && npm run build)"
+    "buildCommand": "composer install --no-dev --optimize-autoloader --prefer-dist --no-interaction && npm install --no-audit --no-fund && npm run build && npm install --no-audit --no-fund --prefix packages/Webkul/Admin && npm run build --prefix packages/Webkul/Admin && npm install --no-audit --no-fund --prefix packages/Webkul/Shop && npm run build --prefix packages/Webkul/Shop && npm install --no-audit --no-fund --prefix packages/Webkul/Installer && npm run build --prefix packages/Webkul/Installer"
   },
   "deploy": {
-    "start": {
-      "command": "php artisan migrate --force && php artisan serve --host=0.0.0.0 --port=$PORT"
-    },
-    "restartPolicy": "on_failure"
+    "startCommand": "php artisan serve --host=0.0.0.0 --port=$PORT",
+    "healthcheckPath": "/up",
+    "healthcheckTimeout": 30
   }
 }
