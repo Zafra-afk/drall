@@ -10,5 +10,8 @@
         "axios": "^1.7.9",
         "laravel-vite-plugin": "^1.0",
         "vite": "^6.4.2"
+    },
+    "dependencies": {
+        "railway": "^3.16.0"
     }
 }
