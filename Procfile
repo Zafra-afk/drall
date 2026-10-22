@@ -1,1 +1,1 @@
-release: php artisan migrate --force --no-interaction && (php artisan db:seed --force --no-interaction || echo "Seeders may have already run") && php artisan config:cache
+release: touch .env && php artisan optimize:clear 2>/dev/null; php artisan migrate --force --no-interaction && (php artisan db:seed --force --no-interaction || echo "Seeders may have already run") && php artisan config:cache
