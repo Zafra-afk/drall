@@ -49,3 +49,7 @@ yarn-error.log
 .kilo/
 .php.d/
 cookies.txt
+/storage/debugbar/
+/storage/framework/cache/data/
+/storage/framework/sessions/
+/storage/framework/views/
