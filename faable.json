@@ -1,4 +1,5 @@
 {
     "buildpack": "php",
-    "buildCommand": "composer install --no-dev --optimize-autoloader --no-interaction --no-progress --ignore-platform-req=ext-calendar"
+    "buildCommand": "test -f .env || cp .env.example .env; composer install --no-dev --optimize-autoloader --no-interaction --no-progress --ignore-platform-req=ext-calendar",
+    "startCommand": "test -f .env || cp .env.example .env; php artisan migrate --force --no-interaction && (php artisan db:seed --force --no-interaction 2>&1 || true) && faable-php-serve public"
 }
