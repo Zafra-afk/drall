@@ -4,6 +4,7 @@
 .cursor
 .env
 .env.testing
+.env.production
 .idea
 .mcp.json
 .php_cs.cache
