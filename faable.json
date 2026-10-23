@@ -1,4 +1,4 @@
 {
     "buildpack": "php",
-    "buildCommand": "composer install --no-dev --optimize-autoloader --no-interaction --no-progress --ignore-platform-req=ext-calendar && cp .env.example .env && php artisan storage:link --force && php artisan migrate --force && php artisan db:seed --force"
+    "buildCommand": "composer install --no-dev --optimize-autoloader --no-interaction --no-progress --ignore-platform-req=ext-calendar && cp .env.example .env && php artisan storage:link --force && php artisan migrate --force && php artisan db:seed --class=\"Webkul\\Installer\\Database\\Seeders\\Shop\\DatabaseSeeder\" --force"
 }
