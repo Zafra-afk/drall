@@ -89,7 +89,7 @@ class ImageCacheController extends Controller
 
             return $this->buildResponse($content);
         } catch (Exception) {
-            abort(404, 'Unable to process image.');
+            return $this->buildResponse($contents);
         }
     }
 
