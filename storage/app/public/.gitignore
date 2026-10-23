@@ -1,3 +1,13 @@
 *
-!data-transfer
 !.gitignore
+!data-transfer/
+!admins/
+!categories/
+!channels/
+!configurations/
+!customer/
+!locales/
+!products/
+!rmas/
+!sitemaps/
+!themes/
