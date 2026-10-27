@@ -1,78 +1,98 @@
-FROM php:8.4-apache
+# Single-stage build for production (based on working original)
+FROM php:8.4-fpm AS base
 
 # Install system dependencies
-RUN apt-get update && apt-get install -y \
-        libzip-dev \
-        libpng-dev \
-        libjpeg-dev \
-        libfreetype6-dev \
-        libonig-dev \
-        libxml2-dev \
-        libicu-dev \
-        libkrb5-dev \
-        unzip \
-        git \
-        curl \
-        zip \
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    nginx \
+    supervisor \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
+    libwebp-dev \
+    libzip-dev \
+    libicu-dev \
+    libonig-dev \
+    libxml2-dev \
+    libpq-dev \
+    curl \
+    unzip \
+    git \
+    nodejs \
+    npm \
+    gettext-base \
     && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-configure intl \
-    && docker-php-ext-configure zip \
-    && docker-php-ext-configure calendar \
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-install -j$(nproc) \
-        calendar \
-        curl \
-        intl \
-        mbstring \
-        pdo \
-        pdo_mysql \
-        gd \
-        zip \
-        bcmath \
-        exif \
-        opcache
+    pdo_mysql \
+    pdo_pgsql \
+    gd \
+    zip \
+    bcmath \
+    intl \
+    opcache \
+    mbstring \
+    xml \
+    pcntl \
+    calendar
+
+# Install Redis extension via PECL
+RUN pecl install redis && docker-php-ext-enable redis
 
 # Install Composer
-COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-# Enable Apache modules
-RUN a2enmod rewrite headers
-
-# Set document root
-ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
-RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
-        /etc/apache2/sites-available/*.conf \
-    && sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' \
-        /etc/apache2/conf-available/*.conf \
-    && sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' \
-        /etc/apache2/apache2.conf \
-    && ln -s /dev/stdout /var/log/apache2/access.log \
-    && ln -s /dev/stderr /var/log/apache2/error.log
-
+# Set working directory
 WORKDIR /var/www/html
 
-# Copy application
-COPY . /var/www/html
+# Copy composer files first for caching
+COPY composer.json composer.lock ./
 
-# Install dependencies
-RUN composer install \
-        --no-dev \
-        --no-interaction \
-        --no-scripts \
-        --optimize-autoloader \
-    && rm -rf /root/.composer/cache \
-    && rm -rf /tmp/*
+# Install PHP dependencies (no dev, optimized autoloader)
+RUN composer install --no-dev --optimize-autoloader --no-interaction --no-progress --no-scripts
 
-# Create .env so isInstalled() check passes; runtime secrets override at runtime
-RUN cp .env.example .env && php artisan key:generate --force
+# Copy application code
+COPY . .
 
-# Storage permissions
-RUN chown -R www-data:www-data /var/www/html \
+# Build frontend assets
+RUN cd /var/www/html/packages/Webkul/Admin && npm install --no-audit --no-fund && npm run build \
+    && cd /var/www/html/packages/Webkul/Shop && npm install --no-audit --no-fund && npm run build \
+    && cd /var/www/html/packages/Webkul/Installer && npm install --no-audit --no-fund && npm run build
+
+# Set runtime directory permissions without recursively changing the application files.
+RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
 
-# Generate optimized autoloader
-RUN php artisan package:discover --ansi
+# Configure PHP
+COPY docker/php/php.ini /usr/local/etc/php/php.ini
+COPY docker/php/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
 
-EXPOSE 80
+# Configure PHP-FPM (TCP port 9000)
+COPY docker/php/php-fpm.conf /usr/local/etc/php-fpm.d/www.conf
+
+# Configure Nginx
+COPY docker/nginx/nginx.conf /etc/nginx/nginx.conf
+COPY docker/nginx/site.conf.template /etc/nginx/sites-available/default.template
+COPY docker/nginx/generate-site-conf.sh /usr/local/bin/generate-site-conf.sh
+RUN chmod +x /usr/local/bin/generate-site-conf.sh && mkdir -p /etc/nginx/sites-enabled && rm -f /etc/nginx/sites-enabled/default
+
+# Configure Supervisor
+COPY docker/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+
+# Expose port 8000 (Railway default)
+EXPOSE 8000
+
+# Entrypoint: bootstrap .env, generate APP_KEY, set permissions
+COPY docker/railway/entrypoint-nginx.sh /usr/local/bin/entrypoint.sh
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:${PORT:-8000}/health || exit 1
+
+# Entrypoint handles .env bootstrap and starts Supervisor
+ENTRYPOINT ["entrypoint.sh"]
+
+# Start supervisor (fallback CMD)
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/conf.d/supervisord.conf"]
