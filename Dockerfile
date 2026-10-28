@@ -77,5 +77,3 @@ RUN chown -R www-data:www-data /var/www/html \
 RUN php artisan package:discover --ansi
 
 EXPOSE 80
-
-CMD ["apache2-foreground"]
