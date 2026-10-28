@@ -67,7 +67,7 @@ RUN composer install \
     && rm -rf /tmp/*
 
 # Create .env so isInstalled() check passes; runtime secrets override at runtime
-RUN cp .env.example .env && php artisan key:generate --force
+RUN mkdir -p storage/framework/views storage/framework/cache storage/framework/sessions storage/framework/testing storage/logs && cp .env.example .env && php artisan key:generate --force
 
 # Storage permissions
 RUN chown -R www-data:www-data /var/www/html \
