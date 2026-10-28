@@ -1161,6 +1161,8 @@ return [
                     'active' => 'فعال',
                     'attribute-family' => 'خانواده ویژگی',
                     'attribute-family-value' => 'خانواده ویژگی - :attribute_family',
+                    'brand' => 'Brand',
+                    'brand-value' => 'Brand - :brand',
                     'category' => 'دسته‌بندی',
                     'channel' => 'کانال',
                     'copy' => 'کپی',

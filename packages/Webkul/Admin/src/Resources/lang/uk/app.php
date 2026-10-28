@@ -1161,6 +1161,8 @@ return [
                     'active' => 'Активний',
                     'attribute-family' => 'Сімейство атрибутів',
                     'attribute-family-value' => 'Сімейство атрибутів - :attribute_family',
+                    'brand' => 'Brand',
+                    'brand-value' => 'Brand - :brand',
                     'category' => 'Категорія',
                     'channel' => 'Канал',
                     'copy' => 'Копіювати',

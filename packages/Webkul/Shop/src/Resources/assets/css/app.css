@@ -183,7 +183,8 @@
 
 @font-face {
     font-family: "bagisto-shop";
-    src: url("../fonts/bagisto-shop.woff") format("woff");
+    src: url("../fonts/bagisto-shop.woff2") format("woff2"),
+         url("../fonts/bagisto-shop.woff") format("woff");
     font-weight: normal;
     font-style: normal;
     font-display: swap;
@@ -306,11 +307,11 @@
     }
 
     .primary-button {
-        @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl text-white bg-navyBlue border border-navyBlue px-8 py-4 max-w-max cursor-pointer transition-all hover:opacity-[0.9];
+        @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl text-white bg-navyBlue border border-navyBlue px-8 py-4 max-w-max cursor-pointer transition-all hover:opacity-[0.9] flex-shrink-0;
     }
 
     .secondary-button {
-        @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl bg-white text-navyBlue border border-navyBlue px-8 py-4 max-w-max cursor-pointer transition-all hover:bg-[#050e3a0d];
+        @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl bg-white text-navyBlue border border-navyBlue px-8 py-4 max-w-max cursor-pointer transition-all hover:bg-[#050e3a0d] flex-shrink-0;
     }
 
     .shimmer {
@@ -385,70 +386,6 @@
 
     .skip-to-main-content-link:focus {
         @apply ltr:left-1/2 rtl:right-1/2 ltr:translate-x-1/2 rtl:translate-x-[-50%] opacity-100;
-    }
-}
-
-@layer utilities {
-    html.dark {
-        color-scheme: dark;
-    }
-
-    html.dark body,
-    html.dark #app,
-    html.dark main {
-        background-color: #111827;
-        color: #f9fafb;
-    }
-
-    html.dark .bg-white,
-    html.dark .bg-gray-50 {
-        background-color: #1f2937;
-    }
-
-    html.dark .bg-gray-100 {
-        background-color: #374151;
-    }
-
-    html.dark .text-gray-900,
-    html.dark .text-gray-800,
-    html.dark .text-gray-700 {
-        color: #f3f4f6;
-    }
-
-    html.dark .text-gray-600,
-    html.dark .text-gray-500 {
-        color: #d1d5db;
-    }
-
-    html.dark .border-gray-100,
-    html.dark .border-gray-200,
-    html.dark .border-gray-300,
-    html.dark .border-slate-200,
-    html.dark .border-slate-300 {
-        border-color: #4b5563;
-    }
-
-    html.dark input:not([type="checkbox"]):not([type="radio"]):not([type="file"]),
-    html.dark select,
-    html.dark textarea {
-        border-color: #4b5563;
-        background-color: #111827;
-        color: #f9fafb;
-    }
-
-    html.dark option {
-        background-color: #1f2937;
-        color: #f9fafb;
-    }
-
-    html.dark .secondary-button {
-        border-color: #6b7280;
-        background-color: #374151;
-        color: #f9fafb;
-    }
-
-    html.dark .shimmer {
-        background: linear-gradient(to right, #1f2937 8%, #374151 18%, #1f2937 33%);
     }
 }
 

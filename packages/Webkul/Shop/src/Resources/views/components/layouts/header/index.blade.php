@@ -208,7 +208,7 @@
         type="text/x-template"
         id="v-dark-template"
     >
-        <div class="flex items-center">
+        <div class="flex items-center flex-shrink-0">
             <button
                 type="button"
                 class="rounded-md p-2 transition-colors hover:bg-gray-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-navyBlue dark:hover:bg-gray-800"
@@ -218,7 +218,7 @@
             >
                 <svg
                     v-if="isDarkMode"
-                    class="h-5 w-5 text-yellow-500"
+                    class="h-5 w-5 text-yellow-500 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"
@@ -230,7 +230,7 @@
 
                 <svg
                     v-else
-                    class="h-5 w-5 text-gray-700 dark:text-gray-200"
+                    class="h-5 w-5 text-gray-700 dark:text-gray-200 flex-shrink-0"
                     fill="none"
                     stroke="currentColor"
                     stroke-width="2"

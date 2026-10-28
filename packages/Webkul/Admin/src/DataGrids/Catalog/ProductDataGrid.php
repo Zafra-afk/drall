@@ -65,10 +65,13 @@ class ProductDataGrid extends DataGrid
                 'product_flat.manage_stock',
                 'product_flat.category_name',
                 'product_flat.attribute_family_name as attribute_family',
+                'product_flat.brand',
             )
             ->where('product_flat.locale', app()->getLocale());
 
         $this->addFilter('attribute_family', 'attribute_family_id');
+
+        $this->addFilter('brand', 'product_flat.brand');
 
         return $queryBuilder;
     }
@@ -122,6 +125,22 @@ class ProductDataGrid extends DataGrid
             'filterable' => true,
             'filterable_type' => 'dropdown',
             'filterable_options' => $this->attributeFamilyRepository->all(['name as label', 'id as value'])->toArray(),
+            'sortable' => true,
+        ]);
+
+        $this->addColumn([
+            'index' => 'brand',
+            'label' => trans('admin::app.catalog.products.index.datagrid.brand'),
+            'type' => 'string',
+            'filterable' => true,
+            'filterable_type' => 'dropdown',
+            'filterable_options' => DB::table('attribute_options')
+                ->where('attribute_id', 25)
+                ->orderBy('sort_order')
+                ->get()
+                ->map(fn ($option) => ['label' => $option->admin_name, 'value' => $option->admin_name])
+                ->toArray(),
+            'sortable' => true,
         ]);
 
         $this->addColumn([
@@ -184,6 +203,7 @@ class ProductDataGrid extends DataGrid
             'label' => trans('admin::app.catalog.products.index.datagrid.category'),
             'type' => 'string',
             'filterable' => true,
+            'sortable' => true,
         ]);
 
         $this->addColumn([
@@ -441,6 +461,16 @@ class ProductDataGrid extends DataGrid
             ],
 
             'sku', 'name', 'category_name' => $this->getTextFilterValue($attribute, $values),
+
+            'brand' => [
+                'terms' => [
+                    'brand' => DB::table('attribute_options')
+                        ->where('attribute_id', 25)
+                        ->whereIn('admin_name', (array) $values)
+                        ->pluck('id')
+                        ->all(),
+                ],
+            ],
 
             default => [
                 'terms' => [

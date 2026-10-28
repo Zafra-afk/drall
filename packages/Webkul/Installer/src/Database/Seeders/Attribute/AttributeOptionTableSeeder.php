@@ -70,6 +70,46 @@ class AttributeOptionTableSeeder extends Seeder
                 'admin_name' => trans('installer::app.seeders.attribute.attribute-options.xl', [], $defaultLocale),
                 'sort_order' => 4,
                 'attribute_id' => 24,
+            ], [
+                'id' => 10,
+                'admin_name' => trans('installer::app.seeders.attribute.attribute-options.nike', [], $defaultLocale),
+                'sort_order' => 1,
+                'attribute_id' => 25,
+            ], [
+                'id' => 11,
+                'admin_name' => trans('installer::app.seeders.attribute.attribute-options.adidas', [], $defaultLocale),
+                'sort_order' => 2,
+                'attribute_id' => 25,
+            ], [
+                'id' => 12,
+                'admin_name' => trans('installer::app.seeders.attribute.attribute-options.puma', [], $defaultLocale),
+                'sort_order' => 3,
+                'attribute_id' => 25,
+            ], [
+                'id' => 13,
+                'admin_name' => trans('installer::app.seeders.attribute.attribute-options.apple', [], $defaultLocale),
+                'sort_order' => 4,
+                'attribute_id' => 25,
+            ], [
+                'id' => 14,
+                'admin_name' => trans('installer::app.seeders.attribute.attribute-options.samsung', [], $defaultLocale),
+                'sort_order' => 5,
+                'attribute_id' => 25,
+            ], [
+                'id' => 15,
+                'admin_name' => trans('installer::app.seeders.attribute.attribute-options.sony', [], $defaultLocale),
+                'sort_order' => 6,
+                'attribute_id' => 25,
+            ], [
+                'id' => 16,
+                'admin_name' => trans('installer::app.seeders.attribute.attribute-options.zara', [], $defaultLocale),
+                'sort_order' => 7,
+                'attribute_id' => 25,
+            ], [
+                'id' => 17,
+                'admin_name' => trans('installer::app.seeders.attribute.attribute-options.generic', [], $defaultLocale),
+                'sort_order' => 8,
+                'attribute_id' => 25,
             ],
         ]);
 
@@ -113,6 +153,38 @@ class AttributeOptionTableSeeder extends Seeder
                     'locale' => $locale,
                     'label' => trans('installer::app.seeders.attribute.attribute-options.xl', [], $locale),
                     'attribute_option_id' => 9,
+                ], [
+                    'locale' => $locale,
+                    'label' => trans('installer::app.seeders.attribute.attribute-options.nike', [], $locale),
+                    'attribute_option_id' => 10,
+                ], [
+                    'locale' => $locale,
+                    'label' => trans('installer::app.seeders.attribute.attribute-options.adidas', [], $locale),
+                    'attribute_option_id' => 11,
+                ], [
+                    'locale' => $locale,
+                    'label' => trans('installer::app.seeders.attribute.attribute-options.puma', [], $locale),
+                    'attribute_option_id' => 12,
+                ], [
+                    'locale' => $locale,
+                    'label' => trans('installer::app.seeders.attribute.attribute-options.apple', [], $locale),
+                    'attribute_option_id' => 13,
+                ], [
+                    'locale' => $locale,
+                    'label' => trans('installer::app.seeders.attribute.attribute-options.samsung', [], $locale),
+                    'attribute_option_id' => 14,
+                ], [
+                    'locale' => $locale,
+                    'label' => trans('installer::app.seeders.attribute.attribute-options.sony', [], $locale),
+                    'attribute_option_id' => 15,
+                ], [
+                    'locale' => $locale,
+                    'label' => trans('installer::app.seeders.attribute.attribute-options.zara', [], $locale),
+                    'attribute_option_id' => 16,
+                ], [
+                    'locale' => $locale,
+                    'label' => trans('installer::app.seeders.attribute.attribute-options.generic', [], $locale),
+                    'attribute_option_id' => 17,
                 ],
             ]);
         }

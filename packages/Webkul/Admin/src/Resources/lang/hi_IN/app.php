@@ -1161,6 +1161,8 @@ return [
                     'active' => 'सक्रिय',
                     'attribute-family' => 'गुण परिवार',
                     'attribute-family-value' => 'गुण परिवार - :attribute_family',
+                    'brand' => 'Brand',
+                    'brand-value' => 'Brand - :brand',
                     'category' => 'श्रेणी',
                     'channel' => 'चैनल',
                     'copy' => 'कॉपी',

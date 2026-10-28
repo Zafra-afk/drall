@@ -1161,6 +1161,8 @@ return [
                     'active' => 'Ativo',
                     'attribute-family' => 'Família de Atributos',
                     'attribute-family-value' => 'Família de Atributos - :attribute_family',
+                    'brand' => 'Brand',
+                    'brand-value' => 'Brand - :brand',
                     'category' => 'Categoria',
                     'channel' => 'Canal',
                     'copy' => 'Copiar',

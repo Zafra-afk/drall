@@ -1161,6 +1161,8 @@ return [
                     'active' => 'সক্রিয়',
                     'attribute-family' => 'গুণ পরিবার',
                     'attribute-family-value' => 'গুণ পরিবার - :attribute_family',
+                    'brand' => 'Brand',
+                    'brand-value' => 'Brand - :brand',
                     'category' => 'বিভাগ',
                     'channel' => 'চ্যানেল',
                     'copy' => 'কপি',

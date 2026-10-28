@@ -81,7 +81,7 @@
                 <div class="row datagrid-head datagrid-head-cards grid grid-cols-[2fr_1fr_1fr] grid-rows-1">
                     <div
                         class="flex select-none items-center gap-2.5"
-                        v-for="(columnGroup, index) in [['name', 'sku', 'attribute_family'], ['base_image', 'price', 'quantity', 'product_id'], ['status', 'category_name', 'type']]"
+                        v-for="(columnGroup, index) in [['name', 'sku', 'attribute_family', 'brand'], ['base_image', 'price', 'quantity', 'product_id'], ['status', 'category_name', 'type']]"
                     >
                         @if ($hasPermission)
                             <label
@@ -224,6 +224,10 @@
                                         @{{ "@lang('admin::app.catalog.products.index.datagrid.attribute-family-value')".replace(':attribute_family', record.attribute_family) }}
                                     </p>
 
+                                    <p class="text-xs text-gray-600 dark:text-gray-300 sm:text-sm" v-if="record.brand">
+                                        @{{ record.brand }}
+                                    </p>
+
                                     <p class="text-xs text-gray-600 dark:text-gray-300 sm:text-sm">
                                         @{{ record.category_name ?? 'N/A' }}
                                     </p>
@@ -322,6 +326,10 @@
 
                                 <p class="text-gray-600 dark:text-gray-300">
                                     @{{ "@lang('admin::app.catalog.products.index.datagrid.attribute-family-value')".replace(':attribute_family', record.attribute_family) }}
+                                </p>
+
+                                <p class="text-gray-600 dark:text-gray-300" v-if="record.brand">
+                                    @{{ record.brand }}
                                 </p>
                             </div>
                         </div>

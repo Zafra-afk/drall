@@ -208,6 +208,18 @@ class Flat extends AbstractIndexer
                 .' WHERE id = '.$tablePrefix.'product_flat.attribute_family_id)'
             ),
 
+            'brand' => DB::raw(
+                '(SELECT trans.label
+                 FROM '.$tablePrefix.'product_attribute_values pav
+                 INNER JOIN '.$tablePrefix.'attribute_options opt ON opt.id = pav.integer_value
+                 INNER JOIN '.$tablePrefix.'attribute_option_translations trans
+                   ON trans.attribute_option_id = opt.id
+                   AND trans.locale = '.$tablePrefix.'product_flat.locale
+                 WHERE pav.product_id = '.$tablePrefix.'product_flat.product_id
+                 AND pav.attribute_id = 25
+                 LIMIT 1)'
+            ),
+
             'category_name' => DB::raw($this->categoryPathsExpression($tablePrefix)),
         ]);
     }
@@ -322,7 +334,7 @@ class Flat extends AbstractIndexer
         foreach ($this->getCachedFamilyAttributes($product) as $attribute) {
             if (
                 ! in_array($attribute->code, $this->flatColumns)
-                || $attribute->code == 'sku'
+                || in_array($attribute->code, ['sku', 'brand'])
             ) {
                 continue;
             }

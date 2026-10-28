@@ -675,8 +675,12 @@ trait ProductTestBench
                 'channel' => $channel,
             ],
 
-            'color', 'size', 'brand' => [
+            'color', 'size' => [
                 'integer_value' => null,
+            ],
+
+            'brand' => [
+                'integer_value' => 10,
             ],
 
             default => [],

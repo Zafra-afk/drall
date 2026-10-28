@@ -141,3 +141,28 @@ it('should reindex every product in a full flat reindex when an earlier batched 
         ->not->toBeNull()
         ->sku->toBe($product->sku);
 });
+
+// ============================================================================
+// Brand Resolution
+// ============================================================================
+
+it('should resolve brand option id to its translated label in the flat table', function () {
+    $product = $this->createSimpleProduct();
+
+    $row = flatRowOn($product->id, core()->getDefaultChannel()->code, app()->getLocale());
+
+    expect($row)->not->toBeNull()
+        ->and($row->quantity)->not->toBeNull()
+        ->and($row->brand)->toBe('Nike');
+});
+
+it('should leave brand null when the product has no brand value', function () {
+    $product = $this->createProduct('simple', [
+        'brand' => ['integer_value' => null, 'locale' => null, 'channel' => null],
+    ]);
+
+    $row = flatRowOn($product->id, core()->getDefaultChannel()->code, app()->getLocale());
+
+    expect($row)->not->toBeNull()
+        ->and($row->brand)->toBeNull();
+});

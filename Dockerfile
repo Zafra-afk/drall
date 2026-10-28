@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
         libxml2-dev \
         libicu-dev \
         libkrb5-dev \
+        libcurl4-openssl-dev \
         unzip \
         git \
         curl \
@@ -48,8 +49,8 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
         /etc/apache2/conf-available/*.conf \
     && sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' \
         /etc/apache2/apache2.conf \
-    && ln -s /dev/stdout /var/log/apache2/access.log \
-    && ln -s /dev/stderr /var/log/apache2/error.log
+    && ln -sf /dev/stdout /var/log/apache2/access.log \
+    && ln -sf /dev/stderr /var/log/apache2/error.log
 
 WORKDIR /var/www/html
 
@@ -76,3 +77,5 @@ RUN chown -R www-data:www-data /var/www/html \
 RUN php artisan package:discover --ansi
 
 EXPOSE 80
+
+CMD ["apache2-foreground"]

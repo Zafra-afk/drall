@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Queue;
 use Webkul\BookingProduct\Models\BookingProduct;
@@ -84,7 +85,66 @@ it('should return product listing via datagrid', function () {
         ->assertOk()
         ->assertJsonCount(1, 'records')
         ->assertJsonPath('records.0.product_id', $product->id)
-        ->assertJsonPath('records.0.sku', $product->sku);
+        ->assertJsonPath('records.0.sku', $product->sku)
+        ->assertJsonPath('records.0.brand', 'Nike');
+});
+
+it('should include brand in the datagrid response', function () {
+    useDatabaseSearchEngine();
+
+    $product = $this->createSimpleProduct();
+
+    $this->loginAsAdmin();
+
+    getJson(route('admin.catalog.products.index', [
+        'filters' => ['product_id' => [$product->id]],
+    ]), [
+        'X-Requested-With' => 'XMLHttpRequest',
+    ])
+        ->assertOk()
+        ->assertJsonCount(1, 'records')
+        ->assertJsonPath('records.0.brand', 'Nike');
+});
+
+it('should filter products by brand in the datagrid', function () {
+    useDatabaseSearchEngine();
+
+    $nikeProduct = $this->createSimpleProduct();
+
+    $adidasOptionId = DB::table('attribute_options')
+        ->where('attribute_id', 25)
+        ->where('admin_name', 'Adidas')
+        ->value('id');
+
+    $adidasProduct = $this->createProduct('simple', [
+        'brand' => ['integer_value' => $adidasOptionId],
+    ]);
+
+    $this->loginAsAdmin();
+
+    getJson(route('admin.catalog.products.index', [
+        'filters' => ['brand' => ['Nike']],
+    ]), [
+        'X-Requested-With' => 'XMLHttpRequest',
+    ])
+        ->assertOk()
+        ->assertJsonCount(1, 'records')
+        ->assertJsonPath('records.0.product_id', $nikeProduct->id);
+});
+
+it('should sort products by brand in the datagrid', function () {
+    useDatabaseSearchEngine();
+
+    $this->createSimpleProduct();
+
+    $this->loginAsAdmin();
+
+    getJson(route('admin.catalog.products.index', [
+        'sort' => ['column' => 'brand', 'order' => 'desc'],
+    ]), [
+        'X-Requested-With' => 'XMLHttpRequest',
+    ])
+        ->assertOk();
 });
 
 it('should list a product carried by several channels only once', function () {
@@ -300,8 +360,8 @@ it('should render column 1 attribute groups before column 2 on the edit page', f
     get(route('admin.catalog.products.edit', $product->id))
         ->assertOk()
         ->assertSeeInOrder([
-            'flex-1 max-xl:flex-auto',
-            'w-90 max-w-full',
+            'flex-1 max-lg:w-full',
+            'w-90 max-w-full max-lg:w-full',
         ]);
 });
 

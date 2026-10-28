@@ -1161,6 +1161,8 @@ return [
                     'active' => 'Inatumika',
                     'attribute-family' => 'Familia ya Sifa',
                     'attribute-family-value' => 'Familia ya Sifa - :attribute_family',
+                    'brand' => 'Brand',
+                    'brand-value' => 'Brand - :brand',
                     'category' => 'Jamii',
                     'channel' => 'Chaneli',
                     'copy' => 'Nakili',

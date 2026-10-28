@@ -1161,6 +1161,8 @@ return [
                     'active' => 'פעיל',
                     'attribute-family' => 'משפחת מאפיינים',
                     'attribute-family-value' => 'משפחת מאפיינים - :attribute_family',
+                    'brand' => 'Brand',
+                    'brand-value' => 'Brand - :brand',
                     'category' => 'קטגוריה',
                     'channel' => 'ערוץ',
                     'copy' => 'העתק',

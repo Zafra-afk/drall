@@ -1161,6 +1161,8 @@ return [
                     'active' => 'Aktif',
                     'attribute-family' => 'Keluarga Atribut',
                     'attribute-family-value' => 'Keluarga Atribut - :attribute_family',
+                    'brand' => 'Brand',
+                    'brand-value' => 'Brand - :brand',
                     'category' => 'Kategori',
                     'channel' => 'Saluran',
                     'copy' => 'Salin',

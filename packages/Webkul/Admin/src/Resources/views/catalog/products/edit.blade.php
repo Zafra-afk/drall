@@ -142,7 +142,7 @@
         <!-- Body Content -->
         {!! view_render_event('bagisto.admin.catalog.product.edit.form.before', ['product' => $product]) !!}
 
-        <div class="mt-3.5 flex gap-2.5 max-xl:flex-wrap">
+        <div class="mt-3.5 flex gap-2.5 max-lg:flex-wrap">
             @php
                 $groupedColumns = $product->attribute_family->attribute_groups->groupBy('column');
 
@@ -152,7 +152,7 @@
             @foreach ($groupedColumns as $column => $groups)
                 {!! view_render_event("bagisto.admin.catalog.product.edit.form.column_{$column}.before", ['product' => $product]) !!}
 
-                <div class="flex flex-col gap-2 {{ $column == 1 ? 'flex-1 max-xl:flex-auto' : 'w-90 max-w-full max-sm:w-full' }}">
+                <div class="flex flex-col gap-2 {{ $column == 1 ? 'flex-1 max-lg:w-full' : 'w-90 max-w-full max-lg:w-full' }}">
                     @foreach ($groups as $group)
                         @php $customAttributes = $product->getEditableAttributes($group); @endphp
 
@@ -275,7 +275,7 @@
                         || $column == 2
                     )
                 )
-                    <div class="w-90 max-w-full max-sm:w-full">
+                    <div class="w-full max-w-full">
                         @if ($column == 2)
                             <!-- Images View Blade File -->
                             @include('admin::catalog.products.edit.images')

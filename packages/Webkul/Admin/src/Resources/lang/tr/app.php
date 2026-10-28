@@ -1161,6 +1161,8 @@ return [
                     'active' => 'Aktif',
                     'attribute-family' => 'Özellik Ailesi',
                     'attribute-family-value' => 'Özellik Ailesi - :attribute_family',
+                    'brand' => 'Brand',
+                    'brand-value' => 'Brand - :brand',
                     'category' => 'Kategori',
                     'channel' => 'Kanal',
                     'copy' => 'Kopyala',

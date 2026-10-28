@@ -1161,6 +1161,8 @@ return [
                     'active' => '激活',
                     'attribute-family' => '属性家族',
                     'attribute-family-value' => '属性家族 - :attribute_family',
+                    'brand' => 'Brand',
+                    'brand-value' => 'Brand - :brand',
                     'category' => '类别',
                     'channel' => '渠道',
                     'copy' => '复制z',

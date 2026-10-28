@@ -1161,6 +1161,8 @@ return [
                     'active' => 'نشط',
                     'attribute-family' => 'عائلة السمة',
                     'attribute-family-value' => 'عائلة السمة - :attribute_family',
+                    'brand' => 'Brand',
+                    'brand-value' => 'Brand - :brand',
                     'category' => 'الفئة',
                     'channel' => 'القناة',
                     'copy' => 'نسخ',

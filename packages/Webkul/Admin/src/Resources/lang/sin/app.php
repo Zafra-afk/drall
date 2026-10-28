@@ -1161,6 +1161,8 @@ return [
                     'active' => 'සක්‍රීය',
                     'attribute-family' => 'සැකසුම් පවුර',
                     'attribute-family-value' => 'සැකසුම් පවුර - :attribute_family',
+                    'brand' => 'Brand',
+                    'brand-value' => 'Brand - :brand',
                     'category' => 'ප්‍රවර්ගය',
                     'channel' => 'චැනල්',
                     'copy' => 'පිටපත පිටපත කරනවා',

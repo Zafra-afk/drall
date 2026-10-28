@@ -1161,6 +1161,8 @@ return [
                     'active' => 'アクティブ',
                     'attribute-family' => '属性ファミリー',
                     'attribute-family-value' => '属性ファミリー - :attribute_family',
+                    'brand' => 'Brand',
+                    'brand-value' => 'Brand - :brand',
                     'category' => 'カテゴリー',
                     'channel' => 'チャンネル',
                     'copy' => 'コピー',
