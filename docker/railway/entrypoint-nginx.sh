@@ -17,6 +17,11 @@ mkdir -p \
 
 touch .env
 
+# storage/app/public is a persistent volume: add missing seed images, never overwrite.
+if [ -d /opt/storage-public-seed ]; then
+    cp -an /opt/storage-public-seed/. storage/app/public/ || true
+fi
+
 if [ -z "${APP_KEY:-}" ]; then
     APP_KEY="$(sed -n 's/^APP_KEY=//p' .env | tail -n 1)"
 
@@ -47,6 +52,11 @@ if ! php artisan route:cache; then
 fi
 
 php artisan storage:link --force
+
+if [ "${SEED_THEME_SECTIONS:-}" = "true" ]; then
+    php artisan db:seed --class="Webkul\\Installer\\Database\\Seeders\\Shop\\SectionTableSeeder" --force --no-interaction \
+        || printf '%s\n' "WARNING: theme section seeding failed." >&2
+fi
 
 if ! php artisan migrate --force --no-interaction; then
     printf '%s\n' "WARNING: migrate failed; starting anyway." >&2

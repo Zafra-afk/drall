@@ -60,6 +60,10 @@ RUN cd /var/www/html/packages/Webkul/Admin && npm install --no-audit --no-fund &
     && cd /var/www/html/packages/Webkul/Shop && npm install --no-audit --no-fund && npm run build \
     && cd /var/www/html/packages/Webkul/Installer && npm install --no-audit --no-fund && npm run build
 
+# Keep a copy of the tracked seed images; the entrypoint syncs it into the
+# persistent volume mounted on storage/app/public.
+RUN mkdir -p /opt/storage-public-seed && cp -a storage/app/public/. /opt/storage-public-seed/
+
 # Set runtime directory permissions without recursively changing the application files.
 RUN chown -R www-data:www-data /var/www/html/storage /var/www/html/bootstrap/cache \
     && chmod -R 775 /var/www/html/storage /var/www/html/bootstrap/cache
