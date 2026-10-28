@@ -64,7 +64,7 @@ return new class extends Migration
         });
 
         Schema::table('product_bundle_option_translations', function (Blueprint $table) {
-            $table->dropForeign('product_bundle_option_translations_option_id_foreign');
+            $table->dropForeign(['product_bundle_option_id']);
 
             $table->dropUnique('bundle_option_translations_locale_label_bundle_option_id_unique');
 

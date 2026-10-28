@@ -6,7 +6,7 @@ return [
             'email' => 'כתובת אימייל',
             'forget-password-link' => 'שכחת סיסמה?',
             'password' => 'סיסמה',
-            'powered-by-description' => 'מופעל על ידי :bagisto, פרויקט קוד פתוח על ידי :webkul.',
+            'powered-by-description' => 'מופעל על ידי Drall, פרויקט קוד פתוח על ידי :webkul.',
             'submit-btn' => 'כניסה',
             'title' => 'כניסה',
         ],
@@ -16,7 +16,7 @@ return [
                 'email' => 'אימייל רשום',
                 'email-not-exist' => 'אימייל לא קיים',
                 'page-title' => 'שכחתי סיסמה',
-                'powered-by-description' => 'מופעל על ידי :bagisto, פרויקט קוד פתוח על ידי :webkul.',
+                'powered-by-description' => 'מופעל על ידי Drall, פרויקט קוד פתוח על ידי :webkul.',
                 'reset-link-sent' => 'קישור לאיפוס סיסמה נשלח',
                 'reset-link-failed' => 'לא ניתן לשלוח את קישור איפוס הסיסמה. אנא נסו שוב מאוחר יותר.',
                 'sign-in-link' => 'חזור להתחברות?',
@@ -30,7 +30,7 @@ return [
             'confirm-password' => 'אימות סיסמה',
             'email' => 'אימייל רשום',
             'password' => 'סיסמה',
-            'powered-by-description' => 'מופעל על ידי :bagisto, פרויקט קוד פתוח על ידי :webkul.',
+            'powered-by-description' => 'מופעל על ידי Drall, פרויקט קוד פתוח על ידי :webkul.',
             'submit-btn' => 'איפוס סיסמה',
             'title' => 'איפוס סיסמה',
         ],
@@ -125,13 +125,13 @@ return [
     'help' => [
         'index' => [
             'title' => 'עזרה ומשאבים',
-            'description' => 'כל מה שאתם צריכים כדי להפיק את המרב מ-Bagisto — אירוח, תמיכה ושירותים מקצועיים, וכן הרחבות ותיעוד למפתחים.',
+            'description' => 'כל מה שאתם צריכים כדי להפיק את המרב מ-Drall — אירוח, תמיכה ושירותים מקצועיים, וכן הרחבות ותיעוד למפתחים.',
 
             'services-title' => 'שירותים',
             'resources-title' => 'משאבים ותיעוד',
 
             'cloud-hosting' => 'אירוח בענן',
-            'cloud-hosting-info' => 'אירוח ענן מנוהל וחסכוני — השיקו את חנות Bagisto שלכם בענן תוך דקות, מותאם ומדרגי לחלוטין.',
+            'cloud-hosting-info' => 'אירוח ענן מנוהל וחסכוני — השיקו את חנות Drall שלכם בענן תוך דקות, מותאם ומדרגי לחלוטין.',
 
             'support' => 'תמיכה ותחזוקה',
             'support-info' => 'תמיכה טכנית ייעודית ותוכניות תחזוקה שוטפת כדי לשמור על החנות שלכם מאובטחת, מעודכנת ופועלת באופן חלק.',
@@ -140,22 +140,22 @@ return [
             'paid-services-info' => 'עזרה מקצועית לשילוב מודולים, התאמה אישית, העברת נתונים, שדרוגי גרסה ופיתוח מותאם אישית.',
 
             'extensions' => 'הרחבות',
-            'extensions-info' => 'עיינו בתוספים רשמיים וקהילתיים כדי להרחיב את Bagisto עם מחברים, ערוצים ותכונות חדשות.',
+            'extensions-info' => 'עיינו בתוספים רשמיים וקהילתיים כדי להרחיב את Drall עם מחברים, ערוצים ותכונות חדשות.',
 
             'docs' => 'תיעוד למפתחים ובלוגים',
             'docs-info' => 'מדריכים למפתחים, הדרכות והמאמרים האחרונים שיעזרו לכם לבנות, להגדיר ולהישאר מעודכנים.',
 
             'api-docs' => 'תיעוד API',
-            'api-docs-info' => 'הפניית API מלאה של REST ו-GraphQL עם נקודות קצה, אימות ודוגמאות לשילוב Bagisto במערכת שלכם.',
+            'api-docs-info' => 'הפניית API מלאה של REST ו-GraphQL עם נקודות קצה, אימות ודוגמאות לשילוב Drall במערכת שלכם.',
 
             'community' => 'פורום הקהילה',
-            'community-info' => 'שאלו שאלות, שתפו רעיונות והתחברו עם אלפי מפתחים וסוחרים של Bagisto ברחבי העולם.',
+            'community-info' => 'שאלו שאלות, שתפו רעיונות והתחברו עם אלפי מפתחים וסוחרים של Drall ברחבי העולם.',
 
             'video-tutorials' => 'הדרכות וידאו',
             'video-tutorials-info' => 'הדרכות וידאו שלב אחר שלב המכסות התקנה, הגדרה וניהול יומיומי של החנות.',
 
             'cta-title' => 'עדיין צריכים עזרה?',
-            'cta-description' => 'דברו עם צוות Bagisto על אירוח, פיתוח מותאם אישית או כל דבר אחר.',
+            'cta-description' => 'דברו עם צוות Drall על אירוח, פיתוח מותאם אישית או כל דבר אחר.',
             'cta-btn' => 'צרו קשר',
         ],
     ],
@@ -4399,7 +4399,7 @@ return [
                     'title' => 'כללי',
 
                     'sections' => [
-                        'bagisto' => 'Bagisto',
+                        'bagisto' => 'Drall',
                         'cache' => 'במטמון',
                         'database' => 'מסד נתונים',
                         'drivers' => 'מנהלי התקן',
@@ -5936,7 +5936,7 @@ return [
             ],
 
             'powered-by' => [
-                'description' => 'מופעל על ידי :bagisto, פרויקט קוד פתוח על ידי :webkul.',
+                'description' => 'מופעל על ידי Drall, פרויקט קוד פתוח על ידי :webkul.',
             ],
         ],
 
@@ -6327,7 +6327,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => 'מופעל על ידי <a href="https://bagisto.com/" target="_blank">Bagisto</a>, פרויקט קהילתי על ידי <a href="https://webkul.com/" target="_blank">Webkul</a>',
+        'copy-right' => 'מופעל על ידי <a href="https://drall.com/" target="_blank">Drall</a>, פרויקט קהילתי על ידי <a href="https://webkul.com/" target="_blank">Webkul</a>',
     ],
 
     'emails' => [
@@ -6530,7 +6530,7 @@ return [
             'refunded-at' => 'מועד ההחזר',
 
             'actions' => 'פעולות',
-            'actions-note' => 'החזרים מטופלים ידנית באמצעות כלי ההזמנה / החזר / RMA הקיימים ב-Bagisto. השתמש בפעולות אלו כדי לתעד את התוצאה ברישומי הביטול.',
+            'actions-note' => 'החזרים מטופלים ידנית באמצעות כלי ההזמנה / החזר / RMA הקיימים ב-Drall. השתמש בפעולות אלו כדי לתעד את התוצאה ברישומי הביטול.',
             'resend-confirmation' => 'שליחה חוזרת של דוא"ל האישור',
             'mark-refunded' => 'סימון כהוחזר',
             'refund-note-label' => 'אסמכתת החזר (לא חובה)',

@@ -6,7 +6,7 @@ return [
             'email' => '电子邮件地址',
             'forget-password-link' => '忘记密码？',
             'password' => '密码',
-            'powered-by-description' => '由 :bagisto 提供支持，一个由 :webkul 社区支持的项目。',
+            'powered-by-description' => '由 Drall 提供支持，一个由 :webkul 社区支持的项目。',
             'submit-btn' => '登录',
             'title' => '登录',
         ],
@@ -16,7 +16,7 @@ return [
                 'email' => '注册电子邮件',
                 'email-not-exist' => '电子邮件不存在',
                 'page-title' => '忘记密码',
-                'powered-by-description' => '由 :bagisto 提供支持，一个由 :webkul 社区支持的项目。',
+                'powered-by-description' => '由 Drall 提供支持，一个由 :webkul 社区支持的项目。',
                 'reset-link-sent' => '重置密码链接已发送',
                 'reset-link-failed' => '无法发送密码重置链接，请稍后重试。',
                 'sign-in-link' => '返回登录？',
@@ -30,7 +30,7 @@ return [
             'confirm-password' => '确认密码',
             'email' => '注册电子邮件',
             'password' => '密码',
-            'powered-by-description' => '由 :bagisto 提供支持，一个由 :webkul 社区支持的项目。',
+            'powered-by-description' => '由 Drall 提供支持，一个由 :webkul 社区支持的项目。',
             'submit-btn' => '重置密码',
             'title' => '重置密码',
         ],
@@ -125,13 +125,13 @@ return [
     'help' => [
         'index' => [
             'title' => '帮助与资源',
-            'description' => '充分使用 Bagisto 所需的一切——托管、支持和专业服务，以及扩展和开发者文档。',
+            'description' => '充分使用 Drall 所需的一切——托管、支持和专业服务，以及扩展和开发者文档。',
 
             'services-title' => '服务',
             'resources-title' => '资源与文档',
 
             'cloud-hosting' => '云托管',
-            'cloud-hosting-info' => '经济高效的托管式云托管——在几分钟内将您的 Bagisto 商店部署到云端，全面优化且可扩展。',
+            'cloud-hosting-info' => '经济高效的托管式云托管——在几分钟内将您的 Drall 商店部署到云端，全面优化且可扩展。',
 
             'support' => '支持与维护',
             'support-info' => '专属技术支持和持续维护方案，让您的商店保持安全、更新并平稳运行。',
@@ -140,22 +140,22 @@ return [
             'paid-services-info' => '为模块集成、定制、数据迁移、版本升级和定制开发提供专家帮助。',
 
             'extensions' => '扩展',
-            'extensions-info' => '浏览官方和社区插件，通过新的连接器、渠道和功能扩展 Bagisto。',
+            'extensions-info' => '浏览官方和社区插件，通过新的连接器、渠道和功能扩展 Drall。',
 
             'docs' => '开发者文档与博客',
             'docs-info' => '开发者指南、教程和最新文章，帮助您构建、配置并保持更新。',
 
             'api-docs' => 'API 文档',
-            'api-docs-info' => '完整的 REST 和 GraphQL API 参考，包含端点、身份验证和示例，助您将 Bagisto 集成到您的技术栈中。',
+            'api-docs-info' => '完整的 REST 和 GraphQL API 参考，包含端点、身份验证和示例，助您将 Drall 集成到您的技术栈中。',
 
             'community' => '社区论坛',
-            'community-info' => '提出问题、分享想法，并与全球数千名 Bagisto 开发者和商家建立联系。',
+            'community-info' => '提出问题、分享想法，并与全球数千名 Drall 开发者和商家建立联系。',
 
             'video-tutorials' => '视频教程',
             'video-tutorials-info' => '涵盖安装、配置和日常商店管理的分步视频讲解。',
 
             'cta-title' => '仍然需要帮助？',
-            'cta-description' => '就托管、定制开发或其他任何事宜与 Bagisto 团队交流。',
+            'cta-description' => '就托管、定制开发或其他任何事宜与 Drall 团队交流。',
             'cta-btn' => '联系我们',
         ],
     ],
@@ -4399,7 +4399,7 @@ return [
                     'title' => '常规',
 
                     'sections' => [
-                        'bagisto' => 'Bagisto',
+                        'bagisto' => 'Drall',
                         'cache' => '已缓存',
                         'database' => '数据库',
                         'drivers' => '驱动',
@@ -5936,7 +5936,7 @@ return [
             ],
 
             'powered-by' => [
-                'description' => '由 :bagisto 提供支持，一个由 :webkul 社区支持的项目。',
+                'description' => '由 Drall 提供支持，一个由 :webkul 社区支持的项目。',
             ],
         ],
 
@@ -6327,7 +6327,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => '由 <a href="https://bagisto.com/" target="_blank">Bagisto</a> 提供支持，一个由 <a href="https://webkul.com/" target="_blank">Webkul</a> 社区支持的项目',
+        'copy-right' => '由 <a href="https://drall.com/" target="_blank">Drall</a> 提供支持，一个由 <a href="https://webkul.com/" target="_blank">Webkul</a> 社区支持的项目',
     ],
 
     'emails' => [
@@ -6530,7 +6530,7 @@ return [
             'refunded-at' => '退款时间',
 
             'actions' => '操作',
-            'actions-note' => '退款通过 Bagisto 现有的订单 / 退款 / RMA 工具手动处理。请使用这些操作在撤回凭证上记录处理结果。',
+            'actions-note' => '退款通过 Drall 现有的订单 / 退款 / RMA 工具手动处理。请使用这些操作在撤回凭证上记录处理结果。',
             'resend-confirmation' => '重新发送确认邮件',
             'mark-refunded' => '标记为已退款',
             'refund-note-label' => '退款参考编号（可选）',

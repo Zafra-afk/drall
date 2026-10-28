@@ -6,7 +6,7 @@ return [
             'email' => 'Email Address',
             'forget-password-link' => 'Forget Password ?',
             'password' => 'Password',
-            'powered-by-description' => 'Powered by :bagisto, an open-source project by :webkul.',
+            'powered-by-description' => 'Powered by Drall.',
             'submit-btn' => 'Sign In',
             'title' => 'Sign In',
         ],
@@ -16,7 +16,7 @@ return [
                 'email' => 'Registered Email',
                 'email-not-exist' => 'Email Not Exists',
                 'page-title' => 'Forget Password',
-                'powered-by-description' => 'Powered by :bagisto, an open-source project by :webkul.',
+                'powered-by-description' => 'Powered by Drall.',
                 'reset-link-sent' => 'Reset Password link sent',
                 'reset-link-failed' => 'Unable to send the password reset link. Please try again later.',
                 'sign-in-link' => 'Back to Sign In ?',
@@ -30,7 +30,7 @@ return [
             'confirm-password' => 'Confirm Password',
             'email' => 'Registered Email',
             'password' => 'Password',
-            'powered-by-description' => 'Powered by :bagisto, an open-source project by :webkul.',
+            'powered-by-description' => 'Powered by Drall.',
             'submit-btn' => 'Reset Password',
             'title' => 'Reset Password',
         ],
@@ -125,13 +125,13 @@ return [
     'help' => [
         'index' => [
             'title' => 'Help & Resources',
-            'description' => 'Everything you need to get the most out of Bagisto — hosting, support and professional services, plus extensions and developer documentation.',
+            'description' => 'Everything you need to get the most out of Drall — hosting, support and professional services, plus extensions and developer documentation.',
 
             'services-title' => 'Services',
             'resources-title' => 'Resources & Documentation',
 
             'cloud-hosting' => 'Cloud Hosting',
-            'cloud-hosting-info' => 'Cost-effective, managed cloud hosting — launch your Bagisto store on the cloud in minutes, fully optimised and scalable.',
+            'cloud-hosting-info' => 'Cost-effective, managed cloud hosting — launch your Drall store on the cloud in minutes, fully optimised and scalable.',
 
             'support' => 'Support & Maintenance',
             'support-info' => 'Dedicated technical support and ongoing maintenance plans to keep your store secure, updated and running smoothly.',
@@ -140,22 +140,22 @@ return [
             'paid-services-info' => 'Expert help for module integration, customisation, data migration, version upgrades and bespoke development.',
 
             'extensions' => 'Extensions',
-            'extensions-info' => 'Browse official and community add-ons to extend Bagisto with new connectors, channels and features.',
+            'extensions-info' => 'Browse official and community add-ons to extend Drall with new connectors, channels and features.',
 
             'docs' => 'Dev Docs & Blogs',
             'docs-info' => 'Developer guides, tutorials and the latest articles to help you build, configure and stay up to date.',
 
             'api-docs' => 'API Docs',
-            'api-docs-info' => 'Full REST & GraphQL API reference with endpoints, authentication and examples to integrate Bagisto with your stack.',
+            'api-docs-info' => 'Full REST & GraphQL API reference with endpoints, authentication and examples to integrate Drall with your stack.',
 
             'community' => 'Community Forum',
-            'community-info' => 'Ask questions, share ideas and connect with thousands of Bagisto developers and merchants worldwide.',
+            'community-info' => 'Ask questions, share ideas and connect with thousands of Drall developers and merchants worldwide.',
 
             'video-tutorials' => 'Video Tutorials',
             'video-tutorials-info' => 'Step-by-step video walkthroughs covering installation, configuration and everyday store management.',
 
             'cta-title' => 'Still need a hand?',
-            'cta-description' => 'Talk to the Bagisto team about hosting, custom development or anything else.',
+            'cta-description' => 'Talk to the Drall team about hosting, custom development or anything else.',
             'cta-btn' => 'Contact Us',
         ],
     ],
@@ -4399,7 +4399,7 @@ return [
                     'title' => 'General',
 
                     'sections' => [
-                        'bagisto' => 'Bagisto',
+                        'bagisto' => 'Drall',
                         'cache' => 'Cached',
                         'database' => 'Database',
                         'drivers' => 'Drivers',
@@ -5936,7 +5936,7 @@ return [
             ],
 
             'powered-by' => [
-                'description' => 'Powered by :bagisto, an open-source project by :webkul.',
+                'description' => 'Powered by Drall.',
             ],
         ],
 
@@ -6327,7 +6327,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => 'Powered by <a href="https://bagisto.com/" target="_blank">Bagisto</a>, A Community Project by <a href="https://webkul.com/" target="_blank">Webkul</a>',
+        'copy-right' => 'Drall — your online store.',
     ],
 
     'emails' => [
@@ -6530,7 +6530,7 @@ return [
             'refunded-at' => 'Refunded at',
 
             'actions' => 'Actions',
-            'actions-note' => 'Refunds are processed manually via Bagisto’s existing order / refund / RMA tools. Use these actions to record the outcome on the withdrawal evidence.',
+            'actions-note' => 'Refunds are processed manually via Drall’s existing order / refund / RMA tools. Use these actions to record the outcome on the withdrawal evidence.',
             'resend-confirmation' => 'Resend Confirmation Email',
             'mark-refunded' => 'Mark as Refunded',
             'refund-note-label' => 'Refund reference (optional)',

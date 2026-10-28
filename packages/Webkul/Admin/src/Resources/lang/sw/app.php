@@ -6,7 +6,7 @@ return [
             'email' => 'Barua Pepe',
             'forget-password-link' => 'Umesahau Nenosiri?',
             'password' => 'Nenosiri',
-            'powered-by-description' => 'Inaendeshwa na :bagisto, mradi wa chanzo huria kutoka :webkul.',
+            'powered-by-description' => 'Inaendeshwa na Drall, mradi wa chanzo huria kutoka :webkul.',
             'submit-btn' => 'Ingia',
             'title' => 'Ingia',
         ],
@@ -16,7 +16,7 @@ return [
                 'email' => 'Barua Pepe Iliyosajiliwa',
                 'email-not-exist' => 'Barua Pepe Haipatikani',
                 'page-title' => 'Umesahau Nenosiri',
-                'powered-by-description' => 'Inaendeshwa na :bagisto, mradi wa chanzo huria kutoka :webkul.',
+                'powered-by-description' => 'Inaendeshwa na Drall, mradi wa chanzo huria kutoka :webkul.',
                 'reset-link-sent' => 'Kiungo cha kubadilisha nenosiri kimetumwa',
                 'reset-link-failed' => 'Imeshindikana kutuma kiungo cha kubadilisha nenosiri. Tafadhali jaribu tena baadaye.',
                 'sign-in-link' => 'Rudi Kuingia?',
@@ -30,7 +30,7 @@ return [
             'confirm-password' => 'Thibitisha Nenosiri',
             'email' => 'Barua Pepe Iliyosajiliwa',
             'password' => 'Nenosiri',
-            'powered-by-description' => 'Inaendeshwa na :bagisto, mradi wa chanzo huria kutoka :webkul.',
+            'powered-by-description' => 'Inaendeshwa na Drall, mradi wa chanzo huria kutoka :webkul.',
             'submit-btn' => 'Weka Upya Nenosiri',
             'title' => 'Weka Upya Nenosiri',
         ],
@@ -125,13 +125,13 @@ return [
     'help' => [
         'index' => [
             'title' => 'Msaada & Nyenzo',
-            'description' => 'Kila kitu unachohitaji ili kupata faida kubwa ya Bagisto — hosting, msaada na huduma za kitaalamu, pamoja na nyongeza na nyaraka za wasanidi programu.',
+            'description' => 'Kila kitu unachohitaji ili kupata faida kubwa ya Drall — hosting, msaada na huduma za kitaalamu, pamoja na nyongeza na nyaraka za wasanidi programu.',
 
             'services-title' => 'Huduma',
             'resources-title' => 'Nyenzo & Nyaraka',
 
             'cloud-hosting' => 'Hosting ya Wingu',
-            'cloud-hosting-info' => 'Hosting ya wingu yenye gharama nafuu na inayosimamiwa — anzisha duka lako la Bagisto kwenye wingu kwa dakika chache, lililoboreshwa kikamilifu na linalokua.',
+            'cloud-hosting-info' => 'Hosting ya wingu yenye gharama nafuu na inayosimamiwa — anzisha duka lako la Drall kwenye wingu kwa dakika chache, lililoboreshwa kikamilifu na linalokua.',
 
             'support' => 'Msaada na Matunzo',
             'support-info' => 'Msaada wa kiufundi wa kipekee na mipango ya matunzo endelevu ili duka lako libaki salama, limesasishwa na likifanya kazi vizuri.',
@@ -140,22 +140,22 @@ return [
             'paid-services-info' => 'Msaada wa kitaalamu kwa kuunganisha moduli, kubadilisha kwa mahitaji yako, uhamishaji wa data, kusasisha matoleo na maendeleo ya kipekee.',
 
             'extensions' => 'Nyongeza',
-            'extensions-info' => 'Vinjari viongezeo rasmi na vya jamii ili kuongezea Bagisto viunganishi vipya, chaneli na vipengele vipya.',
+            'extensions-info' => 'Vinjari viongezeo rasmi na vya jamii ili kuongezea Drall viunganishi vipya, chaneli na vipengele vipya.',
 
             'docs' => 'Nyaraka & Makala za Wasanidi',
             'docs-info' => 'Miongozo ya wasanidi programu, mafunzo na makala mpya kukusaidia kujenga, kusanidi na kubaki na habari mpya.',
 
             'api-docs' => 'Nyaraka za API',
-            'api-docs-info' => 'Rejea kamili ya REST & GraphQL API yenye endpoints, uthibitishaji na mifano ya kuunganisha Bagisto na mfumo wako.',
+            'api-docs-info' => 'Rejea kamili ya REST & GraphQL API yenye endpoints, uthibitishaji na mifano ya kuunganisha Drall na mfumo wako.',
 
             'community' => 'Jukwaa la Jamii',
-            'community-info' => 'Uliza maswali, shiriki mawazo na ungana na maelfu ya wasanidi programu na wafanyabiashara wa Bagisto duniani.',
+            'community-info' => 'Uliza maswali, shiriki mawazo na ungana na maelfu ya wasanidi programu na wafanyabiashara wa Drall duniani.',
 
             'video-tutorials' => 'Video za Mafunzo',
             'video-tutorials-info' => 'Video za hatua kwa hatua zinazojumuisha usakinishaji, usanidi na usimamizi wa kila siku wa duka.',
 
             'cta-title' => 'Bado unahitaji msaada?',
-            'cta-description' => 'Wasiliana na timu ya Bagisto kuhusu hosting, maendeleo ya kipekke au lolote lingine.',
+            'cta-description' => 'Wasiliana na timu ya Drall kuhusu hosting, maendeleo ya kipekke au lolote lingine.',
             'cta-btn' => 'Wasiliana Nasi',
         ],
     ],
@@ -4399,7 +4399,7 @@ return [
                     'title' => 'Kuu',
 
                     'sections' => [
-                        'bagisto' => 'Bagisto',
+                        'bagisto' => 'Drall',
                         'cache' => 'Kache',
                         'database' => 'Hifadhidata',
                         'drivers' => 'Viendeshi',
@@ -5936,7 +5936,7 @@ return [
             ],
 
             'powered-by' => [
-                'description' => 'Inaendeshwa na :bagisto, mradi wa chanzo huria kutoka :webkul.',
+                'description' => 'Inaendeshwa na Drall, mradi wa chanzo huria kutoka :webkul.',
             ],
         ],
 
@@ -6327,7 +6327,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => 'Inaendeshwa na <a href="https://bagisto.com/" target="_blank">Bagisto</a>, Mradi wa Jamii kutoka <a href="https://webkul.com/" target="_blank">Webkul</a>',
+        'copy-right' => 'Inaendeshwa na <a href="https://drall.com/" target="_blank">Drall</a>, Mradi wa Jamii kutoka <a href="https://webkul.com/" target="_blank">Webkul</a>',
     ],
 
     'emails' => [
@@ -6530,7 +6530,7 @@ return [
             'refunded-at' => 'Ilirejeshewa Fedha Tarehe',
 
             'actions' => 'Vitendo',
-            'actions-note' => 'Rejesho hufanyiwa michakato kwa mikono kupitia zana zilizopo za Bagisto za oda / rejesho / RMA. Tumia vitendo hivi kurekodi matokeo kwenye ushahidi wa maombi ya kujiondoa.',
+            'actions-note' => 'Rejesho hufanyiwa michakato kwa mikono kupitia zana zilizopo za Drall za oda / rejesho / RMA. Tumia vitendo hivi kurekodi matokeo kwenye ushahidi wa maombi ya kujiondoa.',
             'resend-confirmation' => 'Tuma Tena Barua Pepe ya Uthibitisho',
             'mark-refunded' => 'Weka Alama kuwa Imerejeshewa Fedha',
             'refund-note-label' => 'Rejea ya rejesho (hiari)',

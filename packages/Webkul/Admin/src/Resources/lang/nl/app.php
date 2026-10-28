@@ -6,7 +6,7 @@ return [
             'email' => 'E-mailadres',
             'forget-password-link' => 'Wachtwoord Vergeten?',
             'password' => 'Wachtwoord',
-            'powered-by-description' => 'Aangedreven door :bagisto, een open-source project van :webkul.',
+            'powered-by-description' => 'Aangedreven door Drall, een open-source project van :webkul.',
             'submit-btn' => 'Aanmelden',
             'title' => 'Aanmelden',
         ],
@@ -16,7 +16,7 @@ return [
                 'email' => 'Geregistreerd E-mailadres',
                 'email-not-exist' => 'E-mailadres Bestaat Niet',
                 'page-title' => 'Wachtwoord Vergeten',
-                'powered-by-description' => 'Aangedreven door :bagisto, een open-source project van :webkul.',
+                'powered-by-description' => 'Aangedreven door Drall, een open-source project van :webkul.',
                 'reset-link-sent' => 'Reset Wachtwoordlink Verzonden',
                 'reset-link-failed' => 'De link om het wachtwoord opnieuw in te stellen kon niet worden verzonden. Probeer het later opnieuw.',
                 'sign-in-link' => 'Terug naar Aanmelden?',
@@ -30,7 +30,7 @@ return [
             'confirm-password' => 'Bevestig Wachtwoord',
             'email' => 'Geregistreerd E-mailadres',
             'password' => 'Wachtwoord',
-            'powered-by-description' => 'Aangedreven door :bagisto, een open-source project van :webkul.',
+            'powered-by-description' => 'Aangedreven door Drall, een open-source project van :webkul.',
             'submit-btn' => 'Wachtwoord Herstellen',
             'title' => 'Wachtwoord Herstellen',
         ],
@@ -125,13 +125,13 @@ return [
     'help' => [
         'index' => [
             'title' => 'Help & Bronnen',
-            'description' => 'Alles wat u nodig hebt om het meeste uit Bagisto te halen — hosting, ondersteuning en professionele diensten, plus extensies en ontwikkelaarsdocumentatie.',
+            'description' => 'Alles wat u nodig hebt om het meeste uit Drall te halen — hosting, ondersteuning en professionele diensten, plus extensies en ontwikkelaarsdocumentatie.',
 
             'services-title' => 'Diensten',
             'resources-title' => 'Bronnen & Documentatie',
 
             'cloud-hosting' => 'Cloudhosting',
-            'cloud-hosting-info' => 'Kosteneffectieve, beheerde cloudhosting — lanceer uw Bagisto-winkel binnen enkele minuten in de cloud, volledig geoptimaliseerd en schaalbaar.',
+            'cloud-hosting-info' => 'Kosteneffectieve, beheerde cloudhosting — lanceer uw Drall-winkel binnen enkele minuten in de cloud, volledig geoptimaliseerd en schaalbaar.',
 
             'support' => 'Ondersteuning & Onderhoud',
             'support-info' => 'Toegewijde technische ondersteuning en doorlopende onderhoudsplannen om uw winkel veilig, up-to-date en soepel draaiend te houden.',
@@ -140,22 +140,22 @@ return [
             'paid-services-info' => 'Deskundige hulp bij module-integratie, maatwerk, datamigratie, versie-upgrades en op maat gemaakte ontwikkeling.',
 
             'extensions' => 'Extensies',
-            'extensions-info' => 'Blader door officiële en community add-ons om Bagisto uit te breiden met nieuwe connectoren, kanalen en functies.',
+            'extensions-info' => 'Blader door officiële en community add-ons om Drall uit te breiden met nieuwe connectoren, kanalen en functies.',
 
             'docs' => 'Dev-documentatie & Blogs',
             'docs-info' => 'Ontwikkelaarshandleidingen, tutorials en de nieuwste artikelen om u te helpen bouwen, configureren en up-to-date te blijven.',
 
             'api-docs' => 'API-documentatie',
-            'api-docs-info' => 'Volledige REST- & GraphQL-API-referentie met endpoints, authenticatie en voorbeelden om Bagisto met uw stack te integreren.',
+            'api-docs-info' => 'Volledige REST- & GraphQL-API-referentie met endpoints, authenticatie en voorbeelden om Drall met uw stack te integreren.',
 
             'community' => 'Communityforum',
-            'community-info' => 'Stel vragen, deel ideeën en maak verbinding met duizenden Bagisto-ontwikkelaars en -verkopers wereldwijd.',
+            'community-info' => 'Stel vragen, deel ideeën en maak verbinding met duizenden Drall-ontwikkelaars en -verkopers wereldwijd.',
 
             'video-tutorials' => 'Videotutorials',
             'video-tutorials-info' => 'Stapsgewijze videohandleidingen over installatie, configuratie en dagelijks winkelbeheer.',
 
             'cta-title' => 'Toch nog hulp nodig?',
-            'cta-description' => 'Praat met het Bagisto-team over hosting, maatwerkontwikkeling of iets anders.',
+            'cta-description' => 'Praat met het Drall-team over hosting, maatwerkontwikkeling of iets anders.',
             'cta-btn' => 'Neem Contact Op',
         ],
     ],
@@ -4399,7 +4399,7 @@ return [
                     'title' => 'Algemeen',
 
                     'sections' => [
-                        'bagisto' => 'Bagisto',
+                        'bagisto' => 'Drall',
                         'cache' => 'In cache',
                         'database' => 'Database',
                         'drivers' => 'Stuurprogramma’s',
@@ -5936,7 +5936,7 @@ return [
             ],
 
             'powered-by' => [
-                'description' => 'Aangedreven door :bagisto, een open-source project van :webkul.',
+                'description' => 'Aangedreven door Drall, een open-source project van :webkul.',
             ],
         ],
 
@@ -6327,7 +6327,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => 'Aangedreven door <a href="https://bagisto.com/" target="_blank">Bagisto</a>, een Community Project van <a href="https://webkul.com/" target="_blank">Webkul</a>',
+        'copy-right' => 'Aangedreven door <a href="https://drall.com/" target="_blank">Drall</a>, een Community Project van <a href="https://webkul.com/" target="_blank">Webkul</a>',
     ],
 
     'emails' => [
@@ -6530,7 +6530,7 @@ return [
             'refunded-at' => 'Terugbetaald op',
 
             'actions' => 'Acties',
-            'actions-note' => 'Terugbetalingen worden handmatig verwerkt via de bestaande bestel-, terugbetalings- en RMA-functies van Bagisto. Gebruik deze acties om het resultaat in het herroepingsbewijs vast te leggen.',
+            'actions-note' => 'Terugbetalingen worden handmatig verwerkt via de bestaande bestel-, terugbetalings- en RMA-functies van Drall. Gebruik deze acties om het resultaat in het herroepingsbewijs vast te leggen.',
             'resend-confirmation' => 'Bevestigingsmail opnieuw versturen',
             'mark-refunded' => 'Als terugbetaald markeren',
             'refund-note-label' => 'Terugbetalingsreferentie (optioneel)',

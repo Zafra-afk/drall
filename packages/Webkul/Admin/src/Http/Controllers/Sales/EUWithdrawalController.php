@@ -82,7 +82,7 @@ class EUWithdrawalController extends Controller
     }
 
     /**
-     * Record that the refund has been issued out-of-band (in Bagisto's
+     * Record that the refund has been issued out-of-band (in Drall's
      * existing refund/order tools) against this withdrawal. The refund
      * note is an optional admin-supplied reference (e.g. refund id).
      */

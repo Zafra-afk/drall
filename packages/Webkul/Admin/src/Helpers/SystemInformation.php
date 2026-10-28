@@ -14,7 +14,7 @@ use Webkul\Product\Services\Search\SearchEngineManager;
 class SystemInformation
 {
     /**
-     * Bagisto's own mailer, which picks its transport when a message is sent.
+     * Drall's own mailer, which picks its transport when a message is sent.
      */
     const DYNAMIC_MAILER = 'bagisto-dynamic-smtp';
 
@@ -159,7 +159,7 @@ class SystemInformation
     }
 
     /**
-     * The facts the framework cannot report on Bagisto's behalf.
+     * The facts the framework cannot report on Drall's behalf.
      *
      * @return array<string, array<string, mixed>>
      */
@@ -247,7 +247,7 @@ class SystemInformation
     }
 
     /**
-     * What mail leaves by. Bagisto's own mailer names no transport, so the choice behind it is
+     * What mail leaves by. Drall's own mailer names no transport, so the choice behind it is
      * read instead.
      */
     protected function mailTransport(): string

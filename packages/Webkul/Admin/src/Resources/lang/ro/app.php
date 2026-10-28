@@ -6,7 +6,7 @@ return [
             'email' => 'Email Address',
             'forget-password-link' => 'Forget Password ?',
             'password' => 'Password',
-            'powered-by-description' => 'Powered by :bagisto, an open-source project by :webkul.',
+            'powered-by-description' => 'Powered by Drall, an open-source project by :webkul.',
             'submit-btn' => 'Sign In',
             'title' => 'Sign In',
         ],
@@ -16,7 +16,7 @@ return [
                 'email' => 'Registered Email',
                 'email-not-exist' => 'Email Not Exists',
                 'page-title' => 'Forget Password',
-                'powered-by-description' => 'Powered by :bagisto, an open-source project by :webkul.',
+                'powered-by-description' => 'Powered by Drall, an open-source project by :webkul.',
                 'reset-link-sent' => 'Reset Password link sent',
                 'reset-link-failed' => 'Linkul de resetare a parolei nu a putut fi trimis. Vă rugăm să încercați din nou mai târziu.',
                 'sign-in-link' => 'Back to Sign In ?',
@@ -30,7 +30,7 @@ return [
             'confirm-password' => 'Confirm Password',
             'email' => 'Registered Email',
             'password' => 'Password',
-            'powered-by-description' => 'Powered by :bagisto, an open-source project by :webkul.',
+            'powered-by-description' => 'Powered by Drall, an open-source project by :webkul.',
             'submit-btn' => 'Reset Password',
             'title' => 'Reset Password',
         ],
@@ -125,13 +125,13 @@ return [
     'help' => [
         'index' => [
             'title' => 'Ajutor și resurse',
-            'description' => 'Tot ce ai nevoie pentru a profita la maximum de Bagisto — găzduire, asistență și servicii profesionale, plus extensii și documentație pentru dezvoltatori.',
+            'description' => 'Tot ce ai nevoie pentru a profita la maximum de Drall — găzduire, asistență și servicii profesionale, plus extensii și documentație pentru dezvoltatori.',
 
             'services-title' => 'Servicii',
             'resources-title' => 'Resurse și documentație',
 
             'cloud-hosting' => 'Găzduire în cloud',
-            'cloud-hosting-info' => 'Găzduire în cloud gestionată și rentabilă — lansează-ți magazinul Bagisto în cloud în câteva minute, complet optimizat și scalabil.',
+            'cloud-hosting-info' => 'Găzduire în cloud gestionată și rentabilă — lansează-ți magazinul Drall în cloud în câteva minute, complet optimizat și scalabil.',
 
             'support' => 'Asistență și mentenanță',
             'support-info' => 'Asistență tehnică dedicată și planuri de mentenanță continuă pentru a-ți menține magazinul securizat, actualizat și funcțional.',
@@ -140,22 +140,22 @@ return [
             'paid-services-info' => 'Ajutor de la experți pentru integrarea modulelor, personalizare, migrarea datelor, actualizări de versiune și dezvoltare la comandă.',
 
             'extensions' => 'Extensii',
-            'extensions-info' => 'Explorează suplimente oficiale și ale comunității pentru a extinde Bagisto cu noi conectori, canale și funcționalități.',
+            'extensions-info' => 'Explorează suplimente oficiale și ale comunității pentru a extinde Drall cu noi conectori, canale și funcționalități.',
 
             'docs' => 'Documentație dev și bloguri',
             'docs-info' => 'Ghiduri pentru dezvoltatori, tutoriale și cele mai recente articole care te ajută să construiești, să configurezi și să rămâi la curent.',
 
             'api-docs' => 'Documentație API',
-            'api-docs-info' => 'Referință completă pentru API-urile REST și GraphQL cu endpoint-uri, autentificare și exemple pentru a integra Bagisto cu sistemul tău.',
+            'api-docs-info' => 'Referință completă pentru API-urile REST și GraphQL cu endpoint-uri, autentificare și exemple pentru a integra Drall cu sistemul tău.',
 
             'community' => 'Forumul comunității',
-            'community-info' => 'Pune întrebări, împărtășește idei și conectează-te cu mii de dezvoltatori și comercianți Bagisto din întreaga lume.',
+            'community-info' => 'Pune întrebări, împărtășește idei și conectează-te cu mii de dezvoltatori și comercianți Drall din întreaga lume.',
 
             'video-tutorials' => 'Tutoriale video',
             'video-tutorials-info' => 'Ghiduri video pas cu pas care acoperă instalarea, configurarea și gestionarea zilnică a magazinului.',
 
             'cta-title' => 'Ai nevoie în continuare de ajutor?',
-            'cta-description' => 'Discută cu echipa Bagisto despre găzduire, dezvoltare personalizată sau orice altceva.',
+            'cta-description' => 'Discută cu echipa Drall despre găzduire, dezvoltare personalizată sau orice altceva.',
             'cta-btn' => 'Contactează-ne',
         ],
     ],
@@ -4399,7 +4399,7 @@ return [
                     'title' => 'General',
 
                     'sections' => [
-                        'bagisto' => 'Bagisto',
+                        'bagisto' => 'Drall',
                         'cache' => 'Cached',
                         'database' => 'Database',
                         'drivers' => 'Drivers',
@@ -5936,7 +5936,7 @@ return [
             ],
 
             'powered-by' => [
-                'description' => 'Powered by :bagisto, an open-source project by :webkul.',
+                'description' => 'Powered by Drall, an open-source project by :webkul.',
             ],
         ],
 
@@ -6327,7 +6327,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => 'Powered by <a href="https://bagisto.com/" target="_blank">Bagisto</a>, A Community Project by <a href="https://webkul.com/" target="_blank">Webkul</a>',
+        'copy-right' => 'Powered by <a href="https://drall.com/" target="_blank">Drall</a>, A Community Project by <a href="https://webkul.com/" target="_blank">Webkul</a>',
     ],
 
     'emails' => [
@@ -6530,7 +6530,7 @@ return [
             'refunded-at' => 'Rambursată la',
 
             'actions' => 'Acțiuni',
-            'actions-note' => 'Rambursările sunt procesate manual prin instrumentele existente comandă / rambursare / RMA din Bagisto. Folosiți aceste acțiuni pentru a înregistra rezultatul pe dovada retragerii.',
+            'actions-note' => 'Rambursările sunt procesate manual prin instrumentele existente comandă / rambursare / RMA din Drall. Folosiți aceste acțiuni pentru a înregistra rezultatul pe dovada retragerii.',
             'resend-confirmation' => 'Retrimite e-mailul de confirmare',
             'mark-refunded' => 'Marchează ca rambursată',
             'refund-note-label' => 'Referință rambursare (opțional)',

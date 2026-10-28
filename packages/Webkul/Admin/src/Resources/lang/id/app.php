@@ -6,7 +6,7 @@ return [
             'email' => 'Alamat Email',
             'forget-password-link' => 'Lupa Kata Sandi?',
             'password' => 'Kata Sandi',
-            'powered-by-description' => 'Dibuat oleh :bagisto, proyek open-source dari :webkul.',
+            'powered-by-description' => 'Dibuat oleh Drall, proyek open-source dari :webkul.',
             'submit-btn' => 'Masuk',
             'title' => 'Masuk',
         ],
@@ -16,7 +16,7 @@ return [
                 'email' => 'Email Terdaftar',
                 'email-not-exist' => 'Email Tidak Ditemukan',
                 'page-title' => 'Lupa Kata Sandi',
-                'powered-by-description' => 'Dibuat oleh :bagisto, proyek open-source dari :webkul.',
+                'powered-by-description' => 'Dibuat oleh Drall, proyek open-source dari :webkul.',
                 'reset-link-sent' => 'Tautan Reset Kata Sandi telah dikirim',
                 'reset-link-failed' => 'Tidak dapat mengirim tautan atur ulang kata sandi. Silakan coba lagi nanti.',
                 'sign-in-link' => 'Kembali ke Halaman Masuk?',
@@ -30,7 +30,7 @@ return [
             'confirm-password' => 'Konfirmasi Kata Sandi',
             'email' => 'Email Terdaftar',
             'password' => 'Kata Sandi',
-            'powered-by-description' => 'Dibuat oleh :bagisto, proyek open-source dari :webkul.',
+            'powered-by-description' => 'Dibuat oleh Drall, proyek open-source dari :webkul.',
             'submit-btn' => 'Atur Ulang Kata Sandi',
             'title' => 'Atur Ulang Kata Sandi',
         ],
@@ -125,13 +125,13 @@ return [
     'help' => [
         'index' => [
             'title' => 'Bantuan & Sumber Daya',
-            'description' => 'Semua yang Anda butuhkan untuk memaksimalkan Bagisto — hosting, dukungan dan layanan profesional, serta ekstensi dan dokumentasi pengembang.',
+            'description' => 'Semua yang Anda butuhkan untuk memaksimalkan Drall — hosting, dukungan dan layanan profesional, serta ekstensi dan dokumentasi pengembang.',
 
             'services-title' => 'Layanan',
             'resources-title' => 'Sumber Daya & Dokumentasi',
 
             'cloud-hosting' => 'Cloud Hosting',
-            'cloud-hosting-info' => 'Cloud hosting terkelola yang hemat biaya — luncurkan toko Bagisto Anda di cloud dalam hitungan menit, sepenuhnya dioptimalkan dan dapat diskalakan.',
+            'cloud-hosting-info' => 'Cloud hosting terkelola yang hemat biaya — luncurkan toko Drall Anda di cloud dalam hitungan menit, sepenuhnya dioptimalkan dan dapat diskalakan.',
 
             'support' => 'Dukungan & Pemeliharaan',
             'support-info' => 'Dukungan teknis khusus dan paket pemeliharaan berkelanjutan untuk menjaga toko Anda tetap aman, diperbarui dan berjalan lancar.',
@@ -140,22 +140,22 @@ return [
             'paid-services-info' => 'Bantuan ahli untuk integrasi modul, kustomisasi, migrasi data, peningkatan versi dan pengembangan khusus.',
 
             'extensions' => 'Ekstensi',
-            'extensions-info' => 'Jelajahi add-on resmi dan komunitas untuk memperluas Bagisto dengan konektor, saluran dan fitur baru.',
+            'extensions-info' => 'Jelajahi add-on resmi dan komunitas untuk memperluas Drall dengan konektor, saluran dan fitur baru.',
 
             'docs' => 'Dokumen Dev & Blog',
             'docs-info' => 'Panduan pengembang, tutorial dan artikel terbaru untuk membantu Anda membangun, mengonfigurasi dan tetap mutakhir.',
 
             'api-docs' => 'Dokumen API',
-            'api-docs-info' => 'Referensi API REST & GraphQL lengkap dengan endpoint, autentikasi dan contoh untuk mengintegrasikan Bagisto dengan stack Anda.',
+            'api-docs-info' => 'Referensi API REST & GraphQL lengkap dengan endpoint, autentikasi dan contoh untuk mengintegrasikan Drall dengan stack Anda.',
 
             'community' => 'Forum Komunitas',
-            'community-info' => 'Ajukan pertanyaan, bagikan ide dan terhubung dengan ribuan pengembang dan pedagang Bagisto di seluruh dunia.',
+            'community-info' => 'Ajukan pertanyaan, bagikan ide dan terhubung dengan ribuan pengembang dan pedagang Drall di seluruh dunia.',
 
             'video-tutorials' => 'Tutorial Video',
             'video-tutorials-info' => 'Panduan video langkah demi langkah yang mencakup instalasi, konfigurasi dan pengelolaan toko sehari-hari.',
 
             'cta-title' => 'Masih butuh bantuan?',
-            'cta-description' => 'Bicaralah dengan tim Bagisto tentang hosting, pengembangan khusus atau hal lainnya.',
+            'cta-description' => 'Bicaralah dengan tim Drall tentang hosting, pengembangan khusus atau hal lainnya.',
             'cta-btn' => 'Hubungi Kami',
         ],
     ],
@@ -4399,7 +4399,7 @@ return [
                     'title' => 'Umum',
 
                     'sections' => [
-                        'bagisto' => 'Bagisto',
+                        'bagisto' => 'Drall',
                         'cache' => 'Tersimpan di Cache',
                         'database' => 'Basis Data',
                         'drivers' => 'Driver',
@@ -5936,7 +5936,7 @@ return [
             ],
 
             'powered-by' => [
-                'description' => 'Dibuat oleh :bagisto, proyek open-source dari :webkul.',
+                'description' => 'Dibuat oleh Drall, proyek open-source dari :webkul.',
             ],
         ],
 
@@ -6327,7 +6327,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => 'Didukung oleh <a href="https://bagisto.com/" target="_blank">Bagisto</a>, proyek komunitas yang dikembangkan oleh <a href="https://webkul.com/" target="_blank">Webkul</a>',
+        'copy-right' => 'Didukung oleh <a href="https://drall.com/" target="_blank">Drall</a>, proyek komunitas yang dikembangkan oleh <a href="https://webkul.com/" target="_blank">Webkul</a>',
     ],
 
     'emails' => [
@@ -6530,7 +6530,7 @@ return [
             'refunded-at' => 'Dikembalikan pada',
 
             'actions' => 'Tindakan',
-            'actions-note' => 'Pengembalian dana diproses secara manual melalui peranti pesanan / refund / RMA Bagisto yang sudah ada. Gunakan tindakan ini untuk mencatat hasil pada bukti penarikan diri.',
+            'actions-note' => 'Pengembalian dana diproses secara manual melalui peranti pesanan / refund / RMA Drall yang sudah ada. Gunakan tindakan ini untuk mencatat hasil pada bukti penarikan diri.',
             'resend-confirmation' => 'Kirim Ulang Email Konfirmasi',
             'mark-refunded' => 'Tandai sebagai Dikembalikan',
             'refund-note-label' => 'Referensi pengembalian dana (opsional)',

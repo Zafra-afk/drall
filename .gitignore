@@ -5,6 +5,8 @@
 .env
 .env.testing
 .env.production
+.env.local.bak
+supabase/
 .idea
 .mcp.json
 .php_cs.cache

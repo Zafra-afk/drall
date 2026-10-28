@@ -8,22 +8,22 @@
             [
                 'title' => trans('admin::app.help.index.cloud-hosting'),
                 'info'  => trans('admin::app.help.index.cloud-hosting-info'),
-                'url'   => 'https://bagisto.com/en/cloud/',
-                'host'  => 'bagisto.com/cloud',
+                'url'   => 'https://drall.com/en/cloud/',
+                'host'  => 'drall.com/cloud',
                 'icon'  => 'M4.5 10.5a4.5 4.5 0 0 1 8.9-1A3.5 3.5 0 1 1 14 16.5H6a3.5 3.5 0 0 1-1.5-6.67Z',
             ],
             [
                 'title' => trans('admin::app.help.index.support'),
                 'info'  => trans('admin::app.help.index.support-info'),
-                'url'   => 'https://bagisto.com/en/support/',
-                'host'  => 'bagisto.com/support',
+                'url'   => 'https://drall.com/en/support/',
+                'host'  => 'drall.com/support',
                 'icon'  => 'M12 3a9 9 0 0 0-9 9v4a2 2 0 0 0 2 2h1a1 1 0 0 0 1-1v-4a1 1 0 0 0-1-1H5a7 7 0 0 1 14 0h-1a1 1 0 0 0-1 1v4a1 1 0 0 0 1 1h1a2 2 0 0 0 2-2v-4a9 9 0 0 0-9-9Z',
             ],
             [
                 'title' => trans('admin::app.help.index.paid-services'),
                 'info'  => trans('admin::app.help.index.paid-services-info'),
-                'url'   => 'https://bagisto.com/en/contacts/',
-                'host'  => 'bagisto.com/services',
+                'url'   => 'https://drall.com/en/contacts/',
+                'host'  => 'drall.com/services',
                 'icon'  => 'M14.7 6.3a3 3 0 0 0-4 4l-7 7L5 19l7-7a3 3 0 0 0 4-4l-2 2-1.4-1.4 2-2ZM5.5 18a.5.5 0 1 1 0-1 .5.5 0 0 1 0 1Z',
             ],
         ];
@@ -32,22 +32,22 @@
             [
                 'title' => trans('admin::app.help.index.extensions'),
                 'info'  => trans('admin::app.help.index.extensions-info'),
-                'url'   => 'https://bagisto.com/en/extensions/',
-                'host'  => 'bagisto.com/extensions',
+                'url'   => 'https://drall.com/en/extensions/',
+                'host'  => 'drall.com/extensions',
                 'icon'  => 'M10 3h4v2a2 2 0 0 0 4 0V3h2a1 1 0 0 1 1 1v3h-2a2 2 0 0 0 0 4h2v6a1 1 0 0 1-1 1h-6v-2a2 2 0 0 0-4 0v2H4a1 1 0 0 1-1-1v-6h2a2 2 0 0 0 0-4H3V4a1 1 0 0 1 1-1h6Z',
             ],
             [
                 'title' => trans('admin::app.help.index.docs'),
                 'info'  => trans('admin::app.help.index.docs-info'),
-                'url'   => 'https://devdocs.bagisto.com/',
-                'host'  => 'devdocs.bagisto.com',
+                'url'   => 'https://devdocs.drall.com/',
+                'host'  => 'devdocs.drall.com',
                 'icon'  => 'M4 4a2 2 0 0 1 2-2h7l5 5v13a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4Zm9 0v4h4M8 13h8M8 17h5',
             ],
             [
                 'title' => trans('admin::app.help.index.api-docs'),
                 'info'  => trans('admin::app.help.index.api-docs-info'),
-                'url'   => 'https://api-docs.bagisto.com/',
-                'host'  => 'api-docs.bagisto.com',
+                'url'   => 'https://api-docs.drall.com/',
+                'host'  => 'api-docs.drall.com',
                 'icon'  => 'm9 8-4 4 4 4m6-8 4 4-4 4M14 5l-4 14',
             ],
         ];
@@ -113,7 +113,7 @@
         </div>
 
         <a
-            href="https://bagisto.com/en/contacts/"
+            href="https://drall.com/en/contacts/"
             target="_blank"
             rel="noopener noreferrer"
             class="inline-flex items-center gap-2 rounded-lg bg-white px-5 py-2.5 font-semibold text-blue-700 transition-all hover:bg-blue-50"

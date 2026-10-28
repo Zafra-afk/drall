@@ -6,7 +6,7 @@ return [
             'email' => 'Adres e-mail',
             'forget-password-link' => 'Zapomniałeś hasła?',
             'password' => 'Hasło',
-            'powered-by-description' => 'Napędzane przez :bagisto, projekt open-source autorstwa :webkul.',
+            'powered-by-description' => 'Napędzane przez Drall, projekt open-source autorstwa :webkul.',
             'submit-btn' => 'Zaloguj się',
             'title' => 'Zaloguj się',
         ],
@@ -16,7 +16,7 @@ return [
                 'email' => 'Zarejestrowany adres e-mail',
                 'email-not-exist' => 'E-mail nie istnieje',
                 'page-title' => 'Zapomniałem hasła',
-                'powered-by-description' => 'Napędzane przez :bagisto, projekt open-source autorstwa :webkul.',
+                'powered-by-description' => 'Napędzane przez Drall, projekt open-source autorstwa :webkul.',
                 'reset-link-sent' => 'Link do resetowania hasła wysłany',
                 'reset-link-failed' => 'Nie udało się wysłać linku do zresetowania hasła. Spróbuj ponownie później.',
                 'sign-in-link' => 'Powrót do logowania?',
@@ -30,7 +30,7 @@ return [
             'confirm-password' => 'Potwierdź hasło',
             'email' => 'Zarejestrowany adres e-mail',
             'password' => 'Hasło',
-            'powered-by-description' => 'Napędzane przez :bagisto, projekt open-source autorstwa :webkul.',
+            'powered-by-description' => 'Napędzane przez Drall, projekt open-source autorstwa :webkul.',
             'submit-btn' => 'Zresetuj hasło',
             'title' => 'Zresetuj hasło',
         ],
@@ -125,13 +125,13 @@ return [
     'help' => [
         'index' => [
             'title' => 'Pomoc i Zasoby',
-            'description' => 'Wszystko, czego potrzebujesz, aby w pełni wykorzystać Bagisto — hosting, wsparcie i usługi profesjonalne, a także rozszerzenia i dokumentacja dla deweloperów.',
+            'description' => 'Wszystko, czego potrzebujesz, aby w pełni wykorzystać Drall — hosting, wsparcie i usługi profesjonalne, a także rozszerzenia i dokumentacja dla deweloperów.',
 
             'services-title' => 'Usługi',
             'resources-title' => 'Zasoby i Dokumentacja',
 
             'cloud-hosting' => 'Hosting w Chmurze',
-            'cloud-hosting-info' => 'Opłacalny, zarządzany hosting w chmurze — uruchom swój sklep Bagisto w chmurze w kilka minut, w pełni zoptymalizowany i skalowalny.',
+            'cloud-hosting-info' => 'Opłacalny, zarządzany hosting w chmurze — uruchom swój sklep Drall w chmurze w kilka minut, w pełni zoptymalizowany i skalowalny.',
 
             'support' => 'Wsparcie i Konserwacja',
             'support-info' => 'Dedykowane wsparcie techniczne i bieżące plany konserwacji, aby Twój sklep był bezpieczny, aktualny i działał płynnie.',
@@ -140,22 +140,22 @@ return [
             'paid-services-info' => 'Ekspercka pomoc w integracji modułów, dostosowywaniu, migracji danych, aktualizacjach wersji i tworzeniu oprogramowania na zamówienie.',
 
             'extensions' => 'Rozszerzenia',
-            'extensions-info' => 'Przeglądaj oficjalne i społecznościowe dodatki, aby rozszerzyć Bagisto o nowe konektory, kanały i funkcje.',
+            'extensions-info' => 'Przeglądaj oficjalne i społecznościowe dodatki, aby rozszerzyć Drall o nowe konektory, kanały i funkcje.',
 
             'docs' => 'Dokumentacja Dev i Blogi',
             'docs-info' => 'Przewodniki dla deweloperów, samouczki i najnowsze artykuły, które pomogą Ci budować, konfigurować i być na bieżąco.',
 
             'api-docs' => 'Dokumentacja API',
-            'api-docs-info' => 'Pełna dokumentacja API REST i GraphQL z punktami końcowymi, uwierzytelnianiem i przykładami integracji Bagisto z Twoim stosem technologicznym.',
+            'api-docs-info' => 'Pełna dokumentacja API REST i GraphQL z punktami końcowymi, uwierzytelnianiem i przykładami integracji Drall z Twoim stosem technologicznym.',
 
             'community' => 'Forum Społeczności',
-            'community-info' => 'Zadawaj pytania, dziel się pomysłami i nawiązuj kontakty z tysiącami deweloperów i sprzedawców Bagisto na całym świecie.',
+            'community-info' => 'Zadawaj pytania, dziel się pomysłami i nawiązuj kontakty z tysiącami deweloperów i sprzedawców Drall na całym świecie.',
 
             'video-tutorials' => 'Samouczki Wideo',
             'video-tutorials-info' => 'Szczegółowe samouczki wideo obejmujące instalację, konfigurację i codzienne zarządzanie sklepem.',
 
             'cta-title' => 'Nadal potrzebujesz pomocy?',
-            'cta-description' => 'Porozmawiaj z zespołem Bagisto o hostingu, niestandardowym rozwoju lub czymkolwiek innym.',
+            'cta-description' => 'Porozmawiaj z zespołem Drall o hostingu, niestandardowym rozwoju lub czymkolwiek innym.',
             'cta-btn' => 'Skontaktuj się z Nami',
         ],
     ],
@@ -4399,7 +4399,7 @@ return [
                     'title' => 'Ogólne',
 
                     'sections' => [
-                        'bagisto' => 'Bagisto',
+                        'bagisto' => 'Drall',
                         'cache' => 'W pamięci podręcznej',
                         'database' => 'Baza danych',
                         'drivers' => 'Sterowniki',
@@ -5936,7 +5936,7 @@ return [
             ],
 
             'powered-by' => [
-                'description' => 'Napędzane przez :bagisto, projekt open-source autorstwa :webkul.',
+                'description' => 'Napędzane przez Drall, projekt open-source autorstwa :webkul.',
             ],
         ],
 
@@ -6327,7 +6327,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => 'Napędzane przez <a href="https://bagisto.com/" target="_blank">Bagisto</a>, Projekt społecznościowy <a href="https://webkul.com/" target="_blank">Webkul</a>',
+        'copy-right' => 'Napędzane przez <a href="https://drall.com/" target="_blank">Drall</a>, Projekt społecznościowy <a href="https://webkul.com/" target="_blank">Webkul</a>',
     ],
 
     'emails' => [
@@ -6530,7 +6530,7 @@ return [
             'refunded-at' => 'Zwrócono',
 
             'actions' => 'Działania',
-            'actions-note' => 'Zwroty są przetwarzane ręcznie za pomocą istniejących narzędzi Bagisto: zamówień, zwrotów i RMA. Skorzystaj z poniższych działań, aby odnotować wynik w dowodzie odstąpienia.',
+            'actions-note' => 'Zwroty są przetwarzane ręcznie za pomocą istniejących narzędzi Drall: zamówień, zwrotów i RMA. Skorzystaj z poniższych działań, aby odnotować wynik w dowodzie odstąpienia.',
             'resend-confirmation' => 'Wyślij ponownie e-mail potwierdzający',
             'mark-refunded' => 'Oznacz jako zwrócone',
             'refund-note-label' => 'Numer zwrotu (opcjonalnie)',

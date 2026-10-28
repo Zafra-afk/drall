@@ -6,7 +6,7 @@ return [
             'email' => 'メールアドレス',
             'forget-password-link' => 'パスワードを忘れましたか？',
             'password' => 'パスワード',
-            'powered-by-description' => ':webkul によるオープンソースプロジェクト :bagisto によって提供されています。',
+            'powered-by-description' => ':webkul によるオープンソースプロジェクト Drall によって提供されています。',
             'submit-btn' => 'サインイン',
             'title' => 'サインイン',
         ],
@@ -16,7 +16,7 @@ return [
                 'email' => '登録済みメールアドレス',
                 'email-not-exist' => 'メールアドレスが存在しません',
                 'page-title' => 'パスワードを忘れる',
-                'powered-by-description' => ':webkul によるオープンソースプロジェクト :bagisto によって提供されています。',
+                'powered-by-description' => ':webkul によるオープンソースプロジェクト Drall によって提供されています。',
                 'reset-link-sent' => 'パスワードリセットリンク送信済み',
                 'reset-link-failed' => 'パスワードリセットリンクを送信できませんでした。しばらくしてからもう一度お試しください。',
                 'sign-in-link' => 'サインイン画面に戻る？',
@@ -30,7 +30,7 @@ return [
             'confirm-password' => 'パスワードを確認',
             'email' => '登録済みメールアドレス',
             'password' => 'パスワード',
-            'powered-by-description' => ':webkul によるオープンソースプロジェクト :bagisto によって提供されています。',
+            'powered-by-description' => ':webkul によるオープンソースプロジェクト Drall によって提供されています。',
             'submit-btn' => 'パスワードをリセット',
             'title' => 'パスワードをリセット',
         ],
@@ -125,13 +125,13 @@ return [
     'help' => [
         'index' => [
             'title' => 'ヘルプとリソース',
-            'description' => 'Bagisto を最大限に活用するために必要なすべて — ホスティング、サポート、プロフェッショナルサービス、さらに拡張機能と開発者向けドキュメント。',
+            'description' => 'Drall を最大限に活用するために必要なすべて — ホスティング、サポート、プロフェッショナルサービス、さらに拡張機能と開発者向けドキュメント。',
 
             'services-title' => 'サービス',
             'resources-title' => 'リソースとドキュメント',
 
             'cloud-hosting' => 'クラウドホスティング',
-            'cloud-hosting-info' => '費用対効果の高いマネージドクラウドホスティング — 完全に最適化されスケーラブルな Bagisto ストアを数分でクラウド上に立ち上げられます。',
+            'cloud-hosting-info' => '費用対効果の高いマネージドクラウドホスティング — 完全に最適化されスケーラブルな Drall ストアを数分でクラウド上に立ち上げられます。',
 
             'support' => 'サポートとメンテナンス',
             'support-info' => 'ストアを安全に保ち、最新の状態に保ち、スムーズに稼働させるための専任の技術サポートと継続的なメンテナンスプラン。',
@@ -140,22 +140,22 @@ return [
             'paid-services-info' => 'モジュール統合、カスタマイズ、データ移行、バージョンアップグレード、オーダーメイド開発のための専門家による支援。',
 
             'extensions' => '拡張機能',
-            'extensions-info' => '新しいコネクタ、チャネル、機能で Bagisto を拡張するために、公式およびコミュニティのアドオンを閲覧できます。',
+            'extensions-info' => '新しいコネクタ、チャネル、機能で Drall を拡張するために、公式およびコミュニティのアドオンを閲覧できます。',
 
             'docs' => '開発者向けドキュメントとブログ',
             'docs-info' => '構築、設定、最新情報の把握に役立つ開発者向けガイド、チュートリアル、最新記事。',
 
             'api-docs' => 'API ドキュメント',
-            'api-docs-info' => 'Bagisto をお使いのスタックに統合するためのエンドポイント、認証、例を含む完全な REST および GraphQL API リファレンス。',
+            'api-docs-info' => 'Drall をお使いのスタックに統合するためのエンドポイント、認証、例を含む完全な REST および GraphQL API リファレンス。',
 
             'community' => 'コミュニティフォーラム',
-            'community-info' => '質問したり、アイデアを共有したり、世界中の何千もの Bagisto 開発者やマーチャントとつながりましょう。',
+            'community-info' => '質問したり、アイデアを共有したり、世界中の何千もの Drall 開発者やマーチャントとつながりましょう。',
 
             'video-tutorials' => 'ビデオチュートリアル',
             'video-tutorials-info' => 'インストール、設定、日常的なストア管理を網羅したステップバイステップのビデオ解説。',
 
             'cta-title' => 'まだサポートが必要ですか？',
-            'cta-description' => 'ホスティング、カスタム開発、その他何でも Bagisto チームにご相談ください。',
+            'cta-description' => 'ホスティング、カスタム開発、その他何でも Drall チームにご相談ください。',
             'cta-btn' => 'お問い合わせ',
         ],
     ],
@@ -4399,7 +4399,7 @@ return [
                     'title' => '一般',
 
                     'sections' => [
-                        'bagisto' => 'Bagisto',
+                        'bagisto' => 'Drall',
                         'cache' => 'キャッシュ済み',
                         'database' => 'データベース',
                         'drivers' => 'ドライバ',
@@ -5936,7 +5936,7 @@ return [
             ],
 
             'powered-by' => [
-                'description' => ':webkul によるオープンソースプロジェクト :bagisto によって提供されています。',
+                'description' => ':webkul によるオープンソースプロジェクト Drall によって提供されています。',
             ],
         ],
 
@@ -6327,7 +6327,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => '搭載 <a href="https://bagisto.com/" target="_blank">Bagisto</a>, Webkulによるコミュニティプロジェクト<a href="https://webkul.com/" target="_blank">Webkul</a>',
+        'copy-right' => '搭載 <a href="https://drall.com/" target="_blank">Drall</a>, Webkulによるコミュニティプロジェクト<a href="https://webkul.com/" target="_blank">Webkul</a>',
     ],
 
     'emails' => [
@@ -6530,7 +6530,7 @@ return [
             'refunded-at' => '返金日時',
 
             'actions' => 'アクション',
-            'actions-note' => '返金処理は、Bagisto既存の注文／返金／RMA機能で手動で行います。これらのアクションは、契約撤回のエビデンスに結果を記録するために使用します。',
+            'actions-note' => '返金処理は、Drall既存の注文／返金／RMA機能で手動で行います。これらのアクションは、契約撤回のエビデンスに結果を記録するために使用します。',
             'resend-confirmation' => '確認メールを再送',
             'mark-refunded' => '返金済みにする',
             'refund-note-label' => '返金参照番号（任意）',
