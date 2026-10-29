@@ -11,10 +11,12 @@ RUN apt-get update && apt-get install -y \
         libicu-dev \
         libkrb5-dev \
         libcurl4-openssl-dev \
+        libssl-dev \
         unzip \
         git \
         curl \
         zip \
+        autoconf \
     && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
@@ -35,11 +37,13 @@ RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
         exif \
         opcache
 
+RUN pecl install redis && docker-php-ext-enable redis
+
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/local/bin/composer
 
 # Enable Apache modules
-RUN a2enmod rewrite headers
+RUN rm -f /etc/apache2/mods-enabled/mpm_*.conf /etc/apache2/mods-enabled/mpm_*.load && a2enmod mpm_prefork rewrite headers
 
 # Set document root
 ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
@@ -53,6 +57,10 @@ RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' \
     && ln -sf /dev/stderr /var/log/apache2/error.log
 
 WORKDIR /var/www/html
+
+# Copy entrypoint that adapts Apache to $PORT at runtime
+COPY docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
+RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 # Copy application
 COPY . /var/www/html
@@ -77,3 +85,6 @@ RUN chown -R www-data:www-data /var/www/html \
 RUN php artisan package:discover --ansi
 
 EXPOSE 80
+
+ENTRYPOINT ["docker-entrypoint.sh"]
+CMD ["apache2-foreground"]
