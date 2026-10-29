@@ -17,18 +17,20 @@ class CanInstall
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($this->isAlreadyInstalled()) {
-            if ($this->isInstallerRequest($request)) {
-                if (! $request->ajax()) {
-                    return redirect()->route('shop.home.index');
-                }
+        if (! str_starts_with($request->decodedPath(), 'health')) {
+            if ($this->isAlreadyInstalled()) {
+                if ($this->isInstallerRequest($request)) {
+                    if (! $request->ajax()) {
+                        return redirect()->route('shop.home.index');
+                    }
 
-                return response()->json([
-                    'message' => trans('installer::app.installer.middleware.already-installed'),
-                ], 403);
+                    return response()->json([
+                        'message' => trans('installer::app.installer.middleware.already-installed'),
+                    ], 403);
+                }
+            } elseif (! $this->isInstallerRequest($request)) {
+                return redirect()->route('installer.index');
             }
-        } elseif (! $this->isInstallerRequest($request)) {
-            return redirect()->route('installer.index');
         }
 
         return $next($request);
