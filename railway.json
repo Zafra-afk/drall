@@ -4,9 +4,9 @@
     "buildCommand": "composer install --no-dev --optimize-autoloader --prefer-dist --no-interaction && npm install --no-audit --no-fund && npm run build"
   },
   "deploy": {
-    "startCommand": "cp .env.example .env 2>/dev/null || true && php artisan key:generate --force --no-interaction 2>/dev/null || true && php artisan optimize:clear && php artisan migrate --force --no-interaction && php artisan db:seed --force --no-interaction && php artisan storage:link --force 2>/dev/null || true && php artisan serve --host=0.0.0.0 --port=$PORT",
-    "healthcheckPath": "/",
-    "healthcheckTimeout": 30,
+    "startCommand": "cp .env.example .env 2>/dev/null || true ; php artisan key:generate --force --no-interaction 2>/dev/null || true ; php artisan optimize:clear ; php artisan migrate --force --no-interaction ; php artisan db:seed --class=\"Webkul\\\\Installer\\\\Database\\\\Seeders\\\\Shop\\\\DatabaseSeeder\" --force --no-interaction ; touch storage/installed ; php artisan storage:link --force 2>/dev/null || true ; php artisan serve --host=0.0.0.0 --port=$PORT",
+    "healthcheckPath": "/health",
+    "healthcheckTimeout": 300,
     "restartPolicy": "on_failure"
   }
 }
