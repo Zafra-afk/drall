@@ -68,4 +68,4 @@ RUN chown -R www-data:www-data /var/www/html \
 RUN php artisan package:discover --ansi
 
 EXPOSE 80
-CMD rm -f .env && touch .env && php artisan key:generate --force --no-interaction || true; php artisan optimize:clear; php artisan migrate --force --no-interaction && php artisan db:seed --force --no-interaction && touch storage/installed; php artisan storage:link --force 2>/dev/null || true; php artisan serve --host=0.0.0.0 --port=
+CMD rm -f .env && touch .env && php artisan key:generate --force --no-interaction || true; php artisan optimize:clear; php artisan migrate --force --no-interaction && php artisan db:seed --force --no-interaction && touch storage/installed; php artisan storage:link --force 2>/dev/null || true; php artisan serve --host=0.0.0.0 --port=$PORT
