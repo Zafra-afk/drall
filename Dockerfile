@@ -57,8 +57,8 @@ RUN composer install \
     && rm -rf /root/.composer/cache \
     && rm -rf /tmp/*
 
-# Create .env so isInstalled() check passes; runtime secrets override at runtime
-RUN mkdir -p storage/framework/views storage/framework/cache storage/framework/sessions storage/framework/testing storage/logs && cp .env.example .env && php artisan key:generate --force
+# .env is recreated at runtime in CMD to inject Railway env vars
+RUN mkdir -p storage/framework/views storage/framework/cache storage/framework/sessions storage/framework/testing storage/logs && php artisan key:generate --force --no-interaction
 
 # Storage permissions
 RUN chown -R www-data:www-data /var/www/html \
@@ -68,4 +68,4 @@ RUN chown -R www-data:www-data /var/www/html \
 RUN php artisan package:discover --ansi
 
 EXPOSE 80
-CMD rm -f .env && touch .env && php artisan key:generate --force --no-interaction || true; php artisan optimize:clear; php artisan migrate --force --no-interaction && php artisan db:seed --force --no-interaction && touch storage/installed; php artisan storage:link --force 2>/dev/null || true; php artisan serve --host=0.0.0.0 --port=$PORT
+CMD cp .env.example .env && echo "DB_HOST=${DB_HOST:-127.0.0.1}" >> .env && echo "DB_PORT=${DB_PORT:-3306}" >> .env && echo "DB_DATABASE=${DB_DATABASE}" >> .env && echo "DB_USERNAME=${DB_USERNAME}" >> .env && echo "DB_PASSWORD=${DB_PASSWORD}" >> .env && echo "REDIS_HOST=${REDIS_HOST:-127.0.0.1}" >> .env && echo "REDIS_PORT=${REDIS_PORT:-6379}" >> .env && echo "APP_URL=https://drall.up.railway.app" >> .env && echo "APP_ENV=production" >> .env && echo "APP_DEBUG=false" >> .env && php artisan key:generate --force --no-interaction || true; php artisan optimize:clear; php artisan migrate --force --no-interaction && php artisan db:seed --force --no-interaction && touch storage/installed; php artisan storage:link --force 2>/dev/null || true; php artisan serve --host=0.0.0.0 --port=$PORT
