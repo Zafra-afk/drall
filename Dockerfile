@@ -57,8 +57,8 @@ RUN composer install \
     && rm -rf /root/.composer/cache \
     && rm -rf /tmp/*
 
-# .env is recreated at runtime in CMD to inject Railway env vars
-RUN mkdir -p storage/framework/views storage/framework/cache storage/framework/sessions storage/framework/testing storage/logs && php artisan key:generate --force --no-interaction
+# Build-time .env for key generation; runtime CMD recreates .env with Railway DB vars
+RUN mkdir -p storage/framework/views storage/framework/cache storage/framework/sessions storage/framework/testing storage/logs && cp .env.example .env && php artisan key:generate --force --no-interaction
 
 # Storage permissions
 RUN chown -R www-data:www-data /var/www/html \
