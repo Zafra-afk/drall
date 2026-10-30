@@ -68,4 +68,4 @@ RUN chown -R www-data:www-data /var/www/html \
 RUN php artisan package:discover --ansi
 
 EXPOSE 80
-CMD php artisan serve --host=0.0.0.0 --port=$PORT
+CMD php artisan migrate --force --no-interaction && php artisan db:seed --force --no-interaction && touch storage/installed && php artisan storage:link --force 2>/dev/null; php artisan serve --host=0.0.0.0 --port=$PORT

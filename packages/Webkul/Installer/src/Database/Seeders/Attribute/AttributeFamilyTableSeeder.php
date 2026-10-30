@@ -18,6 +18,8 @@ class AttributeFamilyTableSeeder extends Seeder
      */
     public function run($parameters = [])
     {
+        DB::statement($this->foreignKeySql(false));
+
         DB::table('attribute_families')->delete();
 
         $defaultLocale = $parameters['default_locale'] ?? config('app.locale');
@@ -32,6 +34,30 @@ class AttributeFamilyTableSeeder extends Seeder
             ],
         ]);
 
+        DB::statement($this->foreignKeySql(true));
+
         $this->syncPostgresSequences(['attribute_families']);
+    }
+
+    /**
+     * Get the database-specific SQL for enabling or disabling foreign key checks.
+     */
+    protected function foreignKeySql(bool $enable): string
+    {
+        $driver = DB::getDriverName();
+
+        if ($driver === 'mysql') {
+            return 'SET FOREIGN_KEY_CHECKS='.($enable ? 1 : 0);
+        }
+
+        if ($driver === 'pgsql') {
+            return 'SET session_replication_role = '.($enable ? "'DEFAULT'" : "'replica'");
+        }
+
+        if ($driver === 'sqlite') {
+            return 'PRAGMA foreign_keys = '.($enable ? 'ON' : 'OFF');
+        }
+
+        return 'SELECT 1';
     }
 }
