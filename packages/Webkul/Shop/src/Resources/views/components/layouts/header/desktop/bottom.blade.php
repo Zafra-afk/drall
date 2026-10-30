@@ -169,7 +169,7 @@
             {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.profile.before') !!}
 
             <!-- user profile -->
-            <x-shop::dropdown position="bottom-{{ core()->getCurrentLocale()->direction === 'ltr' ? 'right' : 'left' }}">
+            <x-shop::dropdown position="bottom-{{ core()->getCurrentLocale()?->direction === 'ltr' ? 'right' : 'left' }}">
                 <x-slot:toggle>
                     <button
                         type="button"

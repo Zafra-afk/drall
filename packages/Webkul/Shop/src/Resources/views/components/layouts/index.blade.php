@@ -9,7 +9,7 @@
 <html
     class="{{ (int) request()->cookie('dark_mode') === 1 ? 'dark' : '' }}"
     lang="{{ app()->getLocale() }}"
-    dir="{{ core()->getCurrentLocale()->direction }}"
+    dir="{{ core()->getCurrentLocale()?->direction }}"
 >
     <head>
 

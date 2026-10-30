@@ -97,7 +97,7 @@
         @endif
 
         <!-- Admin Profile -->
-        <x-admin::dropdown position="bottom-{{ core()->getCurrentLocale()->direction === 'ltr' ? 'right' : 'left' }}">
+        <x-admin::dropdown position="bottom-{{ core()->getCurrentLocale()?->direction === 'ltr' ? 'right' : 'left' }}">
             <x-slot:toggle>
                 @if ($admin->image)
                     <button class="flex h-8 w-8 cursor-pointer overflow-hidden rounded-full hover:opacity-80 focus:opacity-80 sm:h-9 sm:w-9">
@@ -663,7 +663,7 @@
         type="text/x-template"
         id="v-notifications-template"
     >
-        <x-admin::dropdown position="bottom-{{ core()->getCurrentLocale()->direction === 'ltr' ? 'right' : 'left' }}">
+        <x-admin::dropdown position="bottom-{{ core()->getCurrentLocale()?->direction === 'ltr' ? 'right' : 'left' }}">
             <!-- Notification Toggle -->
             <x-slot:toggle>
                 <span class="relative flex">

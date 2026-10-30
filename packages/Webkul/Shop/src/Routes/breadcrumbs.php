@@ -94,7 +94,7 @@ Breadcrumbs::for('compare', function (BreadcrumbTrail $trail) {
 // Home > Product
 Breadcrumbs::for('product', function (BreadcrumbTrail $trail, $entity) {
     $trail->parent('home');
-    $trail->push($entity->name ?? '', route('shop.product_or_category.index', $entity->url_key));
+    $trail->push($entity->name ?? '', $entity->url_key ?? '');
 });
 
 // Home > RMA

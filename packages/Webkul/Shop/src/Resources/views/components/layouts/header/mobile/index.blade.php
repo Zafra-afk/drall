@@ -96,7 +96,7 @@
 
                 <!-- For Large screens -->
                 <div class="max-md:hidden">
-                    <x-shop::dropdown position="bottom-{{ core()->getCurrentLocale()->direction === 'ltr' ? 'right' : 'left' }}">
+                    <x-shop::dropdown position="bottom-{{ core()->getCurrentLocale()?->direction === 'ltr' ? 'right' : 'left' }}">
                         <x-slot:toggle>
                             <button
                                 type="button"
@@ -369,8 +369,8 @@
                                         v-pre
                                     >
                                         <img
-                                            src="{{ ! empty(core()->getCurrentLocale()->logo_url)
-                                                ? core()->getCurrentLocale()->logo_url
+                                            src="{{ ! empty(core()->getCurrentLocale()?->logo_url)
+                                                ? core()->getCurrentLocale()?->logo_url
                                                 : bagisto_asset('images/default-language.svg')
                                             }}"
                                             class="h-full"

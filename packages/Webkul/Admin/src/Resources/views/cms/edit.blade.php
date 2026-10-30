@@ -56,7 +56,7 @@
             <div class="flex items-center gap-x-1">
                 <!-- Locale Switcher -->
                 <x-admin::dropdown
-                    position="bottom-{{ core()->getCurrentLocale()->direction === 'ltr' ? 'left' : 'right' }}" 
+                    position="bottom-{{ core()->getCurrentLocale()?->direction === 'ltr' ? 'left' : 'right' }}" 
                     :class="core()->getAllLocales()->count() <= 1 ? 'hidden' : ''"
                 >
                     <!-- Dropdown Toggler -->

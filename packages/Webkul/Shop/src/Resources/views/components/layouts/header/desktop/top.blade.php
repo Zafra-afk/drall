@@ -74,7 +74,7 @@
                 {!! view_render_event('bagisto.shop.components.layouts.header.desktop.top.currency_switcher.before') !!}
 
             <!-- Currency Switcher -->
-            <x-shop::dropdown position="bottom-{{ core()->getCurrentLocale()->direction === 'ltr' ? 'left' : 'right' }}">
+            <x-shop::dropdown position="bottom-{{ core()->getCurrentLocale()?->direction === 'ltr' ? 'left' : 'right' }}">
                 <!-- Dropdown Toggler -->
                 <x-slot:toggle>
                     <button
@@ -122,7 +122,7 @@
 
             <!-- Locales Switcher -->
             @if ($allowedChannelLocales->count() > 1)
-            <x-shop::dropdown position="bottom-{{ core()->getCurrentLocale()->direction === 'ltr' ? 'right' : 'left' }}">
+            <x-shop::dropdown position="bottom-{{ core()->getCurrentLocale()?->direction === 'ltr' ? 'right' : 'left' }}">
                 <x-slot:toggle>
                     <!-- Dropdown Toggler -->
                     <button
@@ -131,8 +131,8 @@
                         @click="localeToggler = ! localeToggler"
                     >
                         <img
-                            src="{{ ! empty(core()->getCurrentLocale()->logo_url)
-                                    ? core()->getCurrentLocale()->logo_url
+                            src="{{ ! empty(core()->getCurrentLocale()?->logo_url)
+                                    ? core()->getCurrentLocale()?->logo_url
                                     : bagisto_asset('images/default-language.svg')
                                 }}"
                             class="h-full"

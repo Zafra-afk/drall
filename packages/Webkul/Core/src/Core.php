@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Webkul\Core\Concerns\CurrencyFormatter;
+use Webkul\Core\Helpers\SupportedLocales;
 use Webkul\Core\Models\Channel;
 use Webkul\Core\Models\Currency;
 use Webkul\Core\Models\Locale;
@@ -154,6 +155,10 @@ class Core
             $this->currentChannel = $this->channelRepository->first();
         }
 
+        if (! $this->currentChannel) {
+            $this->currentChannel = $this->getDefaultChannel();
+        }
+
         return $this->currentChannel;
     }
 
@@ -190,7 +195,30 @@ class Core
             return $this->defaultChannel;
         }
 
-        return $this->defaultChannel = $this->channelRepository->first();
+        $this->defaultChannel = $this->channelRepository->first();
+
+        if (! $this->defaultChannel) {
+            $localeCode = app()->getLocale();
+            $currencyCode = config('app.currency', 'USD');
+
+            $locale = $this->localeRepository->findOneByField('code', $localeCode)
+                ?? $this->localeRepository->findOneByField('code', config('app.fallback_locale'));
+
+            $currency = $this->currencyRepository->findOneByField('code', $currencyCode)
+                ?? $this->currencyRepository->first();
+
+            $this->defaultChannel = $this->channelRepository->create([
+                'code' => 'default',
+                'name' => 'Default Channel',
+                'theme' => 'default',
+                'hostname' => env('APP_URL', 'http://localhost'),
+                'root_category_id' => 1,
+                'default_locale_id' => $locale?->id,
+                'base_currency_id' => $currency?->id,
+            ]);
+        }
+
+        return $this->defaultChannel;
     }
 
     /**
@@ -214,7 +242,7 @@ class Core
      */
     public function getDefaultLocaleCodeFromDefaultChannel(): string
     {
-        return $this->getDefaultChannel()->default_locale->code;
+        return $this->getDefaultChannel()?->default_locale?->code ?? app()->getLocale();
     }
 
     /**
@@ -265,6 +293,8 @@ class Core
      */
     public function getAllLocales()
     {
+        $this->getCurrentLocale();
+
         return $this->localeRepository->all()->sortBy('name');
     }
 
@@ -283,6 +313,16 @@ class Core
 
         if (! $this->currentLocale) {
             $this->currentLocale = $this->localeRepository->findOneByField('code', config('app.fallback_locale'));
+        }
+
+        if (! $this->currentLocale) {
+            $localeCode = app()->getLocale();
+
+            $this->currentLocale = $this->localeRepository->create([
+                'code' => $localeCode,
+                'name' => SupportedLocales::ALL[$localeCode]['name'] ?? $localeCode,
+                'direction' => SupportedLocales::direction($localeCode),
+            ]);
         }
 
         return $this->currentLocale;

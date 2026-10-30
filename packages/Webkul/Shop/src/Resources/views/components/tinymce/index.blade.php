@@ -39,7 +39,7 @@
                         document_base_url: '{{ asset('/') }}',
                         plugins: 'wordcount save fullscreen code table lists link',
                         toolbar1: 'blocks | bold italic strikethrough forecolor backcolor alignleft aligncenter alignright alignjustify | link hr | numlist bullist outdent indent | removeformat | code | table',
-                        directionality: "{{ core()->getCurrentLocale()->direction }}",
+                        directionality: "{{ core()->getCurrentLocale()?->direction }}",
 
                         setup: editor => {
                             editor.on('keyup', () => this.field.onInput(editor.getContent()));

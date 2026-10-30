@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html
     lang="{{ app()->getLocale() }}"
-    dir="{{ core()->getCurrentLocale()->direction }}"
+    dir="{{ core()->getCurrentLocale()?->direction }}"
 >
     <head>
         <meta
@@ -230,8 +230,8 @@
         </style>
     </head>
 
-    <body dir="{{ core()->getCurrentLocale()->direction }}">
-        <div class="logo-container {{ core()->getCurrentLocale()->direction }}">
+    <body dir="{{ core()->getCurrentLocale()?->direction }}">
+        <div class="logo-container {{ core()->getCurrentLocale()?->direction }}">
             @if (($logo = core()->getConfigData('sales.invoice_settings.pdf_print_outs.logo')) && Storage::exists($logo))
                 <img src="data:{{ Storage::mimeType($logo) }};base64,{{ base64_encode(Storage::get($logo)) }}"/>
             @else
@@ -247,7 +247,7 @@
 
             <div class="page-content">
                 <!-- Invoice Information -->
-                <table class="{{ core()->getCurrentLocale()->direction }}">
+                <table class="{{ core()->getCurrentLocale()?->direction }}">
                     <tbody>
                         <tr>
                             @if (core()->getConfigData('sales.invoice_settings.pdf_print_outs.invoice_id'))
@@ -300,7 +300,7 @@
                 </table>
 
                 <!-- Invoice Information -->
-                <table class="{{ core()->getCurrentLocale()->direction }}">
+                <table class="{{ core()->getCurrentLocale()?->direction }}">
                     <tbody>
                         <tr>
                             @if (! empty(core()->getConfigData('sales.shipping.origin.country')))
@@ -349,7 +349,7 @@
                 </table>
 
                 <!-- Billing & Shipping Address -->
-                <table class="{{ core()->getCurrentLocale()->direction }}">
+                <table class="{{ core()->getCurrentLocale()?->direction }}">
                     <thead>
                         <tr>
                             @if ($invoice->order->billing_address)
@@ -408,7 +408,7 @@
                 </table>
 
                 <!-- Payment & Shipping Methods -->
-                <table class="{{ core()->getCurrentLocale()->direction }}">
+                <table class="{{ core()->getCurrentLocale()?->direction }}">
                     <thead>
                         <tr>
                             <th style="width: 50%">
@@ -454,7 +454,7 @@
 
                 <!-- Items -->
                 <div class="items">
-                    <table class="{{ core()->getCurrentLocale()->direction }}">
+                    <table class="{{ core()->getCurrentLocale()?->direction }}">
                         <thead>
                             <tr>
                                 <th>
@@ -562,7 +562,7 @@
 
                 <!-- Summary Table -->
                 <div class="summary">
-                    <table class="{{ core()->getCurrentLocale()->direction }}">
+                    <table class="{{ core()->getCurrentLocale()?->direction }}">
                         <tbody>
                             @if (core()->getConfigData('sales.taxes.sales.display_subtotal') == 'including_tax')
                                 <tr>

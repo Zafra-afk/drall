@@ -77,7 +77,7 @@
                     <div class="flex items-center gap-x-1">
                         <!-- Channel Filter -->
                         <template v-if="channels.length > 2">
-                            <x-admin::dropdown position="bottom-{{ core()->getCurrentLocale()->direction === 'ltr' ? 'left' : 'right' }}" >
+                            <x-admin::dropdown position="bottom-{{ core()->getCurrentLocale()?->direction === 'ltr' ? 'left' : 'right' }}" >
                                 <x-slot:toggle>
                                     <button
                                         type="button"

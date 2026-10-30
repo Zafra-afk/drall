@@ -64,7 +64,7 @@
                                 @endif
 
                                 <!-- Dropdown Actions -->
-                                <x-shop::dropdown position="bottom-{{ core()->getCurrentLocale()->direction === 'ltr' ? 'right' : 'left' }}">
+                                <x-shop::dropdown position="bottom-{{ core()->getCurrentLocale()?->direction === 'ltr' ? 'right' : 'left' }}">
                                     <x-slot:toggle>
                                         <button 
                                             class="icon-more cursor-pointer rounded-md px-1.5 py-1 text-2xl text-zinc-500 transition-all hover:bg-gray-100 hover:text-black focus:bg-gray-100 focus:text-black max-md:p-0" 

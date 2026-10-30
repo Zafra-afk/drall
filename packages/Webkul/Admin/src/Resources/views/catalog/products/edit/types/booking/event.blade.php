@@ -345,7 +345,7 @@
 
                     optionRowCount: 0,
 
-                    currentLocaleCode: @json(core()->getCurrentLocale()->code),
+                    currentLocaleCode: @json(core()->getCurrentLocale()?->code),
                 }
             },
 

@@ -229,7 +229,7 @@
                                             ></span>
                                         </button>
 
-                                        <x-admin::dropdown position="bottom-{{ core()->getCurrentLocale()->direction === 'rtl' ? 'left' : 'right' }}">
+                                        <x-admin::dropdown position="bottom-{{ core()->getCurrentLocale()?->direction === 'rtl' ? 'left' : 'right' }}">
                                             <x-slot:toggle>
                                                 <button
                                                     type="button"

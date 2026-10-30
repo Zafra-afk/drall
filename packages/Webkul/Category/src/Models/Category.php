@@ -129,7 +129,9 @@ class Category extends TranslatableModel implements CategoryContract
      */
     public function getUrlAttribute()
     {
-        if ($categoryTranslation = $this->translate(core()->getCurrentLocale()->code)) {
+        $currentLocale = core()->getCurrentLocale();
+
+        if ($currentLocale && ($categoryTranslation = $this->translate($currentLocale->code))) {
             return url($categoryTranslation->slug);
         }
 
