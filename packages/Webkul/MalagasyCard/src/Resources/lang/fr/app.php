@@ -1,29 +1,29 @@
 <?php
 
 return [
-    'description' => 'Pay securely with your credit or debit card via Papi. Supports Visa, MasterCard, and American Express.',
+    'description' => 'Payez en toute sécurité avec votre carte bancaire via Papi (papi.mg). Accepte Visa, MasterCard et American Express.',
     'title' => 'Malagasy Card',
 
     'redirect' => [
-        'click-if-not-redirected' => 'Click here to continue',
-        'pay-button' => 'Pay with Card',
-        'processing' => 'Processing...',
-        'secure-payment' => 'Secure Payment Gateway',
-        'info-1' => 'You will be redirected to Papi\'s secure payment page.',
-        'info-2' => 'Enter your card details to complete the payment.',
-        'info-3' => 'After payment, you will be redirected back to this store.',
+        'click-if-not-redirected' => 'Cliquez ici pour continuer',
+        'pay-button' => 'Payer par carte',
+        'processing' => 'Traitement en cours…',
+        'secure-payment' => 'Passerelle de paiement sécurisée',
+        'info-1' => 'Vous serez redirigé(e) vers la page de paiement sécurisée de Papi.',
+        'info-2' => 'Saisissez les informations de votre carte pour finaliser le paiement.',
+        'info-3' => 'Après le paiement, vous serez redirigé(e) vers ce magasin.',
     ],
 
     'response' => [
-        'cart-not-found' => 'Cart not found or invalid.',
-        'invalid-transaction' => 'Invalid transaction. Please try again.',
-        'order-creation-failed' => 'The payment succeeded but the order could not be created. Please contact support.',
-        'payment-cancelled' => 'The payment was cancelled.',
-        'payment-failed' => 'The payment failed. Please try again.',
-        'payment-pending' => 'Your payment is still pending. Please wait a moment and try again.',
-        'payment-success' => 'The payment completed successfully.',
-        'provide-credentials' => 'Please provide valid Papi credentials in the admin panel.',
-        'supported-currency-error' => 'The currency :currency is not supported. Supported Currencies: :supportedCurrencies.',
-        'verification-failed' => 'The payment could not be verified.',
+        'cart-not-found' => 'Aucun panier trouvé ou panier invalide.',
+        'invalid-transaction' => 'Transaction invalide. Veuillez réessayer.',
+        'order-creation-failed' => 'Le paiement a réussi, mais la commande n’a pas pu être créée. Contactez le support.',
+        'payment-cancelled' => 'Le paiement a été annulé.',
+        'payment-failed' => 'Le paiement a échoué. Veuillez réessayer.',
+        'payment-pending' => 'Votre paiement est toujours en attente. Veuillez patienter un moment et réessayer.',
+        'payment-success' => 'Le paiement a été effectué avec succès.',
+        'provide-credentials' => 'Veuillez fournir les identifiants Papi valides dans le panneau d’administration.',
+        'supported-currency-error' => 'La devise :currency n’est pas prise en charge. Devises acceptées : :supportedCurrencies.',
+        'verification-failed' => 'Le paiement n’a pas pu être vérifié.',
     ],
 ];

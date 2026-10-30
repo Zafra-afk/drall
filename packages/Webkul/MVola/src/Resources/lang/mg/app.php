@@ -2,6 +2,7 @@
 
 return [
     'description' => 'Mandoa amin\'ny MVola. Ampidiro ny laharan-telefaoninao mba handraisana fangatahana fandoavana.',
+    'payment-description' => 'Fakàna an\'ny kaomandy #:cart_id',
     'title' => 'MVola',
 
     'redirect' => [

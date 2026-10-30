@@ -27,10 +27,6 @@ return new class extends Migration
             'sales.payment_methods.phonepe.active',
             'sales.payment_methods.payu.active',
             'sales.payment_methods.payglocal.active',
-            'sales.payment_methods.mvola.active',
-            'sales.payment_methods.orange_money.active',
-            'sales.payment_methods.airtel_money.active',
-            'sales.payment_methods.malagasy_card.active',
         ];
 
         $activeConfigs = DB::table('core_config')

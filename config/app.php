@@ -1,7 +1,6 @@
 <?php
 
-$allowedLocales = array_values(array_intersect(
-    ['fr'],
+$allowedLocales = array_values(array_filter(
     array_map('trim', explode(',', env('APP_ALLOWED_LOCALES', 'fr')))
 )) ?: ['fr'];
 
@@ -158,6 +157,8 @@ return [
 
     'allowed_payment_methods' => [
         'mvola',
+        'malagasy_card',
+        'payglocal',
         'orange_money',
         'airtel_money',
     ],

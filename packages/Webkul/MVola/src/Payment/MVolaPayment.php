@@ -350,10 +350,6 @@ class MVolaPayment extends Payment
             $phone = substr($phone, 3);
         }
 
-        if (str_starts_with($phone, '+261')) {
-            $phone = substr($phone, 4);
-        }
-
         return ltrim($phone, '0');
     }
 }

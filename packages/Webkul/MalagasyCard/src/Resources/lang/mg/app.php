@@ -17,7 +17,7 @@ return [
     'response' => [
         'cart-not-found' => 'Tsy nahitana ny kàarta.',
         'invalid-transaction' => 'Fandàna tsy valido. Andramana indray.',
-        'order-creation-failed' => 'Nanàna ny fandàna fa tsy nahatongavana ny fandàna. Tadanoana.',
+        'order-creation-failed' => 'Nanàna ny fakàna fa tsy nahatongavana ny kaomandy. Tadanoana.',
         'payment-cancelled' => 'Nanamarika ny fandàna.',
         'payment-failed' => 'Tsy nahomana ny fandàna. Andramana indray.',
         'payment-pending' => 'Ny fandàna dia manana. Miretsika izay.',

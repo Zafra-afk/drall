@@ -8,7 +8,7 @@ Route::controller(MalagasyCardController::class)
     ->middleware('web')
     ->prefix('malagasy-card')
     ->group(function () {
-        Route::get('redirect', 'redirect')->name('malagasy_card.redirect');
+        Route::match(['get', 'post'], 'redirect', 'redirect')->name('malagasy_card.redirect');
 
         Route::get('callback', 'callback')->name('malagasy_card.callback');
 

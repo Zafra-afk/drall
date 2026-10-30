@@ -2,6 +2,7 @@
 
 return [
     'description' => 'Payez avec MVola. Saisissez votre numéro pour recevoir une demande de paiement.',
+    'payment-description' => 'Paiement pour la commande #:cart_id',
     'title' => 'MVola',
 
     'redirect' => [

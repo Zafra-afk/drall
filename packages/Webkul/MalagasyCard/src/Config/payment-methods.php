@@ -9,7 +9,7 @@ return [
         'description' => 'Card payment integration pending provider and merchant verification.',
         'class' => MalagasyCardPayment::class,
         'active' => false,
-        'sandbox' => true,
+        'sandbox' => env('MALASY_CARD_SANDBOX', true),
         'api_key' => env('PAPI_API_KEY'),
         'merchant_id' => env('PAPI_MERCHANT_ID'),
         'webhook_secret' => env('PAPI_WEBHOOK_SECRET'),

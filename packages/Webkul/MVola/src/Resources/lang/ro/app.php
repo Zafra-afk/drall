@@ -2,6 +2,7 @@
 
 return [
     'description' => 'Pay via MVola mobile money (Telma). Enter your phone number to receive a payment request.',
+    'payment-description' => 'Payment for order #:cart_id',
     'title' => 'MVola',
 
     'redirect' => [

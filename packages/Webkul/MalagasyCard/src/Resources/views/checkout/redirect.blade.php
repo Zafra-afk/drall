@@ -106,7 +106,8 @@
             </ul>
         </div>
 
-        <form id="card-payment-form" method="GET" action="{{ route('malagasy_card.redirect') }}">
+        <form id="card-payment-form" method="POST" action="{{ route('malagasy_card.redirect') }}">
+            @csrf
             <button type="submit" class="card-payment-btn" id="card-pay-button">
                 @lang('malagasy_card::app.redirect.pay-button')
             </button>
