@@ -4,7 +4,7 @@
     "buildCommand": "composer install --no-dev --optimize-autoloader --prefer-dist --no-interaction && npm install --no-audit --no-fund && npm run build"
   },
   "deploy": {
-    "startCommand": "touch .env && php artisan key:generate --force --no-interaction 2>/dev/null || true ; php artisan optimize:clear ; php artisan migrate --force --no-interaction ; php artisan db:seed --force --no-interaction && touch storage/installed ; php artisan storage:link --force 2>/dev/null || true ; php artisan serve --host=0.0.0.0 --port=$PORT",
+    "startCommand": "touch .env && [ -n \"$APP_KEY\" ] || php artisan key:generate --force --no-interaction 2>/dev/null || true ; php artisan optimize:clear ; php artisan migrate --force --no-interaction ; php artisan db:seed --force --no-interaction && touch storage/installed ; php artisan storage:link --force 2>/dev/null || true ; php artisan serve --host=0.0.0.0 --port=$PORT",
     "healthcheckPath": "/health",
     "healthcheckTimeout": 300,
     "restartPolicy": "on_failure"
