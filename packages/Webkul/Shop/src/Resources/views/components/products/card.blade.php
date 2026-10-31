@@ -14,7 +14,7 @@
             class="1180:transtion-all group w-full rounded-md 1180:relative 1180:grid 1180:content-start 1180:overflow-hidden 1180:duration-300 1180:hover:shadow-[0_5px_10px_rgba(0,0,0,0.1)]"
             v-if="mode != 'list'"
         >
-            <div class="relative max-h-75 max-w-72.75 overflow-hidden max-md:max-h-60 max-md:max-w-full max-md:rounded-lg max-sm:max-h-50 max-sm:max-w-full">
+            <div class="relative aspect-square w-full max-w-72.75 overflow-hidden max-md:max-w-full max-md:rounded-lg">
                 {!! view_render_event('bagisto.shop.components.products.card.image.before') !!}
 
                 <!-- Product Image -->
@@ -23,7 +23,7 @@
                     :aria-label="product.name"
                 >
                     <x-shop::media.images.lazy
-                        class="after:content-[' '] relative bg-zinc-100 transition-all duration-300 after:block after:pb-[calc(100%+9px)] group-hover:scale-105"
+                        class="relative h-full w-full bg-zinc-100 object-cover transition-all duration-300 group-hover:scale-105"
                         ::src="product.base_image.medium_image_url"
                         ::srcset="`
                             ${product.base_image.small_image_url} 150w,
@@ -118,7 +118,7 @@
             </div>
 
             <!-- Product Information Section -->
-            <div class="-mt-9 grid max-w-72.75 translate-y-9 content-start gap-2.5 bg-white p-2.5 transition-transform duration-300 ease-out group-hover:translate-y-0 group-hover:rounded-t-lg max-md:relative max-md:mt-0 max-md:translate-y-0 max-md:gap-0 max-md:px-0 max-md:py-1.5 max-sm:min-w-42.5 max-sm:max-w-48">
+            <div class="-mt-9 grid max-w-72.75 translate-y-9 content-start gap-2.5 bg-white p-2.5 transition-transform duration-300 ease-out group-hover:translate-y-0 group-hover:rounded-t-lg max-md:relative max-md:mt-0 max-md:translate-y-0 max-md:gap-0 max-md:px-0 max-md:py-1.5 max-sm:max-w-full">
 
                 {!! view_render_event('bagisto.shop.components.products.card.name.before') !!}
 
@@ -194,13 +194,13 @@
             class="relative flex max-w-max grid-cols-2 gap-4 overflow-hidden rounded-sm max-sm:flex-wrap"
             v-else
         >
-            <div class="group relative max-h-64.5 max-w-62.5 overflow-hidden">
+            <div class="group relative aspect-square w-full max-w-62.5 overflow-hidden max-sm:max-w-full">
 
                 {!! view_render_event('bagisto.shop.components.products.card.image.before') !!}
 
                 <a :href="'{{ route('shop.product_or_category.index', ':slug') }}'.replace(':slug', product.url_key)">
                     <x-shop::media.images.lazy
-                        class="after:content-[' '] relative min-w-62.5 bg-zinc-100 transition-all duration-300 after:block after:pb-[calc(100%+9px)] group-hover:scale-105"
+                        class="relative h-full w-full bg-zinc-100 object-cover transition-all duration-300 group-hover:scale-105"
                         ::src="product.base_image.medium_image_url"
                         ::key="product.id"
                         ::index="product.id"
