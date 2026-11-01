@@ -21,12 +21,12 @@ RUN apt-get update && apt-get install -y \
     autoconf \
     && rm -rf /var/lib/apt/lists/*
 
-# PHP extensions
+# Configure and install PHP extensions
 RUN docker-php-ext-configure gd \
     --with-freetype \
     --with-jpeg \
     --with-webp \
-    && docker-php-ext-install -j$(nproc) \
+    && docker-php-ext-install -j"$(nproc)" \
     calendar \
     curl \
     intl \
@@ -38,6 +38,18 @@ RUN docker-php-ext-configure gd \
     bcmath \
     exif \
     opcache
+
+# Verify GD capabilities during build
+RUN php -r '\
+    $gd = gd_info(); \
+    foreach (["JPEG Support", "PNG Support", "WebP Support", "FreeType Support"] as $feature) { \
+        echo $feature . ": " . (($gd[$feature] ?? false) ? "ENABLED" : "DISABLED") . PHP_EOL; \
+    } \
+    if (!function_exists("imagewebp")) { \
+        fwrite(STDERR, "ERROR: WebP support is missing in GD!" . PHP_EOL); \
+        exit(1); \
+    } \
+'
 
 # Redis
 RUN pecl install redis \
