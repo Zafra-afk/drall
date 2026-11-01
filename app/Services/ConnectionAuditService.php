@@ -5,8 +5,8 @@ namespace App\Services;
 use Illuminate\Contracts\Cache\Repository as CacheRepository;
 use Illuminate\Contracts\Filesystem\Factory as FilesystemFactory;
 use Illuminate\Contracts\Mail\Mailer;
+use Illuminate\Contracts\Queue\Factory as QueueFactory;
 use Illuminate\Database\ConnectionResolverInterface as DatabaseConnectionResolverInterface;
-use Illuminate\Queue\ConnectionResolverInterface as QueueConnectionResolverInterface;
 use Illuminate\Redis\RedisManager;
 use Illuminate\Support\Facades\Log;
 use Throwable;
@@ -24,9 +24,9 @@ class ConnectionAuditService
     protected RedisManager $redis;
 
     /**
-     * Queue connection resolver.
+     * Queue factory.
      */
-    protected QueueConnectionResolverInterface $queue;
+    protected QueueFactory $queue;
 
     /**
      * Cache repository.
@@ -54,7 +54,7 @@ class ConnectionAuditService
     public function __construct(
         DatabaseConnectionResolverInterface $database,
         RedisManager $redis,
-        QueueConnectionResolverInterface $queue,
+        QueueFactory $queue,
         CacheRepository $cache,
         FilesystemFactory $filesystem,
         Mailer $mailer
