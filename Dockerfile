@@ -5,6 +5,7 @@ RUN apt-get update && apt-get install -y \
         libzip-dev \
         libpng-dev \
         libjpeg-dev \
+        libwebp-dev \
         libfreetype6-dev \
         libonig-dev \
         libxml2-dev \
@@ -20,7 +21,7 @@ RUN apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg --with-webp \
     && docker-php-ext-configure intl \
     && docker-php-ext-configure zip \
     && docker-php-ext-configure calendar \
@@ -68,4 +69,4 @@ RUN chown -R www-data:www-data /var/www/html \
 RUN php artisan package:discover --ansi
 
 EXPOSE 80
-CMD cp .env.example .env && echo "DB_HOST=${DB_HOST:-127.0.0.1}" >> .env && echo "DB_PORT=${DB_PORT:-3306}" >> .env && echo "DB_DATABASE=${DB_DATABASE}" >> .env && echo "DB_USERNAME=${DB_USERNAME}" >> .env && echo "DB_PASSWORD=${DB_PASSWORD}" >> .env && echo "REDIS_HOST=${REDIS_HOST:-127.0.0.1}" >> .env && echo "REDIS_PORT=${REDIS_PORT:-6379}" >> .env && echo "APP_URL=https://drall.up.railway.app" >> .env && echo "APP_ENV=production" >> .env && echo "APP_DEBUG=false" >> .env && echo "APP_KEY=${APP_KEY:-}" >> .env && [ -n "$APP_KEY" ] || php artisan key:generate --force --no-interaction || true; php artisan optimize:clear; php artisan migrate --force --no-interaction && php artisan db:seed --force --no-interaction && touch storage/installed; php artisan storage:link --force 2>/dev/null || true; php artisan serve --host=0.0.0.0 --port=$PORT
+CMD cp .env.example .env && echo "DB_HOST=${DB_HOST:-127.0.0.1}" >> .env && echo "DB_PORT=${DB_PORT:-3306}" >> .env && echo "DB_DATABASE=${DB_DATABASE}" >> .env && echo "DB_USERNAME=${DB_USERNAME}" >> .env && echo "DB_PASSWORD=${DB_PASSWORD}" >> .env && echo "REDIS_HOST=${REDIS_HOST:-127.0.0.1}" >> .env && echo "REDIS_PORT=${REDIS_PORT:-6379}" >> .env && echo "APP_URL=https://drall.up.railway.app" >> .env && echo "APP_ENV=production" >> .env && echo "APP_DEBUG=false" >> .env && echo "APP_KEY=${APP_KEY:-}" >> .env && [ -n "$APP_KEY" ] || php artisan key:generate --force --no-interaction || true; php artisan optimize:clear; php artisan migrate --force --no-interaction && php artisan db:seed --force --no-interaction && touch storage/installed; chmod -R 775 storage bootstrap/cache public 2>/dev/null || true; rm -rf public/storage; php artisan storage:link --force; php artisan serve --host=0.0.0.0 --port=$PORT
