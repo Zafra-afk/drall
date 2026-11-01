@@ -5,6 +5,7 @@ namespace Webkul\Category\Repositories;
 use Illuminate\Container\Container;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Webkul\Category\Contracts\Category;
@@ -351,7 +352,17 @@ class CategoryRepository extends Repository
                     'webp'
                 );
 
-                Storage::put($category->{$type}, (string) $encoded);
+                try {
+                    Storage::put($category->{$type}, (string) $encoded);
+                } catch (\Throwable $e) {
+                    Log::error('Failed to store category image', [
+                        'category_id' => $category->id,
+                        'path' => $category->{$type},
+                        'error' => $e->getMessage(),
+                    ]);
+
+                    throw new \Exception('Unable to store the category image. Please check storage permissions.', 500);
+                }
 
                 $category->save();
             } elseif ($category->{$type}) {

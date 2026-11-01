@@ -5,6 +5,7 @@ namespace Webkul\Product\Repositories;
 use Exception;
 use Illuminate\Container\Container;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Webkul\Core\Eloquent\Repository;
@@ -131,7 +132,16 @@ class ProductMediaRepository extends Repository
 
             $path = $this->mediaFileName->resolve($directory, $requestedName, 'webp');
 
-            Storage::put($path, (string) $encoded);
+            try {
+                Storage::put($path, (string) $encoded);
+            } catch (\Throwable $e) {
+                Log::error('Failed to store product media file', [
+                    'path' => $path,
+                    'product_id' => $product->id,
+                    'error' => $e->getMessage(),
+                ]);
+                throw new Exception('Unable to store the media file. Please check storage permissions.', 500);
+            }
 
             return $path;
         }
@@ -139,7 +149,16 @@ class ProductMediaRepository extends Repository
         if (filled($requestedName)) {
             $path = $this->mediaFileName->resolve($directory, $requestedName, $this->mediaFileName->extension($file));
 
-            Storage::put($path, $file->get());
+            try {
+                Storage::put($path, $file->get());
+            } catch (\Throwable $e) {
+                Log::error('Failed to store product media file', [
+                    'path' => $path,
+                    'product_id' => $product->id,
+                    'error' => $e->getMessage(),
+                ]);
+                throw new Exception('Unable to store the media file. Please check storage permissions.', 500);
+            }
 
             return $path;
         }
