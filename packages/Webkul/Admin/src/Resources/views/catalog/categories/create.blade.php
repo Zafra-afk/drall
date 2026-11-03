@@ -100,6 +100,7 @@
                                 name-field="parent_id"
                                 value-field="id"
                                 :items="json_encode($categories)"
+                                :value="{{ json_encode((string) old('parent_id', $defaultParentId)) }}"
                                 :fallback-locale="config('app.fallback_locale')"
                             />
                         </div>
@@ -350,6 +351,7 @@
                                 class="cursor-pointer"
                                 name="status"
                                 value="1"
+                                :checked="(bool) old('status', true)"
                                 :label="trans('admin::app.catalog.categories.create.visible-in-menu')"
                             />
                         </x-admin::form.control-group>

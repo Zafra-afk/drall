@@ -215,6 +215,26 @@ it('should store a category without images', function () {
     ]);
 });
 
+it('should place a category without a parent under the requested channel root', function () {
+    $this->loginAsAdmin();
+
+    $slug = fake()->unique()->slug();
+
+    postJson(route('admin.catalog.categories.store'), [
+        'slug' => $slug,
+        'name' => 'Channel Root Category',
+        'position' => 1,
+        'attributes' => filterableAttributeIds(),
+    ])
+        ->assertRedirect(route('admin.catalog.categories.index'));
+
+    $category = Category::query()
+        ->whereHas('translations', fn ($query) => $query->where('slug', $slug))
+        ->firstOrFail();
+
+    expect($category->parent_id)->toBe(core()->getRequestedChannel()->root_category_id);
+});
+
 it('should store a category with display_mode products_only without requiring description', function () {
     $this->loginAsAdmin();
 

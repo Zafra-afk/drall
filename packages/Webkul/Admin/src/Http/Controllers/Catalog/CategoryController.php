@@ -56,7 +56,9 @@ class CategoryController extends Controller
 
         $attributes = $this->attributeRepository->findWhere(['is_filterable' => 1]);
 
-        return view('admin::catalog.categories.create', compact('categories', 'attributes'));
+        $defaultParentId = core()->getRequestedChannel()->root_category_id;
+
+        return view('admin::catalog.categories.create', compact('categories', 'attributes', 'defaultParentId'));
     }
 
     /**
@@ -85,6 +87,8 @@ class CategoryController extends Controller
             'banner_path',
             'banner_meta',
         ]);
+
+        $data['parent_id'] = $data['parent_id'] ?: core()->getRequestedChannel()->root_category_id;
 
         $data['status'] = $categoryRequest->boolean('status');
 
