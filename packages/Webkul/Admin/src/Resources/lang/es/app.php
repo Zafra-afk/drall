@@ -6329,7 +6329,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => 'Desarrollado por <a href="https://drall.com/" target="_blank">Drall</a>, Un Proyecto Comunitario por <a href="https://webkul.com/" target="_blank">Webkul</a>',
+        'copy-right' => '© :current_year Drall.',
     ],
 
     'emails' => [

@@ -6329,7 +6329,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => 'מופעל על ידי <a href="https://drall.com/" target="_blank">Drall</a>, פרויקט קהילתי על ידי <a href="https://webkul.com/" target="_blank">Webkul</a>',
+        'copy-right' => '© :current_year Drall.',
     ],
 
     'emails' => [

@@ -6329,7 +6329,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => 'Tarafından desteklenmektedir <a href="https://drall.com/" target="_blank">Drall</a>, Bir Topluluk Projesi <a href="https://webkul.com/" target="_blank">Webkul</a>',
+        'copy-right' => '© :current_year Drall.',
     ],
 
     'emails' => [

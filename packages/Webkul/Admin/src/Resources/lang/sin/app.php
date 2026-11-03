@@ -6329,7 +6329,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => 'බගිස්ටෝ ආදේශයේ බරපත වෙබ්කුල්, සංචාලන ව්යාපෘති මාධ්යකුම අතියේ <a href="https://drall.com/" target="_blank">Drall</a> වෙතට බලන්න',
+        'copy-right' => '© :current_year Drall.',
     ],
 
     'emails' => [

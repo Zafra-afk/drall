@@ -67,8 +67,8 @@
                     <div class="m-auto grid h-[100vh] max-w-90.5 items-end">
                         <div class="grid gap-4">
                             <img
-                                src="{{ bagisto_asset('images/installer/bagisto-logo.svg', 'installer') }}"
-                                alt="@lang('installer::app.installer.index.bagisto-logo')"
+                                src="{{ bagisto_asset('images/logo.svg', 'admin') }}"
+                                alt="{{ config('app.name') }}"
                             >
 
                             <div class="grid gap-1.5">
@@ -204,24 +204,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <p class="mb-6 w-full place-self-end text-left">
-                            <a
-                                class="bg-white text-blue-600 underline"
-                                href="https://bagisto.com/en/"
-                            >
-                                @lang('installer::app.installer.index.bagisto')
-                            </a>
-
-                            <span>@lang('installer::app.installer.index.bagisto-info')</span>
-
-                            <a
-                                class="bg-white text-blue-600 underline"
-                                href="https://webkul.com/"
-                            >
-                                @lang('installer::app.installer.index.webkul')
-                            </a>
-                        </p>
                     </div>
                 </div>
 
@@ -652,7 +634,7 @@
                     <div class="flex h-121 flex-col justify-center gap-4 overflow-y-auto px-7 py-4">
                         <div class="flex flex-col gap-4">
                             <p class="text-lg font-bold text-gray-800">
-                                @lang('installer::app.installer.index.installation-processing.bagisto')
+                                {{ config('app.name') }}
                             </p>
 
                             <div class="grid gap-2.5">
@@ -704,7 +686,7 @@
                                         ::value="envData.app_name ?? 'Drall'"
                                         rules="required"
                                         :label="trans('installer::app.installer.index.environment-configuration.application-name')"
-                                        :placeholder="trans('installer::app.installer.index.environment-configuration.bagisto')"
+                                        :placeholder="config('app.name')"
                                     />
 
                                     <x-installer::form.control-group.error control-name="app_name" />
@@ -1019,7 +1001,7 @@
                                         rules="required"
                                         value="Admin"
                                         :label="trans('installer::app.installer.index.create-administrator.admin')"
-                                        :placeholder="trans('installer::app.installer.index.create-administrator.bagisto')"
+                                        :placeholder="trans('installer::app.installer.index.create-administrator.admin')"
                                     />
 
                                     <x-installer::form.control-group.error control-name="name" />
@@ -1138,21 +1120,6 @@
                         </div>
                     </div>
 
-                    <div class="flex items-center justify-between px-4 py-2.5">
-                        <a
-                            href="https://forums.bagisto.com"
-                            class="cursor-pointer text-xs font-semibold text-blue-600"
-                        >
-                            @lang('installer::app.installer.index.installation-completed.bagisto-forums')
-                        </a>
-
-                        <a
-                            href="https://bagisto.com/en/extensions"
-                            class="cursor-pointer rounded-md border border-blue-700 bg-white px-3 py-1.5 font-semibold text-blue-600 hover:opacity-90"
-                        >
-                            @lang('installer::app.installer.index.installation-completed.explore-bagisto-extensions')
-                        </a>
-                    </div>
                 </div>
             </script>
 

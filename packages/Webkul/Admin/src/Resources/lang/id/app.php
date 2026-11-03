@@ -6329,7 +6329,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => 'Didukung oleh <a href="https://drall.com/" target="_blank">Drall</a>, proyek komunitas yang dikembangkan oleh <a href="https://webkul.com/" target="_blank">Webkul</a>',
+        'copy-right' => '© :current_year Drall.',
     ],
 
     'emails' => [

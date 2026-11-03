@@ -6329,7 +6329,7 @@ return [
     ],
 
     'footer' => [
-        'copy-right' => 'प्रद्वार <a href="https://drall.com/" target="_blank">Drall</a>, एक समुदाय परियोजना <a href="https://webkul.com/" target="_blank">Webkul</a> द्वारा',
+        'copy-right' => '© :current_year Drall.',
     ],
 
     'emails' => [
