@@ -1,0 +1,11 @@
+# Drall (Bagisto) is a Laravel/PHP app hosted on Railway. Netlify cannot run
+# PHP, so this site only proxies every request to the Railway deployment.
+[build]
+  command = "echo 'Proxy only: the app runs on Railway'"
+  publish = "netlify/proxy"
+
+[[redirects]]
+  from = "/*"
+  to = "https://drall.up.railway.app/:splat"
+  status = 200
+  force = true
