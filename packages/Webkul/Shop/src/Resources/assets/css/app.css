@@ -167,6 +167,22 @@
         @apply text-gray-400;
     }
 
+    :focus-visible {
+        outline: 2px solid var(--color-darkBlue);
+        outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            scroll-behavior: auto !important;
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
+
     button:disabled,
     button:disabled:hover {
         @apply cursor-not-allowed opacity-50;
@@ -307,11 +323,15 @@
     }
 
     .primary-button {
-        @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl text-white bg-navyBlue border border-navyBlue px-8 py-4 max-w-max cursor-pointer transition-all hover:opacity-[0.9] flex-shrink-0;
+        @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl text-white bg-navyBlue border border-navyBlue px-8 py-4 max-w-max cursor-pointer transition-colors hover:bg-[#11194d] flex-shrink-0;
+
+        min-height: 44px;
     }
 
     .secondary-button {
-        @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl bg-white text-navyBlue border border-navyBlue px-8 py-4 max-w-max cursor-pointer transition-all hover:bg-[#050e3a0d] flex-shrink-0;
+        @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl bg-white text-navyBlue border border-navyBlue px-8 py-4 max-w-max cursor-pointer transition-colors hover:bg-gray-100 flex-shrink-0;
+
+        min-height: 44px;
     }
 
     .shimmer {

@@ -11,7 +11,7 @@
     >
         <!-- Grid Card -->
         <div
-            class="1180:transtion-all group w-full rounded-md 1180:relative 1180:grid 1180:content-start 1180:overflow-hidden 1180:duration-300 1180:hover:shadow-[0_5px_10px_rgba(0,0,0,0.1)]"
+            class="group w-full rounded-md 1180:relative 1180:grid 1180:content-start 1180:overflow-hidden 1180:transition-all 1180:duration-300 1180:hover:shadow-[0_5px_10px_rgba(0,0,0,0.1)]"
             v-if="mode != 'list'"
         >
             <div class="relative aspect-square w-full max-w-72.75 overflow-hidden max-md:max-w-full max-md:rounded-lg">
@@ -80,7 +80,7 @@
                         @lang('shop::app.components.products.card.new')
                     </p>
 
-                    <div class="opacity-0 transition-all duration-300 group-hover:bottom-0 group-hover:opacity-100 max-lg:opacity-100 max-sm:opacity-100">
+                    <div class="opacity-0 transition-all duration-300 group-hover:bottom-0 group-hover:opacity-100 group-focus-within:opacity-100 max-lg:opacity-100 max-sm:opacity-100">
 
                         {!! view_render_event('bagisto.shop.components.products.card.wishlist_option.before') !!}
 
@@ -122,9 +122,12 @@
 
                 {!! view_render_event('bagisto.shop.components.products.card.name.before') !!}
 
-                <p class="wrap-break-word text-base font-medium max-md:mb-1.5 max-md:max-w-56 max-md:whitespace-break-spaces max-md:leading-6 max-sm:max-w-48 max-sm:text-sm max-sm:leading-4">
+                <a
+                    class="wrap-break-word text-base font-medium transition-colors hover:text-darkBlue focus-visible:text-darkBlue max-md:mb-1.5 max-md:max-w-56 max-md:whitespace-break-spaces max-md:leading-6 max-sm:max-w-48 max-sm:text-sm max-sm:leading-4"
+                    :href="'{{ route('shop.product_or_category.index', ':slug') }}'.replace(':slug', product.url_key)"
+                >
                     @{{ product.name }}
-                </p>
+                </a>
 
                 {!! view_render_event('bagisto.shop.components.products.card.name.after') !!}
 
@@ -140,7 +143,7 @@
                 {!! view_render_event('bagisto.shop.components.products.card.price.after') !!}
 
                 <!-- Product Actions Section -->
-                <div class="action-items flex items-center justify-between opacity-0 transition-all duration-300 ease-in-out group-hover:opacity-100 max-md:hidden">
+                <div class="action-items flex items-center justify-between opacity-0 transition-all duration-300 ease-in-out group-hover:opacity-100 group-focus-within:opacity-100 max-md:opacity-100">
                     @if (core()->getConfigData('sales.checkout.shopping_cart.cart_page'))
                         {!! view_render_event('bagisto.shop.components.products.card.add_to_cart.before') !!}
 
@@ -227,7 +230,7 @@
                         @lang('shop::app.components.products.card.new')
                     </p>
 
-                    <div class="opacity-0 transition-all duration-300 group-hover:bottom-0 group-hover:opacity-100 max-sm:opacity-100">
+                    <div class="opacity-0 transition-all duration-300 group-hover:bottom-0 group-hover:opacity-100 group-focus-within:opacity-100 max-sm:opacity-100">
 
                         {!! view_render_event('bagisto.shop.components.products.card.wishlist_option.before') !!}
 
@@ -267,9 +270,12 @@
 
                 {!! view_render_event('bagisto.shop.components.products.card.name.before') !!}
 
-                <p class="text-base">
+                <a
+                    class="text-base font-medium transition-colors hover:text-darkBlue focus-visible:text-darkBlue"
+                    :href="'{{ route('shop.product_or_category.index', ':slug') }}'.replace(':slug', product.url_key)"
+                >
                     @{{ product.name }}
-                </p>
+                </a>
 
                 {!! view_render_event('bagisto.shop.components.products.card.name.after') !!}
 

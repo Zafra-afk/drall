@@ -198,6 +198,22 @@
     textarea::placeholder {
         @apply text-gray-400;
     }
+
+    :focus-visible {
+        outline: 2px solid #2563eb;
+        outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+            scroll-behavior: auto !important;
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+        }
+    }
 }
 
 @font-face {
@@ -246,15 +262,19 @@
     }
 
     .box-shadow {
-        @apply border-[1px] dark:border-gray-800 shadow-[0px_0px_0px_0px_rgba(0,0,0,0.03),0px_1px_1px_0px_rgba(0,0,0,0.03),0px_3px_3px_0px_rgba(0,0,0,0.03),0px_6px_4px_0px_rgba(0,0,0,0.02),0px_11px_4px_0px_rgba(0,0,0,0.00),0px_17px_5px_0px_rgba(0,0,0,0.00)];
+        @apply rounded-xl border border-gray-200 bg-white shadow-sm dark:border-gray-800 dark:bg-gray-900;
     }
 
     .primary-button {
-        @apply bg-blue-600 border border-blue-700 cursor-pointer flex focus:opacity-[0.9] font-semibold gap-x-1 hover:opacity-[0.9] items-center place-content-center px-3 py-1.5 rounded-md text-gray-50 transition-all;
+        @apply bg-blue-600 border border-blue-700 cursor-pointer flex font-semibold gap-x-1 hover:bg-blue-700 items-center place-content-center px-3 py-1.5 rounded-lg text-gray-50 transition-colors;
+
+        min-height: 40px;
     }
 
     .secondary-button {
-        @apply flex cursor-pointer place-content-center items-center gap-x-1 whitespace-nowrap rounded-md border-2 border-blue-600 bg-white px-3 py-1.5 font-semibold text-blue-600 transition-all hover:bg-blue-50/[0.38] focus:bg-blue-50/[0.38] dark:border-gray-400 dark:bg-gray-800 dark:text-white dark:hover:opacity-80;
+        @apply flex cursor-pointer place-content-center items-center gap-x-1 whitespace-nowrap rounded-lg border border-blue-600 bg-white px-3 py-1.5 font-semibold text-blue-600 transition-colors hover:bg-blue-50 focus:bg-blue-50 dark:border-gray-400 dark:bg-gray-800 dark:text-white dark:hover:opacity-80;
+
+        min-height: 40px;
     }
 
     .transparent-button {

@@ -40,6 +40,12 @@
 
     {!! view_render_event('bagisto.shop.categories.view.banner_path.after') !!}
 
+    <div class="container mt-8 px-15 max-lg:px-8 max-md:mt-5 max-md:px-4">
+        <h1 class="text-3xl font-semibold leading-tight text-navyBlue max-md:text-2xl">
+            {{ $category->name }}
+        </h1>
+    </div>
+
     {!! view_render_event('bagisto.shop.categories.view.description.before') !!}
 
     @if (in_array($category->display_mode, [null, 'description_only', 'products_and_description']))
@@ -66,7 +72,7 @@
             id="v-category-template"
         >
             <div class="container px-15 max-lg:px-8 max-md:px-4">
-                <div class="flex items-start gap-10 max-lg:gap-5 md:mt-10">
+                <div class="flex items-start gap-10 max-lg:gap-5 md:mt-8">
                     <!-- Product Listing Filters -->
                     @include('shop::categories.filters')
 
@@ -79,7 +85,7 @@
 
                         <!-- Product List Card Container -->
                         <div
-                            class="mt-8 grid grid-cols-1 gap-6"
+                            class="mt-6 grid grid-cols-1 gap-6"
                             v-if="(filters.toolbar.applied.mode ?? filters.toolbar.default.mode) === 'list'"
                         >
                             <!-- Product Card Shimmer Effect -->
@@ -123,7 +129,7 @@
                         </div>
 
                         <!-- Product Grid Card Container -->
-                        <div v-else class="mt-8 max-md:mt-5">
+                        <div v-else class="mt-6 max-md:mt-4">
                             <!-- Product Card Shimmer Effect -->
                             <template v-if="isLoading">
                                 <div class="grid grid-cols-3 gap-8 max-1060:grid-cols-2 max-md:justify-items-center max-md:gap-x-4">
