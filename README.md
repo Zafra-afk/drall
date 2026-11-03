@@ -319,6 +319,14 @@ APP_FALLBACK_LOCALE=fr
 
 Générez et conservez la clé d'application de manière sécurisée. Ne publiez pas le fichier `.env`.
 
+### Déploiement Railway
+
+Configurez dans Railway les variables `APP_KEY`, `APP_URL`, `DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME` et `DB_PASSWORD`. Conservez la même `APP_KEY` entre les déploiements. Le port HTTP est fourni par `PORT`.
+
+Le `Procfile` utilise `docker/start.sh`, qui vérifie les variables requises, prépare le stockage et applique les migrations en attente avant de démarrer l'application. Il ne régénère pas `APP_KEY` et ne lance pas de seeders. Testez les migrations sur une préproduction et sauvegardez la base avant chaque déploiement.
+
+Le contrôle de santé Railway est servi par `GET /health`. Configurez `APP_ENV=production` et `APP_DEBUG=false` dans l'environnement de déploiement.
+
 Après chaque déploiement, vérifiez :
 
 - L'accès à la boutique.
