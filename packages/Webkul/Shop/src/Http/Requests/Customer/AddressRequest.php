@@ -28,7 +28,12 @@ class AddressRequest extends FormRequest
      */
     public function rules()
     {
-        $countryRules = core()->isCountryRequired() ? ['required'] : ['nullable'];
+        $countryRules = [
+            'bail',
+            core()->isCountryRequired() ? 'required' : 'nullable',
+            'string',
+        ];
+        $countryRules[] = Rule::exists('countries', 'code');
         $storefrontCountries = config('app.storefront_countries', []);
 
         if ($storefrontCountries) {

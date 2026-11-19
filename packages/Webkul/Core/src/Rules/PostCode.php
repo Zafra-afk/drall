@@ -12,7 +12,18 @@ class PostCode implements ValidationRule
      */
     public function validate(string $attribute, mixed $value, Closure $fail): void
     {
-        if (! preg_match('/^[a-zA-Z0-9][a-zA-Z0-9\s-]*[a-zA-Z0-9]$/', $value)) {
+        if ($value === null) {
+            return;
+        }
+
+        if (is_string($value) && trim($value) === '') {
+            return;
+        }
+
+        if (
+            (! is_string($value) && ! is_int($value))
+            || ! preg_match('/^[\pL\pN](?:[\pL\pN\s-]*[\pL\pN])?$/u', (string) $value)
+        ) {
             $fail('core::validation.postcode')->translate();
         }
     }

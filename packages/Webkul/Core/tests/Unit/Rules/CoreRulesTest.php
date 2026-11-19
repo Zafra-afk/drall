@@ -97,22 +97,31 @@ it('should reject a value that is not a phone number', function (string $value) 
 // Post Code
 // ============================================================================
 
-it('should accept a post code of letters and digits, with spaces or hyphens inside', function (string $value) {
+it('should accept international alphanumeric post codes with spaces or hyphens inside', function (string $value) {
     expect(passesRule(new PostCode, $value))->toBeTrue();
 })->with([
     'digits' => '110001',
     'letters and digits' => 'SW1A1AA',
     'inner space' => 'SW1A 1AA',
     'inner hyphen' => '12345-6789',
+    'a single character' => '1',
+    'accented letters' => 'ÉA12',
 ]);
 
-it('should reject a post code that starts or ends with a separator or holds other characters', function (string $value) {
+it('should accept an empty post code when the country does not require one', function (mixed $value) {
+    expect(passesRule(new PostCode, $value))->toBeTrue();
+})->with([
+    'empty string' => '',
+    'null' => null,
+]);
+
+it('should reject a post code that starts or ends with a separator or holds other characters', function (mixed $value) {
     expect(passesRule(new PostCode, $value))->toBeFalse();
 })->with([
     'leading space' => ' 110001',
     'trailing hyphen' => '110001-',
     'a dot' => '110.001',
-    'a single character' => '1',
+    'an array' => [],
 ]);
 
 // ============================================================================

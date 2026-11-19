@@ -134,7 +134,7 @@ return [
 
     'storefront_countries' => array_values(array_filter(array_map(
         'strtoupper',
-        array_map('trim', explode(',', env('APP_STOREFRONT_COUNTRIES', 'MG')))
+        array_map('trim', explode(',', env('APP_STOREFRONT_COUNTRIES', '')))
     ))),
 
     'allowed_locales' => $allowedLocales,

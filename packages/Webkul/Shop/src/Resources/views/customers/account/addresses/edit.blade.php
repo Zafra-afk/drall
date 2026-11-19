@@ -207,6 +207,15 @@
                         @lang('shop::app.customers.account.addresses.edit.country')
                     </x-shop::form.control-group.label>
 
+                    <input
+                        type="search"
+                        v-model="countrySearch"
+                        aria-label="@lang('shop::app.layouts.header.mobile.search') @lang('shop::app.customers.account.addresses.edit.country')"
+                        placeholder="@lang('shop::app.layouts.header.mobile.search')"
+                        autocomplete="off"
+                        class="mb-1.5 w-full rounded-lg border px-5 py-3 text-base font-normal text-gray-600 transition-all hover:border-gray-400 focus:border-gray-400 max-sm:px-4 max-md:py-2 max-sm:text-sm"
+                    >
+
                     <x-shop::form.control-group.control
                         type="select"
                         name="country"
@@ -214,24 +223,42 @@
                         v-model="addressData.country"
                         :aria-label="trans('shop::app.customers.account.addresses.edit.country')"
                         :label="trans('shop::app.customers.account.addresses.edit.country')"
-                        @change="addressData.state = ''"
+                        @change="onCountryChange"
                     >
+                        <option value="">
+                            @lang('shop::app.customers.account.addresses.edit.select-country')
+                        </option>
+
                         @php
-                            $countries = core()->countries()
-                                ->whereIn('code', config('app.storefront_countries', [config('app.default_country')]))
-                                ->sortBy(function ($c) {
-                                return [$c->code !== config('app.default_country'), $c->name];
-                            });
+                            $countries = core()->countries();
+                            $storefrontCountries = config('app.storefront_countries', []);
+
+                            if ($storefrontCountries) {
+                                $countries = $countries->whereIn('code', $storefrontCountries);
+                            }
+
+                            $countries = $countries->sortBy(fn ($country) => [
+                                $country->code !== config('app.default_country'),
+                                $country->name,
+                            ]);
                         @endphp
-                        @foreach ($countries as $country)
-                            <option 
-                                {{ $country->code === config('app.default_country') ? 'selected' : '' }}  
-                                value="{{ $country->code }}"
-                            >
-                                {{ $country->name }}
-                            </option>
-                        @endforeach
+                        <option
+                            v-for="countryOption in filteredCountries"
+                            :key="countryOption.code"
+                            :value="countryOption.code"
+                        >
+                            @{{ countryOption.name }}
+                        </option>
                     </x-shop::form.control-group.control>
+
+                    <p
+                        v-if="! filteredCountries.length"
+                        role="status"
+                        aria-live="polite"
+                        class="text-sm text-zinc-500"
+                    >
+                        @lang('shop::app.categories.filters.search.no-options-available')
+                    </p>
 
                     <x-shop::form.control-group.error control-name="country" />
                 </x-shop::form.control-group>
@@ -252,7 +279,12 @@
                             v-model="addressData.state"
                             :label="trans('shop::app.customers.account.addresses.edit.state')"
                             :placeholder="trans('shop::app.customers.account.addresses.edit.state')"
+                            @change="onStateChange"
                         >
+                            <option value="">
+                                @lang('shop::app.checkout.onepage.address.select-state')
+                            </option>
+
                             <option 
                                 v-for='(state, index) in countryStates[addressData.country]'
                                 :value="state.code"
@@ -269,6 +301,7 @@
                             rules="{{ core()->isStateRequired() ? 'required' : '' }}"
                             :value="old('state') ?? $address->state"
                             v-model="addressData.state"
+                            @change="onStateChange"
                             :label="trans('shop::app.customers.account.addresses.edit.state')"
                             :placeholder="trans('shop::app.customers.account.addresses.edit.state')"
                         />
@@ -288,6 +321,7 @@
                         type="text"
                         name="city"
                         rules="required"
+                        v-model="addressData.city"
                         :value="old('city') ?? $address->city"
                         :label="trans('shop::app.customers.account.addresses.edit.city')"
                         :placeholder="trans('shop::app.customers.account.addresses.edit.city')"
@@ -307,6 +341,7 @@
                         type="text"
                         name="postcode"
                         rules="{{ core()->isPostCodeRequired() ? 'required' : '' }}|postcode"
+                        v-model="addressData.postcode"
                         :value="old('postcode') ?? $address->postcode"
                         :label="trans('shop::app.customers.account.addresses.edit.post-code')"
                         :placeholder="trans('shop::app.customers.account.addresses.edit.post-code')"
@@ -322,7 +357,7 @@
                         @lang('shop::app.customers.account.addresses.edit.phone')
                     </x-shop::form.control-group.label>
 
-                    <p class="text-xs text-zinc-500 mb-1">
+                    <p v-if="addressData.country === 'MG'" class="text-xs text-zinc-500 mb-1">
                         +261 XX XXX XX XXX
                     </p>
 
@@ -332,7 +367,7 @@
                         rules="required|phone"
                         :value="old('phone') ?? $address->phone"
                         :label="trans('shop::app.customers.account.addresses.edit.phone')"
-                        placeholder="+261 XX XX XXX XX"
+                        ::placeholder="addressData.country === 'MG' ? '+261 XX XX XXX XX' : trans('shop::app.customers.account.addresses.edit.phone')"
                     />
 
                     <x-shop::form.control-group.error control-name="phone" />
@@ -359,16 +394,55 @@
                 data() {
                     return {
                         addressData: {
-                            country: "{{ old('country') ?? $address->country }}",
+                            country: @js(old('country') ?? $address->country),
 
-                            state: "{{ old('state') ?? $address->state }}",
+                            state: @js(old('state') ?? $address->state),
+
+                            city: @js(old('city') ?? $address->city),
+
+                            postcode: @js(old('postcode') ?? $address->postcode),
                         },
+
+                        countrySearch: '',
+
+                        countries: @json($countries->map(fn ($country) => [
+                            'id' => $country->id,
+                            'code' => $country->code,
+                            'name' => $country->name,
+                        ])->values()),
 
                         countryStates: @json(core()->groupedStatesByCountries()),
                     };
                 },
-    
+
+                computed: {
+                    filteredCountries() {
+                        const query = this.countrySearch.trim().toLocaleLowerCase();
+
+                        return this.countries.filter(country => (
+                            country.name.toLocaleLowerCase().includes(query)
+                            || country.code.toLocaleLowerCase().includes(query)
+                        ));
+                    },
+                },
+
                 methods: {
+                    onCountryChange() {
+                        this.countrySearch = '';
+
+                        this.addressData.state = '';
+
+                        this.addressData.city = '';
+
+                        this.addressData.postcode = '';
+                    },
+
+                    onStateChange() {
+                        this.addressData.city = '';
+
+                        this.addressData.postcode = '';
+                    },
+
                     haveStates() {
                         return !!this.countryStates[this.addressData.country]?.length;
                     },

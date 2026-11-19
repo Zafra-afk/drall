@@ -160,10 +160,19 @@
 
             <div class="grid grid-cols-2 gap-x-5 max-md:grid-cols-1">
                 <!-- Country -->
-                <x-shop::form.control-group class="mb-4!" ::for="controlName + '_country'">
+                <x-shop::form.control-group class="mb-4!" ::for="controlName + '_country'" ::aria-busy="countriesLoading">
                     <x-shop::form.control-group.label class="{{ core()->isCountryRequired() ? 'required' : '' }} mt-0!">
                         @lang('shop::app.checkout.onepage.address.country')
                     </x-shop::form.control-group.label>
+
+                    <input
+                        type="search"
+                        v-model="countrySearch"
+                        aria-label="@lang('shop::app.layouts.header.mobile.search') @lang('shop::app.checkout.onepage.address.country')"
+                        placeholder="@lang('shop::app.layouts.header.mobile.search')"
+                        autocomplete="off"
+                        class="mb-1.5 w-full rounded-lg border px-5 py-3 text-base font-normal text-gray-600 transition-all hover:border-gray-400 focus:border-gray-400 max-sm:px-4 max-md:py-2 max-sm:text-sm"
+                    >
 
                     <x-shop::form.control-group.control
                         type="select"
@@ -174,14 +183,16 @@
                         :label="trans('shop::app.checkout.onepage.address.country')"
                         :placeholder="trans('shop::app.checkout.onepage.address.country')"
                         ::id="controlName + '_country'"
-                        @change="selectedState = ''"
+                        ::disabled="countriesLoading || countriesError || ! filteredCountries.length"
+                        @change="onCountryChange"
                     >
                         <option value="">
                             @lang('shop::app.checkout.onepage.address.select-country')
                         </option>
 
                         <option
-                            v-for="country in countries"
+                            v-for="country in filteredCountries"
+                            :key="country.code"
                             :value="country.code"
                         >
                             @{{ country.name }}
@@ -189,6 +200,32 @@
                     </x-shop::form.control-group.control>
 
                     <x-shop::form.control-group.error ::name="controlName + '.country'" />
+
+                    <p
+                        v-if="countriesLoading"
+                        role="status"
+                        aria-live="polite"
+                        class="text-sm text-zinc-500"
+                    >
+                        @lang('shop::app.categories.filters.search.loading')
+                    </p>
+
+                    <p
+                        v-if="countriesError"
+                        role="alert"
+                        class="text-sm text-red-600"
+                    >
+                        @lang('shop::app.search.images.index.something-went-wrong')
+                    </p>
+
+                    <p
+                        v-if="!countriesLoading && !countriesError && !filteredCountries.length"
+                        role="status"
+                        aria-live="polite"
+                        class="text-sm text-zinc-500"
+                    >
+                        @lang('shop::app.categories.filters.search.no-options-available')
+                    </p>
                 </x-shop::form.control-group>
 
                 {!! view_render_event('bagisto.shop.checkout.onepage.address.form.country.after') !!}
@@ -199,43 +236,60 @@
                         @lang('shop::app.checkout.onepage.address.state')
                     </x-shop::form.control-group.label>
 
-                    <template v-if="states">
-                        <template v-if="haveStates">
-                            <x-shop::form.control-group.control
-                                type="select"
-                                ::name="controlName + '.state'"
-                                rules="{{ core()->isStateRequired() ? 'required' : '' }}"
-                                ::value="address.state"
-                                v-model="selectedState"
-                                :label="trans('shop::app.checkout.onepage.address.state')"
-                                :placeholder="trans('shop::app.checkout.onepage.address.state')"
-                                ::id="controlName + '_state'"
+                    <p
+                        v-if="statesLoading"
+                        role="status"
+                        aria-live="polite"
+                        class="text-sm text-zinc-500"
+                    >
+                        @lang('shop::app.categories.filters.search.loading')
+                    </p>
+
+                    <p
+                        v-else-if="statesError"
+                        role="alert"
+                        class="text-sm text-red-600"
+                    >
+                        @lang('shop::app.search.images.index.something-went-wrong')
+                    </p>
+
+                    <template v-else-if="haveStates">
+                        <x-shop::form.control-group.control
+                            type="select"
+                            ::name="controlName + '.state'"
+                            rules="{{ core()->isStateRequired() ? 'required' : '' }}"
+                            ::value="address.state"
+                            v-model="selectedState"
+                            :label="trans('shop::app.checkout.onepage.address.state')"
+                            :placeholder="trans('shop::app.checkout.onepage.address.state')"
+                            ::id="controlName + '_state'"
+                            @change="onStateChange"
+                        >
+                            <option value="">
+                                @lang('shop::app.checkout.onepage.address.select-state')
+                            </option>
+
+                            <option
+                                v-for='(state, index) in states[selectedCountry]'
+                                :value="state.code"
                             >
-                                <option value="">
-                                    @lang('shop::app.checkout.onepage.address.select-state')
-                                </option>
+                                @{{ state.default_name }}
+                            </option>
+                        </x-shop::form.control-group.control>
+                    </template>
 
-                                <option
-                                    v-for='(state, index) in states[selectedCountry]'
-                                    :value="state.code"
-                                >
-                                    @{{ state.default_name }}
-                                </option>
-                            </x-shop::form.control-group.control>
-                        </template>
-
-                        <template v-else>
-                            <x-shop::form.control-group.control
-                                type="text"
-                                ::name="controlName + '.state'"
-                                ::value="address.state"
-                                v-model="selectedState"
-                                rules="{{ core()->isStateRequired() ? 'required' : '' }}"
-                                :label="trans('shop::app.checkout.onepage.address.state')"
-                                :placeholder="trans('shop::app.checkout.onepage.address.state')"
-                                ::id="controlName + '_state'"
-                            />
-                        </template>
+                    <template v-else>
+                        <x-shop::form.control-group.control
+                            type="text"
+                            ::name="controlName + '.state'"
+                            ::value="address.state"
+                            v-model="selectedState"
+                            rules="{{ core()->isStateRequired() ? 'required' : '' }}"
+                            :label="trans('shop::app.checkout.onepage.address.state')"
+                            :placeholder="trans('shop::app.checkout.onepage.address.state')"
+                            ::id="controlName + '_state'"
+                            @change="onStateChange"
+                        />
                     </template>
 
                     <x-shop::form.control-group.error ::name="controlName + '.state'" />
@@ -255,6 +309,7 @@
                         type="text"
                         ::name="controlName + '.city'"
                         ::value="address.city"
+                        v-model="selectedCity"
                         rules="required"
                         :label="trans('shop::app.checkout.onepage.address.city')"
                         :placeholder="trans('shop::app.checkout.onepage.address.city')"
@@ -276,6 +331,7 @@
                         type="text"
                         ::name="controlName + '.postcode'"
                         ::value="address.postcode"
+                        v-model="selectedPostcode"
                         rules="{{ core()->isPostCodeRequired() ? 'required' : '' }}|postcode"
                         :label="trans('shop::app.checkout.onepage.address.postcode')"
                         :placeholder="trans('shop::app.checkout.onepage.address.postcode')"
@@ -304,7 +360,7 @@
                     ::value="address.phone"
                     rules="required|phone"
                     :label="trans('shop::app.checkout.onepage.address.phone')"
-                    placeholder="+261 XX XX XXX XX"
+                    ::placeholder="selectedCountry === 'MG' ? '+261 XX XX XXX XX' : trans('shop::app.checkout.onepage.address.phone')"
                     ::id="controlName + '_phone'"
                 />
 
@@ -350,15 +406,51 @@
 
                     selectedState: this.address.state,
 
+                    selectedCity: this.address.city,
+
+                    selectedPostcode: this.address.postcode,
+
+                    countrySearch: '',
+
                     countries: [],
 
                     states: null,
+
+                    countriesLoading: true,
+
+                    countriesError: false,
+
+                    statesLoading: true,
+
+                    statesError: false,
                 }
             },
 
             computed: {
+                filteredCountries() {
+                    const query = this.countrySearch.trim().toLocaleLowerCase();
+
+                    return this.countries.filter(country => (
+                        country.name.toLocaleLowerCase().includes(query)
+                        || country.code.toLocaleLowerCase().includes(query)
+                    ));
+                },
+
                 haveStates() {
-                    return !! this.states[this.selectedCountry]?.length;
+                    return !! this.states?.[this.selectedCountry]?.length;
+                },
+            },
+
+            watch: {
+                address: {
+                    handler(address) {
+                        this.selectedCountry = address.country || '{{ config('app.default_country') }}';
+                        this.selectedState = address.state;
+                        this.selectedCity = address.city;
+                        this.selectedPostcode = address.postcode;
+                    },
+
+                    deep: true,
                 },
             },
 
@@ -369,24 +461,102 @@
             },
 
             methods: {
+                onCountryChange() {
+                    this.countrySearch = '';
+
+                    this.selectedState = '';
+
+                    this.selectedCity = '';
+
+                    this.selectedPostcode = '';
+                },
+
+                onStateChange() {
+                    this.selectedCity = '';
+
+                    this.selectedPostcode = '';
+                },
+
                 getCountries() {
+                    this.countriesLoading = true;
+                    this.countriesError = false;
+
                     this.$axios.get("{{ route('shop.api.core.countries') }}")
                         .then(response => {
-                            this.countries = response.data.data.sort((a, b) => {
-                                if (a.code === 'MG') return -1;
-                                if (b.code === 'MG') return 1;
-                                return a.name.localeCompare(b.name);
-                            });
+                            const countries = response.data?.data;
+
+                            if (
+                                ! Array.isArray(countries)
+                                || countries.some(country => (
+                                    ! country
+                                    || ! Number.isInteger(country.id)
+                                    || country.id < 1
+                                    || typeof country.code !== 'string'
+                                    || ! /^[A-Z]{2}$/.test(country.code)
+                                    || typeof country.name !== 'string'
+                                    || ! country.name.trim()
+                                ))
+                            ) {
+                                throw new Error('Invalid countries response');
+                            }
+
+                            this.countries = [...new Map(countries.map(country => [country.code, country])).values()]
+                                .sort((a, b) => {
+                                    return a.name.localeCompare(b.name);
+                                });
                         })
-                        .catch(() => {});
+                        .catch(() => {
+                            this.countriesError = true;
+                        })
+                        .finally(() => {
+                            this.countriesLoading = false;
+                        });
                 },
 
                 getStates() {
+                    this.statesLoading = true;
+                    this.statesError = false;
+
                     this.$axios.get("{{ route('shop.api.core.states') }}")
                         .then(response => {
-                            this.states = response.data.data;
+                            const states = response.data?.data;
+                            const hasInvalidStates = (
+                                ! states
+                                || typeof states !== 'object'
+                                || (
+                                    Array.isArray(states)
+                                        ? states.length > 0
+                                        : Object.entries(states).some(([countryCode, countryStates]) => (
+                                            ! /^[A-Z]{2}$/.test(countryCode)
+                                            || ! Array.isArray(countryStates)
+                                            || countryStates.some(state => (
+                                                ! state
+                                                || typeof state.code !== 'string'
+                                                || ! state.code.trim()
+                                                || typeof state.default_name !== 'string'
+                                                || ! state.default_name.trim()
+                                            ))
+                                        ))
+                                )
+                            );
+
+                            if (hasInvalidStates) {
+                                throw new Error('Invalid states response');
+                            }
+
+                            this.states = Object.fromEntries(
+                                Object.entries(states).map(([countryCode, countryStates]) => [
+                                    countryCode,
+                                    [...new Map(countryStates.map(state => [state.code, state])).values()],
+                                ])
+                            );
                         })
-                        .catch(() => {});
+                        .catch(() => {
+                            this.statesError = true;
+                        })
+                        .finally(() => {
+                            this.statesLoading = false;
+                        });
                 },
             }
         });

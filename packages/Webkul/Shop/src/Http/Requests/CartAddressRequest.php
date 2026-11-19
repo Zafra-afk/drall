@@ -51,7 +51,12 @@ class CartAddressRequest extends FormRequest
      */
     private function mergeAddressRules(string $addressType): void
     {
-        $countryRules = core()->isCountryRequired() ? ['required'] : ['nullable'];
+        $countryRules = [
+            'bail',
+            core()->isCountryRequired() ? 'required' : 'nullable',
+            'string',
+        ];
+        $countryRules[] = Rule::exists('countries', 'code');
         $storefrontCountries = config('app.storefront_countries', []);
 
         if ($storefrontCountries) {
@@ -64,7 +69,7 @@ class CartAddressRequest extends FormRequest
             "{$addressType}.last_name" => ['required'],
             "{$addressType}.email" => ['required'],
             "{$addressType}.address" => ['required', 'array', 'min:1'],
-            "{$addressType}.city" => ['required'],
+            "{$addressType}.city" => ['required', 'string'],
             "{$addressType}.country" => $countryRules,
             "{$addressType}.state" => [
                 core()->isStateRequired() ? 'required' : 'nullable',
