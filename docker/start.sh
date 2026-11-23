@@ -67,6 +67,9 @@ php artisan migrate --force --no-interaction
 
 chown -R www-data:www-data storage bootstrap/cache
 
+# Download images for products/categories/sections that have none (background, never fatal)
+su -m -s /bin/sh www-data -c 'php artisan drall:restore-media' >/dev/stdout 2>&1 &
+
 # Render nginx config with the Railway port
 export PORT
 envsubst '${PORT}' < docker/nginx/default.conf.template > /etc/nginx/conf.d/default.conf
