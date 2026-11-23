@@ -64,7 +64,15 @@ fi
 # Apply pending migrations
 php artisan migrate --force --no-interaction
 
-# Start Laravel
-echo "Starting Drall on port $PORT"
 
-exec php artisan serve --host=0.0.0.0 --port="$PORT"
+chown -R www-data:www-data storage bootstrap/cache
+
+# Render nginx config with the Railway port
+export PORT
+envsubst '${PORT}' < docker/nginx/default.conf.template > /etc/nginx/conf.d/default.conf
+rm -f /etc/nginx/sites-enabled/default
+mkdir -p /var/log/supervisor
+
+echo "Starting Drall (nginx + php-fpm + queue worker) on port $PORT"
+
+exec /usr/bin/supervisord -n -c /var/www/html/docker/nginx/supervisord.conf
