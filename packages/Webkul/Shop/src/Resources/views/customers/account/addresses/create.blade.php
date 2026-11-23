@@ -193,15 +193,6 @@
                             @lang('shop::app.customers.account.addresses.create.country')
                         </x-shop::form.control-group.label>
 
-                        <input
-                            type="search"
-                            v-model="countrySearch"
-                            aria-label="@lang('shop::app.layouts.header.mobile.search') @lang('shop::app.customers.account.addresses.create.country')"
-                            placeholder="@lang('shop::app.layouts.header.mobile.search')"
-                            autocomplete="off"
-                            class="mb-1.5 w-full rounded-lg border px-5 py-3 text-base font-normal text-gray-600 transition-all hover:border-gray-400 focus:border-gray-400 max-sm:px-4 max-md:py-2 max-sm:text-sm"
-                        >
-            
                         <x-shop::form.control-group.control
                             type="select"
                             name="country"
