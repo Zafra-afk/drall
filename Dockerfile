@@ -1,5 +1,5 @@
 
-FROM php:8.4-cli
+FROM php:8.4-fpm
 
 # ==========================================
 # 1. SYSTEM DEPENDENCIES
@@ -21,6 +21,9 @@ RUN apt-get update && apt-get install -y \
     curl \
     zip \
     autoconf \
+    nginx \
+    supervisor \
+    gettext-base \
     && rm -rf /var/lib/apt/lists/*
 
 # ==========================================
