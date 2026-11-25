@@ -70,7 +70,7 @@ php artisan migrate --force --no-interaction
 SECTIONS_MARKER="storage/app/public/.sections-seeded-v1"
 if [ ! -f "$SECTIONS_MARKER" ]; then
     echo "Re-seeding default theme sections and images..."
-    php artisan db:seed --class='Webkul\\Installer\\Database\\Seeders\\Shop\\DatabaseSeeder' --force --no-interaction
+    php artisan db:seed --class='Webkul\Installer\Database\Seeders\Shop\DatabaseSeeder' --force --no-interaction
     touch "$SECTIONS_MARKER"
 fi
 
