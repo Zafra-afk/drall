@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
@@ -41,6 +42,10 @@ class DrallCatalogSeeder extends Seeder
 
     public function run($parameters = []): void
     {
+        // `db:seed` runs unguarded, which would mass-assign every attribute
+        // (name, price, ...) onto the products table. Restore $fillable.
+        Model::reguard();
+
         $parameters = data_get($parameters, 'parameters', $parameters);
         $channel = core()->getDefaultChannel();
 
