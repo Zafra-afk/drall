@@ -64,6 +64,16 @@ fi
 # Apply pending migrations
 php artisan migrate --force --no-interaction
 
+# One-time repair: theme section images referenced in the database were missing
+# from the storage volume. Re-seed the default sections (which copies their
+# images onto the volume). Guarded by a marker file so it never runs twice.
+SECTIONS_MARKER="storage/app/public/.sections-seeded-v1"
+if [ ! -f "$SECTIONS_MARKER" ]; then
+    echo "Re-seeding default theme sections and images..."
+    php artisan db:seed --class='Webkul\\Installer\\Database\\Seeders\\Shop\\DatabaseSeeder' --force --no-interaction
+    touch "$SECTIONS_MARKER"
+fi
+
 
 chown -R www-data:www-data storage bootstrap/cache
 
