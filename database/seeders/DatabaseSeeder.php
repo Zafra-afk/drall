@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(BagistoDatabaseSeeder::class);
         $this->call(DrallDemoProductsSeeder::class);
+        $this->call(DrallCatalogSeeder::class);
     }
 }

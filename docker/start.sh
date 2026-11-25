@@ -64,6 +64,33 @@ fi
 # Apply pending migrations
 php artisan migrate --force --no-interaction
 
+# ---------------------------------------------------------------------------
+# Media repair. Every step is non-destructive and non-fatal: a failure here is
+# logged and must never stop the app from starting.
+# ---------------------------------------------------------------------------
+
+# 1. Restore tracked files hidden by the volume mount (never overwrite).
+if [ -d /opt/storage-seed ]; then
+    cp -rn /opt/storage-seed/. storage/app/public/ 2>/dev/null || echo "WARN: storage seed copy incomplete"
+fi
+
+# 2. One-time reload of the default theme sections (+ their images) and the
+#    idempotent Drall demo catalog + 30-product catalog. Guarded by a marker on the volume so it
+#    runs once; the marker is only written when both succeed.
+SEED_MARKER="storage/app/public/.media-seeded-v3"
+if [ ! -f "$SEED_MARKER" ]; then
+    echo "Reloading default theme sections and demo catalog..."
+    if php artisan db:seed --class='Webkul\Installer\Database\Seeders\Shop\DatabaseSeeder' --force --no-interaction \
+        && php artisan db:seed --class='Database\Seeders\DrallDemoProductsSeeder' --force --no-interaction \
+        && php artisan db:seed --class='Database\Seeders\DrallCatalogSeeder' --force --no-interaction; then
+        touch "$SEED_MARKER"
+    else
+        echo "WARN: seed reload failed; continuing startup (will retry next boot)"
+    fi
+fi
+
+# 3. Restore missing demo product images and report other missing media.
+php artisan drall:repair-media || echo "WARN: media repair failed; continuing"
 
 chown -R www-data:www-data storage bootstrap/cache
 
