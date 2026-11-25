@@ -75,13 +75,14 @@ if [ -d /opt/storage-seed ]; then
 fi
 
 # 2. One-time reload of the default theme sections (+ their images) and the
-#    idempotent Drall demo catalog. Guarded by a marker on the volume so it
+#    idempotent Drall demo catalog + 30-product catalog. Guarded by a marker on the volume so it
 #    runs once; the marker is only written when both succeed.
-SEED_MARKER="storage/app/public/.media-seeded-v2"
+SEED_MARKER="storage/app/public/.media-seeded-v3"
 if [ ! -f "$SEED_MARKER" ]; then
     echo "Reloading default theme sections and demo catalog..."
     if php artisan db:seed --class='Webkul\Installer\Database\Seeders\Shop\DatabaseSeeder' --force --no-interaction \
-        && php artisan db:seed --class='Database\Seeders\DrallDemoProductsSeeder' --force --no-interaction; then
+        && php artisan db:seed --class='Database\Seeders\DrallDemoProductsSeeder' --force --no-interaction \
+        && php artisan db:seed --class='Database\Seeders\DrallCatalogSeeder' --force --no-interaction; then
         touch "$SEED_MARKER"
     else
         echo "WARN: seed reload failed; continuing startup (will retry next boot)"

@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Database\Seeders\DrallCatalogSeeder;
 use Database\Seeders\DrallDemoProductsSeeder;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
@@ -58,12 +59,6 @@ class RepairMedia extends Command
             $indexBySku[$definition['sku']] = $index;
         }
 
-        if (! $sources) {
-            $this->warn('No demo image assets found; nothing to restore.');
-
-            return;
-        }
-
         $restored = 0;
         $unknown = 0;
 
@@ -77,13 +72,17 @@ class RepairMedia extends Command
                 continue;
             }
 
-            if (! isset($indexBySku[$row->sku])) {
+            $source = DrallCatalogSeeder::imageSourceForSku($row->sku);
+
+            if (! $source && isset($indexBySku[$row->sku])) {
+                $source = $sources[$indexBySku[$row->sku] % max(count($sources), 1)];
+            }
+
+            if (! $source) {
                 $unknown++;
 
                 continue;
             }
-
-            $source = $sources[$indexBySku[$row->sku] % count($sources)];
 
             if (Filesystem::exists($source) && Storage::put($row->path, Filesystem::get($source))) {
                 $restored++;
