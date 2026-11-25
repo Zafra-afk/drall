@@ -82,6 +82,12 @@ WORKDIR /var/www/html
 # ==========================================
 COPY . .
 
+# Keep a pristine copy of the tracked public storage files. The Railway volume
+# is mounted over storage/app/public at runtime and hides them, so start.sh
+# restores missing ones from here without overwriting anything.
+RUN mkdir -p /opt/storage-seed \
+    && cp -a storage/app/public/. /opt/storage-seed/ 2>/dev/null || true
+
 # ==========================================
 # 8. INSTALL COMPOSER DEPENDENCIES
 # ==========================================

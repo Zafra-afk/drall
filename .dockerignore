@@ -24,6 +24,7 @@ tests
 playwright-report
 test-results
 storage/app/*
+!storage/app/public
 storage/debugbar/*
 storage/fonts/*
 bootstrap/cache/*.php
